@@ -31,7 +31,7 @@ function EntryCards() {
       title: 'Por Componente',
       description:
         'Explora el catálogo completo. Diecisiete componentes documentados con estructura consistente, ejemplos reales y mapeo al Tablero Digital.',
-      to: '/docs/componentes/mantenedor',
+      to: '/docs/componentes/formulario-login',
     },
     {
       title: 'Por Sección del Tablero',

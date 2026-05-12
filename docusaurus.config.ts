@@ -50,8 +50,10 @@ const config: Config = {
       logo: {
         alt: 'Catálogo de Componentes',
         src: 'img/logo.svg',
+        href: '/docs/componentes/formulario-login',
       },
       items: [
+        {to: '/', label: 'Inicio', position: 'left'},
         {to: '/docs/secciones', label: 'Por Sección', position: 'right'},
         {to: '/docs/tags', label: 'Por Tags', position: 'right'},
         {to: '/docs/tablero-digital', label: 'Tablero Digital', position: 'right'},
