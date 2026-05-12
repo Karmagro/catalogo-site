@@ -1,0 +1,152 @@
+---
+sidebar_position: 10
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Scraper
+
+<span className={styles.aliases}>Web scraper · Extractor web</span>
+
+## Descripción
+
+Componente que recorre páginas web o documentos para identificar y extraer información específica de su contenido. Su función es obtener datos desde fuentes no estructuradas o semiestructuradas mediante técnicas como pattern-matching o parsing, y entregarlos al sistema para su almacenamiento o procesamiento posterior. A diferencia de componentes que consumen APIs formales, el scraper accede directamente al contenido de las páginas o documentos, buscando, identificando y extrayendo los datos relevantes según criterios predefinidos.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Recorre páginas web o documentos buscando y extrayendo datos específicos mediante patrones o selectores
+- Realiza parsing del contenido para identificar la información de interés y separarla del resto
+- Entrega los datos extraídos al sistema para su almacenamiento o procesamiento posterior
+- Maneja contenido no estructurado o semiestructurado, sin depender de un esquema formal expuesto por la fuente
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Trabajo en conjunto con un crawler:** recibe URLs descubiertas dinámicamente por un componente que navega siguiendo enlaces, en lugar de operar sobre una lista predefinida de fuentes
+- **Trigger manual:** permite a un usuario autorizado iniciar la extracción bajo demanda
+- **Programación periódica (scheduling):** ejecuta el scraping en intervalos definidos
+- **Logging de extracción:** registra ejecuciones, tasas de éxito por fuente y datos efectivamente extraídos
+- **Tolerancia a cambios estructurales:** implementa selectores múltiples o estrategias de fallback que mitigan el efecto de modificaciones en las páginas fuente
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** es un crawler: no navega siguiendo enlaces ni descubre contenido por su cuenta; requiere URLs o ubicaciones específicas como entrada
+- **No** es un [ETL](/docs/componentes/etl): el ETL consume datos estructurados desde APIs o bases de datos; el scraper extrae datos desde contenido no estructurado
+- **No** transforma ni procesa los datos extraídos en profundidad; solo los identifica y los entrega
+- Puede dejar de funcionar si la estructura de las fuentes cambia y no hay tolerancia a esos cambios
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    URLs o ubicaciones de las fuentes a procesar; selectores, patrones o criterios que definen qué información extraer
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Datos extraídos y estructurados, entregados al sistema para su almacenamiento o procesamiento posterior
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Scraping web:** extracción de datos desde páginas HTML mediante selectores CSS, XPath u otros mecanismos de parsing del DOM
+- **Scraping de documentos:** extracción de datos desde archivos con contenido no estructurado o semiestructurado (PDF, Word, hojas de cálculo sin formato estándar)
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Fuentes externas a procesar (páginas web, documentos accesibles por URL)
+- Selectores o reglas que definen qué extraer de cada fuente
+- [Base de Datos](/docs/componentes/base-datos) u otro componente receptor de los datos extraídos
+- Mecanismo de programación o scheduler para ejecución periódica, cuando esa capacidad está presente
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Indeed — agregación de ofertas de empleo desde miles de sitios web externos mostrando resultados unificados</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Opcional | Trigger manual de la extracción, cuando esa capacidad está presente. |
+| Entradas Automáticas | Siempre | La incorporación al sistema de datos extraídos desde fuentes externas. |
+| Conceptos de Datos | Siempre | Las entidades resultantes de la extracción (productos, ofertas, perfiles, según el dominio). |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | Siempre | El parsing del contenido para identificar y separar la información relevante. Logging y tolerancia a cambios cuando esas capacidades están presentes. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del Scraper con tarjetas de ejemplo</span>
+</div>

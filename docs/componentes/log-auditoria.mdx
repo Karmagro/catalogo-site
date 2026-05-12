@@ -1,0 +1,149 @@
+---
+sidebar_position: 14
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Log de Auditoría
+
+<span className={styles.aliases}>Audit log · Bitácora de auditoría · Registro de operaciones · Audit trail · Historial de actividad</span>
+
+## Descripción
+
+Registra de forma automática y cronológica las acciones relevantes realizadas dentro del sistema de información, asociando cada evento a un usuario, una fecha y una entidad afectada. Su propósito es mantener un historial trazable e inalterable de la actividad del sistema, que permita responder con evidencia concreta las preguntas "quién hizo qué, cuándo y sobre qué". Opera de forma autónoma y transversal: el registro ocurre sin intervención del usuario, ante cada acción que el sistema considera relevante.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Registra eventos de forma automática, sin requerir acción explícita del usuario
+- Cada registro incluye al menos: usuario que realizó la acción, fecha y hora, tipo de operación, y entidad afectada
+- Los registros son persistentes e inalterables por usuarios comunes; no pueden ser modificados ni eliminados desde la operación normal del sistema
+- El acceso a la bitácora está restringido a perfiles con permisos específicos (administradores, auditores)
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Almacenamiento de estado anterior y posterior:** guarda los valores antes y después de cada modificación, permitiendo reconstruir la evolución de la información
+- **Exportación de registros:** permite descargar los registros del log para análisis externo o cumplimiento normativo
+- **Visualización integrada:** provee una interfaz para que usuarios autorizados consulten el historial directamente desde el sistema
+- **Retención configurable:** define cuánto tiempo se conservan los registros antes de purgarlos automáticamente
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** es un log de sistema: los logs de sistema registran eventos técnicos y operacionales (errores, reinicios, rendimiento); el Log de Auditoría registra acciones de usuarios y cambios en los datos del negocio
+- **No** es un [Sistema de Notificación](/docs/componentes/sistema-notificacion): el Log registra silenciosamente; no alerta ni comunica eventos a destinatarios externos
+- **No** es un [Reporte](/docs/componentes/reporte): aunque los datos del log pueden consultarse o exportarse, el componente en sí no consolida ni procesa la información con fines analíticos
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Evento del sistema (acción de usuario o proceso que modifica datos), con sus atributos asociados (usuario, entidad, operación, valores)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Registro persistente e inalterable del evento, almacenado cronológicamente en el repositorio
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Log de acceso:** registra cada intento de inicio de sesión exitoso o fallido
+- **Log de cambios:** registra modificaciones sobre los datos del sistema (creación, edición, eliminación de registros)
+- **Log de operaciones:** registra acciones administrativas y de configuración del sistema
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- [Base de Datos](/docs/componentes/base-datos) o repositorio donde se almacenan los registros de auditoría
+- [Autorización](/docs/componentes/autorizacion) para determinar qué usuarios pueden acceder a la consulta del log
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Notion — historial de ediciones de página accesible para miembros del workspace, con nombre de usuario y timestamp</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | No | — |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Registro de Auditoría como entidad persistente del sistema. |
+| Salidas por Demanda | Opcional | Visualización integrada del historial y exportación de registros, cuando esas capacidades están presentes. |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | Siempre | Captura automática de los eventos relevantes y construcción del registro asociado. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del Log de Auditoría con tarjetas de ejemplo</span>
+</div>

@@ -1,0 +1,152 @@
+---
+sidebar_position: 2
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Login Biométrico
+
+<span className={styles.aliases}>Autenticación biométrica · Identificación biométrica</span>
+
+## Descripción
+
+Componente que permite a usuarios identificarse ante el sistema mediante características físicas o comportamentales únicas (huella dactilar, reconocimiento facial, iris, voz). A diferencia de las credenciales tradicionales que el usuario "sabe" (contraseña) o "tiene" (dispositivo), la autenticación biométrica se basa en lo que el usuario "es". El sistema captura el rasgo biométrico, lo procesa y lo compara contra patrones previamente registrados para validar la identidad.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Captura características físicas o comportamentales del usuario mediante hardware especializado (sensor de huellas, cámara, micrófono)
+- Convierte las características capturadas en representaciones digitales (plantillas biométricas) para su comparación
+- Compara la captura contra plantillas previamente registradas para determinar si la identidad coincide
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Funcionamiento como factor adicional (multifactor):** el componente actúa en conjunto con otra forma de autenticación (contraseña, token), añadiendo una capa biométrica a un flujo previo en lugar de reemplazarlo
+- **Autenticación alternativa de respaldo:** permite al usuario autenticarse mediante un mecanismo no biométrico (PIN, contraseña) cuando la verificación biométrica falla o no está disponible
+- **Detección de vida (anti-spoofing):** procesa la captura biométrica para verificar que proviene de una persona real y no de una imagen, video o réplica del rasgo
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** incluye el registro inicial del rasgo biométrico (enrollment), que es parte de la gestión de usuarios
+- **No** maneja autorización o permisos posteriores a la autenticación
+- **No** es aplicable para autenticación programática entre sistemas
+- Requiere infraestructura técnica específica (sensores, algoritmos de matching) no presente en sistemas tradicionales
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Datos biométricos del usuario (imagen de huella, escaneo facial, muestra de voz)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Sesión autenticada o rechazo de acceso según coincidencia con la plantilla registrada
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Huella dactilar:** escaneo y comparación de patrones únicos de la huella
+- **Reconocimiento facial:** análisis de características faciales mediante cámara
+- **Reconocimiento de iris:** identificación mediante patrones únicos del iris ocular
+- **Reconocimiento de voz:** autenticación mediante patrones vocales característicos
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Hardware adecuado (sensor de huellas, cámara para reconocimiento facial, escáner de iris)
+- Motor de comparación biométrica (algoritmos de matching)
+- Repositorio de plantillas biométricas registradas ([Base de Datos](/docs/componentes/base-datos))
+- Gestor de sesiones o tokens para mantener la autenticación post-verificación
+- Mecanismo de autenticación alternativa para casos de falla biométrica ([Formulario de Login](/docs/componentes/formulario-login))
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Face ID (iPhone) — desbloqueo mediante reconocimiento facial con la cámara frontal</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Siempre | Captura del rasgo biométrico por parte del usuario (poner el dedo, mirar a la cámara, hablar al micrófono). |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Plantilla biométrica registrada y Usuario al que pertenece. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | Opcional | Notificación al usuario sobre intentos de acceso fallidos o desde dispositivos no reconocidos. |
+| Procesos Autónomos | Opcional | Detección de vida (anti-spoofing) cuando esa capacidad está presente. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del Login Biométrico con tarjetas de ejemplo</span>
+</div>

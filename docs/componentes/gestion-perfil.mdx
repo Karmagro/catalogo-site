@@ -1,0 +1,149 @@
+---
+sidebar_position: 5
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Gestión de Perfil
+
+<span className={styles.aliases}>Mi cuenta · Configuración de cuenta · Administración personal · Account settings</span>
+
+## Descripción
+
+Componente que permite a un usuario autenticado administrar los datos esenciales y configuraciones de seguridad de su propia cuenta. El usuario puede modificar credenciales de acceso, actualizar información de contacto, y gestionar aspectos de seguridad como autenticación de dos factores o sesiones activas. A diferencia de la creación inicial de cuenta, este componente opera sobre una cuenta ya existente y requiere que el usuario esté autenticado o pueda verificar su identidad.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Permite al usuario autenticado modificar sus credenciales de acceso (contraseña, email, teléfono) y datos de contacto
+- Requiere autenticación previa para acceder a las opciones de modificación
+- Persiste los cambios en el repositorio de usuarios
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Recuperación de contraseña:** flujo accesible sin autenticación que permite a usuarios que perdieron acceso restablecer su contraseña mediante envío de enlace o código por email/SMS
+- **Configuración de 2FA:** permite al usuario habilitar o deshabilitar la autenticación de dos factores y registrar sus métodos (app autenticadora, número de teléfono)
+- **Gestión de sesiones activas:** permite visualizar las sesiones abiertas del usuario en distintos dispositivos y cerrarlas de forma remota
+- **Verificación adicional para cambios sensibles:** solicita confirmación de identidad (contraseña actual, código por email/SMS) antes de aplicar modificaciones críticas como cambio de email o contraseña
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** crea cuentas nuevas — eso corresponde a [Creador de Cuenta](/docs/componentes/creador-cuenta)
+- **No** contempla la administración de cuentas ajenas; es específicamente sobre la cuenta personal
+- **No** incluye preferencias de personalización del sistema como tema, idioma o notificaciones
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Modificaciones del usuario (nueva contraseña, email actualizado, configuración de 2FA) junto a verificación de identidad cuando aplica
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Actualización de datos en el repositorio y confirmación al usuario, junto con notificación de cambio sensible cuando aplica
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Autoservicio:** el propio usuario gestiona su cuenta sin intervención de administradores
+- **Asistido:** un administrador o soporte realiza cambios en la cuenta del usuario (menos común, típicamente para recuperación de acceso)
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Sistema de autenticación ([Formulario de Login](/docs/componentes/formulario-login) para verificar identidad antes de cambios sensibles)
+- Repositorio de usuarios donde se actualizan los datos modificados ([Base de Datos](/docs/componentes/base-datos))
+- Servicio de notificación ([Sistema de Notificación](/docs/componentes/sistema-notificacion) para códigos de verificación y alertas de cambios)
+- Gestor de sesiones (para visualizar y cerrar sesiones activas)
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Centro de cuentas de Facebook — sección "Contraseña y seguridad" con opciones de 2FA, sesiones activas y alertas de seguridad</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Siempre | Formulario de edición de datos personales y credenciales. Configuración de 2FA y cierre remoto de sesiones cuando esas capacidades están presentes. |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Usuario (atributos editables). Sesiones Activas cuando esa capacidad está presente. |
+| Salidas por Demanda | Siempre | Visualización de los datos actuales del perfil, necesaria para que el usuario los pueda editar. Lista de sesiones activas cuando esa capacidad está presente. |
+| Salidas Automáticas | Opcional | Email de confirmación de cambio sensible, códigos de verificación, enlace de recuperación de contraseña, cuando esas capacidades están presentes. |
+| Procesos Autónomos | No | — |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital de la Gestión de Perfil con tarjetas de ejemplo</span>
+</div>

@@ -1,0 +1,150 @@
+---
+sidebar_position: 4
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Creador de Cuenta
+
+<span className={styles.aliases}>Sign-up · Registro de usuario · Formulario de registro</span>
+
+## Descripción
+
+Componente que permite a personas sin cuenta en el sistema crear su primera cuenta de usuario. Presenta una interfaz accesible sin autenticación previa, donde el usuario proporciona sus datos básicos o vincula su identidad mediante otros medios. El sistema valida la información, crea la nueva cuenta y almacena las credenciales de forma segura para que posteriormente puedan ser utilizadas para autenticarse.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Accesible sin autenticación previa
+- Valida los datos de entrada según reglas del sistema (formato de email, fortaleza de contraseña, unicidad de usuario)
+- Almacena las credenciales o identificadores del nuevo usuario de forma segura en el repositorio
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Verificación previa por email o SMS:** requiere que el usuario confirme la posesión del medio de contacto declarado antes de activar la cuenta, mediante un código o enlace enviado a su email o teléfono
+- **Captcha anti-spam:** incorpora desafíos para evitar registros automatizados por bots
+- **Aprobación manual del administrador:** mantiene la cuenta en estado pendiente hasta que un administrador la apruebe explícitamente
+- **Restricción por código de invitación:** limita el registro a quienes posean un código previamente emitido, controlando quién puede sumarse al sistema
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** autentica al usuario después de crear la cuenta — eso corresponde a [Formulario de Login](/docs/componentes/formulario-login)
+- **No** modifica cuentas existentes — eso corresponde a [Gestión de Perfil](/docs/componentes/gestion-perfil)
+- **No** es administración de cuentas por parte de personal autorizado
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Datos del nuevo usuario (email, contraseña, nombre, datos de perfil básicos) o identificador de dispositivo o biométrico
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Nueva cuenta creada en el repositorio, junto a notificación de confirmación o bienvenida cuando aplica
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Registro tradicional:** formulario con email o usuario y contraseña
+- **Registro con SSO:** "Crear cuenta con Google/Microsoft/Facebook", delegando datos al proveedor
+- **Registro en dispositivo:** vinculación de la cuenta al dispositivo mediante huella dactilar, PIN o patrón (común en apps móviles)
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Repositorio de usuarios donde se almacena la nueva cuenta ([Base de Datos](/docs/componentes/base-datos))
+- Validador de datos (reglas de negocio sobre contraseñas, emails, etc.)
+- Servicio de notificación ([Sistema de Notificación](/docs/componentes/sistema-notificacion) para enviar confirmaciones)
+- Captcha o sistema anti-spam (cuando esa capacidad está presente)
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Reddit — página de registro con opciones: teléfono, SSO (Google/Apple) o email tradicional</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Siempre | Formulario de registro que el usuario completa con sus datos. Captcha y código de invitación cuando esas capacidades están presentes. |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Usuario (nueva cuenta creada). |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | Opcional | Email o SMS de bienvenida, código de verificación previa cuando esa capacidad está presente. |
+| Procesos Autónomos | No | — |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del Creador de Cuenta con tarjetas de ejemplo</span>
+</div>

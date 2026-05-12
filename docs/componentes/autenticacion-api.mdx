@@ -1,0 +1,151 @@
+---
+sidebar_position: 3
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Autenticación API
+
+<span className={styles.aliases}>Autenticación máquina-a-máquina · API authentication · Machine-to-machine (M2M) authentication</span>
+
+## Descripción
+
+Componente que permite a sistemas, servicios o aplicaciones externas identificarse ante el sistema para consumir recursos o funcionalidades. A diferencia de la autenticación de usuarios humanos, este proceso ocurre automáticamente entre sistemas sin intervención manual, utilizando credenciales específicas como claves API, tokens de acceso o certificados digitales. Su propósito es garantizar que solo sistemas autorizados puedan acceder a los endpoints y recursos del sistema.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- No presenta interfaz gráfica; todo el proceso ocurre mediante llamadas programáticas (HTTP headers, parámetros)
+- Utiliza credenciales específicas para sistemas (API keys, tokens OAuth, certificados TLS/mTLS)
+- Valida la identidad del sistema o servicio cliente antes de permitir el acceso a recursos del servidor
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Rate limiting / Cuotas por cliente:** restringe la cantidad de solicitudes que un cliente autenticado puede realizar en un intervalo de tiempo, protegiendo el sistema de abusos o sobrecargas
+- **Auditoría de peticiones:** registra cada solicitud autenticada con identificación del cliente, recurso accedido y resultado, permitiendo trazabilidad y análisis posterior
+- **Rotación automática de credenciales:** renueva tokens o claves periódicamente, reduciendo el impacto de credenciales comprometidas
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** maneja la creación o gestión de las credenciales API — eso corresponde a un [Mantenedor](/docs/componentes/mantenedor) especializado
+- La autenticación **no** implica autorización sobre recursos específicos — eso corresponde a [Autorización](/docs/componentes/autorizacion)
+- **No** define ni implementa los endpoints o servicios que serán consumidos; únicamente verifica la identidad del consumidor
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Credenciales del sistema cliente (API key, token OAuth, certificado) enviadas en headers HTTP o parámetros
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Token de sesión válido para posteriores requests o rechazo de acceso
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **API Key:** clave estática asociada al sistema consumidor, enviada en cada request
+- **OAuth 2.0:** protocolo que emite tokens de acceso temporal tras autenticación inicial
+- **JWT (JSON Web Tokens):** tokens autofirmados que contienen información del sistema y su validez
+- **mTLS (Mutual TLS):** autenticación mediante certificados digitales bilaterales
+- **HMAC / Signature:** firma criptográfica de requests utilizando secretos compartidos
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- [Mantenedor](/docs/componentes/mantenedor) de credenciales (creación y administración de claves y certificados de sistemas autorizados)
+- Repositorio donde se almacenan las credenciales registradas ([Base de Datos](/docs/componentes/base-datos))
+- Gestor de tokens (sistema que emite y valida tokens de sesión como JWT)
+- [End-point (API)](/docs/componentes/endpoint-api) (componente que expone los servicios o funcionalidades que serán consumidos una vez autenticado el sistema)
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>OAuth 2.0 — aplicación que obtiene un token de acceso de Google para consumir la API de Google Drive</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | No | — |
+| Entradas Automáticas | Siempre | Recepción de solicitudes de autenticación con credenciales desde sistemas externos. |
+| Conceptos de Datos | Siempre | Sistema cliente registrado, credenciales (API key, certificado), tokens emitidos. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | Opcional | Aplicación de políticas de rate limiting y registro de auditoría de peticiones, cuando esas capacidades están presentes. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital de la Autenticación API con tarjetas de ejemplo</span>
+</div>

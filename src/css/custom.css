@@ -18,6 +18,85 @@
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
+/* Matrix legend */
+
+.matrix-legend {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.matrix-legend__item strong {
+  color: var(--ifm-color-emphasis-900);
+}
+
+/* Tag cloud sizing is handled in tags.module.css */
+
+/* Tag cloud (used on /docs/tags) */
+
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  align-items: center;
+}
+
+.tag-chip {
+  display: inline-block;
+  background: var(--ifm-color-emphasis-200);
+  color: var(--ifm-color-emphasis-800);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  font-family: var(--ifm-font-family-monospace);
+  cursor: default;
+  transition: background 0.15s;
+}
+
+.tag-chip:hover {
+  background: var(--ifm-color-primary-lightest);
+}
+
+.tag-chip[data-weight="1"] { font-size: 0.8rem; opacity: 0.75; }
+.tag-chip[data-weight="2"] { font-size: 0.85rem; opacity: 0.8; }
+.tag-chip[data-weight="3"] { font-size: 0.9rem; opacity: 0.85; }
+.tag-chip[data-weight="4"] { font-size: 0.95rem; opacity: 0.9; }
+.tag-chip[data-weight="5"] { font-size: 1rem; opacity: 1; }
+
+/* Pastel red danger admonition */
+
+.admonition-danger {
+  --ifm-alert-border-color: rgba(190, 75, 75, 0.5);
+  background: #fdf0f0;
+  border: 1px solid rgba(190, 75, 75, 0.25);
+}
+
+.admonition-danger .admonition-heading h5 {
+  color: #8b3a3a;
+}
+
+.admonition-danger a {
+  color: #b33a3a;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(179, 58, 58, 0.3);
+  text-underline-offset: 2px;
+}
+
+.admonition-danger a:hover {
+  color: #8b2a2a;
+  text-decoration-color: #8b2a2a;
+}
+
+/* All section divider rules between blocks — remove whitespace effect */
+article .theme-doc-markdown h2 {
+  margin-top: 2rem;
+}
+
 [data-theme='dark'] {
   --ifm-color-primary: #25c2a0;
   --ifm-color-primary-dark: #21af90;

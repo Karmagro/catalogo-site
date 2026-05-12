@@ -1,0 +1,153 @@
+---
+sidebar_position: 15
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# End-point (API)
+
+<span className={styles.aliases}>API · Application Programming Interface · Servicio web · Endpoint</span>
+
+## Descripción
+
+Interfaz que permite la comunicación entre sistemas de software. Expone un conjunto de funcionalidades del sistema mediante puntos de acceso específicos, permitiendo que aplicaciones externas o internas soliciten servicios o intercambien información de manera controlada y estructurada. La API oculta la complejidad interna del sistema, exponiendo solo las operaciones permitidas según un contrato definido.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Expone funcionalidades del sistema a través de puntos de acceso accesibles programáticamente
+- Permite que sistemas externos soliciten información o ejecuten operaciones del sistema
+- Define un contrato (especificación) que indica cómo realizar solicitudes y qué respuestas esperar
+- Requiere autenticación de los sistemas clientes que consumen los endpoints
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Versionado:** mantiene múltiples versiones de la API en paralelo (v1, v2) para no romper compatibilidad con clientes existentes al evolucionar el contrato
+- **Documentación interactiva:** provee una interfaz navegable de la especificación (Swagger/OpenAPI, GraphQL Playground) que permite probar los endpoints directamente
+- **Rate limiting:** restringe la cantidad de solicitudes que un cliente puede realizar en un intervalo de tiempo
+- **Caching de respuestas:** almacena temporalmente respuestas frecuentes para reducir tiempo de respuesta y carga del sistema
+- **Monitoreo de uso:** registra métricas de invocaciones, latencias, errores y patrones de consumo por cliente
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** es un [ETL](/docs/componentes/etl): el ETL realiza cargas masivas de datos según un plan; la API responde solicitudes puntuales según demanda del cliente
+- **No** realiza el procesamiento de negocio por sí misma: la API es el mecanismo de comunicación; el procesamiento lo realizan los servicios internos del sistema
+- **No** verifica la identidad del cliente — eso corresponde a [Autenticación API](/docs/componentes/autenticacion-api)
+- **No** determina qué puede hacer el cliente autenticado — eso corresponde a [Autorización](/docs/componentes/autorizacion)
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Solicitud estructurada de un sistema externo (método HTTP, ruta del endpoint, parámetros, credenciales)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Respuesta estructurada con los datos solicitados o confirmación de la operación ejecutada, en el formato definido por la especificación (JSON, XML, etc.)
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **REST:** arquitectura basada en recursos y operaciones estándar HTTP, con respuestas típicamente en JSON
+- **SOAP:** protocolo formal basado en mensajes XML, común en sistemas bancarios y gubernamentales
+- **GraphQL:** permite al cliente especificar exactamente qué información necesita en cada solicitud
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Servidor que recibe y procesa las solicitudes
+- [Autenticación API](/docs/componentes/autenticacion-api) para verificar la identidad del cliente
+- [Autorización](/docs/componentes/autorizacion) para determinar qué puede hacer el cliente autenticado
+- [Base de Datos](/docs/componentes/base-datos) o repositorio de información sobre el que operan los endpoints
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Google Maps API — utilizada por Uber o Cornershop para mostrar mapas y calcular rutas sin desarrollar su propio sistema de mapas</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | No | — |
+| Entradas Automáticas | Siempre | Solicitudes que llegan desde sistemas externos para ser atendidas. |
+| Conceptos de Datos | Siempre | Las entidades del sistema que se exponen o se manipulan a través de la API. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | Siempre | Respuestas estructuradas que el sistema envía hacia los sistemas externos solicitantes. |
+| Procesos Autónomos | Siempre | La lógica de los endpoints que procesa cada solicitud entrante. Rate limiting, caching y monitoreo cuando esas capacidades están presentes. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del End-point (API) con tarjetas de ejemplo</span>
+</div>

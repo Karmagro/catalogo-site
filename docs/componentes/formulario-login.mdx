@@ -1,0 +1,154 @@
+---
+sidebar_position: 1
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Formulario de Login
+
+<span className={styles.aliases}>Inicio de sesión web · Autenticación de usuario · Sign-in</span>
+
+## Descripción
+
+Componente que permite a usuarios humanos identificarse ante el sistema a través de una interfaz web para acceder a funcionalidades personalizadas. El sistema presenta un formulario de identificación, valida las credenciales proporcionadas contra una base de usuarios, y establece una sesión autenticada que permite al usuario interactuar con el sistema.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Presenta una interfaz gráfica web (formulario HTML, página de login) para que el usuario ingrese sus credenciales
+- Verifica las credenciales contra un repositorio de usuarios (base de datos local o proveedor de identidad externo)
+- Establece una sesión autenticada mediante cookies, tokens JWT o mecanismos similares
+- Proporciona retroalimentación al usuario sobre el resultado de la autenticación (éxito, error, cuenta bloqueada)
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Recordar sesión:** mantiene la sesión iniciada entre visitas mediante cookies de larga duración, evitando que el usuario deba reingresar credenciales en cada acceso
+- **Recuperación de acceso:** permite a usuarios que olvidaron su contraseña recuperarla mediante un flujo accesible sin autenticación previa, típicamente con envío de un enlace o código por email
+- **Bloqueo por intentos fallidos:** restringe el acceso temporalmente tras múltiples intentos fallidos consecutivos, mitigando ataques de fuerza bruta
+- **Captcha anti-bot:** incorpora desafíos para distinguir usuarios humanos de bots automatizados
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** incluye la gestión de permisos o roles — eso corresponde a [Autorización](/docs/componentes/autorizacion)
+- **No** incluye la creación, modificación o eliminación de cuentas de usuario — eso corresponde a [Creador de Cuenta](/docs/componentes/creador-cuenta) y [Gestión de Perfil](/docs/componentes/gestion-perfil)
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Credenciales del usuario (correo/usuario + contraseña, o proveedor SSO seleccionado)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Sesión autenticada (cookie de sesión, token JWT) o mensaje de error. Redireccionamiento a página de inicio.
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Usuario + Contraseña tradicional:** formulario que solicita nombre de usuario o email y contraseña
+- **Single Sign-On (SSO):** delegación de autenticación a proveedores externos como Google, Microsoft o Facebook
+- **Autenticación de dos factores (2FA):** requiere un segundo factor además de la contraseña (código OTP, SMS)
+- **Enlace mágico / Passwordless:** envío de enlace único por email que autentica sin contraseña
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Repositorio de usuarios ([Base de Datos](/docs/componentes/base-datos) o proveedor de identidad externo como Auth0 u Okta)
+- Gestor de sesiones o tokens (sistema de cookies o JWT)
+- Servicio de notificación ([Sistema de Notificación](/docs/componentes/sistema-notificacion) para recuperación de contraseña y enlaces mágicos)
+- [Creador de Cuenta](/docs/componentes/creador-cuenta) y [Gestión de Perfil](/docs/componentes/gestion-perfil) (componentes que crean y mantienen las cuentas que aquí se autentican)
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Página de inicio de sesión de Ucampus donde el estudiante ingresa su RUT y contraseña institucional</span>
+  </div>
+  <div className={styles.examplePlaceholder}>
+    <span>GitHub — autenticación de dos factores (2FA) con código de verificación desde aplicación móvil</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Siempre | Formulario de login en el que el usuario ingresa sus credenciales. Formulario de recuperación de contraseña cuando esa capacidad está presente. |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Usuario (consumido para verificar la identidad). Sesión, cuando el sistema almacena sesiones del lado servidor. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | Opcional | Comunicación para recuperación de contraseña. Notificación de actividad sospechosa. |
+| Procesos Autónomos | No | — |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del Formulario de Login con tarjetas de ejemplo</span>
+</div>

@@ -1,0 +1,151 @@
+---
+sidebar_position: 7
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Dashboard
+
+<span className={styles.aliases}>Panel de control · Panel · Cuadro de mando</span>
+
+## Descripción
+
+Un dashboard es una interfaz de usuario que presenta información consolidada y relevante mediante visualizaciones gráficas y resúmenes, diseñada para facilitar la comprensión rápida del estado de procesos, métricas o indicadores clave. Su función principal es permitir que usuarios autorizados monitoreen y tomen decisiones informadas, minimizando el tiempo necesario para entender qué está ocurriendo. La efectividad de un dashboard depende críticamente de seleccionar los datos correctos a mostrar y elegir las técnicas de visualización apropiadas para comunicar cada tipo de información.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Presenta información resumida y consolidada proveniente de múltiples fuentes en una vista única
+- Utiliza representaciones visuales variadas (gráficos de líneas, barras, indicadores, tablas) para comunicar la información rápidamente
+- Se actualiza de forma regular, manteniendo la información vigente para decisiones actuales
+- Está diseñado para una audiencia y objetivo específico, mostrando solo la información relevante para ese contexto y rol
+- Requiere procesos de cálculo o agregación que transformen los datos brutos en las métricas e indicadores presentados
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Interactividad:** permite al usuario filtrar, agrupar, profundizar (drill-down) y explorar los datos presentados según sus necesidades inmediatas, sin generar un nuevo documento
+- **Exportación de vistas:** permite descargar la vista actual o secciones del dashboard en archivos (PDF, imagen o CSV de los datos subyacentes)
+- **Alertas visuales por umbral:** destacan visualmente métricas que superan límites definidos (colores, íconos de advertencia), capturando la atención del usuario sobre situaciones que requieren acción
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** es un reporte estático exportable, sino una vista dinámica de actualización continua
+- A diferencia de un [Reporte](/docs/componentes/reporte), el Dashboard permite reconfigurar la vista sin generar un nuevo documento
+- **No** es una [Consulta](/docs/componentes/consultas): una consulta responde una pregunta puntual retornando datos específicos; el dashboard presenta una vista holística de múltiples indicadores simultáneamente
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Solicitud del usuario de visualizar el dashboard; opcionalmente, filtros o agrupaciones para personalizar la vista
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Visualización interactiva y actualizada de métricas e indicadores en pantalla
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Dashboard Estratégico:** orientado a la alta dirección, muestra KPIs estratégicos y salud general del negocio con actualización diaria o semanal
+- **Dashboard Operacional:** presenta métricas operativas y procesos en curso con actualización en tiempo real o frecuente
+- **Dashboard Analítico:** para analistas y especialistas, incluye visualizaciones complejas, tendencias y comparaciones detalladas
+- **Dashboard Táctico:** enfocado en objetivos de mediano plazo y departamentales, combina elementos operacionales y estratégicos con actualización regular
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- [Base de Datos](/docs/componentes/base-datos) que provee los datos a visualizar
+- Procesos autónomos que calculan métricas, KPIs o agregaciones
+- [Autenticación](/docs/componentes/formulario-login) y [Autorización](/docs/componentes/autorizacion) que controlan qué usuarios pueden ver qué dashboards
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Google Analytics — dashboard de inicio con usuarios activos, tendencia temporal, eventos y distribución geográfica</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | No | — |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Los conceptos cuyas métricas e indicadores se presentan. |
+| Salidas por Demanda | Siempre | La visualización del dashboard en sí. Exportación de la vista cuando esa capacidad está presente. |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | Siempre | Cálculo y agregación de métricas e indicadores. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del Dashboard con tarjetas de ejemplo</span>
+</div>

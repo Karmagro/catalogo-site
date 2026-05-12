@@ -1,0 +1,243 @@
+/* Aliases under the title */
+
+.aliases {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: -0.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Capabilities — pastel colored blocks (like admonitions) */
+
+.capBlockMandatory {
+  background: #eef7f0;
+  border-left: 4px solid rgba(46, 133, 85, 0.5);
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.capBlockMandatory .capHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1a6b38;
+  margin-bottom: 0.5rem;
+}
+
+.capBlockMandatory .capHeading svg {
+  flex-shrink: 0;
+}
+
+.capBlockMandatory ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.capBlockMandatory li {
+  padding: 0.2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1a4d2e;
+}
+
+.capBlockOptional {
+  background: #eef3fa;
+  border-left: 4px solid rgba(53, 108, 186, 0.5);
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.capBlockOptional .capHeading {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #1a4c7e;
+  margin-bottom: 0.5rem;
+}
+
+.capBlockOptional .capHeading svg {
+  flex-shrink: 0;
+}
+
+.capBlockOptional ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.capBlockOptional li {
+  padding: 0.2rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #1a3760;
+}
+
+.capBlockOptional li strong {
+  color: #1a4c7e;
+}
+
+/* Flow — input → output */
+
+.flowContainer {
+  display: flex;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin: 0.5rem 0 1.5rem;
+}
+
+.flowCard {
+  flex: 1;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.flowCardHeader {
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.flowCardBody {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.flowArrow {
+  display: flex;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--ifm-color-primary);
+  padding: 0 0.25rem;
+  user-select: none;
+}
+
+/* Dependencies */
+
+.dependencies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.dependencies a {
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+
+.dependencies a:hover {
+  background: var(--ifm-color-primary-lightest);
+  text-decoration: none;
+}
+
+/* Examples */
+
+.exampleGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .exampleGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.examplePlaceholder {
+  background: var(--ifm-color-emphasis-100);
+  border: 2px dashed var(--ifm-color-emphasis-300);
+  border-radius: 8px;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  color: var(--ifm-color-emphasis-500);
+  font-size: 0.9rem;
+}
+
+/* Mapeo visual — 6 cells grid */
+
+.mapeoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .mapeoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.mapeoCell {
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.mapeoMandatory {
+  background: rgba(46, 133, 85, 0.12);
+  border: 1px solid rgba(46, 133, 85, 0.3);
+}
+
+.mapeoOptional {
+  background: rgba(37, 194, 160, 0.08);
+  border: 1px dashed rgba(37, 194, 160, 0.35);
+}
+
+.mapeoEmpty {
+  background: var(--ifm-color-emphasis-100);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  opacity: 0.6;
+}
+
+.mapeoLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.mapeoStatus {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.mapeoDetail {
+  margin-top: 1.5rem;
+}
+
+.mapeoDetail h4 {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.mapeoDetail table {
+  font-size: 0.9rem;
+}

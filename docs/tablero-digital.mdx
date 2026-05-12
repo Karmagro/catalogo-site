@@ -1,0 +1,77 @@
+---
+sidebar_position: 1
+---
+
+# Tablero Digital
+
+El Tablero Digital es un instrumento visual colaborativo desarrollado en el Departamento de Ciencias de la Computación de la Universidad de Chile. Se utiliza para apoyar la definición del alcance de proyectos de desarrollo o evolución de sistemas de información, facilitando la comunicación entre proveedores y clientes durante las etapas tempranas de un proyecto.
+
+## ¿Para qué sirve?
+
+En un proyecto de software a medida, una de las actividades más críticas es determinar qué funcionalidades tendrá el sistema. El Tablero Digital permite que ambas partes —cliente y proveedor— representen visualmente el estado actual del sistema (*as-is*) y el estado deseado (*to-be*) mediante tarjetas (post-its) organizadas en secciones.
+
+Cada tarjeta representa un Requisito de Usuario: una intención o necesidad desde la perspectiva de quien utilizará el sistema. Las secciones del tablero proveen el vocabulario para declarar esas intenciones de manera estructurada, ayudando a identificar qué partes del sistema están cubiertas y cuáles faltan por definir.
+
+El tablero ha sido utilizado en múltiples proyectos de la industria en Chile y Brasil, y fue validado empíricamente a través de un estudio cualitativo con diez proyectos de sistemas a medida. Los participantes lo percibieron como usable y útil, y varias empresas lo han adoptado reemplazando sus prácticas anteriores.
+
+## Las seis secciones del tablero
+
+El Tablero Digital organiza los requisitos en seis secciones que reflejan el flujo natural de información en un sistema de información: los datos ingresan, se almacenan, se procesan y se comunican al exterior.
+
+### Entradas Manuales
+
+Funcionalidades en las que un operador humano introduce información al sistema mediante interacción directa con interfaces de usuario. El operador puede ser un usuario final, un administrador o cualquier actor que ingrese datos a través de formularios, pantallas de edición u otros mecanismos análogos.
+
+**Ejemplos de tarjetas:** formulario de registro de proyectos, pantalla de edición de perfil, carga de documentos.
+
+### Entradas Automáticas
+
+Funcionalidades mediante las cuales el sistema incorpora información sin requerir intervención humana directa, ya sea de forma periódica o reactiva ante eventos externos. Su propósito es asegurar que el sistema disponga de información oportuna y coherente reduciendo la dependencia de la carga manual.
+
+**Ejemplos de tarjetas:** sincronización nocturna con sistema contable, ingesta de datos desde API externa, scraping de precios.
+
+### Conceptos de Datos
+
+Identifica las entidades o tipos de información que el sistema mantiene de forma persistente. A diferencia de las demás secciones, no describe acciones sino las estructuras de datos sobre las que actúan los componentes. Toda funcionalidad que crea, modifica o consulta información del sistema involucra, de manera implícita, uno o varios conceptos de datos.
+
+**Ejemplos de tarjetas:** proyectos, usuarios, transacciones, productos, documentos.
+
+### Salidas por Demanda
+
+Agrupa funcionalidades que entregan información al usuario cuando este la solicita explícitamente. El usuario indica qué información desea, y el sistema la recupera, procesa y presenta sin modificar los datos subyacentes.
+
+**Ejemplos de tarjetas:** buscador de proyectos, reporte de gastos mensuales, dashboard de indicadores, mapa de sucursales.
+
+### Salidas Automáticas
+
+Reúne funcionalidades mediante las cuales el sistema comunica información de manera proactiva, sin requerir solicitud del usuario. Se activan en respuesta a eventos, cambios de estado o condiciones predefinidas.
+
+**Ejemplos de tarjetas:** notificación de vencimiento de plazo, alerta de error en proceso de carga, email de confirmación.
+
+### Procesos Autónomos
+
+Comprende funcionalidades que operan de forma independiente del usuario, ejecutando tareas programadas o reactivas que transforman, validan o generan información. Se ejecutan típicamente en segundo plano y resultan fundamentales para mantener la consistencia e integridad de los datos, así como para exponer servicios a otros sistemas.
+
+**Ejemplos de tarjetas:** cálculo de indicadores mensuales, validación de integridad de datos, limpieza de registros obsoletos, API REST para consumir datos.
+
+## Cómo se relaciona con el catálogo
+
+El tablero declara el **propósito** del sistema —el *qué* se necesita— mientras que el catálogo de componentes describe **cómo se materializa** ese propósito en funcionalidades concretas.
+
+Cada componente del catálogo puede vincularse con varias secciones del tablero simultáneamente. Por ejemplo, un **Mantenedor** toca Entradas Manuales (formularios de creación y edición), Conceptos de Datos (la entidad que gestiona), y Salidas por Demanda (listado, búsqueda y filtrado de registros). Algunos de estos vínculos son mandatorios (el componente siempre toca esa sección) y otros opcionales (dependen de capacidades adicionales que el componente puede incorporar).
+
+Esta transversalidad se captura en la [matriz consolidada](/docs/secciones), que muestra para cada componente qué secciones del tablero cubre y con qué carácter (mandatorio u opcional).
+
+## Origen y validación
+
+El Tablero Digital fue propuesto originalmente en el contexto de la investigación en ingeniería de requisitos del DCC, como una respuesta a las dificultades que enfrentan las empresas de software —particularmente las pequeñas y medianas— al definir el alcance de proyectos a medida en escenarios multi-proveedor.
+
+La herramienta ha sido evaluada formalmente en 15 proyectos con empresas de Chile y Brasil, mostrando que:
+- Facilita la discusión, negociación y acuerdo sobre el alcance entre proveedor y cliente
+- Reduce la ambigüedad y el tiempo necesario para comunicar los requerimientos
+- Minimiza el riesgo de omitir elementos clave del sistema
+- Es accesible tanto para perfiles técnicos como para stakeholders de negocio
+
+:::note
+Para una descripción académica completa del Tablero Digital, su fundamento conceptual y los resultados de su validación empírica, consulta el [documento de tesis](https://docs.google.com/document/u/0/d/1j8YwprLVO9aV-anU-IyD8RQudaQLD4K96PZpm4YuWoU/edit) y el artículo de investigación asociado.
+:::

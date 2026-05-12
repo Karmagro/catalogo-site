@@ -1,0 +1,150 @@
+---
+sidebar_position: 11
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Consultas
+
+<span className={styles.aliases}>Búsqueda · Search · Query · Filtrado de información · Information retrieval</span>
+
+## Descripción
+
+Componente que permite a los usuarios recuperar información específica del sistema mediante criterios de búsqueda definidos. Su propósito es facilitar el acceso rápido y dirigido a datos existentes, filtrando el contenido del repositorio según parámetros proporcionados por el usuario.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Permite al usuario especificar criterios de búsqueda mediante campos, filtros o parámetros
+- Recupera registros del repositorio que coinciden con los criterios sin transformarlos ni agregarlos
+- Devuelve los resultados en un formato interpretable por el usuario o sistema solicitante
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Búsqueda avanzada con filtros combinables:** permite restringir la búsqueda mediante múltiples criterios simultáneos (rango de fechas, categoría, autor, etc.) además del texto libre
+- **Combinación de datos de múltiples fuentes:** recupera información que requiere relacionar datos de distintas entidades o repositorios del sistema
+- **Exportación de resultados:** permite descargar los registros encontrados como archivo (CSV, Excel, JSON), conservando los datos crudos sin agregaciones
+- **Paginación:** divide los resultados en páginas para manejar volúmenes grandes sin sobrecargar la interfaz
+- **Auto-completado y sugerencias:** propone términos o registros mientras el usuario escribe
+- **Historial de búsquedas:** registra y permite reutilizar consultas previas del usuario
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** procesa ni transforma los datos extraídos: devuelve los registros tal como están almacenados en el repositorio
+- Si incluye exportación, exporta los datos crudos filtrados, sin cálculos agregados
+- **No** presenta indicadores ni visualizaciones gráficas — eso corresponde a [Dashboard](/docs/componentes/dashboard) o [Reporte](/docs/componentes/reporte)
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Parámetros de búsqueda (texto, filtros, criterios de selección)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Conjunto de registros o datos que coinciden con los criterios especificados
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Búsqueda por interfaz:** el usuario interactúa con campos y filtros gráficos; típica de búsquedas en sitios web y aplicaciones de usuario final
+- **Búsqueda por lenguaje:** el usuario escribe consultas en un lenguaje formal o natural (SQL, GraphQL, lenguaje natural)
+- **Búsqueda predefinida:** el sistema ofrece consultas precargadas que el usuario solo dispara, sin componer los criterios
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Repositorio central o [Base de Datos](/docs/componentes/base-datos) sobre la que se realiza la búsqueda
+- Sistemas de [Autenticación](/docs/componentes/formulario-login) y [Autorización](/docs/componentes/autorizacion) (cuando los resultados están restringidos por permisos)
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>YouTube — búsqueda de videos mediante texto libre con filtros refinables por fecha, duración y tipo de contenido</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Siempre | Ingreso de criterios de búsqueda por parte del usuario (texto, filtros, parámetros). |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Las entidades sobre las que se busca (videos, productos, registros). |
+| Salidas por Demanda | Siempre | Lista de resultados devueltos al usuario. Exportación de resultados cuando esa capacidad está presente. |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | No | — |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital de Consultas con tarjetas de ejemplo</span>
+</div>

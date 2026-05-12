@@ -1,0 +1,151 @@
+---
+sidebar_position: 17
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Base de Datos
+
+<span className={styles.aliases}>Repositorio de datos · Almacenamiento estructurado · Sistema de almacenamiento · Database</span>
+
+## Descripción
+
+Componente encargado de mantener una colección organizada de información, estructurada con un modelo definido y gestionada mediante un sistema especializado (DBMS). Su propósito es almacenar, mantener y poner a disposición los datos que representan el estado del sistema de información, garantizando su persistencia, integridad, seguridad y disponibilidad. Recibe información de las entradas, es actualizada por los procesos autónomos, y consultada por las salidas.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Mantiene una colección organizada y persistente de información
+- Define un modelo lógico que representa entidades, atributos y relaciones
+- Garantiza la integridad y consistencia de los datos a través de mecanismos provistos por el sistema de gestión
+- Permite acceder a la información mediante lenguajes de consulta o interfaces programáticas
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Replicación:** mantiene copias sincronizadas de los datos en múltiples nodos para alta disponibilidad o distribución geográfica
+- **Backups automáticos:** genera respaldos periódicos del contenido para recuperación ante fallas o pérdida de datos
+- **Migraciones de esquema:** permite evolucionar la estructura de los datos sin pérdida de información, aplicando cambios de manera controlada
+- **Indexación:** optimiza la velocidad de consulta a costa de espacio adicional, manteniendo estructuras auxiliares de búsqueda
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- Su gestión y control operativo son realizados por sistemas especializados (DBMS), que no forman parte directa de este componente
+- **No** define las políticas de acceso o permisos sobre los datos almacenados — eso corresponde a [Autorización](/docs/componentes/autorizacion)
+- **No** corresponde a repositorios temporales o de caché
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Operaciones de escritura provenientes de otros componentes del sistema (inserción, actualización o eliminación de registros)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Datos recuperados en respuesta a operaciones de lectura; confirmaciones de las operaciones de escritura ejecutadas
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Base de datos relacional:** modela los datos como tablas con relaciones explícitas mediante claves; basada en SQL
+- **Base de datos no relacional:** almacena datos sin esquema rígido (clave-valor, documental, columnar)
+- **Base de datos navegacional / grafo:** modela los datos como nodos y relaciones explícitas, optimizada para consultas de conectividad
+- **Base de datos orientada a objetos:** almacena datos como objetos con atributos y métodos, alineada con paradigmas de programación orientada a objetos
+- **Base de datos vectorial:** optimizada para almacenamiento y búsqueda de embeddings de alta dimensionalidad, común en aplicaciones de IA
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Sistema de gestión de bases de datos (DBMS) que opera el componente
+- Mecanismos de almacenamiento físico (disco local, almacenamiento de red, servicios cloud)
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Diagrama Entidad-Relación de una librería en línea: autores, editoriales, libros, clientes y pedidos con sus relaciones</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | No | — |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | El modelo lógico de la base de datos materializa los conceptos del sistema; cada entidad del modelo aparece como un concepto en el tablero. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | No | — |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital de la Base de Datos con tarjetas de ejemplo</span>
+</div>

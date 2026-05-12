@@ -1,0 +1,88 @@
+---
+sidebar_position: 4
+---
+
+# Componentes por Tag
+
+Los tags son facetas que agrupan componentes por afinidad funcional. No son categorías excluyentes: un mismo componente puede tener múltiples tags, reflejando que toca distintos aspectos del sistema.
+
+## Tags
+
+<div className="tag-cloud">
+  <span className="tag-chip" data-weight="5">autenticación</span>
+  <span className="tag-chip" data-weight="5">seguridad</span>
+  <span className="tag-chip" data-weight="4">datos</span>
+  <span className="tag-chip" data-weight="4">visualización</span>
+  <span className="tag-chip" data-weight="4">integración</span>
+  <span className="tag-chip" data-weight="3">procesamiento</span>
+  <span className="tag-chip" data-weight="1">notificaciones</span>
+  <span className="tag-chip" data-weight="1">geo</span>
+</div>
+
+## Componentes por tag
+
+### `autenticación`
+
+Componentes que gestionan la identidad de usuarios, su ingreso al sistema y el mantenimiento de sus cuentas.
+
+- [Formulario de Login](/docs/componentes/formulario-login) — Autenticación web con credenciales
+- [Login Biométrico](/docs/componentes/login-biometrico) — Autenticación mediante rasgos físicos o comportamentales
+- [Creador de Cuenta](/docs/componentes/creador-cuenta) — Registro inicial de nuevos usuarios
+- [Gestión de Perfil](/docs/componentes/gestion-perfil) — Administración de datos y credenciales propios
+- [Autorización](/docs/componentes/autorizacion) — Control de acceso a recursos según roles y permisos
+
+### `seguridad`
+
+Componentes que protegen el sistema, sus datos y las interacciones que ocurren en él.
+
+- [Autorización](/docs/componentes/autorizacion) — Control de acceso a recursos según roles y permisos
+- [Log de Auditoría](/docs/componentes/log-auditoria) — Registro trazable de acciones relevantes
+- [Autenticación API](/docs/componentes/autenticacion-api) — Identificación de sistemas y servicios externos
+- [Login Biométrico](/docs/componentes/login-biometrico) — Autenticación robusta mediante rasgos del usuario
+
+### `datos`
+
+Componentes que gestionan el almacenamiento, estructura y acceso a la información del sistema.
+
+- [Mantenedor](/docs/componentes/mantenedor) — Gestión completa del ciclo de vida de entidades
+- [Base de Datos](/docs/componentes/base-datos) — Repositorio central de información persistente
+- [End-point (API)](/docs/componentes/endpoint-api) — Exposición de datos y funcionalidades a otros sistemas
+- [Consultas](/docs/componentes/consultas) — Recuperación de información mediante criterios de búsqueda
+
+### `visualización`
+
+Componentes que presentan información de manera gráfica, consolidada o georreferenciada.
+
+- [Dashboard](/docs/componentes/dashboard) — Visualización consolidada de métricas e indicadores
+- [Consultas](/docs/componentes/consultas) — Búsqueda y recuperación de información específica
+- [Reporte](/docs/componentes/reporte) — Información estructurada con procesamiento y consolidación
+- [Mapa Interactivo](/docs/componentes/mapa-interactivo) — Exploración geográfica de entidades con ubicación
+
+### `integración`
+
+Componentes que conectan el sistema con fuentes externas o exponen sus capacidades a otros sistemas.
+
+- [End-point (API)](/docs/componentes/endpoint-api) — Interfaz para comunicación entre sistemas
+- [Autenticación API](/docs/componentes/autenticacion-api) — Identificación segura de servicios consumidores
+- [Scraper](/docs/componentes/scraper) — Extracción de información desde páginas web o documentos
+- [ETL](/docs/componentes/etl) — Extracción, transformación y carga de datos externos
+
+### `procesamiento`
+
+Componentes que transforman, consolidan o generan información mediante tareas automatizadas.
+
+- [ETL](/docs/componentes/etl) — Ingesta y adaptación de datos desde fuentes externas
+- [Scraper](/docs/componentes/scraper) — Extracción automatizada de contenido web
+- [Reporte](/docs/componentes/reporte) — Procesamiento y consolidación de información para salida estructurada
+
+### `notificaciones`
+
+Componentes que entregan mensajes proactivos ante eventos relevantes.
+
+- [Sistema de Notificación](/docs/componentes/sistema-notificacion) — Envío de alertas y mensajes ante eventos del sistema
+
+### `geo`
+
+Componentes que vinculan información del sistema con una dimensión geográfica.
+
+- [Mapa Interactivo](/docs/componentes/mapa-interactivo) — Visualización y exploración espacial de entidades

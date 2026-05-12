@@ -1,0 +1,149 @@
+---
+sidebar_position: 16
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# Autorización
+
+<span className={styles.aliases}>Control de acceso · Gestión de permisos · Access control · Gestión de roles</span>
+
+## Descripción
+
+Componente que determina qué recursos y operaciones puede utilizar una entidad autenticada dentro del sistema, en función de su identidad, rol o atributos. Su propósito es responder la pregunta "¿qué puede hacer este usuario?", una vez que su identidad ya fue verificada. Opera de forma autónoma y transversal: cada vez que una entidad intenta acceder a un recurso o ejecutar una operación, el sistema evalúa silenciosamente si dispone de los permisos necesarios y permite o deniega el acceso según las políticas definidas.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Evalúa los permisos de una entidad autenticada antes de permitir el acceso a un recurso o la ejecución de una operación
+- Aplica políticas de acceso definidas explícitamente por el sistema (no por los usuarios finales)
+- Opera transversalmente: presente en cada punto donde se restringe el acceso a funcionalidades o datos
+- Es independiente y posterior a la autenticación
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Gestión administrativa de roles y permisos:** permite a administradores autorizados crear, modificar y asignar roles y permisos a usuarios mediante una interfaz especializada
+- **Granularidad fina:** controla el acceso no solo a operaciones, sino también a entidades específicas o a atributos individuales dentro de una entidad
+- **Caché de evaluaciones:** almacena temporalmente decisiones de acceso para reducir la carga del sistema en evaluaciones repetidas
+- **Auditoría de decisiones de acceso:** registra qué usuarios accedieron a qué recursos y cuándo, complementando al [Log de Auditoría](/docs/componentes/log-auditoria) general
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** es [Autenticación](/docs/componentes/formulario-login): la autenticación verifica quién es la entidad; la autorización determina qué puede hacer una vez autenticada
+- **No** incluye intrínsecamente la creación o modificación de roles o permisos; cuando esa funcionalidad existe, se materializa como un [Mantenedor](/docs/componentes/mantenedor) especializado
+- **No** es visible para el usuario final como una funcionalidad propia: opera en segundo plano, restringiendo o habilitando el acceso a otros componentes del sistema
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Identidad o rol de la entidad autenticada, recurso u operación solicitada
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Decisión de acceso (permitido o denegado), que habilita o bloquea la interacción con el recurso solicitado
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Control basado en roles (RBAC):** los permisos se asignan a roles predefinidos (administrador, editor, lector), y los usuarios heredan los permisos del rol que se les asigna. Es el modelo más común en sistemas de información.
+- **Control discrecional (DAC):** el propietario de un recurso determina quién puede acceder a él y con qué nivel de permisos. Común en sistemas de gestión documental y almacenamiento en la nube.
+- **Control basado en atributos (ABAC):** los permisos se evalúan dinámicamente en función de atributos del usuario, del recurso y del contexto (hora del día, ubicación). Permite políticas más granulares y flexibles.
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Componente de [Autenticación](/docs/componentes/formulario-login), que provee la identidad verificada sobre la cual se evalúan los permisos
+- [Base de Datos](/docs/componentes/base-datos) donde se almacenan las definiciones de roles, permisos y sus asignaciones a usuarios
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Slack — roles con distintos niveles de acceso: propietario del workspace, administradores, y miembros con acceso a canales específicos</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Opcional | Asignación y revocación de roles o permisos por parte de administradores, cuando la capacidad de gestión administrativa está presente. |
+| Entradas Automáticas | No | — |
+| Conceptos de Datos | Siempre | Rol, Permiso y la asignación entre usuarios y roles. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | Siempre | Evaluación de permisos en cada intento de acceso a un recurso u operación. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital de la Autorización con tarjetas de ejemplo</span>
+</div>

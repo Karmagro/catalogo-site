@@ -1,0 +1,151 @@
+---
+sidebar_position: 9
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+
+# ETL
+
+<span className={styles.aliases}>Extraer-Transformar-Cargar · Integración de datos</span>
+
+## Descripción
+
+Componente que incorpora información proveniente de fuentes externas al sistema de información, adaptándola al modelo de datos interno. Su función es garantizar que los datos que ingresan sean coherentes, actualizados y compatibles con la estructura del sistema. Para ello realiza tres tareas: extrae los datos de sus fuentes originales, los transforma según las reglas de negocio o propósitos de uso, y los carga en la fuente de destino.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Incorpora las tres etapas del proceso ETL: extracción de datos, transformación según las reglas del sistema y carga en el repositorio central
+- Asegura la coherencia y compatibilidad de la información importada con el modelo de datos interno
+- Opera sin intervención del usuario una vez disparado, integrando datos de manera autónoma
+- Permite la integración automatizada de grandes volúmenes de datos provenientes de fuentes heterogéneas
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Programación periódica (scheduling):** ejecuta el ETL en intervalos definidos (cada hora, diariamente, etc.) mediante un planificador, sin requerir un disparo explícito
+- **Trigger manual:** permite a un usuario autorizado iniciar la ejecución del ETL bajo demanda mediante una acción explícita
+- **Logging de actividad:** registra la ejecución (errores, tiempos, volumen de datos procesados) para auditoría y monitoreo
+- **Reintentos automáticos:** reintenta etapas fallidas (típicamente la extracción) ante errores transitorios de red o fuentes no disponibles temporalmente
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** define políticas de acceso o permisos sobre los datos; solo los incorpora al sistema
+- **No** reemplaza los procesos autónomos que derivan, calculan o analizan información dentro del sistema una vez incorporada
+- **No** provee interfaz visible al usuario, aunque puede ser monitoreado o configurado desde una consola o servicio externo
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Datos provenientes de fuentes externas (APIs, archivos estructurados, bases de datos externas) junto con las reglas de transformación
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Datos transformados y cargados en el repositorio central del sistema, coherentes con su modelo de datos interno
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **ETL Batch:** procesa grandes volúmenes de datos en lotes programados (diario, semanal)
+- **ETL en tiempo real (streaming):** procesa datos continuamente a medida que llegan, con baja latencia
+- **ELT (Extract-Load-Transform):** carga los datos sin transformar y aplica transformaciones posteriormente dentro del repositorio de destino
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Fuente de datos externos (APIs, servidores, sensores, archivos)
+- Repositorio de destino ([Base de Datos](/docs/componentes/base-datos) del sistema)
+- Mecanismo de programación o scheduler para su ejecución, cuando esa capacidad está presente
+- Reglas de negocio que definen el tratamiento de los datos
+
+</div>
+
+## Ejemplos
+
+<div className={styles.exampleGrid}>
+  <div className={styles.examplePlaceholder}>
+    <span>Apache Airflow — orquestación ETL: extrae datos de Amazon S3, transforma con Apache Spark, carga en Redshift o MongoDB</span>
+  </div>
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Entradas Manuales | Opcional | Trigger manual de la ejecución del ETL, cuando esa capacidad está presente. |
+| Entradas Automáticas | Siempre | La incorporación de datos desde fuentes externas al sistema. |
+| Conceptos de Datos | Siempre | Las entidades cargadas en el repositorio del sistema tras la transformación. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | Siempre | La transformación de los datos según las reglas del sistema. Logging y reintentos automáticos cuando esas capacidades están presentes. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<div className={styles.examplePlaceholder}>
+  <span>Tablero Digital del ETL con tarjetas de ejemplo</span>
+</div>

@@ -1,0 +1,113 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Componentes por Sección del Tablero
+
+La matriz muestra qué componentes del catálogo se vinculan con cada una de las seis secciones del Tablero Digital, y con qué carácter: mandatorio, opcional o sin vínculo.
+
+Un vínculo **mandatorio** significa que el componente siempre toca esa sección por sus capacidades esenciales. Un vínculo **opcional** indica que la toca solo cuando incorpora ciertas capacidades adicionales. Una celda vacía significa que el componente no se vincula con esa sección ni en su forma mandatoria ni en sus variantes opcionales documentadas.
+
+## Cómo leer la matriz
+
+Responde a preguntas como:
+
+- *¿Qué componentes necesito si mi sistema tiene muchas entradas manuales?* → Revisa la columna **Entradas M.**
+- *¿Qué componentes producen salidas automáticas?* → Revisa la columna **Salidas A.**
+- *¿Qué secciones del tablero toca un Dashboard?* → Recorre la fila de **Dashboard**.
+
+## Matriz consolidada
+
+| Componente | Entradas M. | Entradas A. | Conceptos | Salidas D. | Salidas A. | Proc. Aut. |
+|:-----------|:-----------:|:-----------:|:---------:|:----------:|:----------:|:----------:|
+| [Formulario de Login](/docs/componentes/formulario-login) | ● |  | ● |  | ○ |  |
+| [Login Biométrico](/docs/componentes/login-biometrico) | ● |  | ● |  | ○ |  |
+| [Autenticación API](/docs/componentes/autenticacion-api) |  | ● | ● |  |  | ○ |
+| [Creador de Cuenta](/docs/componentes/creador-cuenta) | ● |  | ● |  | ○ |  |
+| [Gestión de Perfil](/docs/componentes/gestion-perfil) | ● |  | ● | ● | ○ |  |
+| [Mantenedor](/docs/componentes/mantenedor) | ● |  | ● | ● |  |  |
+| [Dashboard](/docs/componentes/dashboard) |  |  | ● | ● |  | ● |
+| [Sistema de Notificación](/docs/componentes/sistema-notificacion) | ○ |  |  |  | ● | ● |
+| [ETL](/docs/componentes/etl) | ○ | ● | ● |  |  | ● |
+| [Scraper](/docs/componentes/scraper) | ○ | ● | ● |  |  | ● |
+| [Consultas](/docs/componentes/consultas) | ● |  | ● | ● |  |  |
+| [Reporte](/docs/componentes/reporte) | ● |  | ● | ● | ○ | ○ |
+| [Mapa Interactivo](/docs/componentes/mapa-interactivo) | ● |  | ○ | ● |  |  |
+| [Log de Auditoría](/docs/componentes/log-auditoria) |  |  | ● | ○ |  | ● |
+| [End-point (API)](/docs/componentes/endpoint-api) |  | ● | ● |  | ● | ● |
+| [Autorización](/docs/componentes/autorizacion) | ○ |  | ● |  |  | ● |
+| [Base de Datos](/docs/componentes/base-datos) |  |  | ● |  |  |  |
+
+<div className="matrix-legend">
+  <span className="matrix-legend__item"><strong>●</strong> Mandatorio</span>
+  <span className="matrix-legend__item"><strong>○</strong> Opcional</span>
+  <span className="matrix-legend__item">Celda vacía = sin vínculo</span>
+</div>
+
+:::note
+La justificación detallada de cada celda se encuentra en la ficha individual del componente correspondiente, en el campo **Mapeo al Tablero Digital**.
+:::
+
+## Lectura por sección
+
+A continuación se presentan los componentes agrupados según cada sección del tablero, con el carácter mandatorio u opcional de cada vínculo.
+
+<Tabs>
+<TabItem value="entradas-manuales" label="Entradas Manuales">
+
+**Mandatorios (9):** Formulario de Login, Login Biométrico, Creador de Cuenta, Gestión de Perfil, Mantenedor, Consultas, Reporte, Mapa Interactivo
+
+**Opcionales (3):** Sistema de Notificación, ETL, Scraper, Autorización
+
+Estos componentes requieren que un operador humano introduzca información mediante formularios, pantallas de edición u otros mecanismos análogos.
+
+</TabItem>
+<TabItem value="entradas-automaticas" label="Entradas Automáticas">
+
+**Mandatorios (3):** Autenticación API, ETL, Scraper, End-point (API)
+
+**Opcionales (0):** Ninguno
+
+Estos componentes incorporan información al sistema sin requerir intervención humana directa.
+
+</TabItem>
+<TabItem value="conceptos" label="Conceptos de Datos">
+
+**Mandatorios (15):** Formulario de Login, Login Biométrico, Autenticación API, Creador de Cuenta, Gestión de Perfil, Mantenedor, Dashboard, ETL, Scraper, Consultas, Reporte, Log de Auditoría, End-point (API), Autorización, Base de Datos
+
+**Opcionales (1):** Mapa Interactivo
+
+Prácticamente todos los componentes del catálogo involucran conceptos de datos. Esta sección es la que mayor cobertura tiene.
+
+</TabItem>
+<TabItem value="salidas-demanda" label="Salidas por Demanda">
+
+**Mandatorios (6):** Gestión de Perfil, Mantenedor, Dashboard, Consultas, Reporte, Mapa Interactivo
+
+**Opcionales (1):** Log de Auditoría
+
+Estos componentes entregan información al usuario cuando este la solicita explícitamente.
+
+</TabItem>
+<TabItem value="salidas-automaticas" label="Salidas Automáticas">
+
+**Mandatorios (2):** Sistema de Notificación, End-point (API)
+
+**Opcionales (5):** Formulario de Login, Login Biométrico, Creador de Cuenta, Gestión de Perfil, Reporte
+
+Estos componentes comunican información de manera proactiva, sin solicitud del usuario.
+
+</TabItem>
+<TabItem value="procesos-autonomos" label="Procesos Autónomos">
+
+**Mandatorios (6):** Dashboard, Sistema de Notificación, ETL, Scraper, Log de Auditoría, End-point (API), Autorización
+
+**Opcionales (2):** Autenticación API, Reporte
+
+Estos componentes ejecutan tareas en segundo plano, de forma programada o reactiva.
+
+</TabItem>
+</Tabs>
