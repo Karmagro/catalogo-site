@@ -308,3 +308,219 @@ table thead th {
 [data-theme='dark'] .alert--danger a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Páginas nativas de tags de Docusaurus
+   /docs/tags          → .docs-tags-list-page  (índice de todas las etiquetas)
+   /docs/tags/<slug>   → .docs-tags-doc-list-page  (listado por tag)
+   ───────────────────────────────────────────────────────────── */
+
+/* Mapping tag → variable de color de sección. Cada tag toma el color de la
+   sección del Tablero Digital con la que más se asocia conceptualmente. */
+.docs-tags-list-page,
+.docs-tags-doc-list-page,
+.theme-doc-footer-tags-row {
+  --tag-color: var(--ifm-color-primary);
+}
+
+/* Mapping tag → color (aplica a chips del índice y de pie de ficha) */
+a[href$="/tags/autenticacion"]   { --tag-color: var(--seccion-entradas-manuales); }
+a[href$="/tags/datos"]           { --tag-color: var(--seccion-conceptos); }
+a[href$="/tags/visualizacion"]   { --tag-color: var(--seccion-salidas-demanda); }
+a[href$="/tags/notificaciones"]  { --tag-color: var(--seccion-salidas-automaticas); }
+a[href$="/tags/procesamiento"]   { --tag-color: var(--seccion-procesos-autonomos); }
+a[href$="/tags/seguridad"]       { --tag-color: var(--seccion-salidas-automaticas); }
+a[href$="/tags/geo"]             { --tag-color: var(--seccion-conceptos); }
+a[href$="/tags/integracion"]     { --tag-color: var(--seccion-entradas-automaticas); }
+
+/* ── Página índice de etiquetas ───────────────────────────────── */
+
+.docs-tags-list-page main > h1 {
+  font-size: 2.25rem;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.docs-tags-list-page main > h1::after {
+  content: "Componentes agrupados por afinidad funcional. Cada etiqueta lleva al listado de componentes que la comparten.";
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ifm-color-emphasis-700);
+  margin-top: 0.6rem;
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+/* Aplanar la agrupación alfabética: con 8 tags es ruido visual.
+   Ocultamos h2 de letra inicial y hr, y compactamos articles. */
+.docs-tags-list-page section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+
+.docs-tags-list-page section article {
+  margin: 0 !important;
+}
+
+.docs-tags-list-page section article h2,
+.docs-tags-list-page section article hr {
+  display: none;
+}
+
+.docs-tags-list-page section article ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.docs-tags-list-page section article ul li {
+  display: inline-block;
+  margin: 0;
+}
+
+.docs-tags-list-page a[rel="tag"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--tag-color) 12%, var(--ifm-background-color));
+  color: var(--tag-color);
+  border: 1.5px solid color-mix(in srgb, var(--tag-color) 35%, transparent);
+  text-decoration: none !important;
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+}
+
+.docs-tags-list-page a[rel="tag"]:hover {
+  background: color-mix(in srgb, var(--tag-color) 20%, var(--ifm-background-color));
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--tag-color) 25%, transparent);
+}
+
+/* Count "(N)" pegado al nombre del tag */
+.docs-tags-list-page a[rel="tag"] > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.4rem;
+  height: 1.4rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: color-mix(in srgb, var(--tag-color) 22%, var(--ifm-background-color));
+  color: var(--tag-color);
+}
+
+/* ── Página individual de tag ────────────────────────────────── */
+
+.docs-tags-doc-list-page main > header h1 {
+  font-size: 1.9rem;
+  letter-spacing: -0.02em;
+  color: var(--ifm-color-emphasis-900);
+}
+
+/* Encabezado: enlace "Ver Todas las Etiquetas" */
+.docs-tags-doc-list-page main > header > a {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  text-decoration: none !important;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 25%, transparent);
+  transition: background 0.15s;
+}
+
+.docs-tags-doc-list-page main > header > a::before {
+  content: "← ";
+}
+
+.docs-tags-doc-list-page main > header > a:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 15%, transparent);
+}
+
+/* Cada artículo (un componente con el tag) → tarjeta */
+.docs-tags-doc-list-page section article {
+  margin: 0 0 1rem !important;
+  padding: 1.2rem 1.4rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 4px solid var(--tag-color);
+  border-radius: 8px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.docs-tags-doc-list-page section article:hover {
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--tag-color) 18%, transparent);
+}
+
+.docs-tags-doc-list-page section article a {
+  text-decoration: none !important;
+}
+
+.docs-tags-doc-list-page section article a h2 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
+  padding: 0;
+  border: none;
+  color: var(--ifm-color-emphasis-900);
+  transition: color 0.15s;
+}
+
+.docs-tags-doc-list-page section article:hover a h2 {
+  color: var(--tag-color);
+}
+
+.docs-tags-doc-list-page section article p {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  font-family: var(--ifm-font-family-monospace);
+  letter-spacing: 0.01em;
+}
+
+/* ── Tags al pie de ficha (TagsListInline) ──────────────────── */
+
+.theme-doc-footer-tags-row {
+  margin-top: 1.5rem;
+}
+
+.theme-doc-footer-tags-row b {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+  align-self: center;
+}
+
+.theme-doc-footer-tags-row a[rel="tag"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--tag-color) 12%, var(--ifm-background-color));
+  color: var(--tag-color) !important;
+  border: 1px solid color-mix(in srgb, var(--tag-color) 35%, transparent);
+  text-decoration: none !important;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.theme-doc-footer-tags-row a[rel="tag"]:hover {
+  background: color-mix(in srgb, var(--tag-color) 20%, var(--ifm-background-color));
+  transform: translateY(-1px);
+}

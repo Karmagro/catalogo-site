@@ -69,6 +69,7 @@ const config: Config = {
       },
       items: [
         {to: '/', label: 'Inicio', position: 'left'},
+        {type: 'search', position: 'left'},
         {to: '/docs/secciones', label: 'Por Sección', position: 'right'},
         {to: '/docs/tags', label: 'Por Tags', position: 'right'},
         {to: '/docs/tablero-digital', label: 'Tablero Digital', position: 'right'},
