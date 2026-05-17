@@ -1,20 +1,27 @@
-/* Aliases under the title */
+/* ─── Aliases bajo el título ─── */
 
 .aliases {
   display: block;
-  font-size: 0.95rem;
-  color: var(--ifm-color-emphasis-600);
-  margin-top: -0.5rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-700);
+  font-family: var(--ifm-font-family-monospace);
+  margin-top: -0.75rem;
   margin-bottom: 2rem;
+  letter-spacing: 0.01em;
 }
 
-/* Capabilities — pastel colored blocks (like admonitions) */
+[data-theme='dark'] .aliases {
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* ─── Bloques de capacidades ─── */
 
 .capBlockMandatory {
-  background: #eef7f0;
-  border-left: 4px solid rgba(46, 133, 85, 0.5);
-  border-radius: 6px;
-  padding: 0.75rem 1.25rem;
+  background: color-mix(in srgb, #059669 8%, var(--ifm-background-color));
+  border-left: 4px solid #059669;
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
   margin: 0.5rem 0 1.5rem;
 }
 
@@ -22,12 +29,16 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #1a6b38;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.07em;
+  color: #059669;
+  margin-bottom: 0.65rem;
+}
+
+[data-theme='dark'] .capBlockMandatory .capHeading {
+  color: #34D399;
 }
 
 .capBlockMandatory .capHeading svg {
@@ -41,16 +52,15 @@
 
 .capBlockMandatory li {
   padding: 0.2rem 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #1a4d2e;
+  font-size: 0.93rem;
+  line-height: 1.6;
 }
 
 .capBlockOptional {
-  background: #eef3fa;
-  border-left: 4px solid rgba(53, 108, 186, 0.5);
-  border-radius: 6px;
-  padding: 0.75rem 1.25rem;
+  background: color-mix(in srgb, #2563EB 8%, var(--ifm-background-color));
+  border-left: 4px solid #2563EB;
+  border-radius: 0 6px 6px 0;
+  padding: 1rem 1.25rem;
   margin: 0.5rem 0 1.5rem;
 }
 
@@ -58,12 +68,16 @@
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #1a4c7e;
-  margin-bottom: 0.5rem;
+  letter-spacing: 0.07em;
+  color: #2563EB;
+  margin-bottom: 0.65rem;
+}
+
+[data-theme='dark'] .capBlockOptional .capHeading {
+  color: #93C5FD;
 }
 
 .capBlockOptional .capHeading svg {
@@ -77,16 +91,19 @@
 
 .capBlockOptional li {
   padding: 0.2rem 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: #1a3760;
+  font-size: 0.93rem;
+  line-height: 1.6;
 }
 
 .capBlockOptional li strong {
-  color: #1a4c7e;
+  color: #2563EB;
 }
 
-/* Flow — input → output */
+[data-theme='dark'] .capBlockOptional li strong {
+  color: #93C5FD;
+}
+
+/* ─── Flujo de información ─── */
 
 .flowContainer {
   display: flex;
@@ -98,7 +115,7 @@
 .flowCard {
   flex: 1;
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 10px;
+  border-radius: 8px;
   overflow: hidden;
 }
 
@@ -106,29 +123,31 @@
   background: var(--ifm-color-primary);
   color: #fff;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   padding: 0.5rem 1rem;
   text-align: center;
+  letter-spacing: 0.02em;
 }
 
 .flowCardBody {
-  padding: 0.75rem 1rem;
+  background: var(--ifm-background-surface-color);
+  padding: 0.85rem 1rem;
   font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-800);
 }
 
 .flowArrow {
   display: flex;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 300;
   color: var(--ifm-color-primary);
   padding: 0 0.25rem;
   user-select: none;
 }
 
-/* Dependencies */
+/* ─── Dependencias ─── */
 
 .dependencies {
   display: flex;
@@ -137,19 +156,24 @@
 }
 
 .dependencies a {
-  background: var(--ifm-color-emphasis-200);
+  background: color-mix(in srgb, var(--ifm-color-primary) 8%, var(--ifm-background-color));
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 25%, transparent);
+  color: var(--ifm-color-primary) !important;
   border-radius: 6px;
   padding: 0.3rem 0.8rem;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
+  font-weight: 500;
   display: inline-block;
+  text-decoration: none !important;
+  transition: background 0.15s, border-color 0.15s;
 }
 
 .dependencies a:hover {
-  background: var(--ifm-color-primary-lightest);
-  text-decoration: none;
+  background: color-mix(in srgb, var(--ifm-color-primary) 14%, var(--ifm-background-color));
+  border-color: var(--ifm-color-primary);
 }
 
-/* Examples */
+/* ─── Ejemplos ─── */
 
 .exampleGrid {
   display: grid;
@@ -164,25 +188,26 @@
 }
 
 .examplePlaceholder {
-  background: var(--ifm-color-emphasis-100);
-  border: 2px dashed var(--ifm-color-emphasis-300);
+  background: var(--ifm-background-surface-color);
+  border: 1.5px dashed var(--ifm-color-emphasis-300);
   border-radius: 8px;
-  min-height: 180px;
+  min-height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   padding: 2rem;
-  color: var(--ifm-color-emphasis-500);
-  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
-/* Mapeo visual — 6 cells grid */
+/* ─── Mapeo al Tablero Digital ─── */
 
 .mapeoGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+  gap: 0.65rem;
   margin-bottom: 1.5rem;
 }
 
@@ -194,50 +219,115 @@
 
 .mapeoCell {
   border-radius: 8px;
-  padding: 1rem;
+  padding: 0.9rem 1rem;
   text-align: center;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.25rem;
+  border: 1px solid transparent;
+  transition: filter 0.15s;
 }
 
+.mapeoCell:hover {
+  filter: brightness(0.96);
+}
+
+[data-theme='dark'] .mapeoCell:hover {
+  filter: brightness(1.08);
+}
+
+/* Mandatorio: fondo tenue del color de sección, borde sólido — color via inline style */
 .mapeoMandatory {
-  background: rgba(46, 133, 85, 0.12);
-  border: 1px solid rgba(46, 133, 85, 0.3);
+  border-width: 1.5px;
 }
 
+/* Opcional: fondo muy tenue + borde punteado — color via inline style en borderColor */
 .mapeoOptional {
-  background: rgba(37, 194, 160, 0.08);
-  border: 1px dashed rgba(37, 194, 160, 0.35);
+  border-style: dashed !important;
+  border-width: 1.5px !important;
+  background: var(--ifm-color-emphasis-100);
 }
 
+[data-theme='dark'] .mapeoOptional {
+  background: var(--ifm-background-surface-color);
+}
+
+/* Vacío: borde visible, fondo ligeramente diferenciado */
 .mapeoEmpty {
   background: var(--ifm-color-emphasis-100);
-  border: 1px solid var(--ifm-color-emphasis-200);
-  opacity: 0.6;
+  border-color: var(--ifm-color-emphasis-300);
+  opacity: 0.7;
+}
+
+[data-theme='dark'] .mapeoEmpty {
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 80%, transparent);
+  border-color: var(--ifm-color-emphasis-300);
 }
 
 .mapeoLabel {
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--ifm-color-emphasis-900);
+  line-height: 1.3;
 }
 
 .mapeoStatus {
-  font-size: 0.8rem;
-  font-weight: 500;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: var(--ifm-color-emphasis-600);
 }
 
+/* ─── Tabla de detalle del mapeo ─── */
+
 .mapeoDetail {
   margin-top: 1.5rem;
-}
-
-.mapeoDetail h4 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .mapeoDetail table {
-  font-size: 0.9rem;
+  font-size: 0.875rem;
+  margin: 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.mapeoDetail table thead tr {
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, var(--ifm-background-surface-color));
+}
+
+.mapeoDetail table thead th {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ifm-color-primary);
+  padding: 0.65rem 1rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--ifm-color-primary) 20%, transparent);
+  border-right: none;
+}
+
+.mapeoDetail table tbody tr {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.mapeoDetail table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.mapeoDetail table tbody tr:nth-child(even) {
+  background: var(--ifm-color-emphasis-100);
+}
+
+[data-theme='dark'] .mapeoDetail table tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--ifm-background-surface-color) 60%, transparent);
+}
+
+.mapeoDetail table td {
+  padding: 0.65rem 1rem;
+  vertical-align: top;
+  border-right: none;
 }

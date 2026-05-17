@@ -1,148 +1,320 @@
+/* ─── Hero ─── */
+
 .hero {
-  padding: 5rem 0 3rem;
+  padding: 5rem 0 4rem;
   text-align: center;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.heroEyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 1.25rem;
 }
 
 .heroTitle {
-  font-size: 2.75rem;
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 1rem;
-  line-height: 1.35;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
 }
 
-.heroSubtitle {
-  display: block;
-  font-size: 1.35rem;
-  font-weight: 400;
-  color: var(--ifm-color-emphasis-600);
-  margin-top: 0.25rem;
+.heroTitleAccent {
+  color: var(--ifm-color-primary);
 }
 
 .heroDescription {
   font-size: 1.1rem;
-  max-width: 680px;
-  margin: 0 auto;
-  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 2.25rem;
+  line-height: 1.75;
   color: var(--ifm-color-emphasis-700);
 }
 
-/* Entry cards */
-
-.cardsSection {
-  padding: 2rem 0 3rem;
+.heroCtas {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.card {
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 8px;
-  padding: 1.75rem 1.5rem;
-  height: 100%;
+/* ─── CTAs compartidos ─── */
+
+.ctaPrimary {
+  display: inline-block;
+  background: var(--ifm-color-primary);
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.ctaPrimary:hover {
+  background: var(--ifm-color-primary-dark);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+}
+
+.ctaSecondary {
+  display: inline-block;
+  background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+  color: var(--ifm-color-primary) !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 6px;
+  border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 35%, transparent);
+  text-decoration: none !important;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.ctaSecondary:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+  border-color: var(--ifm-color-primary);
+}
+
+/* ─── Entry cards ─── */
+
+.cardsSection {
+  padding: 3.5rem 0 4rem;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+/* Tarjeta principal */
+
+.cardPrimary {
+  background: color-mix(in srgb, var(--ifm-color-primary) 4%, var(--ifm-background-color));
+  border: 1.5px solid color-mix(in srgb, var(--ifm-color-primary) 25%, transparent);
+  border-radius: 10px;
+  padding: 2.25rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  gap: 1rem;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.cardPrimary:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+
+.cardPrimaryBadge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+}
+
+.cardPrimaryTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.cardPrimaryDesc {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}
+
+/* Tarjetas secundarias */
+
+.cardsSecondaryGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cardSecondary {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  padding: 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.card:hover {
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+.cardSecondary:hover {
+  border-color: var(--ifm-color-emphasis-400);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
 }
 
-.cardTitle {
-  font-size: 1.25rem;
+.cardSecondaryIcon {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  margin-bottom: 0.25rem;
+}
+
+.cardSecondaryTitle {
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 0.75rem;
+  margin: 0;
 }
 
-.cardDescription {
-  font-size: 0.95rem;
+.cardSecondaryDesc {
+  font-size: 0.88rem;
   line-height: 1.6;
   color: var(--ifm-color-emphasis-700);
-  flex: 1;
-  margin-bottom: 1.25rem;
+  margin: 0;
 }
 
-/* Tablero Digital teaser */
+/* ─── Board teaser ─── */
 
 .boardSection {
-  padding: 3rem 0 5rem;
-  background: var(--ifm-color-emphasis-100);
+  padding: 4rem 0 5rem;
+  background: var(--ifm-background-surface-color);
+  border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
-.sectionTitle {
-  text-align: center;
+.boardSectionInner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.boardEyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.boardTitle {
   font-size: 1.75rem;
-  font-weight: 600;
-  margin-bottom: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
 }
 
-.sectionDescription {
-  text-align: center;
-  max-width: 620px;
-  margin: 0 auto 2rem;
-  font-size: 1rem;
-  line-height: 1.6;
+.boardDesc {
+  font-size: 0.95rem;
+  line-height: 1.7;
   color: var(--ifm-color-emphasis-700);
+  margin-bottom: 1.5rem;
 }
 
 .boardGridLink {
   display: block;
-  max-width: 780px;
-  margin: 0 auto;
   text-decoration: none !important;
-}
-
-.boardGridLink:hover .boardCell {
-  border-color: var(--ifm-color-primary);
 }
 
 .boardGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.65rem;
 }
 
 .boardCell {
-  background: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
+  border: 1px solid;
   border-radius: 8px;
-  padding: 1rem;
-  text-align: center;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  padding: 1rem 1rem 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
+  transition: filter 0.15s;
+}
+
+.boardGridLink:hover .boardCell {
+  filter: brightness(0.96);
+}
+
+[data-theme='dark'] .boardGridLink:hover .boardCell {
+  filter: brightness(1.08);
+}
+
+.boardCellDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-bottom: 0.2rem;
 }
 
 .boardCellLabel {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--ifm-color-emphasis-900);
+  line-height: 1.3;
 }
 
 .boardCellDesc {
-  font-size: 0.8rem;
-  color: var(--ifm-color-emphasis-600);
-  line-height: 1.35;
+  font-size: 0.78rem;
+  color: var(--ifm-color-emphasis-800);
+  line-height: 1.4;
 }
 
-/* Responsive */
+/* ─── Responsive ─── */
 
 @media screen and (max-width: 996px) {
   .hero {
-    padding: 3rem 0 2rem;
+    padding: 3.5rem 0 3rem;
   }
 
   .heroTitle {
-    font-size: 2rem;
+    font-size: 2.25rem;
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .cardsSecondaryGroup {
+    flex-direction: row;
+  }
+
+  .cardSecondary {
+    flex: 1;
+  }
+
+  .boardSectionInner {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .boardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .heroTitle {
+    font-size: 1.9rem;
+  }
+
+  .cardsSecondaryGroup {
+    flex-direction: column;
   }
 
   .boardGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
-  }
-
-  .boardCell {
-    padding: 0.75rem;
   }
 }

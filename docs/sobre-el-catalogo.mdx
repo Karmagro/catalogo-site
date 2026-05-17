@@ -2,50 +2,174 @@
 sidebar_position: 2
 ---
 
+import {Code2, ClipboardList, CheckCircle2, LayoutList, LayoutGrid, Tags as TagsIcon, ArrowRight} from 'lucide-react';
+import styles from './paginas.module.css';
+
 # Sobre el Catálogo
 
 El Catálogo de Componentes es una colección navegable de diecisiete componentes de software recurrentes que aparecen en sistemas de información. Cada componente está documentado con una estructura consistente de once campos, que permite entender qué hace, cómo se relaciona con otros componentes y qué partes del Tablero Digital materializa.
 
 ## ¿Qué es un componente?
 
-En este catálogo, un componente es un **tipo de funcionalidad recurrente definida por su propósito**, no por su implementación técnica. Un "Mantenedor" cumple el mismo propósito ya sea implementado en Java, Python o cualquier otra tecnología: gestionar el ciclo de vida de una entidad de datos mediante operaciones de creación, lectura, actualización y eliminación.
+<div className={styles.keyConcept}>
+  <div className={styles.keyConceptLabel}>Definición operativa</div>
+  <div className={styles.keyConceptText}>Un componente es un <strong>tipo de funcionalidad recurrente definida por su propósito</strong>, no por su implementación técnica. Un "Mantenedor" cumple el mismo propósito ya sea implementado en Java, Python o cualquier otra tecnología: gestionar el ciclo de vida de una entidad de datos mediante operaciones de creación, lectura, actualización y eliminación.</div>
+</div>
 
 Esto distingue a los componentes del catálogo de otras acepciones del término en ingeniería de software (como los componentes del modelo C4, que describen agrupaciones de código dentro de un contenedor). Los componentes del catálogo operan en el nivel funcional, cercano a los requisitos de software, y son comprensibles tanto para desarrolladores como para stakeholders de negocio.
 
 ## ¿Para quién es?
 
-El catálogo está diseñado para ser utilizado por distintos perfiles durante las etapas tempranas de un proyecto:
+El catálogo está diseñado para ser utilizado por distintos perfiles durante las etapas tempranas de un proyecto.
 
-- **Desarrolladores y equipos técnicos** que reconocen los componentes por su nombre funcional (CRUD, Dashboard, ETL) y necesitan entender qué implican en términos de esfuerzo, dependencias y cobertura del sistema.
-- **Jefes de proyecto y stakeholders** que conocen los componentes por la necesidad que resuelven ("necesito mostrar datos en tiempo real", "necesito cargar datos masivamente") y necesitan evaluar opciones y comunicar requerimientos.
-- **Evaluadores y validadores** que revisan la coherencia y completitud del catálogo como artefacto.
+<div className={styles.perfilesGrid}>
+
+  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-entradas-manuales)'}}>
+    <div className={styles.perfilCardIcon}>
+      <Code2 size={22} strokeWidth={2} />
+    </div>
+    <h3 className={styles.perfilCardTitle}>Desarrolladores y equipos técnicos</h3>
+    <div className={styles.perfilCardDesc}>Reconocen los componentes por su nombre funcional (CRUD, Dashboard, ETL) y necesitan entender qué implican en términos de esfuerzo, dependencias y cobertura del sistema.</div>
+    <div className={styles.perfilCardLooksFor}>Busca: capacidades, dependencias típicas, modalidades de implementación.</div>
+  </div>
+
+  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-salidas-demanda)'}}>
+    <div className={styles.perfilCardIcon}>
+      <ClipboardList size={22} strokeWidth={2} />
+    </div>
+    <h3 className={styles.perfilCardTitle}>Jefes de proyecto y stakeholders</h3>
+    <div className={styles.perfilCardDesc}>Conocen los componentes por la necesidad que resuelven (<em>"necesito mostrar datos en tiempo real"</em>, <em>"necesito cargar datos masivamente"</em>) y necesitan evaluar opciones y comunicar requerimientos.</div>
+    <div className={styles.perfilCardLooksFor}>Busca: descripción, ejemplos concretos, mapeo al Tablero Digital.</div>
+  </div>
+
+  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-conceptos)'}}>
+    <div className={styles.perfilCardIcon}>
+      <CheckCircle2 size={22} strokeWidth={2} />
+    </div>
+    <h3 className={styles.perfilCardTitle}>Evaluadores y validadores</h3>
+    <div className={styles.perfilCardDesc}>Revisan la coherencia y completitud del catálogo como artefacto, contrastando cada ficha contra la propuesta conceptual del trabajo de tesis.</div>
+    <div className={styles.perfilCardLooksFor}>Busca: consistencia estructural, delimitaciones claras, trazabilidad.</div>
+  </div>
+
+</div>
 
 ## Estructura de cada componente
 
-Cada componente se documenta con once campos, diseñados para capturar tanto sus características funcionales como su relación con el Tablero Digital:
+Cada componente se documenta con once campos, agrupados en cinco dimensiones que permiten entender qué es, cómo se comporta, y cómo se vincula con el Tablero Digital.
 
-| # | Campo | Qué describe |
-|---|-------|-------------|
-| 1 | **Alias** | Nombres alternativos con que se conoce el componente en la industria |
-| 2 | **Descripción** | Qué es el componente y cuál es su propósito principal |
-| 3 | **Capacidades mandatorias** | Funcionalidades mínimas que debe tener para ser reconocido como tal |
-| 4 | **Capacidades adicionales** | Funcionalidades que pueden enriquecerlo sin ser parte de su definición esencial |
-| 5 | **Delimitaciones** | Qué no es y qué no incluye, para diferenciarlo de otros componentes |
-| 6 | **Flujo de información** | Qué información recibe como entrada y qué produce como salida |
-| 7 | **Modalidades** | Formas reconocibles en que puede presentarse |
-| 8 | **Dependencias típicas** | Otros componentes con los que frecuentemente se relaciona |
-| 9 | **Ejemplos** | Casos concretos en sistemas reales, con capturas de pantalla |
-| 10 | **Mapeo al Tablero Digital** | Para cada sección del tablero, si el vínculo es mandatorio, opcional o no existe |
-| 11 | **Ejemplo de Tablero Digital** | Representación concreta de cómo se distribuye en el tablero con tarjetas de ejemplo |
+<div className={styles.camposTable}>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--ifm-color-primary)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Identidad</span>
+      <span className={styles.camposGroupRange}>Campos 1–2</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>1</span>
+      <span className={styles.camposName}>Alias</span>
+      <span className={styles.camposDesc}>Nombres alternativos con que se conoce el componente en la industria.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>2</span>
+      <span className={styles.camposName}>Descripción</span>
+      <span className={styles.camposDesc}>Qué es el componente y cuál es su propósito principal.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-conceptos)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Capacidades y límites</span>
+      <span className={styles.camposGroupRange}>Campos 3–5</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>3</span>
+      <span className={styles.camposName}>Capacidades mandatorias</span>
+      <span className={styles.camposDesc}>Funcionalidades mínimas que debe tener para ser reconocido como tal.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>4</span>
+      <span className={styles.camposName}>Capacidades adicionales</span>
+      <span className={styles.camposDesc}>Funcionalidades que pueden enriquecerlo sin ser parte de su definición esencial.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>5</span>
+      <span className={styles.camposName}>Delimitaciones</span>
+      <span className={styles.camposDesc}>Qué no es y qué no incluye, para diferenciarlo de otros componentes.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-entradas-automaticas)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Comportamiento</span>
+      <span className={styles.camposGroupRange}>Campos 6–8</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>6</span>
+      <span className={styles.camposName}>Flujo de información</span>
+      <span className={styles.camposDesc}>Qué información recibe como entrada y qué produce como salida.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>7</span>
+      <span className={styles.camposName}>Modalidades</span>
+      <span className={styles.camposDesc}>Formas reconocibles en que puede presentarse.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>8</span>
+      <span className={styles.camposName}>Dependencias típicas</span>
+      <span className={styles.camposDesc}>Otros componentes con los que frecuentemente se relaciona.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-salidas-demanda)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Ejemplos</span>
+      <span className={styles.camposGroupRange}>Campo 9</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>9</span>
+      <span className={styles.camposName}>Ejemplos</span>
+      <span className={styles.camposDesc}>Casos concretos en sistemas reales, con capturas de pantalla.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-entradas-manuales)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Vínculo con el Tablero</span>
+      <span className={styles.camposGroupRange}>Campos 10–11</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>10</span>
+      <span className={styles.camposName}>Mapeo al Tablero Digital</span>
+      <span className={styles.camposDesc}>Para cada sección del tablero, si el vínculo es mandatorio, opcional o no existe.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>11</span>
+      <span className={styles.camposName}>Ejemplo de Tablero Digital</span>
+      <span className={styles.camposDesc}>Representación concreta de cómo se distribuye en el tablero con tarjetas de ejemplo.</span>
+    </div>
+  </div>
+
+</div>
 
 La distinción entre capacidades mandatorias y adicionales (campos 3 y 4) es particularmente importante: permite reconocer un mismo componente en sistemas con distintos grados de sofisticación. Un Mantenedor básico ofrece listar, crear, editar y eliminar registros; uno más avanzado puede incluir además exportación, filtros avanzados u ordenamiento por columnas. Ambos son instancias del mismo componente, pero con capacidades adicionales distintas.
 
 ## Relación con el Tablero Digital
 
-El catálogo y el Tablero Digital son herramientas complementarias:
+El catálogo y el Tablero Digital son herramientas complementarias que operan en planos distintos.
 
-- El **Tablero Digital** opera en el plano del propósito: sus secciones constituyen el vocabulario para declarar qué necesita el sistema.
-- El **catálogo** opera en el plano de la materialización: provee el vocabulario para describir cómo se concreta lo que el tablero declara.
+<div className={styles.relacionDiagrama}>
+  <div className={styles.relacionLado} style={{'--lado-color': 'var(--seccion-entradas-manuales)'}}>
+    <span className={styles.relacionLadoLabel}>Tablero Digital</span>
+    <h3 className={styles.relacionLadoTitle}>El propósito</h3>
+    <div className={styles.relacionLadoDesc}>Sus secciones constituyen el vocabulario para declarar <strong>qué necesita</strong> el sistema. Cada tarjeta es una intención.</div>
+  </div>
+  <div className={styles.relacionConector}>⟷</div>
+  <div className={styles.relacionLado} style={{'--lado-color': 'var(--seccion-conceptos)'}}>
+    <span className={styles.relacionLadoLabel}>Catálogo</span>
+    <h3 className={styles.relacionLadoTitle}>La materialización</h3>
+    <div className={styles.relacionLadoDesc}>Provee el vocabulario para describir <strong>cómo se concreta</strong> lo que el tablero declara. Cada componente es una unidad funcional reconocible.</div>
+  </div>
+</div>
 
 Un mismo componente puede tocar varias secciones del tablero a la vez. Por ejemplo, un Mantenedor siempre involucra Entradas Manuales (formularios de creación y edición), Conceptos de Datos (la entidad que gestiona) y Salidas por Demanda (listado y búsqueda de registros). Esta transversalidad es una propiedad fundamental del catálogo: los componentes no pertenecen a una sola sección del tablero.
 
@@ -53,27 +177,61 @@ El mapeo entre componentes y secciones se presenta en la [matriz consolidada](/d
 
 ## Lo que el catálogo no es
 
+:::caution[Calibrar expectativas]
+
 Es tan importante entender qué ofrece el catálogo como qué **no** ofrece:
 
 - **No es un manual de implementación.** No indica cómo construir un componente en un lenguaje o framework específico.
 - **No es un catálogo de patrones de diseño.** No prescribe estructuras de código ni soluciones arquitectónicas.
 - **No es exhaustivo.** Representa un conjunto acotado de componentes identificados como recurrentes. Los proyectos pueden requerir funcionalidades que no correspondan a ningún componente del catálogo.
 
+:::
+
 ## Cómo usar el catálogo
 
-El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra de navegación:
+El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra de navegación.
 
-1. **Por componente.** La barra lateral lista los diecisiete componentes. Cada uno tiene su propia página con la ficha completa.
-2. **[Por sección del tablero](/docs/secciones).** La matriz consolidada muestra qué componentes tocan cada sección, permitiendo responder preguntas como "¿qué componentes necesito si mi sistema tiene muchas entradas manuales?"
-3. **[Por tags](/docs/tags).** Los componentes se agrupan por afinidad funcional: autenticación, visualización, ingesta de datos, seguridad, entre otras.
+<div className={styles.ctaGrid}>
+
+  <a className={styles.ctaCard} href="/docs/componentes/formulario-login">
+    <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--ifm-color-primary)'}}>
+      <LayoutList size={22} strokeWidth={2} />
+    </div>
+    <span className={styles.ctaCardLabel}>Por componente</span>
+    <h3 className={styles.ctaCardTitle}>Explorar los 17 componentes</h3>
+    <div className={styles.ctaCardDesc}>La barra lateral lista los diecisiete componentes. Cada uno tiene su propia página con la ficha completa.</div>
+    <span className={styles.ctaCardArrow}>Ver catálogo <ArrowRight size={14} strokeWidth={2.5} /></span>
+  </a>
+
+  <a className={styles.ctaCard} href="/docs/secciones">
+    <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-conceptos)'}}>
+      <LayoutGrid size={22} strokeWidth={2} />
+    </div>
+    <span className={styles.ctaCardLabel}>Por sección</span>
+    <h3 className={styles.ctaCardTitle}>Matriz componente × tablero</h3>
+    <div className={styles.ctaCardDesc}>Responde "¿qué componentes necesito si mi sistema tiene muchas entradas manuales?" mostrando qué componentes tocan cada sección.</div>
+    <span className={styles.ctaCardArrow}>Ver matriz <ArrowRight size={14} strokeWidth={2.5} /></span>
+  </a>
+
+  <a className={styles.ctaCard} href="/docs/tags">
+    <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-salidas-automaticas)'}}>
+      <TagsIcon size={22} strokeWidth={2} />
+    </div>
+    <span className={styles.ctaCardLabel}>Por tags</span>
+    <h3 className={styles.ctaCardTitle}>Agrupación por afinidad</h3>
+    <div className={styles.ctaCardDesc}>Los componentes se agrupan por afinidad funcional: autenticación, visualización, ingesta de datos, seguridad, entre otras.</div>
+    <span className={styles.ctaCardArrow}>Ver tags <ArrowRight size={14} strokeWidth={2.5} /></span>
+  </a>
+
+</div>
 
 ## Construcción y validación
 
-El catálogo fue construido siguiendo un proceso iterativo que combinó:
-
-- Conocimiento previo sobre desarrollo de sistemas de información
-- Observación de sistemas existentes en contextos académicos e industriales
-- Consulta de referencias técnicas y literatura especializada
-- Validación empírica mediante el análisis detallado de sistemas de información reales
+El catálogo fue construido siguiendo un proceso iterativo que combinó conocimiento previo sobre desarrollo de sistemas de información, observación de sistemas existentes en contextos académicos e industriales, consulta de referencias técnicas y literatura especializada, y validación empírica mediante el análisis detallado de sistemas de información reales.
 
 Cada componente fue refinado sucesivamente para delimitar sus características esenciales, diferenciarlo de componentes similares y documentar sus dependencias típicas.
+
+<div className={styles.footerStats}>
+  <div className={styles.footerStatsTitle}>Estado actual</div>
+  <div className={styles.footerStatsBody}>17 componentes documentados · estructura uniforme de 11 campos · mapeo explícito a las 6 secciones del Tablero Digital · navegación por tres ejes (componente, sección, tags).</div>
+</div>

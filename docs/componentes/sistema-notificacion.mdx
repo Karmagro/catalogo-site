@@ -1,5 +1,7 @@
 ---
 sidebar_position: 8
+tags:
+  - notificaciones
 ---
 
 import Admonition from '@theme/Admonition';
@@ -107,7 +109,7 @@ Un sistema de notificación es un componente encargado de entregar mensajes a un
 ## Mapeo al Tablero Digital
 
 <div className={styles.mapeoGrid}>
-  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-entradas-manuales) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Entradas Manuales</span>
     <span className={styles.mapeoStatus}>Opcional</span>
   </div>
@@ -123,11 +125,11 @@ Un sistema de notificación es un componente encargado de entregar mensajes a un
     <span className={styles.mapeoLabel}>Salidas por Demanda</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Salidas Automáticas</span>
     <span className={styles.mapeoStatus}>Siempre</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Procesos Autónomos</span>
     <span className={styles.mapeoStatus}>Siempre</span>
   </div>

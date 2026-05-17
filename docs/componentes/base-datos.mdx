@@ -1,5 +1,7 @@
 ---
 sidebar_position: 17
+tags:
+  - datos
 ---
 
 import Admonition from '@theme/Admonition';
@@ -113,7 +115,7 @@ Componente encargado de mantener una colección organizada de información, estr
     <span className={styles.mapeoLabel}>Entradas Automáticas</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Conceptos de Datos</span>
     <span className={styles.mapeoStatus}>Siempre</span>
   </div>

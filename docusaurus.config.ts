@@ -39,6 +39,21 @@ const config: Config = {
     ],
   ],
 
+  themes: [
+    [
+      require.resolve('@easyops-cn/docusaurus-search-local'),
+      {
+        hashed: true,
+        language: ['es', 'en'],
+        indexBlog: false,
+        indexPages: true,
+        docsRouteBasePath: '/docs',
+        highlightSearchTermsOnTargetPage: true,
+        explicitSearchResultPath: true,
+      },
+    ],
+  ],
+
   themeConfig: {
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
@@ -54,6 +69,7 @@ const config: Config = {
       },
       items: [
         {to: '/', label: 'Inicio', position: 'left'},
+        {type: 'search', position: 'left'},
         {to: '/docs/secciones', label: 'Por Sección', position: 'right'},
         {to: '/docs/tags', label: 'Por Tags', position: 'right'},
         {to: '/docs/tablero-digital', label: 'Tablero Digital', position: 'right'},
@@ -88,7 +104,7 @@ const config: Config = {
         {
           title: 'Tesis',
           items: [
-            {label: 'Carlos Gálvez Romo', to: 'https://github.com/cgalvezr'},
+            {label: 'Carlos Gálvez Romo', to: 'https://github.com/Karmagro'},
             {label: 'Universidad de Chile', to: 'https://www.dcc.uchile.cl/'},
           ],
         },

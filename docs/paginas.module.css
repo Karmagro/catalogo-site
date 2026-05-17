@@ -1,0 +1,557 @@
+/**
+ * Patrones para páginas conceptuales del sitio:
+ *  - /docs/tablero-digital
+ *  - /docs/sobre-el-catalogo
+ *
+ * Patrones incluidos:
+ *  - statStrip            (claims cualitativos en strip horizontal)
+ *  - keyConcept           (callout destacado para definición operativa)
+ *  - seccionGrid + seccionCard (grid de 6 tarjetas coloreadas)
+ *  - chip                 (ejemplo de tarjeta dentro de seccionCard)
+ *  - relacionCaso         (mini-caso visual: componente → chips de secciones)
+ *  - perfilesGrid + perfilCard (3 tarjetas de audiencia con icono Lucide)
+ *  - camposTable          (tabla de 11 campos agrupada por dimensión)
+ *  - relacionDiagrama     (diagrama Tablero ⟷ Catálogo)
+ *  - ctaGrid + ctaCard    (3 entradas de navegación tipo tarjeta)
+ *  - footerStats          (cierre compacto con datos del proyecto)
+ */
+
+/* ─── statStrip ─── */
+
+.statStrip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 0 0.5rem;
+  border-left: 3px solid var(--ifm-color-primary);
+  padding-left: 0.9rem;
+}
+
+.statLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+}
+
+.statValue {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
+  line-height: 1.35;
+}
+
+/* ─── keyConcept (definición operativa destacada) ─── */
+
+.keyConcept {
+  margin: 1.5rem 0 2rem;
+  padding: 1.25rem 1.5rem;
+  background: color-mix(in srgb, var(--ifm-color-primary) 5%, var(--ifm-background-color));
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 25%, transparent);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 0 8px 8px 0;
+}
+
+.keyConceptLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.keyConceptText {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: var(--ifm-color-emphasis-900);
+  margin: 0;
+}
+
+.keyConceptText strong {
+  color: var(--ifm-color-primary);
+}
+
+/* ─── seccionGrid + seccionCard ─── */
+
+.seccionGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.seccionCard {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-left: 5px solid var(--seccion-color, var(--ifm-color-primary));
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem 1.6rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  column-gap: 2rem;
+  row-gap: 0.85rem;
+  align-items: start;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.seccionCard:hover {
+  box-shadow: 0 2px 14px color-mix(in srgb, var(--seccion-color, var(--ifm-color-primary)) 14%, transparent);
+}
+
+.seccionCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  grid-column: 1 / -1;
+}
+
+.seccionCardDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--seccion-color, var(--ifm-color-primary));
+  flex-shrink: 0;
+}
+
+.seccionCardTitle {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--seccion-color, var(--ifm-color-emphasis-900));
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.seccionCardBody {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ifm-color-emphasis-800);
+  margin: 0;
+}
+
+.seccionCardExamples {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.25rem;
+}
+
+.seccionCardExamplesLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.seccionCardChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* ─── chip (ejemplos coloreados) ─── */
+
+.chip {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--seccion-color, var(--ifm-color-primary)) 13%, var(--ifm-background-color));
+  color: var(--seccion-color, var(--ifm-color-primary));
+  border: 1px solid color-mix(in srgb, var(--seccion-color, var(--ifm-color-primary)) 35%, transparent);
+  white-space: nowrap;
+}
+
+/* ─── relacionCaso (Mantenedor → chips) ─── */
+
+.relacionCaso {
+  margin: 1.5rem 0 2rem;
+  padding: 1.5rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+}
+
+.relacionCasoLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 0.65rem;
+}
+
+.relacionCasoFlow {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.relacionCasoComponent {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+  padding: 0.35rem 0.85rem;
+  border-radius: 6px;
+}
+
+.relacionCasoArrow {
+  color: var(--ifm-color-emphasis-600);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.relacionCasoChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.relacionCasoNote {
+  font-size: 0.88rem;
+  color: var(--ifm-color-emphasis-800);
+  line-height: 1.6;
+  margin-top: 0.85rem;
+  margin-bottom: 0;
+}
+
+/* ─── perfilesGrid + perfilCard ─── */
+
+.perfilesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.perfilCard {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-top: 4px solid var(--perfil-color, var(--ifm-color-primary));
+  border-radius: 8px;
+  padding: 1.4rem 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.perfilCard:hover {
+  box-shadow: 0 4px 18px color-mix(in srgb, var(--perfil-color, var(--ifm-color-primary)) 16%, transparent);
+}
+
+.perfilCardIcon {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--perfil-color, var(--ifm-color-primary)) 14%, transparent);
+  color: var(--perfil-color, var(--ifm-color-primary));
+}
+
+.perfilCardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-900);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.perfilCardDesc {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-800);
+  margin: 0;
+}
+
+.perfilCardLooksFor {
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--ifm-color-emphasis-700);
+  font-style: italic;
+  border-top: 1px dashed var(--ifm-color-emphasis-300);
+  padding-top: 0.65rem;
+  margin: 0.3rem 0 0;
+}
+
+/* ─── camposTable (11 campos agrupados) ─── */
+
+.camposTable {
+  margin: 1.5rem 0 2rem;
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.camposGroup {
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.camposGroup:last-child {
+  border-bottom: none;
+}
+
+.camposGroupHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: color-mix(in srgb, var(--grupo-color, var(--ifm-color-primary)) 10%, var(--ifm-background-surface-color));
+  padding: 0.7rem 1.1rem;
+  border-left: 4px solid var(--grupo-color, var(--ifm-color-primary));
+}
+
+.camposGroupLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grupo-color, var(--ifm-color-primary));
+}
+
+.camposGroupRange {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  margin-left: auto;
+}
+
+.camposRow {
+  display: grid;
+  grid-template-columns: 3rem 11rem 1fr;
+  align-items: baseline;
+  padding: 0.7rem 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  border-top: 1px solid var(--ifm-color-emphasis-100);
+}
+
+.camposGroup .camposRow:first-of-type {
+  border-top: none;
+}
+
+.camposNumber {
+  font-weight: 700;
+  color: var(--grupo-color, var(--ifm-color-primary));
+  font-variant-numeric: tabular-nums;
+}
+
+.camposName {
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.camposDesc {
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* ─── relacionDiagrama (Tablero ⟷ Catálogo) ─── */
+
+.relacionDiagrama {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: stretch;
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.relacionLado {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.relacionLadoLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--lado-color, var(--ifm-color-primary));
+}
+
+.relacionLadoTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-900);
+  margin: 0;
+}
+
+.relacionLadoDesc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ifm-color-emphasis-800);
+  margin: 0;
+}
+
+.relacionConector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-700);
+  padding: 0 0.25rem;
+}
+
+/* ─── ctaGrid + ctaCard ─── */
+
+.ctaGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.ctaCard {
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.55rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  padding: 1.3rem 1.4rem 1.4rem;
+  text-decoration: none !important;
+  color: inherit !important;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.ctaCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--ifm-color-primary) 14%, transparent);
+  color: inherit !important;
+}
+
+.ctaCardLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+}
+
+.ctaCardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ifm-color-emphasis-900);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.ctaCardDesc {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ifm-color-emphasis-800);
+  margin: 0;
+}
+
+.ctaCardArrow {
+  margin-top: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding-top: 0.5rem;
+}
+
+/* ─── footerStats (cierre compacto) ─── */
+
+.footerStats {
+  margin: 2rem 0 1rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footerStatsTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}
+
+.footerStatsBody {
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--ifm-color-emphasis-800);
+  margin: 0;
+}
+
+/* ─── Responsive ─── */
+
+@media screen and (max-width: 996px) {
+  .seccionCard {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+  }
+
+  .perfilesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .statStrip {
+    grid-template-columns: 1fr;
+  }
+
+  .relacionDiagrama {
+    grid-template-columns: 1fr;
+  }
+
+  .relacionConector {
+    transform: rotate(90deg);
+    padding: 0.5rem 0;
+  }
+
+  .camposRow {
+    grid-template-columns: 2.5rem 1fr;
+  }
+
+  .camposDesc {
+    grid-column: 1 / -1;
+    padding-top: 0.3rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .relacionCasoFlow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .relacionCasoArrow {
+    transform: rotate(90deg);
+  }
+}
