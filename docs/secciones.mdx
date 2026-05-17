@@ -21,30 +21,80 @@ Responde a preguntas como:
 
 ## Matriz consolidada
 
-| Componente | Entradas M. | Entradas A. | Conceptos | Salidas D. | Salidas A. | Proc. Aut. |
-|:-----------|:-----------:|:-----------:|:---------:|:----------:|:----------:|:----------:|
-| [Formulario de Login](/docs/componentes/formulario-login) | ● |  | ● |  | ○ |  |
-| [Login Biométrico](/docs/componentes/login-biometrico) | ● |  | ● |  | ○ |  |
-| [Autenticación API](/docs/componentes/autenticacion-api) |  | ● | ● |  |  | ○ |
-| [Creador de Cuenta](/docs/componentes/creador-cuenta) | ● |  | ● |  | ○ |  |
-| [Gestión de Perfil](/docs/componentes/gestion-perfil) | ● |  | ● | ● | ○ |  |
-| [Mantenedor](/docs/componentes/mantenedor) | ● |  | ● | ● |  |  |
-| [Dashboard](/docs/componentes/dashboard) |  |  | ● | ● |  | ● |
-| [Sistema de Notificación](/docs/componentes/sistema-notificacion) | ○ |  |  |  | ● | ● |
-| [ETL](/docs/componentes/etl) | ○ | ● | ● |  |  | ● |
-| [Scraper](/docs/componentes/scraper) | ○ | ● | ● |  |  | ● |
-| [Consultas](/docs/componentes/consultas) | ● |  | ● | ● |  |  |
-| [Reporte](/docs/componentes/reporte) | ● |  | ● | ● | ○ | ○ |
-| [Mapa Interactivo](/docs/componentes/mapa-interactivo) | ● |  | ○ | ● |  |  |
-| [Log de Auditoría](/docs/componentes/log-auditoria) |  |  | ● | ○ |  | ● |
-| [End-point (API)](/docs/componentes/endpoint-api) |  | ● | ● |  | ● | ● |
-| [Autorización](/docs/componentes/autorizacion) | ○ |  | ● |  |  | ● |
-| [Base de Datos](/docs/componentes/base-datos) |  |  | ● |  |  |  |
+<div style={{overflowX: 'auto', marginBottom: '1.5rem'}}>
+<table style={{width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem'}}>
+  <thead>
+    <tr>
+      <th style={{padding: '0.65rem 1rem', textAlign: 'left', background: 'var(--ifm-color-emphasis-100)', borderBottom: '2px solid var(--ifm-color-emphasis-300)', minWidth: '160px'}}>Componente</th>
+      <th style={{padding: '0.65rem 0.75rem', textAlign: 'center', background: 'color-mix(in srgb, var(--seccion-entradas-manuales) 15%, var(--ifm-background-color))', borderBottom: `2px solid var(--seccion-entradas-manuales)`, color: 'var(--seccion-entradas-manuales)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em'}}>Entradas M.</th>
+      <th style={{padding: '0.65rem 0.75rem', textAlign: 'center', background: 'color-mix(in srgb, var(--seccion-entradas-automaticas) 15%, var(--ifm-background-color))', borderBottom: `2px solid var(--seccion-entradas-automaticas)`, color: 'var(--seccion-entradas-automaticas)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em'}}>Entradas A.</th>
+      <th style={{padding: '0.65rem 0.75rem', textAlign: 'center', background: 'color-mix(in srgb, var(--seccion-conceptos) 15%, var(--ifm-background-color))', borderBottom: `2px solid var(--seccion-conceptos)`, color: 'var(--seccion-conceptos)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em'}}>Conceptos</th>
+      <th style={{padding: '0.65rem 0.75rem', textAlign: 'center', background: 'color-mix(in srgb, var(--seccion-salidas-demanda) 15%, var(--ifm-background-color))', borderBottom: `2px solid var(--seccion-salidas-demanda)`, color: 'var(--seccion-salidas-demanda)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em'}}>Salidas D.</th>
+      <th style={{padding: '0.65rem 0.75rem', textAlign: 'center', background: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 15%, var(--ifm-background-color))', borderBottom: `2px solid var(--seccion-salidas-automaticas)`, color: 'var(--seccion-salidas-automaticas)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em'}}>Salidas A.</th>
+      <th style={{padding: '0.65rem 0.75rem', textAlign: 'center', background: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 15%, var(--ifm-background-color))', borderBottom: `2px solid var(--seccion-procesos-autonomos)`, color: 'var(--seccion-procesos-autonomos)', fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em'}}>Proc. Aut.</th>
+    </tr>
+  </thead>
+  <tbody>
+    {[
+      { name: 'Formulario de Login',    slug: 'formulario-login',    em: '●', ea: '',  cd: '●', sd: '',  sa: '○', pa: ''  },
+      { name: 'Login Biométrico',       slug: 'login-biometrico',    em: '●', ea: '',  cd: '●', sd: '',  sa: '○', pa: '○' },
+      { name: 'Autenticación API',      slug: 'autenticacion-api',   em: '',  ea: '●', cd: '●', sd: '',  sa: '',  pa: '○' },
+      { name: 'Creador de Cuenta',      slug: 'creador-cuenta',      em: '●', ea: '',  cd: '●', sd: '',  sa: '○', pa: ''  },
+      { name: 'Gestión de Perfil',      slug: 'gestion-perfil',      em: '●', ea: '',  cd: '●', sd: '●', sa: '○', pa: ''  },
+      { name: 'Mantenedor',             slug: 'mantenedor',          em: '●', ea: '',  cd: '●', sd: '●', sa: '',  pa: ''  },
+      { name: 'Dashboard',              slug: 'dashboard',           em: '',  ea: '',  cd: '●', sd: '●', sa: '',  pa: '●' },
+      { name: 'Sistema de Notificación',slug: 'sistema-notificacion',em: '○', ea: '',  cd: '',  sd: '',  sa: '●', pa: '●' },
+      { name: 'ETL',                    slug: 'etl',                 em: '○', ea: '●', cd: '●', sd: '',  sa: '',  pa: '●' },
+      { name: 'Scraper',                slug: 'scraper',             em: '○', ea: '●', cd: '●', sd: '',  sa: '',  pa: '●' },
+      { name: 'Consultas',              slug: 'consultas',           em: '●', ea: '',  cd: '●', sd: '●', sa: '',  pa: ''  },
+      { name: 'Reporte',                slug: 'reporte',             em: '●', ea: '',  cd: '●', sd: '●', sa: '○', pa: '○' },
+      { name: 'Mapa Interactivo',       slug: 'mapa-interactivo',    em: '●', ea: '',  cd: '○', sd: '●', sa: '',  pa: ''  },
+      { name: 'Log de Auditoría',       slug: 'log-auditoria',       em: '',  ea: '',  cd: '●', sd: '○', sa: '',  pa: '●' },
+      { name: 'End-point (API)',         slug: 'endpoint-api',        em: '',  ea: '●', cd: '●', sd: '',  sa: '●', pa: '●' },
+      { name: 'Autorización',           slug: 'autorizacion',        em: '○', ea: '',  cd: '●', sd: '',  sa: '',  pa: '●' },
+      { name: 'Base de Datos',          slug: 'base-datos',          em: '',  ea: '',  cd: '●', sd: '',  sa: '',  pa: ''  },
+    ].map((row, i) => {
+      const colColors = {
+        em: 'var(--seccion-entradas-manuales)',
+        ea: 'var(--seccion-entradas-automaticas)',
+        cd: 'var(--seccion-conceptos)',
+        sd: 'var(--seccion-salidas-demanda)',
+        sa: 'var(--seccion-salidas-automaticas)',
+        pa: 'var(--seccion-procesos-autonomos)',
+      };
+      const rowBg = i % 2 === 1
+        ? 'color-mix(in srgb, var(--ifm-color-emphasis-100) 60%, transparent)'
+        : 'transparent';
+      const cellStyle = (val, col) => ({
+        padding: '0.6rem 0.75rem',
+        textAlign: 'center',
+        fontSize: val === '●' ? '1rem' : '0.85rem',
+        color: val === '●' ? colColors[col] : val === '○' ? colColors[col] : 'var(--ifm-color-emphasis-300)',
+        background: rowBg,
+        fontWeight: val ? 700 : 400,
+      });
+      return (
+        <tr key={row.slug}>
+          <td style={{padding: '0.6rem 1rem', background: rowBg}}>
+            <a href={`/docs/componentes/${row.slug}`} style={{fontWeight: 500}}>{row.name}</a>
+          </td>
+          <td style={cellStyle(row.em, 'em')}>{row.em || '—'}</td>
+          <td style={cellStyle(row.ea, 'ea')}>{row.ea || '—'}</td>
+          <td style={cellStyle(row.cd, 'cd')}>{row.cd || '—'}</td>
+          <td style={cellStyle(row.sd, 'sd')}>{row.sd || '—'}</td>
+          <td style={cellStyle(row.sa, 'sa')}>{row.sa || '—'}</td>
+          <td style={cellStyle(row.pa, 'pa')}>{row.pa || '—'}</td>
+        </tr>
+      );
+    })}
+  </tbody>
+</table>
+</div>
 
 <div className="matrix-legend">
-  <span className="matrix-legend__item"><strong>●</strong> Mandatorio</span>
-  <span className="matrix-legend__item"><strong>○</strong> Opcional</span>
-  <span className="matrix-legend__item">Celda vacía = sin vínculo</span>
+  <span className="matrix-legend__item"><strong style={{color: 'var(--ifm-color-primary)', fontSize: '1rem'}}>●</strong> Mandatorio — el componente siempre toca esta sección</span>
+  <span className="matrix-legend__item"><strong style={{color: 'var(--ifm-color-primary)', fontSize: '1rem'}}>○</strong> Opcional — solo con capacidades adicionales</span>
+  <span className="matrix-legend__item"><strong>—</strong> Sin vínculo</span>
 </div>
 
 :::note

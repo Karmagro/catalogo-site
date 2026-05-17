@@ -103,7 +103,7 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 ## Mapeo al Tablero Digital
 
 <div className={styles.mapeoGrid}>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-entradas-manuales) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-entradas-manuales) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Entradas Manuales</span>
     <span className={styles.mapeoStatus}>Siempre</span>
   </div>
@@ -111,15 +111,15 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
     <span className={styles.mapeoLabel}>Entradas Automáticas</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Conceptos de Datos</span>
     <span className={styles.mapeoStatus}>Siempre</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-salidas-demanda) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-salidas-demanda) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Salidas por Demanda</span>
     <span className={styles.mapeoStatus}>Siempre</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Salidas Automáticas</span>
     <span className={styles.mapeoStatus}>Opcional</span>
   </div>

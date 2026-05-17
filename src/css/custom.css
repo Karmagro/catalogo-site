@@ -1,41 +1,197 @@
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Sistema visual — Catálogo de Componentes de Software
+ * Filosofía: "Catálogo técnico vivo" — limpio, escaneable, color con propósito semántico.
+ * Fuente: Inter (Google Fonts, cargada en docusaurus.config.ts o via @import)
  */
 
-/* You can override the default Infima variables here. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ─── Colores de las 6 secciones del Tablero Digital ─── */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --seccion-entradas-manuales:    #0284C7;
+  --seccion-entradas-automaticas: #7C3AED;
+  --seccion-conceptos:            #059669;
+  --seccion-salidas-demanda:      #D97706;
+  --seccion-salidas-automaticas:  #DB2777;
+  --seccion-procesos-autonomos:   #475569;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-/* Matrix legend */
+/* ─── Modo claro ─── */
+:root {
+  /* Primario: índigo */
+  --ifm-color-primary:          #4F46E5;
+  --ifm-color-primary-dark:     #4338CA;
+  --ifm-color-primary-darker:   #3730A3;
+  --ifm-color-primary-darkest:  #312E81;
+  --ifm-color-primary-light:    #6366F1;
+  --ifm-color-primary-lighter:  #818CF8;
+  --ifm-color-primary-lightest: #A5B4FC;
 
+  /* Tipografía */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+  --ifm-font-size-base:   1rem;
+  --ifm-line-height-base: 1.7;
+  --ifm-heading-font-weight: 700;
+
+  /* Fondos */
+  --ifm-background-color:         #FFFFFF;
+  --ifm-background-surface-color: #F8FAFC;
+
+  /* Código */
+  --ifm-code-font-size: 92%;
+  --docusaurus-highlighted-code-line-bg: rgba(79, 70, 229, 0.08);
+
+  /* Bordes y radio */
+  --ifm-global-radius: 6px;
+  --ifm-card-border-radius: 8px;
+
+  /* Navbar */
+  --ifm-navbar-background-color: #FFFFFF;
+  --ifm-navbar-shadow: 0 1px 0 0 #E2E8F0;
+
+  /* Footer */
+  --ifm-footer-background-color: #0F172A;
+  --ifm-footer-color: #94A3B8;
+  --ifm-footer-link-color: #CBD5E1;
+  --ifm-footer-link-hover-color: #FFFFFF;
+  --ifm-footer-title-color: #FFFFFF;
+}
+
+/* ─── Modo oscuro ─── */
+[data-theme='dark'] {
+  --ifm-color-primary:          #818CF8;
+  --ifm-color-primary-dark:     #6366F1;
+  --ifm-color-primary-darker:   #4F46E5;
+  --ifm-color-primary-darkest:  #4338CA;
+  --ifm-color-primary-light:    #A5B4FC;
+  --ifm-color-primary-lighter:  #C7D2FE;
+  --ifm-color-primary-lightest: #E0E7FF;
+
+  --ifm-background-color:         #0F172A;
+  --ifm-background-surface-color: #1E293B;
+
+  --ifm-navbar-background-color: #0F172A;
+  --ifm-navbar-shadow: 0 1px 0 0 #1E293B;
+
+  --docusaurus-highlighted-code-line-bg: rgba(129, 140, 248, 0.1);
+
+  /* Colores de sección ligeramente más brillantes en dark */
+  --seccion-entradas-manuales:    #38BDF8;
+  --seccion-entradas-automaticas: #A78BFA;
+  --seccion-conceptos:            #34D399;
+  --seccion-salidas-demanda:      #FCD34D;
+  --seccion-salidas-automaticas:  #F472B6;
+  --seccion-procesos-autonomos:   #94A3B8;
+}
+
+/* ─── Tipografía base ─── */
+body {
+  font-family: var(--ifm-font-family-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-font-family-base);
+  letter-spacing: -0.01em;
+}
+
+/* Separación de h2 en artículos de doc */
+article .theme-doc-markdown h2 {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* ─── Navbar ─── */
+.navbar__brand {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.navbar__link {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.navbar__link--active {
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+/* ─── Sidebar ─── */
+.menu__link {
+  font-size: 0.875rem;
+  border-radius: 6px;
+  transition: background 0.15s, color 0.15s;
+}
+
+.menu__link--active {
+  font-weight: 600;
+  background: color-mix(in srgb, var(--ifm-color-primary) 10%, transparent);
+  color: var(--ifm-color-primary);
+}
+
+.menu__link:hover:not(.menu__link--active) {
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* ─── Botones ─── */
+.button--primary {
+  background-color: var(--ifm-color-primary);
+  border-color: var(--ifm-color-primary);
+  font-weight: 600;
+  border-radius: 6px;
+  transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+}
+
+.button--primary:hover {
+  background-color: var(--ifm-color-primary-dark);
+  border-color: var(--ifm-color-primary-dark);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--ifm-color-primary) 30%, transparent);
+}
+
+.button--primary.button--outline {
+  background: transparent;
+  color: var(--ifm-color-primary);
+}
+
+.button--primary.button--outline:hover {
+  background: color-mix(in srgb, var(--ifm-color-primary) 8%, transparent);
+  color: var(--ifm-color-primary-dark);
+}
+
+/* ─── Tabla base ─── */
+table {
+  font-size: 0.9rem;
+}
+
+table thead tr {
+  background: var(--ifm-color-emphasis-100);
+}
+
+table thead th {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* ─── Matrix legend ─── */
 .matrix-legend {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 1rem;
   font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-600);
+  color: var(--ifm-color-emphasis-800);
 }
 
 .matrix-legend__item strong {
   color: var(--ifm-color-emphasis-900);
 }
 
-/* Tag cloud sizing is handled in tags.module.css */
-
-/* Tag cloud (used on /docs/tags) */
-
+/* ─── Tag cloud ─── */
 .tag-cloud {
   display: flex;
   flex-wrap: wrap;
@@ -46,64 +202,109 @@
 
 .tag-chip {
   display: inline-block;
-  background: var(--ifm-color-emphasis-200);
-  color: var(--ifm-color-emphasis-800);
   border-radius: 999px;
   padding: 0.3rem 1rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: var(--ifm-font-family-base);
   cursor: default;
-  transition: background 0.15s;
+  transition: background 0.15s, color 0.15s;
+  border: 1.5px solid transparent;
+}
+
+/* Colores por tag */
+.tag-chip[data-tag="autenticación"] {
+  background: color-mix(in srgb, #0284C7 12%, transparent);
+  color: #0284C7;
+  border-color: color-mix(in srgb, #0284C7 30%, transparent);
+}
+.tag-chip[data-tag="seguridad"] {
+  background: color-mix(in srgb, #DB2777 12%, transparent);
+  color: #DB2777;
+  border-color: color-mix(in srgb, #DB2777 30%, transparent);
+}
+.tag-chip[data-tag="datos"] {
+  background: color-mix(in srgb, #059669 12%, transparent);
+  color: #059669;
+  border-color: color-mix(in srgb, #059669 30%, transparent);
+}
+.tag-chip[data-tag="visualización"] {
+  background: color-mix(in srgb, #D97706 12%, transparent);
+  color: #D97706;
+  border-color: color-mix(in srgb, #D97706 30%, transparent);
+}
+.tag-chip[data-tag="integración"] {
+  background: color-mix(in srgb, #7C3AED 12%, transparent);
+  color: #7C3AED;
+  border-color: color-mix(in srgb, #7C3AED 30%, transparent);
+}
+.tag-chip[data-tag="procesamiento"] {
+  background: color-mix(in srgb, #475569 12%, transparent);
+  color: #475569;
+  border-color: color-mix(in srgb, #475569 30%, transparent);
+}
+.tag-chip[data-tag="notificaciones"] {
+  background: color-mix(in srgb, #DB2777 12%, transparent);
+  color: #DB2777;
+  border-color: color-mix(in srgb, #DB2777 30%, transparent);
+}
+.tag-chip[data-tag="geo"] {
+  background: color-mix(in srgb, #059669 12%, transparent);
+  color: #059669;
+  border-color: color-mix(in srgb, #059669 30%, transparent);
 }
 
 .tag-chip:hover {
-  background: var(--ifm-color-primary-lightest);
+  filter: brightness(0.9);
 }
 
-.tag-chip[data-weight="1"] { font-size: 0.8rem; opacity: 0.75; }
-.tag-chip[data-weight="2"] { font-size: 0.85rem; opacity: 0.8; }
-.tag-chip[data-weight="3"] { font-size: 0.9rem; opacity: 0.85; }
-.tag-chip[data-weight="4"] { font-size: 0.95rem; opacity: 0.9; }
-.tag-chip[data-weight="5"] { font-size: 1rem; opacity: 1; }
+.tag-chip[data-weight="1"] { font-size: 0.78rem; opacity: 0.8; }
+.tag-chip[data-weight="2"] { font-size: 0.82rem; opacity: 0.88; }
+.tag-chip[data-weight="3"] { font-size: 0.88rem; opacity: 0.93; }
+.tag-chip[data-weight="4"] { font-size: 0.94rem; }
+.tag-chip[data-weight="5"] { font-size: 1rem; }
 
-/* Pastel red danger admonition */
-
-.admonition-danger {
-  --ifm-alert-border-color: rgba(190, 75, 75, 0.5);
-  background: #fdf0f0;
-  border: 1px solid rgba(190, 75, 75, 0.25);
+/* ─── Admonition: delimitaciones (danger / alert--danger) ─── */
+.alert--danger {
+  --ifm-alert-border-color: rgba(220, 38, 38, 0.4);
+  background: rgba(220, 38, 38, 0.06);
+  border: 1px solid rgba(220, 38, 38, 0.2);
+  border-left: 4px solid #DC2626;
 }
 
-.admonition-danger .admonition-heading h5 {
-  color: #8b3a3a;
+.alert--danger .admonition-heading h5,
+.alert--danger .admonitionHeading_tbUL {
+  color: #DC2626;
 }
 
-.admonition-danger a {
-  color: #b33a3a;
+[data-theme='dark'] .alert--danger {
+  background: rgba(220, 38, 38, 0.12);
+  border-color: rgba(220, 38, 38, 0.35);
+}
+
+/* Links en delimitaciones: badge para legibilidad */
+.alert--danger a {
+  display: inline-block;
   font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: rgba(179, 58, 58, 0.3);
-  text-underline-offset: 2px;
+  padding: 0.05rem 0.45rem;
+  border-radius: 4px;
+  text-decoration: none !important;
+  transition: background 0.15s;
+  background: rgba(220, 38, 38, 0.1);
+  color: #991B1B !important;
+  border: 1px solid rgba(220, 38, 38, 0.3);
 }
 
-.admonition-danger a:hover {
-  color: #8b2a2a;
-  text-decoration-color: #8b2a2a;
+.alert--danger a:hover {
+  background: rgba(220, 38, 38, 0.18);
 }
 
-/* All section divider rules between blocks — remove whitespace effect */
-article .theme-doc-markdown h2 {
-  margin-top: 2rem;
+[data-theme='dark'] .alert--danger a {
+  background: rgba(255, 255, 255, 0.12);
+  color: #FCA5A5 !important;
+  border-color: rgba(255, 255, 255, 0.2);
 }
 
-[data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+[data-theme='dark'] .alert--danger a:hover {
+  background: rgba(255, 255, 255, 0.2);
 }
