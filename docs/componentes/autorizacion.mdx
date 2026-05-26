@@ -7,6 +7,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {autorizacion} from '@site/src/data/tableros/autorizacion';
+import Galeria from '@site/src/components/Galeria';
+import {autorizacion as ejemplosAutorizacion} from '@site/src/data/ejemplos/autorizacion';
 
 # Autorización
 
@@ -97,11 +101,7 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Slack — roles con distintos niveles de acceso: propietario del workspace, administradores, y miembros con acceso a canales específicos</span>
-  </div>
-</div>
+<Galeria data={ejemplosAutorizacion} />
 
 ## Mapeo al Tablero Digital
 
@@ -147,6 +147,4 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital de la Autorización con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={autorizacion} />

@@ -6,6 +6,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {mantenedor} from '@site/src/data/tableros/mantenedor';
+import Galeria from '@site/src/components/Galeria';
+import {mantenedor as ejemplosMantenedor} from '@site/src/data/ejemplos/mantenedor';
 
 # Mantenedor
 
@@ -100,14 +104,7 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Google Calendar — crear, visualizar, editar y eliminar eventos</span>
-  </div>
-  <div className={styles.examplePlaceholder}>
-    <span>Introducción al Trabajo de Título (DCC) — grilla de temas con formulario de edición</span>
-  </div>
-</div>
+<Galeria data={ejemplosMantenedor} />
 
 ## Mapeo al Tablero Digital
 
@@ -153,6 +150,4 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Mantenedor con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={mantenedor} />

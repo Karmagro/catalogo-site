@@ -7,6 +7,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {scraper} from '@site/src/data/tableros/scraper';
+import Galeria from '@site/src/components/Galeria';
+import {scraper as ejemplosScraper} from '@site/src/data/ejemplos/scraper';
 
 # Scraper
 
@@ -100,11 +104,7 @@ Componente que recorre páginas web o documentos para identificar y extraer info
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Indeed — agregación de ofertas de empleo desde miles de sitios web externos mostrando resultados unificados</span>
-  </div>
-</div>
+<Galeria data={ejemplosScraper} />
 
 ## Mapeo al Tablero Digital
 
@@ -150,6 +150,4 @@ Componente que recorre páginas web o documentos para identificar y extraer info
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Scraper con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={scraper} />

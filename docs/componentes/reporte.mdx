@@ -7,6 +7,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {reporte} from '@site/src/data/tableros/reporte';
+import Galeria from '@site/src/components/Galeria';
+import {reporte as ejemplosReporte} from '@site/src/data/ejemplos/reporte';
 
 # Reporte
 
@@ -101,11 +105,7 @@ Componente de salida que extrae, procesa, consolida y presenta información del 
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>BancoEstado — cartola de "Últimos Movimientos CuentaRUT" con detalle de transacciones, saldos y resumen consolidado</span>
-  </div>
-</div>
+<Galeria data={ejemplosReporte} />
 
 ## Mapeo al Tablero Digital
 
@@ -151,6 +151,4 @@ Componente de salida que extrae, procesa, consolida y presenta información del 
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Reporte con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={reporte} />

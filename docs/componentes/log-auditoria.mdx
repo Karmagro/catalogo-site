@@ -6,6 +6,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {logAuditoria} from '@site/src/data/tableros/log-auditoria';
+import Galeria from '@site/src/components/Galeria';
+import {logAuditoria as ejemplosLogAuditoria} from '@site/src/data/ejemplos/log-auditoria';
 
 # Log de Auditoría
 
@@ -96,11 +100,7 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Notion — historial de ediciones de página accesible para miembros del workspace, con nombre de usuario y timestamp</span>
-  </div>
-</div>
+<Galeria data={ejemplosLogAuditoria} />
 
 ## Mapeo al Tablero Digital
 
@@ -146,6 +146,4 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Log de Auditoría con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={logAuditoria} />

@@ -6,6 +6,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {formularioLogin} from '@site/src/data/tableros/formulario-login';
+import Galeria from '@site/src/components/Galeria';
+import {formularioLogin as ejemplosFormularioLogin} from '@site/src/data/ejemplos/formulario-login';
 
 # Formulario de Login
 
@@ -98,14 +102,7 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Página de inicio de sesión de Ucampus donde el estudiante ingresa su RUT y contraseña institucional</span>
-  </div>
-  <div className={styles.examplePlaceholder}>
-    <span>GitHub — autenticación de dos factores (2FA) con código de verificación desde aplicación móvil</span>
-  </div>
-</div>
+<Galeria data={ejemplosFormularioLogin} />
 
 ## Mapeo al Tablero Digital
 
@@ -151,6 +148,4 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Formulario de Login con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={formularioLogin} />

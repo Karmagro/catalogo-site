@@ -6,6 +6,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {creadorCuenta} from '@site/src/data/tableros/creador-cuenta';
+import Galeria from '@site/src/components/Galeria';
+import {creadorCuenta as ejemplosCreadorCuenta} from '@site/src/data/ejemplos/creador-cuenta';
 
 # Creador de Cuenta
 
@@ -97,11 +101,7 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Reddit — página de registro con opciones: teléfono, SSO (Google/Apple) o email tradicional</span>
-  </div>
-</div>
+<Galeria data={ejemplosCreadorCuenta} />
 
 ## Mapeo al Tablero Digital
 
@@ -147,6 +147,4 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Creador de Cuenta con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={creadorCuenta} />

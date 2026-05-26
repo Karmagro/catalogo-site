@@ -6,6 +6,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {gestionPerfil} from '@site/src/data/tableros/gestion-perfil';
+import Galeria from '@site/src/components/Galeria';
+import {gestionPerfil as ejemplosGestionPerfil} from '@site/src/data/ejemplos/gestion-perfil';
 
 # Gestión de Perfil
 
@@ -96,11 +100,7 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Centro de cuentas de Facebook — sección "Contraseña y seguridad" con opciones de 2FA, sesiones activas y alertas de seguridad</span>
-  </div>
-</div>
+<Galeria data={ejemplosGestionPerfil} />
 
 ## Mapeo al Tablero Digital
 
@@ -146,6 +146,4 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital de la Gestión de Perfil con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={gestionPerfil} />

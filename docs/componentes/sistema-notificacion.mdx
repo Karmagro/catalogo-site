@@ -6,6 +6,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {sistemaNotificacion} from '@site/src/data/tableros/sistema-notificacion';
+import Galeria from '@site/src/components/Galeria';
+import {sistemaNotificacion as ejemplosSistemaNotificacion} from '@site/src/data/ejemplos/sistema-notificacion';
 
 # Sistema de Notificación
 
@@ -100,11 +104,7 @@ Un sistema de notificación es un componente encargado de entregar mensajes a un
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Amazon — correo y notificación móvil automática confirmando el pedido con número de seguimiento</span>
-  </div>
-</div>
+<Galeria data={ejemplosSistemaNotificacion} />
 
 ## Mapeo al Tablero Digital
 
@@ -150,6 +150,4 @@ Un sistema de notificación es un componente encargado de entregar mensajes a un
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Sistema de Notificación con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={sistemaNotificacion} />

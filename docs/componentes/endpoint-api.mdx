@@ -7,6 +7,10 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {endpointApi} from '@site/src/data/tableros/endpoint-api';
+import Galeria from '@site/src/components/Galeria';
+import {endpointApi as ejemplosEndpointApi} from '@site/src/data/ejemplos/endpoint-api';
 
 # End-point (API)
 
@@ -101,11 +105,7 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Google Maps API — utilizada por Uber o Cornershop para mostrar mapas y calcular rutas sin desarrollar su propio sistema de mapas</span>
-  </div>
-</div>
+<Galeria data={ejemplosEndpointApi} />
 
 ## Mapeo al Tablero Digital
 
@@ -151,6 +151,4 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del End-point (API) con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={endpointApi} />
