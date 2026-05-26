@@ -102,7 +102,7 @@ const config: Config = {
           ],
         },
         {
-          title: 'Tesis',
+          title: 'Memoria',
           items: [
             {label: 'Carlos Gálvez Romo', to: 'https://github.com/Karmagro'},
             {label: 'Universidad de Chile', to: 'https://www.dcc.uchile.cl/'},

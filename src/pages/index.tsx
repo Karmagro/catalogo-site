@@ -18,7 +18,7 @@ function HomepageHeader() {
   return (
     <header className={styles.hero}>
       <div className="container">
-        <p className={styles.heroEyebrow}>Tesis de Ingeniería Civil Informática · Universidad de Chile</p>
+        <p className={styles.heroEyebrow}>Memoria de Ingeniería Civil Informática · Universidad de Chile</p>
         <h1 className={styles.heroTitle}>
           Catálogo de Componentes<br />
           <span className={styles.heroTitleAccent}>de Software</span>
