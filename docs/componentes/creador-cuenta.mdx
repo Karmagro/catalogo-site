@@ -6,6 +6,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {creadorCuenta} from '@site/src/data/tableros/creador-cuenta';
 
 # Creador de Cuenta
 
@@ -147,6 +149,4 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Creador de Cuenta con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={creadorCuenta} />

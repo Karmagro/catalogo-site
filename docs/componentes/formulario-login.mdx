@@ -6,6 +6,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {formularioLogin} from '@site/src/data/tableros/formulario-login';
 
 # Formulario de Login
 
@@ -151,6 +153,4 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Formulario de Login con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={formularioLogin} />

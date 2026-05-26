@@ -7,6 +7,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {mapaInteractivo} from '@site/src/data/tableros/mapa-interactivo';
 
 # Mapa Interactivo
 
@@ -146,6 +148,4 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Mapa Interactivo con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={mapaInteractivo} />

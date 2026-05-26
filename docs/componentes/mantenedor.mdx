@@ -6,6 +6,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {mantenedor} from '@site/src/data/tableros/mantenedor';
 
 # Mantenedor
 
@@ -153,6 +155,4 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Mantenedor con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={mantenedor} />

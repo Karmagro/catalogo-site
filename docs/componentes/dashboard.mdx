@@ -6,6 +6,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {dashboard} from '@site/src/data/tableros/dashboard';
 
 # Dashboard
 
@@ -148,6 +150,4 @@ Un dashboard es una interfaz de usuario que presenta información consolidada y 
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Dashboard con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={dashboard} />

@@ -6,6 +6,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {sistemaNotificacion} from '@site/src/data/tableros/sistema-notificacion';
 
 # Sistema de Notificación
 
@@ -150,6 +152,4 @@ Un sistema de notificación es un componente encargado de entregar mensajes a un
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Sistema de Notificación con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={sistemaNotificacion} />

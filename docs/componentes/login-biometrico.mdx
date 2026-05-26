@@ -7,6 +7,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {loginBiometrico} from '@site/src/data/tableros/login-biometrico';
 
 # Login Biométrico
 
@@ -150,6 +152,4 @@ Componente que permite a usuarios identificarse ante el sistema mediante caracte
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Login Biométrico con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={loginBiometrico} />

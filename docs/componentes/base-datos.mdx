@@ -6,6 +6,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {baseDatos} from '@site/src/data/tableros/base-datos';
 
 # Base de Datos
 
@@ -148,6 +150,4 @@ Componente encargado de mantener una colección organizada de información, estr
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital de la Base de Datos con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={baseDatos} />

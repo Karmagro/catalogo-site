@@ -7,6 +7,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {scraper} from '@site/src/data/tableros/scraper';
 
 # Scraper
 
@@ -150,6 +152,4 @@ Componente que recorre páginas web o documentos para identificar y extraer info
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Scraper con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={scraper} />

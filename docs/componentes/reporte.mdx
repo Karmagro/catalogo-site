@@ -7,6 +7,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {reporte} from '@site/src/data/tableros/reporte';
 
 # Reporte
 
@@ -151,6 +153,4 @@ Componente de salida que extrae, procesa, consolida y presenta información del 
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del Reporte con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={reporte} />

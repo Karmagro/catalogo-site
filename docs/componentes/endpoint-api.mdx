@@ -7,6 +7,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {endpointApi} from '@site/src/data/tableros/endpoint-api';
 
 # End-point (API)
 
@@ -151,6 +153,4 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del End-point (API) con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={endpointApi} />

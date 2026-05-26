@@ -7,6 +7,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {etl} from '@site/src/data/tableros/etl';
 
 # ETL
 
@@ -149,6 +151,4 @@ Componente que incorpora información proveniente de fuentes externas al sistema
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital del ETL con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={etl} />

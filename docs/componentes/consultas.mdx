@@ -7,6 +7,8 @@ tags:
 
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {consultas} from '@site/src/data/tableros/consultas';
 
 # Consultas
 
@@ -148,6 +150,4 @@ Componente que permite a los usuarios recuperar información específica del sis
 
 ## Ejemplo de Tablero Digital
 
-<div className={styles.examplePlaceholder}>
-  <span>Tablero Digital de Consultas con tarjetas de ejemplo</span>
-</div>
+<TableroDigital data={consultas} />
