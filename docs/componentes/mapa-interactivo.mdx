@@ -9,6 +9,8 @@ import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {mapaInteractivo} from '@site/src/data/tableros/mapa-interactivo';
+import Galeria from '@site/src/components/Galeria';
+import {mapaInteractivo as ejemplosMapaInteractivo} from '@site/src/data/ejemplos/mapa-interactivo';
 
 # Mapa Interactivo
 
@@ -98,11 +100,7 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Airbnb — mapa interactivo con marcadores de propiedades disponibles, permitiendo explorar la oferta geográficamente</span>
-  </div>
-</div>
+<Galeria data={ejemplosMapaInteractivo} />
 
 ## Mapeo al Tablero Digital
 

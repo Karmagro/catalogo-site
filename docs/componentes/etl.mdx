@@ -9,6 +9,8 @@ import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {etl} from '@site/src/data/tableros/etl';
+import Galeria from '@site/src/components/Galeria';
+import {etl as ejemplosEtl} from '@site/src/data/ejemplos/etl';
 
 # ETL
 
@@ -101,11 +103,7 @@ Componente que incorpora información proveniente de fuentes externas al sistema
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Apache Airflow — orquestación ETL: extrae datos de Amazon S3, transforma con Apache Spark, carga en Redshift o MongoDB</span>
-  </div>
-</div>
+<Galeria data={ejemplosEtl} />
 
 ## Mapeo al Tablero Digital
 

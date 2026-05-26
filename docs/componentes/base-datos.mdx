@@ -8,6 +8,8 @@ import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {baseDatos} from '@site/src/data/tableros/base-datos';
+import Galeria from '@site/src/components/Galeria';
+import {baseDatos as ejemplosBaseDatos} from '@site/src/data/ejemplos/base-datos';
 
 # Base de Datos
 
@@ -100,11 +102,7 @@ Componente encargado de mantener una colección organizada de información, estr
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Diagrama Entidad-Relación de una librería en línea: autores, editoriales, libros, clientes y pedidos con sus relaciones</span>
-  </div>
-</div>
+<Galeria data={ejemplosBaseDatos} />
 
 ## Mapeo al Tablero Digital
 

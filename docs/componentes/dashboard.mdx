@@ -8,6 +8,8 @@ import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {dashboard} from '@site/src/data/tableros/dashboard';
+import Galeria from '@site/src/components/Galeria';
+import {dashboard as ejemplosDashboard} from '@site/src/data/ejemplos/dashboard';
 
 # Dashboard
 
@@ -100,11 +102,7 @@ Un dashboard es una interfaz de usuario que presenta información consolidada y 
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Google Analytics — dashboard de inicio con usuarios activos, tendencia temporal, eventos y distribución geográfica</span>
-  </div>
-</div>
+<Galeria data={ejemplosDashboard} />
 
 ## Mapeo al Tablero Digital
 

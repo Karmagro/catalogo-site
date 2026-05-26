@@ -9,6 +9,8 @@ import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {loginBiometrico} from '@site/src/data/tableros/login-biometrico';
+import Galeria from '@site/src/components/Galeria';
+import {loginBiometrico as ejemplosLoginBiometrico} from '@site/src/data/ejemplos/login-biometrico';
 
 # Login Biométrico
 
@@ -102,11 +104,7 @@ Componente que permite a usuarios identificarse ante el sistema mediante caracte
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>Face ID (iPhone) — desbloqueo mediante reconocimiento facial con la cámara frontal</span>
-  </div>
-</div>
+<Galeria data={ejemplosLoginBiometrico} />
 
 ## Mapeo al Tablero Digital
 

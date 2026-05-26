@@ -9,6 +9,8 @@ import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {autenticacionApi} from '@site/src/data/tableros/autenticacion-api';
+import Galeria from '@site/src/components/Galeria';
+import {autenticacionApi as ejemplosAutenticacionApi} from '@site/src/data/ejemplos/autenticacion-api';
 
 # Autenticación API
 
@@ -101,11 +103,7 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 
 ## Ejemplos
 
-<div className={styles.exampleGrid}>
-  <div className={styles.examplePlaceholder}>
-    <span>OAuth 2.0 — aplicación que obtiene un token de acceso de Google para consumir la API de Google Drive</span>
-  </div>
-</div>
+<Galeria data={ejemplosAutenticacionApi} />
 
 ## Mapeo al Tablero Digital
 
