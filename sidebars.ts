@@ -8,6 +8,7 @@ const sidebars: SidebarsConfig = {
     'componentes/creador-cuenta',
     'componentes/gestion-perfil',
     'componentes/mantenedor',
+    'componentes/formulario-carga',
     'componentes/dashboard',
     'componentes/sistema-notificacion',
     'componentes/etl',

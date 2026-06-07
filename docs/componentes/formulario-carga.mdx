@@ -1,0 +1,158 @@
+---
+sidebar_position: 7
+tags:
+  - datos
+  - formularios
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {formularioCarga} from '@site/src/data/tableros/formulario-carga';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {formularioCarga as ejemplosFormularioCarga} from '@site/src/data/ejemplos/formulario-carga';
+
+# Formulario de carga
+
+<span className={styles.aliases}>Formulario de ingreso · Formulario de carga · Alta de registro · Data entry form · Formulario de envío</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosFormularioCarga} />
+
+## Descripción
+
+Componente de entrada que presenta a un usuario un conjunto de campos para ingresar datos y enviarlos al sistema en un único acto. Es el simétrico de [Consultas](/docs/componentes/consultas) (entrada en vez de salida): mientras Consultas recupera información existente, el Formulario de carga incorpora información nueva. Su propósito es capturar datos de forma estructurada y validada en un punto del proceso donde quien ingresa los datos no es necesariamente quien luego los procesa, aprueba o administra. Una vez enviados, los datos salen del control de quien los cargó y siguen su curso dentro del sistema. Es muy frecuente en sistemas de información: postulaciones, solicitudes, reclamos, inscripciones.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Presenta un conjunto de campos definidos para que el usuario ingrese datos
+- Indica qué campos son obligatorios, opcionales o seleccionables de un conjunto predefinido
+- Valida las entradas antes del envío (formato, obligatoriedad, coherencia), evitando que se incorporen datos inválidos
+- Incorpora los datos al sistema en un único acto de envío, entregándolos para su posterior procesamiento
+- No ofrece, sobre los datos ya enviados, operaciones de lectura, edición o eliminación por parte de quien los cargó: la interacción termina con el envío
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Carga de archivos o documentos adjuntos:** permite incorporar archivos (PDF, imágenes, certificados) junto con los datos del formulario; frecuente en postulaciones y solicitudes que exigen respaldo documental
+- **Guardado de borrador:** permite al usuario guardar un formulario incompleto y retomarlo más tarde antes de enviarlo definitivamente
+- **Formulario por pasos (wizard):** divide la carga en etapas secuenciales para formularios extensos, mostrando el progreso
+- **Campos condicionales:** muestra u oculta campos según respuestas previas, adaptando el formulario al caso del usuario
+- **Acuse de recibo / comprobante:** tras el envío, entrega al usuario una confirmación o número de seguimiento de su carga
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No es un [Mantenedor](/docs/componentes/mantenedor).** El Mantenedor administra una entidad a lo largo del tiempo (crear, leer, editar, eliminar la misma entidad, volver sobre ella). El Formulario de carga es un acto de ingreso puntual cuyo dato, una vez enviado, deja de estar bajo el control de quien lo cargó. La diferencia no es de cantidad de operaciones sino de **relación con el dato**: administración continua de una entidad propia frente a entrega de un dato a un flujo
+- **No es una encuesta.** Aunque la operatoria de captura se parezca, la encuesta tiene una intención distinta (recoger opiniones o respuestas para análisis agregado, no incorporar un registro al flujo operativo del sistema); se considera de naturaleza diferente
+- **No procesa, aprueba ni deriva lo cargado.** El disparo del flujo, las aprobaciones sucesivas o el procesamiento posterior corresponden a otros componentes (Workflow, Proceso interno, [Sistema de Notificación](/docs/componentes/sistema-notificacion))
+- **No recupera ni muestra información existente** — eso corresponde a [Consultas](/docs/componentes/consultas), [Reporte](/docs/componentes/reporte) o [Dashboard](/docs/componentes/dashboard); su dirección es exclusivamente de entrada
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Datos ingresados por el usuario en los campos del formulario, más eventuales archivos adjuntos
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    El registro enviado e incorporado al sistema; opcionalmente, un acuse de recibo o comprobante para el usuario
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Formulario simple:** una sola pantalla con los campos a completar y un botón de envío; el caso más común (un reclamo, una inscripción breve)
+- **Formulario por pasos (wizard):** divide una carga extensa en etapas secuenciales; típico de postulaciones con muchos datos y documentos
+- **Formulario con respaldo documental:** el ingreso de datos se acompaña obligatoriamente de la carga de uno o más archivos (postulación a beca con certificados)
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- [Base de Datos](/docs/componentes/base-datos) donde se persiste el registro ingresado
+- [Autenticación](/docs/componentes/formulario-login) y [Autorización](/docs/componentes/autorizacion) cuando la carga está restringida a usuarios identificados o con cierto permiso
+- Workflow o Proceso interno cuando el envío dispara un flujo de procesamiento o aprobación posterior
+- [Sistema de Notificación](/docs/componentes/sistema-notificacion) cuando se avisa al usuario o al área responsable tras el envío
+
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-actualizacion-manual) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-actualizacion-manual) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Actualización Manual | Siempre | El acto central del componente: el usuario ingresa y envía datos que se incorporan al sistema. |
+| Actualización Automática | No | — |
+| Conceptos de Datos | Siempre | La entidad o registro que se está cargando (la postulación, el reclamo, la solicitud). |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | Opcional | Acuse de recibo, comprobante o aviso al área responsable, cuando esa capacidad está presente. |
+| Procesos Autónomos | No | El procesamiento posterior pertenece a un componente que contiene al formulario (Workflow, Proceso interno), no al formulario en sí. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<TableroDigital data={formularioCarga} />
