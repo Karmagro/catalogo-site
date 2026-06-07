@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {consultas} from '@site/src/data/tableros/consultas';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {consultas as ejemplosConsultas} from '@site/src/data/ejemplos/consultas';
 
 # Consultas
 
 <span className={styles.aliases}>Búsqueda · Search · Query · Filtrado de información · Information retrieval</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosConsultas} />
 
 ## Descripción
 
@@ -99,10 +106,6 @@ Componente que permite a los usuarios recuperar información específica del sis
 - Sistemas de [Autenticación](/docs/componentes/formulario-login) y [Autorización](/docs/componentes/autorizacion) (cuando los resultados están restringidos por permisos)
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosConsultas} />
 
 ## Mapeo al Tablero Digital
 

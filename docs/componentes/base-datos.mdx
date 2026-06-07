@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {baseDatos} from '@site/src/data/tableros/base-datos';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {baseDatos as ejemplosBaseDatos} from '@site/src/data/ejemplos/base-datos';
 
 # Base de Datos
 
 <span className={styles.aliases}>Repositorio de datos · Almacenamiento estructurado · Sistema de almacenamiento · Database</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosBaseDatos} />
 
 ## Descripción
 
@@ -99,10 +106,6 @@ Componente encargado de mantener una colección organizada de información, estr
 - Mecanismos de almacenamiento físico (disco local, almacenamiento de red, servicios cloud)
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosBaseDatos} />
 
 ## Mapeo al Tablero Digital
 

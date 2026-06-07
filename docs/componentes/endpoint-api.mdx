@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {endpointApi} from '@site/src/data/tableros/endpoint-api';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {endpointApi as ejemplosEndpointApi} from '@site/src/data/ejemplos/endpoint-api';
 
 # End-point (API)
 
 <span className={styles.aliases}>API · Application Programming Interface · Servicio web · Endpoint</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosEndpointApi} />
 
 ## Descripción
 
@@ -102,10 +109,6 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 - [Base de Datos](/docs/componentes/base-datos) o repositorio de información sobre el que operan los endpoints
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosEndpointApi} />
 
 ## Mapeo al Tablero Digital
 

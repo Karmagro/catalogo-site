@@ -18,7 +18,6 @@ function HomepageHeader() {
   return (
     <header className={styles.hero}>
       <div className="container">
-        <p className={styles.heroEyebrow}>Memoria de Ingeniería Civil Informática · Universidad de Chile</p>
         <h1 className={styles.heroTitle}>
           Catálogo de Componentes<br />
           <span className={styles.heroTitleAccent}>de Software</span>
@@ -75,11 +74,11 @@ function EntryCards() {
 
             <div className={styles.cardSecondary}>
               <div className={styles.cardSecondaryIcon} style={{background: 'color-mix(in srgb, var(--seccion-entradas-automaticas) 12%, transparent)', color: 'var(--seccion-entradas-automaticas)'}}>⊛</div>
-              <h3 className={styles.cardSecondaryTitle}>Por Tags</h3>
+              <h3 className={styles.cardSecondaryTitle}>Por Etiquetas</h3>
               <p className={styles.cardSecondaryDesc}>
                 Agrupación por afinidad funcional: autenticación, visualización, seguridad, integración y más.
               </p>
-              <Link className={styles.ctaSecondary} to="/docs/tags">Ver tags →</Link>
+              <Link className={styles.ctaSecondary} to="/docs/etiquetas">Ver etiquetas →</Link>
             </div>
           </div>
 

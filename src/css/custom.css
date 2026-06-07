@@ -310,28 +310,28 @@ table thead th {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Páginas nativas de tags de Docusaurus
-   /docs/tags          → .docs-tags-list-page  (índice de todas las etiquetas)
-   /docs/tags/<slug>   → .docs-tags-doc-list-page  (listado por tag)
+   Páginas nativas de etiquetas de Docusaurus (tagsBasePath: 'etiquetas')
+   /docs/etiquetas          → .docs-tags-list-page  (índice de todas las etiquetas)
+   /docs/etiquetas/<slug>   → .docs-tags-doc-list-page  (listado por etiqueta)
    ───────────────────────────────────────────────────────────── */
 
-/* Mapping tag → variable de color de sección. Cada tag toma el color de la
-   sección del Tablero Digital con la que más se asocia conceptualmente. */
+/* Mapping etiqueta → variable de color de sección. Cada etiqueta toma el color
+   de la sección del Tablero Digital con la que más se asocia conceptualmente. */
 .docs-tags-list-page,
 .docs-tags-doc-list-page,
 .theme-doc-footer-tags-row {
   --tag-color: var(--ifm-color-primary);
 }
 
-/* Mapping tag → color (aplica a chips del índice y de pie de ficha) */
-a[href$="/tags/autenticacion"]   { --tag-color: var(--seccion-entradas-manuales); }
-a[href$="/tags/datos"]           { --tag-color: var(--seccion-conceptos); }
-a[href$="/tags/visualizacion"]   { --tag-color: var(--seccion-salidas-demanda); }
-a[href$="/tags/notificaciones"]  { --tag-color: var(--seccion-salidas-automaticas); }
-a[href$="/tags/procesamiento"]   { --tag-color: var(--seccion-procesos-autonomos); }
-a[href$="/tags/seguridad"]       { --tag-color: var(--seccion-salidas-automaticas); }
-a[href$="/tags/geo"]             { --tag-color: var(--seccion-conceptos); }
-a[href$="/tags/integracion"]     { --tag-color: var(--seccion-entradas-automaticas); }
+/* Mapping etiqueta → color (aplica a chips del índice, de inicio y de pie de ficha) */
+a[href$="/etiquetas/autenticacion"]   { --tag-color: var(--seccion-entradas-manuales); }
+a[href$="/etiquetas/datos"]           { --tag-color: var(--seccion-conceptos); }
+a[href$="/etiquetas/visualizacion"]   { --tag-color: var(--seccion-salidas-demanda); }
+a[href$="/etiquetas/notificaciones"]  { --tag-color: var(--seccion-salidas-automaticas); }
+a[href$="/etiquetas/procesamiento"]   { --tag-color: var(--seccion-procesos-autonomos); }
+a[href$="/etiquetas/seguridad"]       { --tag-color: var(--seccion-salidas-automaticas); }
+a[href$="/etiquetas/geo"]             { --tag-color: var(--seccion-conceptos); }
+a[href$="/etiquetas/integracion"]     { --tag-color: var(--seccion-entradas-automaticas); }
 
 /* ── Página índice de etiquetas ───────────────────────────────── */
 
@@ -521,6 +521,47 @@ a[href$="/tags/integracion"]     { --tag-color: var(--seccion-entradas-automatic
 }
 
 .theme-doc-footer-tags-row a[rel="tag"]:hover {
+  background: color-mix(in srgb, var(--tag-color) 20%, var(--ifm-background-color));
+  transform: translateY(-1px);
+}
+
+/* ── Etiquetas al inicio de ficha (R15) ──────────────────────── */
+/* Mismo chip que el pie, pero ubicado bajo el alias. El color lo resuelve
+   el mapping global por href de más arriba (--tag-color). */
+.ficha-top-tags {
+  --tag-color: var(--ifm-color-primary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.85rem 0 0;
+}
+
+/* Mismo rótulo que el pie (.theme-doc-footer-tags-row b) para que arriba y
+   abajo se lean igual y no haya disonancia. */
+.ficha-top-tags__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.ficha-top-tags a[rel="tag"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--tag-color) 12%, var(--ifm-background-color));
+  color: var(--tag-color) !important;
+  border: 1px solid color-mix(in srgb, var(--tag-color) 35%, transparent);
+  text-decoration: none !important;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.ficha-top-tags a[rel="tag"]:hover {
   background: color-mix(in srgb, var(--tag-color) 20%, var(--ifm-background-color));
   transform: translateY(-1px);
 }

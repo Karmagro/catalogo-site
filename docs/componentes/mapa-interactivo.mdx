@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {mapaInteractivo} from '@site/src/data/tableros/mapa-interactivo';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {mapaInteractivo as ejemplosMapaInteractivo} from '@site/src/data/ejemplos/mapa-interactivo';
 
 # Mapa Interactivo
 
 <span className={styles.aliases}>Mapa geográfico interactivo · Visualización geoespacial · Web map</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosMapaInteractivo} />
 
 ## Descripción
 
@@ -97,10 +104,6 @@ Presenta información del sistema sobre una representación geográfica dinámic
 - Proveedor de mapas base (Leaflet, Google Maps, OpenStreetMap) a través de APIs
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosMapaInteractivo} />
 
 ## Mapeo al Tablero Digital
 

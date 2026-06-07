@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {logAuditoria} from '@site/src/data/tableros/log-auditoria';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {logAuditoria as ejemplosLogAuditoria} from '@site/src/data/ejemplos/log-auditoria';
 
 # Log de Auditoría
 
 <span className={styles.aliases}>Audit log · Bitácora de auditoría · Registro de operaciones · Audit trail · Historial de actividad</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosLogAuditoria} />
 
 ## Descripción
 
@@ -97,10 +104,6 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 - [Autorización](/docs/componentes/autorizacion) para determinar qué usuarios pueden acceder a la consulta del log
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosLogAuditoria} />
 
 ## Mapeo al Tablero Digital
 

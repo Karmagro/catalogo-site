@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {gestionPerfil} from '@site/src/data/tableros/gestion-perfil';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {gestionPerfil as ejemplosGestionPerfil} from '@site/src/data/ejemplos/gestion-perfil';
 
 # Gestión de Perfil
 
 <span className={styles.aliases}>Mi cuenta · Configuración de cuenta · Administración personal · Account settings</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosGestionPerfil} />
 
 ## Descripción
 
@@ -97,10 +104,6 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 - Gestor de sesiones (para visualizar y cerrar sesiones activas)
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosGestionPerfil} />
 
 ## Mapeo al Tablero Digital
 

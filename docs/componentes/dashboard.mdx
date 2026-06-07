@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {dashboard} from '@site/src/data/tableros/dashboard';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {dashboard as ejemplosDashboard} from '@site/src/data/ejemplos/dashboard';
 
 # Dashboard
 
 <span className={styles.aliases}>Panel de control · Panel · Cuadro de mando</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosDashboard} />
 
 ## Descripción
 
@@ -99,10 +106,6 @@ Un dashboard es una interfaz de usuario que presenta información consolidada y 
 - [Autenticación](/docs/componentes/formulario-login) y [Autorización](/docs/componentes/autorizacion) que controlan qué usuarios pueden ver qué dashboards
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosDashboard} />
 
 ## Mapeo al Tablero Digital
 

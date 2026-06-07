@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {loginBiometrico} from '@site/src/data/tableros/login-biometrico';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {loginBiometrico as ejemplosLoginBiometrico} from '@site/src/data/ejemplos/login-biometrico';
 
 # Login Biométrico
 
 <span className={styles.aliases}>Autenticación biométrica · Identificación biométrica</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosLoginBiometrico} />
 
 ## Descripción
 
@@ -101,10 +108,6 @@ Componente que permite a usuarios identificarse ante el sistema mediante caracte
 - Mecanismo de autenticación alternativa para casos de falla biométrica ([Formulario de Login](/docs/componentes/formulario-login))
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosLoginBiometrico} />
 
 ## Mapeo al Tablero Digital
 

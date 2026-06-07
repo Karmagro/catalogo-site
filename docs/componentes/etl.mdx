@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {etl} from '@site/src/data/tableros/etl';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {etl as ejemplosEtl} from '@site/src/data/ejemplos/etl';
 
 # ETL
 
 <span className={styles.aliases}>Extraer-Transformar-Cargar · Integración de datos</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosEtl} />
 
 ## Descripción
 
@@ -100,10 +107,6 @@ Componente que incorpora información proveniente de fuentes externas al sistema
 - Reglas de negocio que definen el tratamiento de los datos
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosEtl} />
 
 ## Mapeo al Tablero Digital
 

@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {autenticacionApi} from '@site/src/data/tableros/autenticacion-api';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {autenticacionApi as ejemplosAutenticacionApi} from '@site/src/data/ejemplos/autenticacion-api';
 
 # Autenticación API
 
 <span className={styles.aliases}>Autenticación máquina-a-máquina · API authentication · Machine-to-machine (M2M) authentication</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosAutenticacionApi} />
 
 ## Descripción
 
@@ -100,10 +107,6 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 - [End-point (API)](/docs/componentes/endpoint-api) (componente que expone los servicios o funcionalidades que serán consumidos una vez autenticado el sistema)
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosAutenticacionApi} />
 
 ## Mapeo al Tablero Digital
 

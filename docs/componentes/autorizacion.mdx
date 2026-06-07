@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {autorizacion} from '@site/src/data/tableros/autorizacion';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {autorizacion as ejemplosAutorizacion} from '@site/src/data/ejemplos/autorizacion';
 
 # Autorización
 
 <span className={styles.aliases}>Control de acceso · Gestión de permisos · Access control · Gestión de roles</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosAutorizacion} />
 
 ## Descripción
 
@@ -98,10 +105,6 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 - [Base de Datos](/docs/componentes/base-datos) donde se almacenan las definiciones de roles, permisos y sus asignaciones a usuarios
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosAutorizacion} />
 
 ## Mapeo al Tablero Digital
 

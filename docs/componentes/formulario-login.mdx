@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {formularioLogin} from '@site/src/data/tableros/formulario-login';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {formularioLogin as ejemplosFormularioLogin} from '@site/src/data/ejemplos/formulario-login';
 
 # Formulario de Login
 
 <span className={styles.aliases}>Inicio de sesión web · Autenticación de usuario · Sign-in</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosFormularioLogin} />
 
 ## Descripción
 
@@ -99,10 +106,6 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 - [Creador de Cuenta](/docs/componentes/creador-cuenta) y [Gestión de Perfil](/docs/componentes/gestion-perfil) (componentes que crean y mantienen las cuentas que aquí se autentican)
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosFormularioLogin} />
 
 ## Mapeo al Tablero Digital
 

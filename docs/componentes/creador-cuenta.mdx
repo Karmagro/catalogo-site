@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {creadorCuenta} from '@site/src/data/tableros/creador-cuenta';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {creadorCuenta as ejemplosCreadorCuenta} from '@site/src/data/ejemplos/creador-cuenta';
 
 # Creador de Cuenta
 
 <span className={styles.aliases}>Sign-up · Registro de usuario · Formulario de registro</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosCreadorCuenta} />
 
 ## Descripción
 
@@ -98,10 +105,6 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 - Captcha o sistema anti-spam (cuando esa capacidad está presente)
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosCreadorCuenta} />
 
 ## Mapeo al Tablero Digital
 

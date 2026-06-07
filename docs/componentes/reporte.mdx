@@ -10,11 +10,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {reporte} from '@site/src/data/tableros/reporte';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {reporte as ejemplosReporte} from '@site/src/data/ejemplos/reporte';
 
 # Reporte
 
 <span className={styles.aliases}>Report · Informe · Reporte analítico · Reporte de gestión</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosReporte} />
 
 ## Descripción
 
@@ -102,10 +109,6 @@ Componente de salida que extrae, procesa, consolida y presenta información del 
 - Servicio de mensajería ([Sistema de Notificación](/docs/componentes/sistema-notificacion)) para distribución automática, cuando esa capacidad está presente
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosReporte} />
 
 ## Mapeo al Tablero Digital
 
