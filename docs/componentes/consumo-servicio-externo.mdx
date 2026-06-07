@@ -1,0 +1,156 @@
+---
+sidebar_position: 16
+tags:
+  - datos
+  - integración
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {consumoServicioExterno} from '@site/src/data/tableros/consumo-servicio-externo';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {consumoServicioExterno as ejemplosConsumoServicioExterno} from '@site/src/data/ejemplos/consumo-servicio-externo';
+
+# Consumo de Servicio Externo
+
+<span className={styles.aliases}>Consumir un servicio · Cliente de API · Integración saliente · Conector externo · Consumo de API de terceros</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosConsumoServicioExterno} />
+
+## Descripción
+
+Componente mediante el cual el sistema invoca un servicio provisto por un sistema externo para obtener información o delegar una operación que no resuelve por sí mismo. El sistema actúa como cliente: construye la solicitud según el contrato del tercero, la envía, y procesa la respuesta recibida para incorporarla a su propio flujo. Es el lado «cliente» de una integración entre sistemas, y permite incorporar capacidades de terceros (mapas, pagos, validaciones) sin desarrollarlas internamente.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Construye solicitudes hacia un servicio externo respetando el contrato (especificación) que define el tercero
+- Envía la solicitud y recibe la respuesta del sistema externo
+- Interpreta y procesa la respuesta recibida para incorporarla al flujo del sistema
+- Gestiona las credenciales con las que el sistema se identifica ante el servicio externo
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Manejo de fallos y reintentos:** reintenta la invocación o aplica una alternativa cuando el servicio externo no responde o devuelve error, evitando que la falla externa interrumpa el sistema
+- **Caching de respuestas externas:** almacena temporalmente respuestas del tercero para reducir llamadas repetidas y dependencia de su disponibilidad
+- **Transformación de datos:** adapta el formato de la respuesta externa al modelo de datos interno del sistema
+- **Monitoreo de la integración:** registra latencias, errores y disponibilidad del servicio externo consumido
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** expone funcionalidades propias a terceros — eso corresponde a [Servicio Expuesto](/docs/componentes/servicio-expuesto): aquí el sistema es el que usa un servicio ajeno, no el que lo ofrece
+- **No** controla ni implementa el servicio externo: depende del contrato y la disponibilidad que define el tercero
+- **No** es un [Scraper](/docs/componentes/scraper): el consumo de servicio usa un contrato formal y autorizado provisto por el tercero; el Scraper extrae datos de una interfaz no diseñada para ser consumida programáticamente
+- **No** es un [ETL](/docs/componentes/etl): aunque ambos traen datos externos, el ETL ejecuta cargas masivas planificadas; el consumo de servicio invoca operaciones puntuales según la necesidad del sistema
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Respuesta estructurada que devuelve el servicio externo (datos solicitados o confirmación de la operación)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Solicitud estructurada que el sistema envía hacia el servicio externo (operación, parámetros, credenciales)
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Consumo de consulta:** el sistema invoca al tercero para obtener información (p. ej. consultar una tasa de cambio, una ubicación, un puntaje crediticio)
+- **Consumo de operación:** el sistema invoca al tercero para que ejecute una acción (p. ej. iniciar un cobro, enviar un correo a través de un proveedor)
+- **REST / SOAP / GraphQL:** según el protocolo que defina el servicio externo a consumir
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Servicio externo provisto por un tercero, con su contrato y documentación
+- Credenciales de acceso al servicio externo (API key, token, certificado) y su almacenamiento seguro
+- [Autenticación API](/docs/componentes/autenticacion-api) para identificarse ante el servicio externo que se consume
+- Conectividad de red hacia el sistema externo
+
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-actualizacion-automatica) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-actualizacion-automatica) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Actualización Manual | No | — |
+| Actualización Automática | Siempre | La respuesta que llega desde el servicio externo y se incorpora al sistema. |
+| Conceptos de Datos | Siempre | Las entidades del sistema que se enriquecen o se validan con la información del servicio externo. |
+| Salidas por Demanda | No | — |
+| Salidas Automáticas | Siempre | La solicitud estructurada que el sistema envía hacia el servicio externo. |
+| Procesos Autónomos | Siempre | La lógica que arma la solicitud, interpreta la respuesta y maneja fallos, reintentos y caching cuando esas capacidades están presentes. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<TableroDigital data={consumoServicioExterno} />

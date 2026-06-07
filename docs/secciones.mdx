@@ -50,7 +50,8 @@ Responde a preguntas como:
       { name: 'Reporte',                slug: 'reporte',             em: '',  ea: '',  cd: '●', sd: '●', sa: '○', pa: '●' },
       { name: 'Mapa Interactivo',       slug: 'mapa-interactivo',    em: '',  ea: '',  cd: '●', sd: '●', sa: '',  pa: ''  },
       { name: 'Log de Auditoría',       slug: 'log-auditoria',       em: '',  ea: '',  cd: '●', sd: '○', sa: '',  pa: '●' },
-      { name: 'End-point (API)',         slug: 'endpoint-api',        em: '',  ea: '●', cd: '●', sd: '',  sa: '●', pa: '●' },
+      { name: 'Servicio Expuesto',      slug: 'servicio-expuesto',   em: '',  ea: '○', cd: '●', sd: '',  sa: '●', pa: '●' },
+      { name: 'Consumo de Servicio Externo', slug: 'consumo-servicio-externo', em: '', ea: '●', cd: '●', sd: '', sa: '●', pa: '●' },
       { name: 'Autorización',           slug: 'autorizacion',        em: '○', ea: '',  cd: '●', sd: '',  sa: '',  pa: '●' },
       { name: 'Base de Datos',          slug: 'base-datos',          em: '',  ea: '',  cd: '●', sd: '',  sa: '',  pa: '○' },
     ].map((row, i) => {
@@ -117,16 +118,16 @@ Estos componentes permiten que un operador humano cree, modifique o elimine dato
 </TabItem>
 <TabItem value="actualizacion-automatica" label="Actualización Automática">
 
-**Mandatorios (4):** Autenticación API, ETL, Scraper, End-point (API)
+**Mandatorios (4):** Autenticación API, ETL, Scraper, Consumo de Servicio Externo
 
-**Opcionales (0):** Ninguno
+**Opcionales (1):** Servicio Expuesto
 
 Estos componentes incorporan o actualizan información en el sistema sin intervención humana directa, de forma periódica o reactiva ante eventos externos.
 
 </TabItem>
 <TabItem value="conceptos" label="Conceptos de Datos">
 
-**Mandatorios (17):** todos los componentes del catálogo
+**Mandatorios (18):** todos los componentes del catálogo
 
 **Opcionales (0):** Ninguno
 
@@ -144,7 +145,7 @@ Estos componentes entregan información al usuario cuando este la solicita expl�
 </TabItem>
 <TabItem value="salidas-automaticas" label="Salidas Automáticas">
 
-**Mandatorios (2):** Sistema de Notificación, End-point (API)
+**Mandatorios (3):** Sistema de Notificación, Servicio Expuesto, Consumo de Servicio Externo
 
 **Opcionales (5):** Formulario de Login, Login Biométrico, Creador de Cuenta, Gestión de Perfil, Reporte
 
@@ -153,7 +154,7 @@ Estos componentes comunican información de manera proactiva, sin solicitud del 
 </TabItem>
 <TabItem value="procesos-autonomos" label="Procesos Autónomos">
 
-**Mandatorios (9):** Autenticación API, Dashboard, Sistema de Notificación, ETL, Scraper, Reporte, Log de Auditoría, End-point (API), Autorización
+**Mandatorios (10):** Autenticación API, Dashboard, Sistema de Notificación, ETL, Scraper, Reporte, Log de Auditoría, Servicio Expuesto, Consumo de Servicio Externo, Autorización
 
 **Opcionales (3):** Login Biométrico, Mantenedor, Base de Datos
 

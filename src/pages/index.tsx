@@ -30,7 +30,7 @@ function HomepageHeader() {
         </p>
         <div className={styles.heroCtas}>
           <Link className={styles.ctaPrimary} to="/docs/componentes/formulario-login">
-            Explorar los 17 componentes →
+            Explorar los 18 componentes →
           </Link>
           <Link className={styles.ctaSecondary} to="/docs/sobre-el-catalogo">
             ¿Qué es este catálogo?
@@ -52,7 +52,7 @@ function EntryCards() {
             <div className={styles.cardPrimaryBadge}>Catálogo completo</div>
             <h2 className={styles.cardPrimaryTitle}>Por Componente</h2>
             <p className={styles.cardPrimaryDesc}>
-              17 componentes documentados con estructura de 11 campos: descripción,
+              18 componentes documentados con estructura de 11 campos: descripción,
               capacidades, delimitaciones, flujo de información, modalidades,
               dependencias, ejemplos y mapeo al Tablero Digital.
             </p>
