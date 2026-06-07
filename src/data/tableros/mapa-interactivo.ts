@@ -3,14 +3,10 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const mapaInteractivo: TableroData = {
   componente: 'Mapa Interactivo',
   tarjetas: {
-    'entradas-manuales': [
-      {titulo: 'Filtros de Mapa', variante: 'opcional'},
-      {titulo: 'Mapa con Propiedades', variante: 'mandatorio'},
-      {titulo: 'Click Propiedad Información Adicional', variante: 'mandatorio'},
-    ],
-    'entradas-automaticas': [],
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [],
     'conceptos-datos': [
-      {titulo: 'Propiedades', variante: 'opcional'},
+      {titulo: 'Propiedades', variante: 'mandatorio'},
     ],
     'salidas-demanda': [
       {titulo: 'Mapa con Marcadores', variante: 'mandatorio'},

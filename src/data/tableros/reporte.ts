@@ -3,11 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const reporte: TableroData = {
   componente: 'Reporte',
   tarjetas: {
-    'entradas-manuales': [
-      {titulo: 'Parámetros Cartola', variante: 'opcional'},
-      {titulo: 'Generación de Cartola', variante: 'mandatorio'},
-    ],
-    'entradas-automaticas': [],
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [],
     'conceptos-datos': [
       {titulo: 'Cuenta', variante: 'mandatorio'},
       {titulo: 'Movimiento', variante: 'mandatorio'},
@@ -19,7 +16,7 @@ export const reporte: TableroData = {
       {titulo: 'Email con Cartola Mensual', variante: 'opcional'},
     ],
     'procesos-autonomos': [
-      {titulo: 'Generación de Cartola Mensual', variante: 'opcional'},
+      {titulo: 'Generación de Cartola Mensual', variante: 'mandatorio'},
     ],
   },
 };

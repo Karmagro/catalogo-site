@@ -111,11 +111,11 @@ Componente encargado de mantener una colección organizada de información, estr
 
 <div className={styles.mapeoGrid}>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
@@ -130,9 +130,9 @@ Componente encargado de mantener una colección organizada de información, estr
     <span className={styles.mapeoLabel}>Salidas Automáticas</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Procesos Autónomos</span>
-    <span className={styles.mapeoStatus}>No</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
   </div>
 </div>
 
@@ -140,12 +140,12 @@ Componente encargado de mantener una colección organizada de información, estr
 
 | Sección | Vínculo | Observación |
 |:--------|:-------:|:------------|
-| Entradas Manuales | No | — |
-| Entradas Automáticas | No | — |
+| Actualización Manual | No | — |
+| Actualización Automática | No | — |
 | Conceptos de Datos | Siempre | El modelo lógico de la base de datos materializa los conceptos del sistema; cada entidad del modelo aparece como un concepto en el tablero. |
 | Salidas por Demanda | No | — |
 | Salidas Automáticas | No | — |
-| Procesos Autónomos | No | — |
+| Procesos Autónomos | Opcional | Tareas autónomas de mantenimiento como respaldos automáticos, replicación o indexación, cuando esas capacidades están presentes. |
 
 </div>
 

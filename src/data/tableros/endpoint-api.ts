@@ -3,8 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const endpointApi: TableroData = {
   componente: 'End-point (API)',
   tarjetas: {
-    'entradas-manuales': [],
-    'entradas-automaticas': [
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [
       {titulo: 'Solicitud de Geocoding', variante: 'mandatorio'},
       {titulo: 'Solicitud de Cálculo de Ruta', variante: 'mandatorio'},
     ],

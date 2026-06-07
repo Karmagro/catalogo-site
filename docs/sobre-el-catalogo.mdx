@@ -24,7 +24,7 @@ El catálogo está diseñado para ser utilizado por distintos perfiles durante l
 
 <div className={styles.perfilesGrid}>
 
-  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-entradas-manuales)'}}>
+  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-actualizacion-manual)'}}>
     <div className={styles.perfilCardIcon}>
       <Code2 size={22} strokeWidth={2} />
     </div>
@@ -98,7 +98,7 @@ Cada componente se documenta con once campos, agrupados en cinco dimensiones que
     </div>
   </div>
 
-  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-entradas-automaticas)'}}>
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-actualizacion-automatica)'}}>
     <div className={styles.camposGroupHeader}>
       <span className={styles.camposGroupLabel}>Comportamiento</span>
       <span className={styles.camposGroupRange}>Campos 6–8</span>
@@ -132,7 +132,7 @@ Cada componente se documenta con once campos, agrupados en cinco dimensiones que
     </div>
   </div>
 
-  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-entradas-manuales)'}}>
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-actualizacion-manual)'}}>
     <div className={styles.camposGroupHeader}>
       <span className={styles.camposGroupLabel}>Vínculo con el Tablero</span>
       <span className={styles.camposGroupRange}>Campos 10–11</span>
@@ -158,7 +158,7 @@ La distinción entre capacidades mandatorias y adicionales (campos 3 y 4) es par
 El catálogo y el Tablero Digital son herramientas complementarias que operan en planos distintos.
 
 <div className={styles.relacionDiagrama}>
-  <div className={styles.relacionLado} style={{'--lado-color': 'var(--seccion-entradas-manuales)'}}>
+  <div className={styles.relacionLado} style={{'--lado-color': 'var(--seccion-actualizacion-manual)'}}>
     <span className={styles.relacionLadoLabel}>Tablero Digital</span>
     <h3 className={styles.relacionLadoTitle}>El propósito</h3>
     <div className={styles.relacionLadoDesc}>Sus secciones constituyen el vocabulario para declarar <strong>qué necesita</strong> el sistema. Cada tarjeta es una intención.</div>
@@ -171,7 +171,7 @@ El catálogo y el Tablero Digital son herramientas complementarias que operan en
   </div>
 </div>
 
-Un mismo componente puede tocar varias secciones del tablero a la vez. Por ejemplo, un Mantenedor siempre involucra Entradas Manuales (formularios de creación y edición), Conceptos de Datos (la entidad que gestiona) y Salidas por Demanda (listado y búsqueda de registros). Esta transversalidad es una propiedad fundamental del catálogo: los componentes no pertenecen a una sola sección del tablero.
+Un mismo componente puede tocar varias secciones del tablero a la vez. Por ejemplo, un Mantenedor siempre involucra Actualización Manual (formularios de creación y edición), Conceptos de Datos (la entidad que gestiona) y Salidas por Demanda (listado y búsqueda de registros). Esta transversalidad es una propiedad fundamental del catálogo: los componentes no pertenecen a una sola sección del tablero.
 
 El mapeo entre componentes y secciones se presenta en la [matriz consolidada](/docs/secciones) y en la ficha individual de cada componente.
 
@@ -209,7 +209,7 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
     </div>
     <span className={styles.ctaCardLabel}>Por sección</span>
     <h3 className={styles.ctaCardTitle}>Matriz componente × tablero</h3>
-    <div className={styles.ctaCardDesc}>Responde "¿qué componentes necesito si mi sistema tiene muchas entradas manuales?" mostrando qué componentes tocan cada sección.</div>
+    <div className={styles.ctaCardDesc}>Responde "¿qué componentes necesito si mi sistema actualiza muchos datos manualmente?" mostrando qué componentes tocan cada sección.</div>
     <span className={styles.ctaCardArrow}>Ver matriz <ArrowRight size={14} strokeWidth={2.5} /></span>
   </a>
 

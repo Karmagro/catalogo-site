@@ -112,17 +112,17 @@ Un sistema de notificación es un componente encargado de entregar mensajes a un
 ## Mapeo al Tablero Digital
 
 <div className={styles.mapeoGrid}>
-  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-entradas-manuales) 45%, transparent)'}}>
-    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-actualizacion-manual) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
     <span className={styles.mapeoStatus}>Opcional</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Conceptos de Datos</span>
-    <span className={styles.mapeoStatus}>No</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
     <span className={styles.mapeoLabel}>Salidas por Demanda</span>
@@ -142,9 +142,9 @@ Un sistema de notificación es un componente encargado de entregar mensajes a un
 
 | Sección | Vínculo | Observación |
 |:--------|:-------:|:------------|
-| Entradas Manuales | Opcional | Configuración de preferencias de notificación por parte del usuario. |
-| Entradas Automáticas | No | — |
-| Conceptos de Datos | No | — |
+| Actualización Manual | Opcional | Configuración de preferencias de notificación por parte del usuario. |
+| Actualización Automática | No | — |
+| Conceptos de Datos | Siempre | Las notificaciones generadas y las plantillas de mensaje, junto al repositorio de destinatarios y sus preferencias. |
 | Salidas por Demanda | No | — |
 | Salidas Automáticas | Siempre | Los mensajes enviados automáticamente ante eventos del sistema. |
 | Procesos Autónomos | Siempre | La lógica de evaluación de eventos y condiciones que dispara las notificaciones. |

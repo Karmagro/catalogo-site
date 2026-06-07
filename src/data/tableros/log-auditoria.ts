@@ -3,8 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const logAuditoria: TableroData = {
   componente: 'Log de Auditoría',
   tarjetas: {
-    'entradas-manuales': [],
-    'entradas-automaticas': [],
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [],
     'conceptos-datos': [
       {titulo: 'Registro de Auditoría', variante: 'mandatorio'},
     ],

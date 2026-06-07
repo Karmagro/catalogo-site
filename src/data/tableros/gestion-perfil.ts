@@ -3,12 +3,12 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const gestionPerfil: TableroData = {
   componente: 'Gestión de Perfil',
   tarjetas: {
-    'entradas-manuales': [
+    'actualizacion-manual': [
       {titulo: 'Formulario de Edición de Perfil', variante: 'mandatorio'},
       {titulo: 'Configuración de 2FA', variante: 'opcional'},
       {titulo: 'Cierre de Sesión Remota', variante: 'opcional'},
     ],
-    'entradas-automaticas': [],
+    'actualizacion-automatica': [],
     'conceptos-datos': [
       {titulo: 'Usuario', variante: 'mandatorio'},
       {titulo: 'Sesión', variante: 'opcional'},
