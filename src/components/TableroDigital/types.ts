@@ -1,6 +1,6 @@
 export type Seccion =
-  | 'entradas-manuales'
-  | 'entradas-automaticas'
+  | 'actualizacion-manual'
+  | 'actualizacion-automatica'
   | 'conceptos-datos'
   | 'salidas-demanda'
   | 'salidas-automaticas'

@@ -1,0 +1,161 @@
+---
+sidebar_position: 10.5
+tags:
+  - procesamiento
+  - automatización
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {procesoInterno} from '@site/src/data/tableros/proceso-interno';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {procesoInterno as ejemplosProcesoInterno} from '@site/src/data/ejemplos/proceso-interno';
+
+# Proceso Interno
+
+<span className={styles.aliases}>Procesamiento autónomo · Trabajo en segundo plano (background / batch job)</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosProcesoInterno} />
+
+## Descripción
+
+Componente que ejecuta una rutina de procesamiento sobre datos que **ya residen en el sistema**, sin que un usuario lo opere paso a paso. Toma información interna, le aplica una lógica de transformación, verificación o derivación, y produce un resultado: datos nuevos, datos corregidos o un veredicto. Se dispara de forma autónoma —según una agenda (cada noche, cada hora)— o bajo demanda, cuando otro componente o un operador solicita su ejecución.
+
+Es el componente al que recurre el sistema cuando necesita "hacer un cálculo o una comprobación por dentro" que no encaja en ningún flujo de entrada, salida o aprobación: cruzar entidades para detectar inconsistencias, recalcular totales o saldos, derivar indicadores a partir de datos existentes, depurar registros vencidos. En la industria del software corresponde a la familia de los *background jobs* o *batch jobs*: tareas que corren independientes de la interfaz, lanzadas por la aplicación y monitoreadas, no operadas, por las personas.
+
+Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre datos internos, con un disparador de agenda o solicitud), no el **qué**: igual que un Mantenedor no fija qué entidad administra ni una Consulta qué se consulta, un Proceso Interno no fija qué calcula. Ese dominio abierto lo hace genérico, no informe.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Ejecuta una lógica de procesamiento sobre datos que ya están en el sistema, sin intervención humana en sus pasos
+- Se activa mediante un disparador: programado (según una agenda) o bajo demanda (a solicitud de otro componente o de un operador)
+- Produce un resultado a partir del procesamiento: datos derivados, datos corregidos, o un veredicto (válido/inválido, conciliado/no conciliado)
+- Opera en segundo plano, sin ocupar ni bloquear la interacción del usuario con el sistema
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Programación periódica (scheduling):** ejecuta la rutina en intervalos definidos mediante un planificador, sin disparo explícito de un usuario
+- **Ejecución bajo demanda:** permite que un operador o componente solicite la ejecución en el momento (por ejemplo, "recalcular ahora", "verificar integridad ahora")
+- **Emisión del resultado:** entrega el resultado al solicitante (cuando es bajo demanda) o lo comunica de forma proactiva (alerta de inconsistencia, aviso de finalización)
+- **Logging de actividad:** registra cada ejecución (tiempos, volumen procesado, errores) para auditoría y monitoreo
+- **Reintentos y checkpoints:** reanuda o reintenta el procesamiento ante una interrupción, retomando desde el último punto guardado
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No incorpora datos desde fuera del sistema.** Opera sobre los datos que ya están adentro. Si la rutina trae datos de una fuente externa, eso es un [ETL](/docs/componentes/etl) o un [Scraper](/docs/componentes/scraper), no un Proceso Interno.
+- **No involucra decisiones humanas en sus pasos.** Si el procesamiento se detiene para que una persona apruebe, rechace o derive en alguna etapa, es un [Workflow de aprobación](/docs/componentes/workflow-aprobacion), no un Proceso Interno.
+- **No es una salida de información al usuario.** Una [Consulta](/docs/componentes/consultas) o un [Reporte](/docs/componentes/reporte) responden a una solicitud entregando datos existentes; el Proceso Interno *genera* datos o veredictos mediante cómputo, aunque pueda apoyarse en esos componentes para entregar su resultado.
+- **No es el "cajón de sastre" del catálogo.** No es "todo lo que no cae en otro componente": tiene una forma definida (procesamiento autónomo sobre datos internos). Lo que queda abierto es el dominio del cálculo, igual que en el resto de los componentes.
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Un disparador (agenda o solicitud) y los datos internos sobre los que opera, ya presentes en el repositorio del sistema
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    El resultado del procesamiento: datos derivados o corregidos escritos en el sistema, o un veredicto entregado al solicitante o emitido como aviso
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Programado (schedule-driven):** un planificador lo invoca de forma recurrente o en un momento fijo (cierre nocturno, conciliación diaria, depuración semanal).
+- **Bajo demanda (event-driven):** se dispara ante una solicitud explícita o un evento del sistema ("verificar integridad ahora", recalcular tras un cambio masivo).
+- **Por lotes (batch):** procesa grandes volúmenes de registros internos de una vez, frecuentemente en una ventana de baja carga.
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Repositorio de datos del sistema ([Base de Datos](/docs/componentes/base-datos)) sobre el que lee y escribe
+- Mecanismo de programación o scheduler para su ejecución programada, cuando esa capacidad está presente
+- Reglas de negocio que definen la lógica de transformación, verificación o derivación
+- [Sistema de Notificación](/docs/componentes/sistema-notificacion) cuando el resultado se comunica de forma proactiva
+
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-demanda) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Actualización Manual | No | Ningún operador escribe datos paso a paso; el procesamiento es autónomo. |
+| Actualización Automática | No | No incorpora datos desde fuera del sistema; opera sobre los que ya están adentro (esto lo separa de ETL y Scraper). |
+| Conceptos de Datos | Siempre | Siempre lee y/o escribe entidades del sistema: las que procesa y las que deriva o corrige. |
+| Salidas por Demanda | Opcional | Cuando se ejecuta bajo demanda y devuelve el resultado al que lo solicitó (por ejemplo, "verificar integridad ahora"). |
+| Salidas Automáticas | Opcional | Cuando el resultado se emite de forma proactiva, sin que nadie lo pida (alerta de inconsistencia, aviso de cierre). |
+| Procesos Autónomos | Siempre | Es su esencia: la rutina de procesamiento que corre sin intervención humana en sus pasos. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<TableroDigital data={procesoInterno} />

@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {logAuditoria} from '@site/src/data/tableros/log-auditoria';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {logAuditoria as ejemplosLogAuditoria} from '@site/src/data/ejemplos/log-auditoria';
 
 # Log de Auditoría
 
 <span className={styles.aliases}>Audit log · Bitácora de auditoría · Registro de operaciones · Audit trail · Historial de actividad</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosLogAuditoria} />
 
 ## Descripción
 
@@ -98,19 +105,15 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 </div>
 
-## Ejemplos
-
-<Galeria data={ejemplosLogAuditoria} />
-
 ## Mapeo al Tablero Digital
 
 <div className={styles.mapeoGrid}>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
@@ -135,8 +138,8 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 | Sección | Vínculo | Observación |
 |:--------|:-------:|:------------|
-| Entradas Manuales | No | — |
-| Entradas Automáticas | No | — |
+| Actualización Manual | No | — |
+| Actualización Automática | No | — |
 | Conceptos de Datos | Siempre | Registro de Auditoría como entidad persistente del sistema. |
 | Salidas por Demanda | Opcional | Visualización integrada del historial y exportación de registros, cuando esas capacidades están presentes. |
 | Salidas Automáticas | No | — |

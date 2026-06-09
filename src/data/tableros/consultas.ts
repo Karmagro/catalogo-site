@@ -3,11 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const consultas: TableroData = {
   componente: 'Consultas',
   tarjetas: {
-    'entradas-manuales': [
-      {titulo: 'Barra de Búsqueda', variante: 'mandatorio'},
-      {titulo: 'Filtros de Búsqueda', variante: 'opcional'},
-    ],
-    'entradas-automaticas': [],
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [],
     'conceptos-datos': [
       {titulo: 'Video', variante: 'mandatorio'},
     ],

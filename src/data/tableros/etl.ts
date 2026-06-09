@@ -3,10 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const etl: TableroData = {
   componente: 'ETL',
   tarjetas: {
-    'entradas-manuales': [
-      {titulo: 'Trigger Manual del ETL', variante: 'opcional'},
-    ],
-    'entradas-automaticas': [
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [
       {titulo: 'Extracción Programada desde S3', variante: 'mandatorio'},
     ],
     'conceptos-datos': [

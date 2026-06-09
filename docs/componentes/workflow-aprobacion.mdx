@@ -1,0 +1,163 @@
+---
+sidebar_position: 7.3
+tags:
+  - datos
+  - procesamiento
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {workflowAprobacion} from '@site/src/data/tableros/workflow-aprobacion';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {workflowAprobacion as ejemplosWorkflowAprobacion} from '@site/src/data/ejemplos/workflow-aprobacion';
+
+# Workflow de aprobación
+
+<span className={styles.aliases}>Flujo de aprobación · Flujo de trabajo · Proceso de aprobación · Circuito de aprobación</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosWorkflowAprobacion} />
+
+## Descripción
+
+Componente que coordina el avance de un caso a través de una secuencia de etapas en las que intervienen distintos actores, hasta alcanzar un estado terminal (típicamente aprobado o rechazado). Lo propio del componente no son las pantallas con que cada actor interactúa —esas son otros componentes (un formulario para cargar, una consulta para revisar, una notificación para avisar)— sino la **orquestación**: qué etapas existen, qué rol actúa en cada una, qué transiciones son válidas (aprobar, rechazar, devolver, derivar) y en qué estado se encuentra cada caso en todo momento. Es muy frecuente en sistemas de información de gestión: aprobación de órdenes de compra, solicitudes de gasto, permisos y vacaciones, contratos y documentos, o cualquier trámite donde "uno carga, otro revisa, otro decide".
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Define una secuencia de etapas (estados) por las que un caso debe transitar, con uno o más estados terminales (p. ej. aprobado, rechazado)
+- Asigna a cada etapa el rol o actor responsable de actuar sobre el caso en ese punto
+- Gobierna las transiciones permitidas entre etapas (aprobar avanza, rechazar termina, devolver retrocede), impidiendo saltos inválidos
+- Mantiene y persiste el estado actual de cada caso, y registra quién ejecutó cada transición y cuándo
+- Requiere la intervención de un actor humano para decidir al menos en una etapa, lo que lo distingue de un procesamiento autónomo
+- Coordina a los componentes que materializan cada etapa (carga, revisión, aviso) sin reemplazarlos
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Bifurcaciones y condiciones:** el camino del caso depende de sus datos (un monto sobre cierto umbral exige una aprobación adicional)
+- **Devolución / solicitud de información:** una etapa puede devolver el caso a una anterior pidiendo correcciones o datos faltantes
+- **Delegación y reasignación:** el responsable de una etapa puede delegar en otro o reasignarse el caso
+- **Plazos y escalamiento:** si una etapa no se resuelve en cierto tiempo, el caso escala o se reasigna automáticamente
+- **Trazabilidad / historial del caso:** vista del recorrido completo (quién, qué, cuándo) de un caso a lo largo del flujo
+- **Ramas paralelas:** etapas simultáneas que deben converger antes de poder avanzar (visto bueno técnico y financiero a la vez)
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No es un [Formulario de carga](/docs/componentes/formulario-carga).** El formulario es la pantalla de un único acto de ingreso; el Workflow es lo que ocurre después y alrededor de ese ingreso: lo recibe, lo enruta a un revisor y lo lleva por etapas. El Workflow contiene al formulario como su etapa inicial típica, pero no es el formulario
+- **No es un [Mantenedor](/docs/componentes/mantenedor).** El Mantenedor administra una entidad en el tiempo bajo un mismo rol; el Workflow mueve un caso entre distintos roles a través de etapas. Su razón de ser es el avance del estado, no la administración de la entidad
+- **No es un procesamiento autónomo.** Un [Proceso Interno](/docs/componentes/proceso-interno) es procesamiento sin intervención humana en sus pasos. El Workflow de aprobación, en cambio, requiere por definición que personas decidan en sus etapas; si no hay decisión humana, no es un workflow de aprobación
+- **No es un [Sistema de Notificación](/docs/componentes/sistema-notificacion).** El Workflow dispara avisos en sus transiciones, pero la entrega del mensaje es del Sistema de Notificación; el Workflow solo decide cuándo y a quién corresponde notificar
+- **No reemplaza a los componentes que orquesta.** Las pantallas de carga, consulta y aviso siguen siendo Formulario, Consultas/Dashboard y Notificación. El Workflow es la capa que los encadena en una secuencia con estado
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    El caso inicial (típicamente proveniente de un Formulario de carga) y, en cada etapa, la decisión del actor responsable (aprobar / rechazar / devolver / derivar), opcionalmente con comentarios o datos adicionales
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    El estado actualizado del caso tras cada transición, los disparos hacia los componentes de cada etapa (avisos, asignaciones) y, al cierre, el caso en su estado terminal con su historial completo
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Aprobación lineal:** etapas en secuencia simple (carga → revisión → decisión); el caso más común (una solicitud de vacaciones)
+- **Aprobación jerárquica / por niveles:** la decisión sube por niveles según reglas (monto, tipo), requiriendo aprobaciones sucesivas (una orden de compra que sobre cierto monto necesita visto bueno de gerencia)
+- **Workflow con devolución:** incluye retrocesos para corrección antes de poder avanzar (una postulación que se devuelve para completar antecedentes)
+- **Workflow con ramas paralelas:** varias revisiones simultáneas que deben converger (visto bueno técnico y financiero a la vez)
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- [Formulario de carga](/docs/componentes/formulario-carga) como etapa de entrada del caso
+- [Consultas](/docs/componentes/consultas) / [Dashboard](/docs/componentes/dashboard) / [Mantenedor](/docs/componentes/mantenedor) para que cada actor vea sus casos pendientes y el detalle
+- [Sistema de Notificación](/docs/componentes/sistema-notificacion) para avisar a cada actor cuando le toca actuar y al solicitante en cada cambio de estado
+- [Autorización](/docs/componentes/autorizacion) para determinar qué rol puede actuar en cada etapa
+- [Base de Datos](/docs/componentes/base-datos) donde se persiste el estado y el historial de cada caso
+
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-actualizacion-manual) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-actualizacion-manual) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-demanda) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Actualización Manual | Siempre | La decisión de cada etapa (aprobar/rechazar/devolver) la ejecuta un actor humano; un workflow de aprobación sin intervención humana no es tal (sería un procesamiento autónomo). |
+| Actualización Automática | No | — |
+| Conceptos de Datos | Siempre | El caso y su estado (qué se aprueba, en qué etapa está, quién intervino y cuándo) son la entidad central. |
+| Salidas por Demanda | Opcional | La bandeja de casos pendientes o la consulta del estado de un caso, cuando el workflow expone vistas propias. |
+| Salidas Automáticas | Opcional | Los avisos disparados en cada transición, vía Sistema de Notificación. |
+| Procesos Autónomos | Siempre | El núcleo del componente: avanzar el estado, evaluar la transición válida, asignar la siguiente etapa y cerrar el caso. Es lo que lo distingue de Formulario y Mantenedor. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<TableroDigital data={workflowAprobacion} />

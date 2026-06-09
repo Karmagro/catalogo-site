@@ -8,17 +8,24 @@ tags:
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
-import {endpointApi} from '@site/src/data/tableros/endpoint-api';
+import {servicioExpuesto} from '@site/src/data/tableros/servicio-expuesto';
 import Galeria from '@site/src/components/Galeria';
-import {endpointApi as ejemplosEndpointApi} from '@site/src/data/ejemplos/endpoint-api';
+import FichaTags from '@site/src/components/FichaTags';
+import {servicioExpuesto as ejemplosServicioExpuesto} from '@site/src/data/ejemplos/servicio-expuesto';
 
-# End-point (API)
+# Servicio Expuesto
 
-<span className={styles.aliases}>API · Application Programming Interface · Servicio web · Endpoint</span>
+<span className={styles.aliases}>Exponer un servicio · API propia · Servicio publicado · Integración entrante · Servicio para terceros · Endpoint expuesto</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosServicioExpuesto} />
 
 ## Descripción
 
-Interfaz que permite la comunicación entre sistemas de software. Expone un conjunto de funcionalidades del sistema mediante puntos de acceso específicos, permitiendo que aplicaciones externas o internas soliciten servicios o intercambien información de manera controlada y estructurada. La API oculta la complejidad interna del sistema, exponiendo solo las operaciones permitidas según un contrato definido.
+Componente mediante el cual el sistema publica funcionalidades o información para que otros sistemas las invoquen programáticamente. El sistema actúa como proveedor: define un contrato, abre puntos de acceso y atiende las solicitudes que llegan desde sistemas externos, devolviendo respuestas o aceptando datos que se le inyectan. Oculta la complejidad interna y expone solo las operaciones permitidas según el contrato definido. Es el lado «servidor» de una integración entre sistemas.
 
 ## Capacidades mandatorias
 
@@ -29,10 +36,10 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
   <span>Capacidades mandatorias</span>
 </div>
 
-- Expone funcionalidades del sistema a través de puntos de acceso accesibles programáticamente
-- Permite que sistemas externos soliciten información o ejecuten operaciones del sistema
-- Define un contrato (especificación) que indica cómo realizar solicitudes y qué respuestas esperar
-- Requiere autenticación de los sistemas clientes que consumen los endpoints
+- Publica puntos de acceso invocables programáticamente por sistemas externos o internos
+- Recibe solicitudes entrantes, las atiende contra la lógica del sistema y devuelve una respuesta estructurada
+- Define un contrato (especificación) que indica cómo realizar las solicitudes y qué respuestas esperar
+- Requiere que los sistemas clientes que invocan el servicio estén autenticados
 
 </div>
 
@@ -46,7 +53,7 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 </div>
 
 - **Versionado:** mantiene múltiples versiones de la API en paralelo (v1, v2) para no romper compatibilidad con clientes existentes al evolucionar el contrato
-- **Documentación interactiva:** provee una interfaz navegable de la especificación (Swagger/OpenAPI, GraphQL Playground) que permite probar los endpoints directamente
+- **Documentación interactiva:** provee una interfaz navegable de la especificación (Swagger/OpenAPI, GraphQL Playground) que permite probar el servicio directamente
 - **Rate limiting:** restringe la cantidad de solicitudes que un cliente puede realizar en un intervalo de tiempo
 - **Caching de respuestas:** almacena temporalmente respuestas frecuentes para reducir tiempo de respuesta y carga del sistema
 - **Monitoreo de uso:** registra métricas de invocaciones, latencias, errores y patrones de consumo por cliente
@@ -57,8 +64,8 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 
 <Admonition type="danger" title="Qué no es">
 
-- **No** es un [ETL](/docs/componentes/etl): el ETL realiza cargas masivas de datos según un plan; la API responde solicitudes puntuales según demanda del cliente
-- **No** realiza el procesamiento de negocio por sí misma: la API es el mecanismo de comunicación; el procesamiento lo realizan los servicios internos del sistema
+- **No** es la interfaz de usuario: el servicio expuesto es programático, pensado para que otro sistema lo consuma, no para la interacción de una persona a través de una pantalla
+- **No** consume servicios de terceros — eso corresponde a [Consumo de Servicio Externo](/docs/componentes/consumo-servicio-externo): aquí el sistema es el que ofrece, no el que usa
 - **No** verifica la identidad del cliente — eso corresponde a [Autenticación API](/docs/componentes/autenticacion-api)
 - **No** determina qué puede hacer el cliente autenticado — eso corresponde a [Autorización](/docs/componentes/autorizacion)
 
@@ -71,7 +78,7 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 <div className={styles.flowCard}>
   <div className={styles.flowCardHeader}>Entrada</div>
   <div className={styles.flowCardBody}>
-    Solicitud estructurada de un sistema externo (método HTTP, ruta del endpoint, parámetros, credenciales)
+    Solicitud estructurada de un sistema externo (método de invocación, operación, parámetros, credenciales). En modalidad de inyección de datos, los propios datos que el tercero envía para que el sistema los incorpore.
   </div>
 </div>
 
@@ -96,27 +103,24 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 
 <div className={styles.dependencies}>
 
-- Servidor que recibe y procesa las solicitudes
+- Servidor que recibe y procesa las solicitudes entrantes
 - [Autenticación API](/docs/componentes/autenticacion-api) para verificar la identidad del cliente
 - [Autorización](/docs/componentes/autorizacion) para determinar qué puede hacer el cliente autenticado
-- [Base de Datos](/docs/componentes/base-datos) o repositorio de información sobre el que operan los endpoints
+- [Base de Datos](/docs/componentes/base-datos) o repositorio de información sobre el que opera el servicio
+- Documentación que especifica los puntos de acceso y protocolos
 
 </div>
-
-## Ejemplos
-
-<Galeria data={ejemplosEndpointApi} />
 
 ## Mapeo al Tablero Digital
 
 <div className={styles.mapeoGrid}>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-entradas-automaticas) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-entradas-automaticas) 45%, transparent)'}}>
-    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
-    <span className={styles.mapeoStatus}>Siempre</span>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-actualizacion-automatica) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
     <span className={styles.mapeoLabel}>Conceptos de Datos</span>
@@ -140,15 +144,15 @@ Interfaz que permite la comunicación entre sistemas de software. Expone un conj
 
 | Sección | Vínculo | Observación |
 |:--------|:-------:|:------------|
-| Entradas Manuales | No | — |
-| Entradas Automáticas | Siempre | Solicitudes que llegan desde sistemas externos para ser atendidas. |
-| Conceptos de Datos | Siempre | Las entidades del sistema que se exponen o se manipulan a través de la API. |
+| Actualización Manual | No | — |
+| Actualización Automática | Opcional | Cuando el servicio se expone para que terceros inyecten datos al sistema (modalidad de inyección). |
+| Conceptos de Datos | Siempre | Las entidades del sistema que se exponen o se manipulan a través del servicio. |
 | Salidas por Demanda | No | — |
 | Salidas Automáticas | Siempre | Respuestas estructuradas que el sistema envía hacia los sistemas externos solicitantes. |
-| Procesos Autónomos | Siempre | La lógica de los endpoints que procesa cada solicitud entrante. Rate limiting, caching y monitoreo cuando esas capacidades están presentes. |
+| Procesos Autónomos | Siempre | La lógica que atiende cada solicitud entrante. Rate limiting, caching y monitoreo cuando esas capacidades están presentes. |
 
 </div>
 
 ## Ejemplo de Tablero Digital
 
-<TableroDigital data={endpointApi} />
+<TableroDigital data={servicioExpuesto} />

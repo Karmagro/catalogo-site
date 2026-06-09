@@ -9,11 +9,18 @@ import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
 import {creadorCuenta} from '@site/src/data/tableros/creador-cuenta';
 import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
 import {creadorCuenta as ejemplosCreadorCuenta} from '@site/src/data/ejemplos/creador-cuenta';
 
 # Creador de Cuenta
 
 <span className={styles.aliases}>Sign-up · Registro de usuario · Formulario de registro</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosCreadorCuenta} />
 
 ## Descripción
 
@@ -99,19 +106,15 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 </div>
 
-## Ejemplos
-
-<Galeria data={ejemplosCreadorCuenta} />
-
 ## Mapeo al Tablero Digital
 
 <div className={styles.mapeoGrid}>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-entradas-manuales) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-entradas-manuales) 45%, transparent)'}}>
-    <span className={styles.mapeoLabel}>Entradas Manuales</span>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-actualizacion-manual) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-actualizacion-manual) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
     <span className={styles.mapeoStatus}>Siempre</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Entradas Automáticas</span>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
     <span className={styles.mapeoStatus}>No</span>
   </div>
   <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
@@ -136,8 +139,8 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 | Sección | Vínculo | Observación |
 |:--------|:-------:|:------------|
-| Entradas Manuales | Siempre | Formulario de registro que el usuario completa con sus datos. Captcha y código de invitación cuando esas capacidades están presentes. |
-| Entradas Automáticas | No | — |
+| Actualización Manual | Siempre | Formulario de registro que el usuario completa con sus datos. Captcha y código de invitación cuando esas capacidades están presentes. |
+| Actualización Automática | No | — |
 | Conceptos de Datos | Siempre | Usuario (nueva cuenta creada). |
 | Salidas por Demanda | No | — |
 | Salidas Automáticas | Opcional | Email o SMS de bienvenida, código de verificación previa cuando esa capacidad está presente. |

@@ -40,34 +40,34 @@ El Tablero Digital organiza los requisitos en seis secciones que reflejan el flu
 
 <div className={styles.seccionGrid}>
 
-  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-entradas-manuales)'}}>
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>
     <div className={styles.seccionCardHeader}>
       <span className={styles.seccionCardDot}></span>
-      <h3 className={styles.seccionCardTitle}>Entradas Manuales</h3>
+      <h3 className={styles.seccionCardTitle}>Actualización Manual</h3>
     </div>
-    <div className={styles.seccionCardBody}>Funcionalidades en las que un operador humano introduce información al sistema mediante interacción directa con interfaces de usuario. El operador puede ser un usuario final, un administrador o cualquier actor que ingrese datos a través de formularios, pantallas de edición u otros mecanismos análogos.</div>
+    <div className={styles.seccionCardBody}>Funcionalidades en las que un operador humano, mediante interacción directa con interfaces de usuario, crea, modifica o elimina datos que el sistema mantiene de forma persistente. El operador puede ser un usuario final, un administrador o cualquier actor que actualice información a través de formularios, pantallas de edición u otros mecanismos análogos. No abarca el ingreso transitorio de datos que solo sirve para recuperar o navegar información —como criterios de búsqueda o credenciales de acceso—, que no modifica el estado del sistema.</div>
     <div className={styles.seccionCardExamples}>
       <span className={styles.seccionCardExamplesLabel}>Ejemplos de tarjetas</span>
       <div className={styles.seccionCardChips}>
-        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-entradas-manuales)'}}>Formulario de registro de proyectos</span>
-        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-entradas-manuales)'}}>Pantalla de edición de perfil</span>
-        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-entradas-manuales)'}}>Carga de documentos</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Formulario de registro de proyectos</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Pantalla de edición de perfil</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Carga de documentos</span>
       </div>
     </div>
   </div>
 
-  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-entradas-automaticas)'}}>
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>
     <div className={styles.seccionCardHeader}>
       <span className={styles.seccionCardDot}></span>
-      <h3 className={styles.seccionCardTitle}>Entradas Automáticas</h3>
+      <h3 className={styles.seccionCardTitle}>Actualización Automática</h3>
     </div>
-    <div className={styles.seccionCardBody}>Funcionalidades mediante las cuales el sistema incorpora información sin requerir intervención humana directa, ya sea de forma periódica o reactiva ante eventos externos. Su propósito es asegurar que el sistema disponga de información oportuna y coherente reduciendo la dependencia de la carga manual.</div>
+    <div className={styles.seccionCardBody}>Funcionalidades mediante las cuales el sistema incorpora o actualiza información sin intervención humana directa, ya sea de forma periódica o reactiva ante eventos externos. Su propósito es asegurar que el sistema disponga de información oportuna y coherente, reduciendo la dependencia de la actualización manual.</div>
     <div className={styles.seccionCardExamples}>
       <span className={styles.seccionCardExamplesLabel}>Ejemplos de tarjetas</span>
       <div className={styles.seccionCardChips}>
-        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-entradas-automaticas)'}}>Sincronización nocturna con sistema contable</span>
-        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-entradas-automaticas)'}}>Ingesta de datos desde API externa</span>
-        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-entradas-automaticas)'}}>Scraping de precios</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>Sincronización nocturna con sistema contable</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>Ingesta de datos desde API externa</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>Scraping de precios</span>
       </div>
     </div>
   </div>
@@ -154,12 +154,12 @@ Cada componente del catálogo puede vincularse con varias secciones del tablero 
     <span className={styles.relacionCasoComponent}>Mantenedor</span>
     <span className={styles.relacionCasoArrow}>→</span>
     <div className={styles.relacionCasoChips}>
-      <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-entradas-manuales)'}}>Entradas Manuales</span>
+      <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Actualización Manual</span>
       <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>Conceptos de Datos</span>
       <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-demanda)'}}>Salidas por Demanda</span>
     </div>
   </div>
-  <div className={styles.relacionCasoNote}>Un Mantenedor toca Entradas Manuales (formularios de creación y edición), Conceptos de Datos (la entidad que gestiona), y Salidas por Demanda (listado, búsqueda y filtrado de registros).</div>
+  <div className={styles.relacionCasoNote}>Un Mantenedor toca Actualización Manual (formularios de creación y edición), Conceptos de Datos (la entidad que gestiona), y Salidas por Demanda (listado, búsqueda y filtrado de registros).</div>
 </div>
 
 Esta transversalidad se captura en la [matriz consolidada](/docs/secciones), que muestra para cada componente qué secciones del tablero cubre y con qué carácter (mandatorio u opcional).

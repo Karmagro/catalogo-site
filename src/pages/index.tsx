@@ -6,8 +6,8 @@ import Layout from '@theme/Layout';
 import styles from './index.module.css';
 
 const SECTION_COLORS: Record<string, string> = {
-  'Entradas Manuales':    'var(--seccion-entradas-manuales)',
-  'Entradas Automáticas': 'var(--seccion-entradas-automaticas)',
+  'Actualización Manual':    'var(--seccion-actualizacion-manual)',
+  'Actualización Automática': 'var(--seccion-actualizacion-automatica)',
   'Conceptos de Datos':   'var(--seccion-conceptos)',
   'Salidas por Demanda':  'var(--seccion-salidas-demanda)',
   'Salidas Automáticas':  'var(--seccion-salidas-automaticas)',
@@ -18,7 +18,6 @@ function HomepageHeader() {
   return (
     <header className={styles.hero}>
       <div className="container">
-        <p className={styles.heroEyebrow}>Memoria de Ingeniería Civil Informática · Universidad de Chile</p>
         <h1 className={styles.heroTitle}>
           Catálogo de Componentes<br />
           <span className={styles.heroTitleAccent}>de Software</span>
@@ -31,7 +30,7 @@ function HomepageHeader() {
         </p>
         <div className={styles.heroCtas}>
           <Link className={styles.ctaPrimary} to="/docs/componentes/formulario-login">
-            Explorar los 17 componentes →
+            Explorar los 21 componentes →
           </Link>
           <Link className={styles.ctaSecondary} to="/docs/sobre-el-catalogo">
             ¿Qué es este catálogo?
@@ -53,7 +52,7 @@ function EntryCards() {
             <div className={styles.cardPrimaryBadge}>Catálogo completo</div>
             <h2 className={styles.cardPrimaryTitle}>Por Componente</h2>
             <p className={styles.cardPrimaryDesc}>
-              17 componentes documentados con estructura de 11 campos: descripción,
+              21 componentes documentados con estructura de 11 campos: descripción,
               capacidades, delimitaciones, flujo de información, modalidades,
               dependencias, ejemplos y mapeo al Tablero Digital.
             </p>
@@ -74,12 +73,12 @@ function EntryCards() {
             </div>
 
             <div className={styles.cardSecondary}>
-              <div className={styles.cardSecondaryIcon} style={{background: 'color-mix(in srgb, var(--seccion-entradas-automaticas) 12%, transparent)', color: 'var(--seccion-entradas-automaticas)'}}>⊛</div>
-              <h3 className={styles.cardSecondaryTitle}>Por Tags</h3>
+              <div className={styles.cardSecondaryIcon} style={{background: 'color-mix(in srgb, var(--seccion-actualizacion-automatica) 12%, transparent)', color: 'var(--seccion-actualizacion-automatica)'}}>⊛</div>
+              <h3 className={styles.cardSecondaryTitle}>Por Etiquetas</h3>
               <p className={styles.cardSecondaryDesc}>
                 Agrupación por afinidad funcional: autenticación, visualización, seguridad, integración y más.
               </p>
-              <Link className={styles.ctaSecondary} to="/docs/tags">Ver tags →</Link>
+              <Link className={styles.ctaSecondary} to="/docs/etiquetas">Ver etiquetas →</Link>
             </div>
           </div>
 
@@ -91,8 +90,8 @@ function EntryCards() {
 
 function BoardTeaser() {
   const sections = [
-    {label: 'Entradas Manuales',    desc: 'Interacción directa con usuarios'},
-    {label: 'Entradas Automáticas', desc: 'Ingesta sin intervención humana'},
+    {label: 'Actualización Manual',    desc: 'Datos que el usuario crea o modifica'},
+    {label: 'Actualización Automática', desc: 'Ingesta sin intervención humana'},
     {label: 'Conceptos de Datos',   desc: 'Entidades persistentes del sistema'},
     {label: 'Salidas por Demanda',  desc: 'Información solicitada por el usuario'},
     {label: 'Salidas Automáticas',  desc: 'Notificaciones y comunicación proactiva'},

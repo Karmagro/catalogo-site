@@ -6,9 +6,9 @@ export interface SeccionInfo {
 }
 
 export const SECCIONES: Record<Seccion, SeccionInfo> = {
-  'entradas-manuales': {
-    label: 'Entradas Manuales',
-    cssVar: '--seccion-entradas-manuales',
+  'actualizacion-manual': {
+    label: 'Actualización Manual',
+    cssVar: '--seccion-actualizacion-manual',
   },
   'conceptos-datos': {
     label: 'Conceptos de Datos',
@@ -18,9 +18,9 @@ export const SECCIONES: Record<Seccion, SeccionInfo> = {
     label: 'Salidas por Demanda',
     cssVar: '--seccion-salidas-demanda',
   },
-  'entradas-automaticas': {
-    label: 'Entradas Automáticas',
-    cssVar: '--seccion-entradas-automaticas',
+  'actualizacion-automatica': {
+    label: 'Actualización Automática',
+    cssVar: '--seccion-actualizacion-automatica',
   },
   'procesos-autonomos': {
     label: 'Procesos Autónomos',
@@ -33,10 +33,10 @@ export const SECCIONES: Record<Seccion, SeccionInfo> = {
 };
 
 export const SECCION_ORDER: Seccion[] = [
-  'entradas-manuales',
+  'actualizacion-manual',
   'conceptos-datos',
   'salidas-demanda',
-  'entradas-automaticas',
+  'actualizacion-automatica',
   'procesos-autonomos',
   'salidas-automaticas',
 ];

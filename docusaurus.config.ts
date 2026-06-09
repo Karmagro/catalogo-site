@@ -31,6 +31,7 @@ const config: Config = {
         docs: {
           sidebarPath: './sidebars.ts',
           editUrl: undefined,
+          tagsBasePath: 'etiquetas',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -71,9 +72,11 @@ const config: Config = {
         {to: '/', label: 'Inicio', position: 'left'},
         {type: 'search', position: 'left'},
         {to: '/docs/secciones', label: 'Por Sección', position: 'right'},
-        {to: '/docs/tags', label: 'Por Tags', position: 'right'},
+        {to: '/docs/etiquetas', label: 'Por Etiquetas', position: 'right'},
         {to: '/docs/tablero-digital', label: 'Tablero Digital', position: 'right'},
         {to: '/docs/sobre-el-catalogo', label: 'Sobre el Catálogo', position: 'right'},
+        {to: '/creditos', label: 'Créditos', position: 'right'},
+        {type: 'custom-tutorialButton', position: 'right'},
       ],
     },
     footer: {
@@ -84,7 +87,7 @@ const config: Config = {
           items: [
             {label: 'Componentes', to: '/docs/componentes/mantenedor'},
             {label: 'Por Sección', to: '/docs/secciones'},
-            {label: 'Por Tags', to: '/docs/tags'},
+            {label: 'Por Etiquetas', to: '/docs/etiquetas'},
           ],
         },
         {
@@ -104,6 +107,7 @@ const config: Config = {
         {
           title: 'Memoria',
           items: [
+            {label: 'Créditos', to: '/creditos'},
             {label: 'Carlos Gálvez Romo', to: 'https://github.com/Karmagro'},
             {label: 'Universidad de Chile', to: 'https://www.dcc.uchile.cl/'},
           ],

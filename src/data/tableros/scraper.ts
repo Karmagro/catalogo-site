@@ -3,8 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const scraper: TableroData = {
   componente: 'Scraper',
   tarjetas: {
-    'entradas-manuales': [],
-    'entradas-automaticas': [
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [
       {titulo: 'Extracción Programada de Sitios de Empresas', variante: 'mandatorio'},
     ],
     'conceptos-datos': [

@@ -3,8 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const dashboard: TableroData = {
   componente: 'Dashboard',
   tarjetas: {
-    'entradas-manuales': [],
-    'entradas-automaticas': [],
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [],
     'conceptos-datos': [
       {titulo: 'Productos', variante: 'mandatorio'},
       {titulo: 'Ventas', variante: 'mandatorio'},

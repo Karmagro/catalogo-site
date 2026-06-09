@@ -8,12 +8,12 @@
 
 /* ─── Colores de las 6 secciones del Tablero Digital ─── */
 :root {
-  --seccion-entradas-manuales:    #0284C7;
-  --seccion-entradas-automaticas: #7C3AED;
-  --seccion-conceptos:            #059669;
-  --seccion-salidas-demanda:      #D97706;
-  --seccion-salidas-automaticas:  #DB2777;
-  --seccion-procesos-autonomos:   #475569;
+  --seccion-actualizacion-manual:    #0284C7;
+  --seccion-actualizacion-automatica: #7C3AED;
+  --seccion-conceptos:               #059669;
+  --seccion-salidas-demanda:         #D97706;
+  --seccion-salidas-automaticas:     #DB2777;
+  --seccion-procesos-autonomos:      #475569;
 }
 
 /* ─── Modo claro ─── */
@@ -76,12 +76,12 @@
   --docusaurus-highlighted-code-line-bg: rgba(129, 140, 248, 0.1);
 
   /* Colores de sección ligeramente más brillantes en dark */
-  --seccion-entradas-manuales:    #38BDF8;
-  --seccion-entradas-automaticas: #A78BFA;
-  --seccion-conceptos:            #34D399;
-  --seccion-salidas-demanda:      #FCD34D;
-  --seccion-salidas-automaticas:  #F472B6;
-  --seccion-procesos-autonomos:   #94A3B8;
+  --seccion-actualizacion-manual:    #38BDF8;
+  --seccion-actualizacion-automatica: #A78BFA;
+  --seccion-conceptos:               #34D399;
+  --seccion-salidas-demanda:         #FCD34D;
+  --seccion-salidas-automaticas:     #F472B6;
+  --seccion-procesos-autonomos:      #94A3B8;
 }
 
 /* ─── Tipografía base ─── */
@@ -310,28 +310,28 @@ table thead th {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   Páginas nativas de tags de Docusaurus
-   /docs/tags          → .docs-tags-list-page  (índice de todas las etiquetas)
-   /docs/tags/<slug>   → .docs-tags-doc-list-page  (listado por tag)
+   Páginas nativas de etiquetas de Docusaurus (tagsBasePath: 'etiquetas')
+   /docs/etiquetas          → .docs-tags-list-page  (índice de todas las etiquetas)
+   /docs/etiquetas/<slug>   → .docs-tags-doc-list-page  (listado por etiqueta)
    ───────────────────────────────────────────────────────────── */
 
-/* Mapping tag → variable de color de sección. Cada tag toma el color de la
-   sección del Tablero Digital con la que más se asocia conceptualmente. */
+/* Mapping etiqueta → variable de color de sección. Cada etiqueta toma el color
+   de la sección del Tablero Digital con la que más se asocia conceptualmente. */
 .docs-tags-list-page,
 .docs-tags-doc-list-page,
 .theme-doc-footer-tags-row {
   --tag-color: var(--ifm-color-primary);
 }
 
-/* Mapping tag → color (aplica a chips del índice y de pie de ficha) */
-a[href$="/tags/autenticacion"]   { --tag-color: var(--seccion-entradas-manuales); }
-a[href$="/tags/datos"]           { --tag-color: var(--seccion-conceptos); }
-a[href$="/tags/visualizacion"]   { --tag-color: var(--seccion-salidas-demanda); }
-a[href$="/tags/notificaciones"]  { --tag-color: var(--seccion-salidas-automaticas); }
-a[href$="/tags/procesamiento"]   { --tag-color: var(--seccion-procesos-autonomos); }
-a[href$="/tags/seguridad"]       { --tag-color: var(--seccion-salidas-automaticas); }
-a[href$="/tags/geo"]             { --tag-color: var(--seccion-conceptos); }
-a[href$="/tags/integracion"]     { --tag-color: var(--seccion-entradas-automaticas); }
+/* Mapping etiqueta → color (aplica a chips del índice, de inicio y de pie de ficha) */
+a[href$="/etiquetas/autenticacion"]   { --tag-color: var(--seccion-actualizacion-manual); }
+a[href$="/etiquetas/datos"]           { --tag-color: var(--seccion-conceptos); }
+a[href$="/etiquetas/visualizacion"]   { --tag-color: var(--seccion-salidas-demanda); }
+a[href$="/etiquetas/notificaciones"]  { --tag-color: var(--seccion-salidas-automaticas); }
+a[href$="/etiquetas/procesamiento"]   { --tag-color: var(--seccion-procesos-autonomos); }
+a[href$="/etiquetas/seguridad"]       { --tag-color: var(--seccion-salidas-automaticas); }
+a[href$="/etiquetas/geo"]             { --tag-color: var(--seccion-conceptos); }
+a[href$="/etiquetas/integracion"]     { --tag-color: var(--seccion-actualizacion-automatica); }
 
 /* ── Página índice de etiquetas ───────────────────────────────── */
 
@@ -523,4 +523,73 @@ a[href$="/tags/integracion"]     { --tag-color: var(--seccion-entradas-automatic
 .theme-doc-footer-tags-row a[rel="tag"]:hover {
   background: color-mix(in srgb, var(--tag-color) 20%, var(--ifm-background-color));
   transform: translateY(-1px);
+}
+
+/* ── Etiquetas al inicio de ficha (R15) ──────────────────────── */
+/* Mismo chip que el pie, pero ubicado bajo el alias. El color lo resuelve
+   el mapping global por href de más arriba (--tag-color). */
+.ficha-top-tags {
+  --tag-color: var(--ifm-color-primary);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.85rem 0 0;
+}
+
+/* Mismo rótulo que el pie (.theme-doc-footer-tags-row b) para que arriba y
+   abajo se lean igual y no haya disonancia. */
+.ficha-top-tags__label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.ficha-top-tags a[rel="tag"] {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: color-mix(in srgb, var(--tag-color) 12%, var(--ifm-background-color));
+  color: var(--tag-color) !important;
+  border: 1px solid color-mix(in srgb, var(--tag-color) 35%, transparent);
+  text-decoration: none !important;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.ficha-top-tags a[rel="tag"]:hover {
+  background: color-mix(in srgb, var(--tag-color) 20%, var(--ifm-background-color));
+  transform: translateY(-1px);
+}
+
+/* ─── Rótulos de tramo del sidebar (orden narrativo, no taxonómico) ─── */
+.sidebar-tramo {
+  display: block;
+  margin: 1.5rem 0 0.45rem;
+  padding: 0.6rem var(--ifm-menu-link-padding-horizontal, 0.75rem) 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  cursor: default;
+  user-select: none;
+}
+
+[data-theme='dark'] .sidebar-tramo {
+  color: var(--ifm-color-primary-lighter);
+  border-top-color: var(--ifm-color-emphasis-300);
+}
+
+/* El primer tramo no necesita borde ni margen superior extra. */
+.menu__list > li:first-child .sidebar-tramo,
+.theme-doc-sidebar-menu > li:first-child .sidebar-tramo {
+  margin-top: 0.25rem;
+  padding-top: 0;
+  border-top: none;
 }

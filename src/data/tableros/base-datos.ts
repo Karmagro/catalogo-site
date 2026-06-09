@@ -3,8 +3,8 @@ import type {TableroData} from '@site/src/components/TableroDigital/types';
 export const baseDatos: TableroData = {
   componente: 'Base de Datos',
   tarjetas: {
-    'entradas-manuales': [],
-    'entradas-automaticas': [],
+    'actualizacion-manual': [],
+    'actualizacion-automatica': [],
     'conceptos-datos': [
       {titulo: 'Libro', variante: 'mandatorio'},
       {titulo: 'Cliente', variante: 'mandatorio'},
@@ -13,7 +13,9 @@ export const baseDatos: TableroData = {
       {titulo: 'Pedido', variante: 'mandatorio'},
     ],
     'salidas-demanda': [],
-    'procesos-autonomos': [],
+    'procesos-autonomos': [
+      {titulo: 'Respaldo Automático', variante: 'opcional'},
+    ],
     'salidas-automaticas': [],
   },
 };
