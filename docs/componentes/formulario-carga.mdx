@@ -67,7 +67,7 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 - **No es un [Mantenedor](/docs/componentes/mantenedor).** El Mantenedor administra una entidad a lo largo del tiempo (crear, leer, editar, eliminar la misma entidad, volver sobre ella). El Formulario de carga es un acto de ingreso puntual cuyo dato, una vez enviado, deja de estar bajo el control de quien lo cargó. La diferencia no es de cantidad de operaciones sino de **relación con el dato**: administración continua de una entidad propia frente a entrega de un dato a un flujo
 - **No es una encuesta.** Aunque la operatoria de captura se parezca, la encuesta tiene una intención distinta (recoger opiniones o respuestas para análisis agregado, no incorporar un registro al flujo operativo del sistema); se considera de naturaleza diferente
-- **No procesa, aprueba ni deriva lo cargado.** El disparo del flujo, las aprobaciones sucesivas o el procesamiento posterior corresponden a otros componentes (Workflow, Proceso interno, [Sistema de Notificación](/docs/componentes/sistema-notificacion))
+- **No procesa, aprueba ni deriva lo cargado.** El disparo del flujo, las aprobaciones sucesivas o el procesamiento posterior corresponden a otros componentes ([Workflow de aprobación](/docs/componentes/workflow-aprobacion), [Proceso Interno](/docs/componentes/proceso-interno), [Sistema de Notificación](/docs/componentes/sistema-notificacion))
 - **No recupera ni muestra información existente** — eso corresponde a [Consultas](/docs/componentes/consultas), [Reporte](/docs/componentes/reporte) o [Dashboard](/docs/componentes/dashboard); su dirección es exclusivamente de entrada
 
 </Admonition>
@@ -106,7 +106,7 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 - [Base de Datos](/docs/componentes/base-datos) donde se persiste el registro ingresado
 - [Autenticación](/docs/componentes/formulario-login) y [Autorización](/docs/componentes/autorizacion) cuando la carga está restringida a usuarios identificados o con cierto permiso
-- Workflow o Proceso interno cuando el envío dispara un flujo de procesamiento o aprobación posterior
+- [Workflow de aprobación](/docs/componentes/workflow-aprobacion) o [Proceso Interno](/docs/componentes/proceso-interno) cuando el envío dispara un flujo de procesamiento o aprobación posterior
 - [Sistema de Notificación](/docs/componentes/sistema-notificacion) cuando se avisa al usuario o al área responsable tras el envío
 
 </div>
@@ -149,7 +149,7 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 | Conceptos de Datos | Siempre | La entidad o registro que se está cargando (la postulación, el reclamo, la solicitud). |
 | Salidas por Demanda | No | — |
 | Salidas Automáticas | Opcional | Acuse de recibo, comprobante o aviso al área responsable, cuando esa capacidad está presente. |
-| Procesos Autónomos | No | El procesamiento posterior pertenece a un componente que contiene al formulario (Workflow, Proceso interno), no al formulario en sí. |
+| Procesos Autónomos | No | El procesamiento posterior pertenece a un componente que contiene al formulario ([Workflow de aprobación](/docs/componentes/workflow-aprobacion), [Proceso Interno](/docs/componentes/proceso-interno)), no al formulario en sí. |
 
 </div>
 

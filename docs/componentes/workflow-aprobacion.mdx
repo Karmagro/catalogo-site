@@ -69,7 +69,7 @@ Componente que coordina el avance de un caso a través de una secuencia de etapa
 
 - **No es un [Formulario de carga](/docs/componentes/formulario-carga).** El formulario es la pantalla de un único acto de ingreso; el Workflow es lo que ocurre después y alrededor de ese ingreso: lo recibe, lo enruta a un revisor y lo lleva por etapas. El Workflow contiene al formulario como su etapa inicial típica, pero no es el formulario
 - **No es un [Mantenedor](/docs/componentes/mantenedor).** El Mantenedor administra una entidad en el tiempo bajo un mismo rol; el Workflow mueve un caso entre distintos roles a través de etapas. Su razón de ser es el avance del estado, no la administración de la entidad
-- **No es un procesamiento autónomo.** Un proceso interno es procesamiento sin intervención humana en sus pasos. El Workflow de aprobación, en cambio, requiere por definición que personas decidan en sus etapas; si no hay decisión humana, no es un workflow de aprobación
+- **No es un procesamiento autónomo.** Un [Proceso Interno](/docs/componentes/proceso-interno) es procesamiento sin intervención humana en sus pasos. El Workflow de aprobación, en cambio, requiere por definición que personas decidan en sus etapas; si no hay decisión humana, no es un workflow de aprobación
 - **No es un [Sistema de Notificación](/docs/componentes/sistema-notificacion).** El Workflow dispara avisos en sus transiciones, pero la entrega del mensaje es del Sistema de Notificación; el Workflow solo decide cuándo y a quién corresponde notificar
 - **No reemplaza a los componentes que orquesta.** Las pantallas de carga, consulta y aviso siguen siendo Formulario, Consultas/Dashboard y Notificación. El Workflow es la capa que los encadena en una secuencia con estado
 

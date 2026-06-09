@@ -14,6 +14,7 @@ const sidebars: SidebarsConfig = {
     'componentes/sistema-notificacion',
     'componentes/etl',
     'componentes/scraper',
+    'componentes/proceso-interno',
     'componentes/consultas',
     'componentes/reporte',
     'componentes/mapa-interactivo',
