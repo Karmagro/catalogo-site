@@ -565,3 +565,31 @@ a[href$="/etiquetas/integracion"]     { --tag-color: var(--seccion-actualizacion
   background: color-mix(in srgb, var(--tag-color) 20%, var(--ifm-background-color));
   transform: translateY(-1px);
 }
+
+/* ─── Rótulos de tramo del sidebar (orden narrativo, no taxonómico) ─── */
+.sidebar-tramo {
+  display: block;
+  margin: 1.5rem 0 0.45rem;
+  padding: 0.6rem var(--ifm-menu-link-padding-horizontal, 0.75rem) 0;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ifm-color-primary);
+  cursor: default;
+  user-select: none;
+}
+
+[data-theme='dark'] .sidebar-tramo {
+  color: var(--ifm-color-primary-lighter);
+  border-top-color: var(--ifm-color-emphasis-300);
+}
+
+/* El primer tramo no necesita borde ni margen superior extra. */
+.menu__list > li:first-child .sidebar-tramo,
+.theme-doc-sidebar-menu > li:first-child .sidebar-tramo {
+  margin-top: 0.25rem;
+  padding-top: 0;
+  border-top: none;
+}

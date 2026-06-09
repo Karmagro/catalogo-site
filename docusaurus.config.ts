@@ -76,6 +76,7 @@ const config: Config = {
         {to: '/docs/tablero-digital', label: 'Tablero Digital', position: 'right'},
         {to: '/docs/sobre-el-catalogo', label: 'Sobre el Catálogo', position: 'right'},
         {to: '/creditos', label: 'Créditos', position: 'right'},
+        {type: 'custom-tutorialButton', position: 'right'},
       ],
     },
     footer: {

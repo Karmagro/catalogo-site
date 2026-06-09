@@ -1,0 +1,30 @@
+.helpBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  margin: 0 0.25rem;
+  padding: 0;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.helpBtn:hover {
+  border-color: var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 12%, transparent);
+}
+
+.icon {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.helpBtn:hover .icon {
+  color: var(--ifm-color-primary);
+}
