@@ -9,6 +9,7 @@ const sidebars: SidebarsConfig = {
     'componentes/gestion-perfil',
     'componentes/mantenedor',
     'componentes/formulario-carga',
+    'componentes/workflow-aprobacion',
     'componentes/dashboard',
     'componentes/sistema-notificacion',
     'componentes/etl',
