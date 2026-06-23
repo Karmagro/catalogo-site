@@ -39,7 +39,10 @@ const sidebars: SidebarsConfig = {
     'componentes/etl',
     'componentes/scraper',
     'componentes/consumo-servicio-externo',
-    'componentes/proceso-interno',
+
+    tramo('Procesamiento interno'),
+    'componentes/proceso-programado',
+    'componentes/proceso-reactivo',
 
     tramo('Consulta y visualización'),
     'componentes/consultas',

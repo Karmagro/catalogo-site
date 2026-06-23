@@ -1,7 +1,7 @@
 import type {TableroData} from '@site/src/components/TableroDigital/types';
 
-export const procesoInterno: TableroData = {
-  componente: 'Proceso Interno',
+export const procesoProgramado: TableroData = {
+  componente: 'Proceso Programado',
   tarjetas: {
     'actualizacion-manual': [],
     'actualizacion-automatica': [],
