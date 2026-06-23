@@ -1,0 +1,161 @@
+---
+sidebar_position: 10.6
+tags:
+  - procesamiento
+  - automatización
+---
+
+import Admonition from '@theme/Admonition';
+import styles from './componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import {procesoReactivo} from '@site/src/data/tableros/proceso-reactivo';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {procesoReactivo as ejemplosProcesoReactivo} from '@site/src/data/ejemplos/proceso-reactivo';
+
+# Proceso Reactivo
+
+<span className={styles.aliases}>Disparador de datos (database trigger) · Reacción a cambio de datos · Captura de cambios (change data capture) · Manejador de eventos de dominio</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosProcesoReactivo} />
+
+## Descripción
+
+Componente que ejecuta una rutina de procesamiento de forma autónoma **en cuanto cambian datos que ya residen en el sistema**: cuando se da de alta, se edita o se da de baja un registro, el componente lo detecta y reacciona, sin que un usuario lo opere paso a paso ni medie una agenda. Toma el cambio como disparador, aplica una lógica —derivar un dato nuevo, propagar una consecuencia, validar una invariante— y produce un resultado: datos nuevos, datos corregidos o la activación de otro proceso.
+
+El caso canónico: *en cuanto aparece un cliente nuevo en la tabla de clientes, créale automáticamente su cuenta de acceso*. Nadie agenda esa creación ni la pide a mano; la dispara el propio cambio en los datos. En la industria del software corresponde a tres materializaciones del mismo patrón —el sistema se observa a sí mismo y reacciona—: los *database triggers* (la base de datos ejecuta lógica ante un INSERT/UPDATE/DELETE), el *change data capture* (un observador lee el log de transacciones y emite un evento por cada cambio) y los *domain events* (la aplicación publica un evento de negocio al cambiar su estado, y otro componente lo consume).
+
+Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre datos internos, disparado por un cambio en esos datos), no el **qué**: no fija qué reacción ejecuta, igual que un Mantenedor no fija qué entidad administra. Su pariente cercano, el [Proceso Programado](/docs/componentes/proceso-programado), comparte el territorio del procesamiento autónomo interno pero se distingue por el disparador: aquel corre cuando lo manda el reloj; este corre cuando cambian los datos.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Detecta un cambio de estado en datos que ya residen en el sistema (alta, edición o baja de un registro)
+- Se dispara de forma autónoma a partir de ese cambio, sin agenda y sin intervención humana en sus pasos
+- Ejecuta una lógica de reacción a partir del cambio: derivar un dato, propagar una consecuencia, validar una invariante
+- Opera en segundo plano, sin ocupar ni bloquear la interacción del usuario con el sistema
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Filtro de condición:** reacciona solo cuando el cambio cumple cierta condición (por ejemplo, "solo si el cliente nuevo es de tipo empresa"), no ante todo cambio indiscriminadamente
+- **Encadenamiento:** su reacción dispara a su vez otro proceso o notificación, propagando la consecuencia del cambio
+- **Emisión del resultado:** comunica el resultado de forma proactiva (aviso de que la cuenta fue creada, alerta de invariante violada)
+- **Logging de disparo:** registra cada activación (qué cambio la disparó, cuándo, con qué resultado) para auditoría y monitoreo
+- **Idempotencia y reintentos:** garantiza que un mismo cambio no produzca su reacción dos veces, y reintenta si la reacción falla
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No reacciona a un evento externo.** El cambio que lo dispara nace *dentro* del sistema (un registro propio que cambió). Si la reacción se gatilla por un aviso que **llega desde fuera** —una notificación HTTP entrante, un *webhook*—, eso es entrada externa y corresponde a un [Servicio Expuesto](/docs/componentes/servicio-expuesto), no a un Proceso Reactivo. La distinción es el origen del disparo: interno, no externo.
+- **No lo dispara el reloj.** Si la rutina corre según una agenda (cada noche, cada hora) en vez de ante un cambio puntual de datos, es un [Proceso Programado](/docs/componentes/proceso-programado).
+- **No incorpora datos desde fuera del sistema.** Opera sobre los datos que ya están adentro. Si trae datos de una fuente externa, eso es un [ETL](/docs/componentes/etl) o un [Scraper](/docs/componentes/scraper).
+- **No involucra decisiones humanas en sus pasos.** Si el procesamiento se detiene para que una persona apruebe o rechace, es un [Workflow de aprobación](/docs/componentes/workflow-aprobacion).
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Un cambio de estado en datos internos (alta, edición o baja de un registro) que actúa como disparador, detectado por el propio sistema
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    El resultado de la reacción: datos derivados o corregidos escritos en el sistema, o la activación de otro proceso o notificación
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Disparador de base de datos (database trigger):** la propia base de datos ejecuta la lógica ante un INSERT/UPDATE/DELETE sobre una tabla.
+- **Captura de cambios (change data capture):** un observador lee el log de transacciones de la base y emite un evento por cada cambio, que la aplicación consume y procesa.
+- **Evento de dominio (domain event):** la aplicación publica un evento de negocio al cambiar su estado ("cliente dado de alta"), y un manejador suscrito reacciona.
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- Repositorio de datos del sistema ([Base de Datos](/docs/componentes/base-datos)) cuyo cambio observa y sobre el que lee y escribe
+- Mecanismo de detección de cambios (triggers de BD, conector de captura de cambios, bus de eventos de dominio) que gobierna su disparo
+- Reglas de negocio que definen la condición de disparo y la lógica de la reacción
+- [Sistema de Notificación](/docs/componentes/sistema-notificacion) cuando la reacción se comunica de forma proactiva
+
+</div>
+
+## Mapeo al Tablero Digital
+
+<div className={styles.mapeoGrid}>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Actualización Manual</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Actualización Automática</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
+    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
+    <span className={styles.mapeoStatus}>No</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
+    <span className={styles.mapeoStatus}>Opcional</span>
+  </div>
+  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-procesos-autonomos) 45%, transparent)'}}>
+    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
+    <span className={styles.mapeoStatus}>Siempre</span>
+  </div>
+</div>
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Actualización Manual | No | Ningún operador escribe datos paso a paso; la reacción es autónoma. |
+| Actualización Automática | No | No incorpora datos desde fuera del sistema; reacciona a cambios en los datos que ya están adentro. |
+| Conceptos de Datos | Siempre | Siempre lee la entidad que cambió y/o escribe la que deriva como consecuencia. |
+| Salidas por Demanda | No | No responde a una solicitud externa; se dispara solo, por el cambio en los datos. |
+| Salidas Automáticas | Opcional | Cuando la reacción se comunica de forma proactiva (aviso de cuenta creada, alerta de invariante violada). |
+| Procesos Autónomos | Siempre | Es su esencia: la reacción autónoma que corre sin intervención humana, disparada por un cambio de datos internos. |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<TableroDigital data={procesoReactivo} />

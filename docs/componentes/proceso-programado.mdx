@@ -8,28 +8,28 @@ tags:
 import Admonition from '@theme/Admonition';
 import styles from './componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
-import {procesoInterno} from '@site/src/data/tableros/proceso-interno';
+import {procesoProgramado} from '@site/src/data/tableros/proceso-programado';
 import Galeria from '@site/src/components/Galeria';
 import FichaTags from '@site/src/components/FichaTags';
-import {procesoInterno as ejemplosProcesoInterno} from '@site/src/data/ejemplos/proceso-interno';
+import {procesoProgramado as ejemplosProcesoProgramado} from '@site/src/data/ejemplos/proceso-programado';
 
-# Proceso Interno
+# Proceso Programado
 
-<span className={styles.aliases}>Procesamiento autónomo · Trabajo en segundo plano (background / batch job)</span>
+<span className={styles.aliases}>Tarea programada · Trabajo en segundo plano (scheduled / batch job) · Cron job</span>
 
 <FichaTags />
 
 ## Ejemplos
 
-<Galeria data={ejemplosProcesoInterno} />
+<Galeria data={ejemplosProcesoProgramado} />
 
 ## Descripción
 
-Componente que ejecuta una rutina de procesamiento sobre datos que **ya residen en el sistema**, sin que un usuario lo opere paso a paso. Toma información interna, le aplica una lógica de transformación, verificación o derivación, y produce un resultado: datos nuevos, datos corregidos o un veredicto. Se dispara de forma autónoma —según una agenda (cada noche, cada hora)— o bajo demanda, cuando otro componente o un operador solicita su ejecución.
+Componente que ejecuta una rutina de procesamiento sobre datos que **ya residen en el sistema**, de forma autónoma y **según una agenda**: cada noche, cada hora, el primer día del mes. Un planificador (scheduler) lo invoca en los momentos definidos; no lo opera un usuario paso a paso ni lo dispara un cambio en los datos. Toma información interna, le aplica una lógica de transformación, verificación o derivación, y produce un resultado: datos nuevos, datos corregidos o un veredicto.
 
-Es el componente al que recurre el sistema cuando necesita "hacer un cálculo o una comprobación por dentro" que no encaja en ningún flujo de entrada, salida o aprobación: cruzar entidades para detectar inconsistencias, recalcular totales o saldos, derivar indicadores a partir de datos existentes, depurar registros vencidos. En la industria del software corresponde a la familia de los *background jobs* o *batch jobs*: tareas que corren independientes de la interfaz, lanzadas por la aplicación y monitoreadas, no operadas, por las personas.
+Es el componente al que recurre el sistema cuando necesita "hacer un cálculo o una comprobación por dentro, cada cierto tiempo": cruzar entidades para detectar inconsistencias en el cierre nocturno, recalcular totales o saldos al final del día, derivar indicadores periódicos, depurar registros vencidos cada semana. En la industria del software corresponde a la familia de los *scheduled jobs* o *batch jobs* gobernados por un *cron*: tareas que corren independientes de la interfaz, lanzadas por el reloj y monitoreadas, no operadas, por las personas.
 
-Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre datos internos, con un disparador de agenda o solicitud), no el **qué**: igual que un Mantenedor no fija qué entidad administra ni una Consulta qué se consulta, un Proceso Interno no fija qué calcula. Ese dominio abierto lo hace genérico, no informe.
+Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre datos internos, disparado por una agenda), no el **qué**: igual que un Mantenedor no fija qué entidad administra ni una Consulta qué se consulta, un Proceso Programado no fija qué calcula. Ese dominio abierto lo hace genérico, no informe. Su pariente cercano, el [Proceso Reactivo](/docs/componentes/proceso-reactivo), comparte el territorio del procesamiento autónomo interno pero se distingue por el disparador: aquel reacciona a un cambio en los datos; este corre cuando lo manda el reloj.
 
 ## Capacidades mandatorias
 
@@ -41,7 +41,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 </div>
 
 - Ejecuta una lógica de procesamiento sobre datos que ya están en el sistema, sin intervención humana en sus pasos
-- Se activa mediante un disparador: programado (según una agenda) o bajo demanda (a solicitud de otro componente o de un operador)
+- Se activa mediante un disparador de agenda: un planificador lo invoca de forma recurrente o en un momento fijo
 - Produce un resultado a partir del procesamiento: datos derivados, datos corregidos, o un veredicto (válido/inválido, conciliado/no conciliado)
 - Opera en segundo plano, sin ocupar ni bloquear la interacción del usuario con el sistema
 
@@ -56,8 +56,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
   <span>Capacidades adicionales</span>
 </div>
 
-- **Programación periódica (scheduling):** ejecuta la rutina en intervalos definidos mediante un planificador, sin disparo explícito de un usuario
-- **Ejecución bajo demanda:** permite que un operador o componente solicite la ejecución en el momento (por ejemplo, "recalcular ahora", "verificar integridad ahora")
+- **Ejecución bajo demanda:** además de su agenda, permite que un operador o componente solicite la ejecución en el momento (por ejemplo, "recalcular ahora", "correr la conciliación ya")
 - **Emisión del resultado:** entrega el resultado al solicitante (cuando es bajo demanda) o lo comunica de forma proactiva (alerta de inconsistencia, aviso de finalización)
 - **Logging de actividad:** registra cada ejecución (tiempos, volumen procesado, errores) para auditoría y monitoreo
 - **Reintentos y checkpoints:** reanuda o reintenta el procesamiento ante una interrupción, retomando desde el último punto guardado
@@ -68,10 +67,10 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 <Admonition type="danger" title="Qué no es">
 
-- **No incorpora datos desde fuera del sistema.** Opera sobre los datos que ya están adentro. Si la rutina trae datos de una fuente externa, eso es un [ETL](/docs/componentes/etl) o un [Scraper](/docs/componentes/scraper), no un Proceso Interno.
-- **No involucra decisiones humanas en sus pasos.** Si el procesamiento se detiene para que una persona apruebe, rechace o derive en alguna etapa, es un [Workflow de aprobación](/docs/componentes/workflow-aprobacion), no un Proceso Interno.
-- **No es una salida de información al usuario.** Una [Consulta](/docs/componentes/consultas) o un [Reporte](/docs/componentes/reporte) responden a una solicitud entregando datos existentes; el Proceso Interno *genera* datos o veredictos mediante cómputo, aunque pueda apoyarse en esos componentes para entregar su resultado.
-- **No es el "cajón de sastre" del catálogo.** No es "todo lo que no cae en otro componente": tiene una forma definida (procesamiento autónomo sobre datos internos). Lo que queda abierto es el dominio del cálculo, igual que en el resto de los componentes.
+- **No reacciona a un cambio en los datos.** Lo dispara el reloj (una agenda), no un evento de alta/edición/baja de un registro. Si la rutina debe ejecutarse *en cuanto* cambian los datos, eso es un [Proceso Reactivo](/docs/componentes/proceso-reactivo), no un Proceso Programado.
+- **No incorpora datos desde fuera del sistema.** Opera sobre los datos que ya están adentro. Si la rutina trae datos de una fuente externa, eso es un [ETL](/docs/componentes/etl) o un [Scraper](/docs/componentes/scraper).
+- **No involucra decisiones humanas en sus pasos.** Si el procesamiento se detiene para que una persona apruebe, rechace o derive en alguna etapa, es un [Workflow de aprobación](/docs/componentes/workflow-aprobacion).
+- **No es una salida de información al usuario.** Una [Consulta](/docs/componentes/consultas) o un [Reporte](/docs/componentes/reporte) responden a una solicitud entregando datos existentes; el Proceso Programado *genera* datos o veredictos mediante cómputo, aunque pueda apoyarse en esos componentes para entregar su resultado.
 
 </Admonition>
 
@@ -82,7 +81,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 <div className={styles.flowCard}>
   <div className={styles.flowCardHeader}>Entrada</div>
   <div className={styles.flowCardBody}>
-    Un disparador (agenda o solicitud) y los datos internos sobre los que opera, ya presentes en el repositorio del sistema
+    Un disparador de agenda (el planificador alcanza el momento programado) y los datos internos sobre los que opera, ya presentes en el repositorio del sistema
   </div>
 </div>
 
@@ -99,8 +98,8 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 ## Modalidades
 
-- **Programado (schedule-driven):** un planificador lo invoca de forma recurrente o en un momento fijo (cierre nocturno, conciliación diaria, depuración semanal).
-- **Bajo demanda (event-driven):** se dispara ante una solicitud explícita o un evento del sistema ("verificar integridad ahora", recalcular tras un cambio masivo).
+- **Recurrente (cron):** un planificador lo invoca de forma periódica (cierre nocturno, conciliación diaria, depuración semanal).
+- **A fecha/hora fija (scheduled):** se programa para un momento puntual (corte de fin de mes, cálculo de cierre de ejercicio).
 - **Por lotes (batch):** procesa grandes volúmenes de registros internos de una vez, frecuentemente en una ventana de baja carga.
 
 ## Dependencias típicas
@@ -108,7 +107,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 <div className={styles.dependencies}>
 
 - Repositorio de datos del sistema ([Base de Datos](/docs/componentes/base-datos)) sobre el que lee y escribe
-- Mecanismo de programación o scheduler para su ejecución programada, cuando esa capacidad está presente
+- Mecanismo de programación o scheduler (cron, planificador de tareas) que gobierna su disparo
 - Reglas de negocio que definen la lógica de transformación, verificación o derivación
 - [Sistema de Notificación](/docs/componentes/sistema-notificacion) cuando el resultado se comunica de forma proactiva
 
@@ -150,12 +149,12 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 | Actualización Manual | No | Ningún operador escribe datos paso a paso; el procesamiento es autónomo. |
 | Actualización Automática | No | No incorpora datos desde fuera del sistema; opera sobre los que ya están adentro (esto lo separa de ETL y Scraper). |
 | Conceptos de Datos | Siempre | Siempre lee y/o escribe entidades del sistema: las que procesa y las que deriva o corrige. |
-| Salidas por Demanda | Opcional | Cuando se ejecuta bajo demanda y devuelve el resultado al que lo solicitó (por ejemplo, "verificar integridad ahora"). |
+| Salidas por Demanda | Opcional | Cuando se ejecuta bajo demanda y devuelve el resultado al que lo solicitó (por ejemplo, "correr la conciliación ahora"). |
 | Salidas Automáticas | Opcional | Cuando el resultado se emite de forma proactiva, sin que nadie lo pida (alerta de inconsistencia, aviso de cierre). |
-| Procesos Autónomos | Siempre | Es su esencia: la rutina de procesamiento que corre sin intervención humana en sus pasos. |
+| Procesos Autónomos | Siempre | Es su esencia: la rutina de procesamiento que corre sin intervención humana, gobernada por una agenda. |
 
 </div>
 
 ## Ejemplo de Tablero Digital
 
-<TableroDigital data={procesoInterno} />
+<TableroDigital data={procesoProgramado} />

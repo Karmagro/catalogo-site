@@ -33,6 +33,19 @@ export default function Galeria({
     return () => clearInterval(id);
   }, [hayVarias, pausado, lightboxAbierto, total, intervalo]);
 
+  // Ficha aún sin imágenes de ejemplo: degradar con gracia en vez de romper el build.
+  if (total === 0) {
+    return (
+      <div className={styles.galeria}>
+        <figure className={styles.viewport}>
+          <figcaption className={styles.caption}>
+            Ejemplos visuales pendientes para este componente.
+          </figcaption>
+        </figure>
+      </div>
+    );
+  }
+
   const actual = imagenes[activo];
 
   return (
