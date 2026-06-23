@@ -2,14 +2,18 @@ import type {GaleriaData} from '@site/src/components/Galeria/types';
 
 export const servicioExpuesto: GaleriaData = {
   componente: 'Servicio Expuesto',
-  // TODO: reemplazar por una captura propia de documentación de API expuesta
-  // (Swagger/OpenAPI). Por ahora se reutiliza la imagen de Google Maps.
   imagenes: [
     {
-      src: '/img/ejemplos/endpoint-api-google-maps.png',
-      alt: 'Documentación de una API expuesta con sus puntos de acceso',
+      src: '/img/ejemplos/servicio-expuesto-swagger-petstore.png',
+      alt: 'Documentación interactiva en Swagger UI de la API Petstore con sus puntos de acceso',
       caption:
-        'Documentación de una API expuesta: el sistema publica sus puntos de acceso y un ejemplo de invocación para que otros sistemas la consuman.',
+        'Swagger Petstore: el sistema publica el contrato de su API (OpenAPI) y los puntos de acceso que expone —POST, PUT, GET, DELETE sobre /pet— para que otros sistemas los invoquen programáticamente.',
+    },
+    {
+      src: '/img/ejemplos/servicio-expuesto-aws-api-gateway.png',
+      alt: 'Configuración de un endpoint POST /pets en la consola de AWS API Gateway',
+      caption:
+        'AWS API Gateway: desde el lado del proveedor se configura el endpoint POST /pets, definiendo el flujo de solicitud y respuesta que atiende las invocaciones entrantes de sistemas externos.',
     },
   ],
 };
