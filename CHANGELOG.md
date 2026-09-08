@@ -20,6 +20,8 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 
 ### Cambiado
 
+- El mapeo de cada componente a las seis secciones del Tablero Digital se declara una sola vez, en `src/data/mapeo`. De ahí salen la rejilla de cada ficha, la matriz consolidada y la lectura por sección, que antes se escribían a mano por separado. La tabla de observaciones de cada ficha y los post-its de su tablero siguen siendo contenido propio.
+- Los estilos de las fichas y páginas viven en `src/css`; `docs/` contiene solo contenido.
 - Ramas normalizadas: `main` es producción (protegida, solo por *pull request*) y `dev` es integración. La rama `master` deja de existir.
 - URL canónica del sitio: `https://catalogo-componentes-software.pages.dev`.
 
