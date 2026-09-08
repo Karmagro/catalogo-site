@@ -23,7 +23,9 @@ const config: Config = {
     version: require('./package.json').version,
   },
 
-  onBrokenLinks: 'warn',
+  // Un enlace o ancla rotos rompen el build: es parte de la verificación del catálogo.
+  onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
 
   i18n: {
     defaultLocale: 'es',
@@ -38,7 +40,12 @@ const config: Config = {
           sidebarPath: './sidebars.ts',
           editUrl: undefined,
           tagsBasePath: 'etiquetas',
+          // Las etiquetas se declaran en docs/tags.yml; una etiqueta que no esté
+          // ahí rompe el build en vez de crear una nueva en silencio.
+          tags: 'tags.yml',
+          onInlineTags: 'throw',
         },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },

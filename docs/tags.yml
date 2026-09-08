@@ -1,0 +1,44 @@
+# Etiquetas del catálogo. Única fuente: una etiqueta que no esté aquí rompe el
+# build (onInlineTags: 'throw' en docusaurus.config.ts). Cada etiqueta necesita
+# además su color en src/css/custom.css (selector a[href$="/etiquetas/<permalink>"]);
+# `npm run verificar` lo comprueba.
+autenticación:
+  label: autenticación
+  permalink: autenticacion
+  description: Componentes que identifican a quien usa el sistema o a otro sistema.
+automatización:
+  label: automatización
+  permalink: automatizacion
+  description: Componentes que actúan sin intervención humana, por agenda o por reacción a un cambio.
+datos:
+  label: datos
+  permalink: datos
+  description: Componentes que crean, modifican, consultan o almacenan los datos del sistema.
+formularios:
+  label: formularios
+  permalink: formularios
+  description: Componentes cuya interfaz principal es un formulario de ingreso de datos.
+geo:
+  label: geo
+  permalink: geo
+  description: Componentes que trabajan con información geográfica.
+integración:
+  label: integración
+  permalink: integracion
+  description: Componentes que conectan el sistema con sistemas o fuentes externas.
+notificaciones:
+  label: notificaciones
+  permalink: notificaciones
+  description: Componentes que avisan a personas u otros sistemas cuando ocurre algo.
+procesamiento:
+  label: procesamiento
+  permalink: procesamiento
+  description: Componentes que transforman o calculan datos dentro del sistema.
+seguridad:
+  label: seguridad
+  permalink: seguridad
+  description: Componentes que protegen el acceso a los datos o dejan rastro de lo que se hizo con ellos.
+visualización:
+  label: visualización
+  permalink: visualizacion
+  description: Componentes que presentan los datos a las personas para consultarlos o interpretarlos.

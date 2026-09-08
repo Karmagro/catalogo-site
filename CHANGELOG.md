@@ -17,16 +17,26 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - La versión del catálogo se escribe una sola vez, en `package.json`; la página de Créditos la lee desde la configuración del sitio en vez de llevarla escrita a mano.
 - Este registro de cambios.
 - Etiqueta `v1.0.0` sobre el estado entregado con la memoria.
+- Script de verificación del catálogo (`npm run verificar`): comprueba la estructura de cada ficha, el vocabulario de etiquetas, la correspondencia entre fichas y datos, la coherencia entre el mapeo declarado, los post-its del tablero y la tabla de observaciones de cada componente, las imágenes de las galerías, los enlaces internos y las cifras publicadas. `npm run verificar:todo` suma el chequeo de tipos y el build.
+- Integración continua en GitHub Actions: cada *pull request* y cada cambio en `main` o `dev` corren `verificar:todo`.
+- Las etiquetas se declaran en `docs/tags.yml`; una etiqueta que no esté ahí rompe el build en vez de crear una nueva en silencio.
 
 ### Cambiado
 
+- Un enlace o ancla internos rotos rompen el build en vez de emitir una advertencia.
+- Versión mínima de Node: 22.18 (`.nvmrc` fija la 24).
 - El mapeo de cada componente a las seis secciones del Tablero Digital se declara una sola vez, en `src/data/mapeo`. De ahí salen la rejilla de cada ficha, la matriz consolidada y la lectura por sección, que antes se escribían a mano por separado. La tabla de observaciones de cada ficha y los post-its de su tablero siguen siendo contenido propio.
 - Los estilos de las fichas y páginas viven en `src/css`; `docs/` contiene solo contenido.
 - Ramas normalizadas: `main` es producción (protegida, solo por *pull request*) y `dev` es integración. La rama `master` deja de existir.
 - URL canónica del sitio: `https://catalogo-componentes-software.pages.dev`.
 
+### Eliminado
+
+- La página de ejemplo de la plantilla de Docusaurus (`/markdown-page`) y el blog vacío (`/blog`).
+
 ### Corregido
 
+- Las etiquetas **automatización** y **formularios** no tenían color asignado y se mostraban con el color genérico del sitio.
 - Tablero Digital de **Login Biométrico**: la notificación de intento fallido estaba en Salidas por Demanda y corresponde a Salidas Automáticas; faltaba el post-it opcional de detección de vida en Procesos Autónomos. La ficha y la matriz de mapeo ya lo declaraban así.
 
 ## [1.0.0] — 2026-07-20
