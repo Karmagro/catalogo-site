@@ -9,10 +9,12 @@ export const loginBiometrico: TableroData = {
       {titulo: 'Usuario', variante: 'mandatorio'},
       {titulo: 'Plantilla Facial', variante: 'mandatorio'},
     ],
-    'salidas-demanda': [
+    'salidas-demanda': [],
+    'salidas-automaticas': [
       {titulo: 'Notificación por correo de intento fallido', variante: 'opcional'},
     ],
-    'salidas-automaticas': [],
-    'procesos-autonomos': [],
+    'procesos-autonomos': [
+      {titulo: 'Detección de vida (anti-spoofing)', variante: 'opcional'},
+    ],
   },
 };
