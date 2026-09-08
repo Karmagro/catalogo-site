@@ -191,79 +191,6 @@ table thead th {
   color: var(--ifm-color-emphasis-900);
 }
 
-/* ─── Tag cloud ─── */
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 2.5rem;
-  align-items: center;
-}
-
-.tag-chip {
-  display: inline-block;
-  border-radius: 999px;
-  padding: 0.3rem 1rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  font-family: var(--ifm-font-family-base);
-  cursor: default;
-  transition: background 0.15s, color 0.15s;
-  border: 1.5px solid transparent;
-}
-
-/* Colores por tag */
-.tag-chip[data-tag="autenticación"] {
-  background: color-mix(in srgb, #0284C7 12%, transparent);
-  color: #0284C7;
-  border-color: color-mix(in srgb, #0284C7 30%, transparent);
-}
-.tag-chip[data-tag="seguridad"] {
-  background: color-mix(in srgb, #DB2777 12%, transparent);
-  color: #DB2777;
-  border-color: color-mix(in srgb, #DB2777 30%, transparent);
-}
-.tag-chip[data-tag="datos"] {
-  background: color-mix(in srgb, #059669 12%, transparent);
-  color: #059669;
-  border-color: color-mix(in srgb, #059669 30%, transparent);
-}
-.tag-chip[data-tag="visualización"] {
-  background: color-mix(in srgb, #D97706 12%, transparent);
-  color: #D97706;
-  border-color: color-mix(in srgb, #D97706 30%, transparent);
-}
-.tag-chip[data-tag="integración"] {
-  background: color-mix(in srgb, #7C3AED 12%, transparent);
-  color: #7C3AED;
-  border-color: color-mix(in srgb, #7C3AED 30%, transparent);
-}
-.tag-chip[data-tag="procesamiento"] {
-  background: color-mix(in srgb, #475569 12%, transparent);
-  color: #475569;
-  border-color: color-mix(in srgb, #475569 30%, transparent);
-}
-.tag-chip[data-tag="notificaciones"] {
-  background: color-mix(in srgb, #DB2777 12%, transparent);
-  color: #DB2777;
-  border-color: color-mix(in srgb, #DB2777 30%, transparent);
-}
-.tag-chip[data-tag="geo"] {
-  background: color-mix(in srgb, #059669 12%, transparent);
-  color: #059669;
-  border-color: color-mix(in srgb, #059669 30%, transparent);
-}
-
-.tag-chip:hover {
-  filter: brightness(0.9);
-}
-
-.tag-chip[data-weight="1"] { font-size: 0.78rem; opacity: 0.8; }
-.tag-chip[data-weight="2"] { font-size: 0.82rem; opacity: 0.88; }
-.tag-chip[data-weight="3"] { font-size: 0.88rem; opacity: 0.93; }
-.tag-chip[data-weight="4"] { font-size: 0.94rem; }
-.tag-chip[data-weight="5"] { font-size: 1rem; }
-
 /* ─── Admonition: delimitaciones (danger / alert--danger) ─── */
 .alert--danger {
   --ifm-alert-border-color: rgba(220, 38, 38, 0.4);
@@ -325,12 +252,14 @@ table thead th {
 
 /* Mapping etiqueta → color (aplica a chips del índice, de inicio y de pie de ficha) */
 a[href$="/etiquetas/autenticacion"]   { --tag-color: var(--seccion-actualizacion-manual); }
+a[href$="/etiquetas/formularios"]     { --tag-color: var(--seccion-actualizacion-manual); }
 a[href$="/etiquetas/datos"]           { --tag-color: var(--seccion-conceptos); }
+a[href$="/etiquetas/geo"]             { --tag-color: var(--seccion-conceptos); }
 a[href$="/etiquetas/visualizacion"]   { --tag-color: var(--seccion-salidas-demanda); }
 a[href$="/etiquetas/notificaciones"]  { --tag-color: var(--seccion-salidas-automaticas); }
-a[href$="/etiquetas/procesamiento"]   { --tag-color: var(--seccion-procesos-autonomos); }
 a[href$="/etiquetas/seguridad"]       { --tag-color: var(--seccion-salidas-automaticas); }
-a[href$="/etiquetas/geo"]             { --tag-color: var(--seccion-conceptos); }
+a[href$="/etiquetas/procesamiento"]   { --tag-color: var(--seccion-procesos-autonomos); }
+a[href$="/etiquetas/automatizacion"]  { --tag-color: var(--seccion-procesos-autonomos); }
 a[href$="/etiquetas/integracion"]     { --tag-color: var(--seccion-actualizacion-automatica); }
 
 /* ── Página índice de etiquetas ───────────────────────────────── */
