@@ -7,6 +7,7 @@ tags:
 import Admonition from '@theme/Admonition';
 import styles from '@site/src/css/componente.module.css';
 import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
 import {formularioLogin} from '@site/src/data/tableros/formulario-login';
 import Galeria from '@site/src/components/Galeria';
 import FichaTags from '@site/src/components/FichaTags';
@@ -109,32 +110,7 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 ## Mapeo al Tablero Digital
 
-<div className={styles.mapeoGrid}>
-  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Actualización Manual</span>
-    <span className={styles.mapeoStatus}>No</span>
-  </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Actualización Automática</span>
-    <span className={styles.mapeoStatus}>No</span>
-  </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoMandatory}`} style={{background: 'color-mix(in srgb, var(--seccion-conceptos) 13%, var(--ifm-background-color))', borderColor: 'color-mix(in srgb, var(--seccion-conceptos) 45%, transparent)'}}>
-    <span className={styles.mapeoLabel}>Conceptos de Datos</span>
-    <span className={styles.mapeoStatus}>Siempre</span>
-  </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Salidas por Demanda</span>
-    <span className={styles.mapeoStatus}>No</span>
-  </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoOptional}`} style={{borderColor: 'color-mix(in srgb, var(--seccion-salidas-automaticas) 45%, transparent)'}}>
-    <span className={styles.mapeoLabel}>Salidas Automáticas</span>
-    <span className={styles.mapeoStatus}>Opcional</span>
-  </div>
-  <div className={`${styles.mapeoCell} ${styles.mapeoEmpty}`}>
-    <span className={styles.mapeoLabel}>Procesos Autónomos</span>
-    <span className={styles.mapeoStatus}>No</span>
-  </div>
-</div>
+<MapeoTablero slug="formulario-login" />
 
 <div className={styles.mapeoDetail}>
 
