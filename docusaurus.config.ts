@@ -5,7 +5,12 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'Catálogo de Componentes',
   tagline: 'Componentes de software recurrentes para sistemas de información',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.ico?v=2',
+  // favicon.ico es el respaldo universal (Safari); el SVG sigue el tema del navegador.
+  // El sufijo ?v=N fuerza a los navegadores a refrescar el favicon: subirlo cada vez que cambie el dibujo.
+  headTags: [
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/svg+xml', href: '/img/favicon.svg?v=2'}},
+  ],
 
   future: {
     v4: true,
@@ -79,6 +84,7 @@ const config: Config = {
       logo: {
         alt: 'Catálogo de Componentes',
         src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg',
         href: '/docs/componentes/formulario-login',
       },
       items: [

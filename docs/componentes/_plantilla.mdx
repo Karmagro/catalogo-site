@@ -1,0 +1,126 @@
+---
+# Plantilla de ficha. Copiar a docs/componentes/<slug>.mdx y reemplazar cada «…».
+# Docusaurus no publica los archivos que empiezan con «_» y npm run verificar los omite.
+# Guía de estilo y lista de archivos que acompañan a la ficha: CONTRIBUTING.md.
+sidebar_position: 99
+tags:
+  - datos
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {nombreDelComponente} from '@site/src/data/tableros/slug-del-componente';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {nombreDelComponente as ejemplosNombreDelComponente} from '@site/src/data/ejemplos/slug-del-componente';
+
+# Nombre del componente
+
+<span className={styles.aliases}>Alias uno · Alias dos · Alias tres</span>
+
+<FichaTags />
+
+## Ejemplos
+
+<Galeria data={ejemplosNombreDelComponente} />
+
+## Descripción
+
+Un párrafo de entre 40 y 100 palabras: qué hace el componente y para qué, por su propósito y no por su tecnología.
+
+## Capacidades mandatorias
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Capacidades mandatorias</span>
+</div>
+
+- Permite **…** (verbo en presente; entre cinco y ocho viñetas)
+- Valida …
+- Restringe …
+
+</div>
+
+## Capacidades adicionales
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Capacidades adicionales</span>
+</div>
+
+- **Nombre de la capacidad:** qué agrega y cuándo aparece
+- **Otra capacidad:** …
+
+</div>
+
+## Delimitaciones
+
+<Admonition type="danger" title="Qué no es">
+
+- **No** hace tal cosa — eso corresponde a [Vecino](/docs/componentes/mantenedor)
+- **No** es lo mismo que …: …
+- **No** incluye …
+
+</Admonition>
+
+## Flujo de información
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Entrada</div>
+  <div className={styles.flowCardBody}>
+    Qué recibe el componente, en una frase
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Salida</div>
+  <div className={styles.flowCardBody}>
+    Qué produce el componente, en una frase
+  </div>
+</div>
+
+</div>
+
+## Modalidades
+
+- **Nombre de la modalidad.** En qué se diferencia de las otras.
+- **Otra modalidad.** …
+
+## Dependencias típicas
+
+<div className={styles.dependencies}>
+
+- **[Vecino](/docs/componentes/base-datos)** — por qué este componente suele depender de aquel
+
+</div>
+
+## Mapeo al Tablero Digital
+
+<MapeoTablero slug="slug-del-componente" />
+
+<div className={styles.mapeoDetail}>
+
+| Sección | Vínculo | Observación |
+|:--------|:-------:|:------------|
+| Actualización Manual | No | — |
+| Actualización Automática | No | — |
+| Conceptos de Datos | Siempre | Qué entidad o dato toca el componente en esta sección. |
+| Salidas por Demanda | Opcional | Con qué capacidad adicional aparece este vínculo. |
+| Salidas Automáticas | No | — |
+| Procesos Autónomos | No | — |
+
+</div>
+
+## Ejemplo de Tablero Digital
+
+<TableroDigital data={nombreDelComponente} />
