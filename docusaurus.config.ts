@@ -17,6 +17,12 @@ const config: Config = {
   organizationName: 'Karmagro',
   projectName: 'catalogo-componentes',
 
+  // La versión del catálogo se escribe solo en package.json;
+  // las páginas la leen desde customFields.
+  customFields: {
+    version: require('./package.json').version,
+  },
+
   onBrokenLinks: 'warn',
 
   i18n: {

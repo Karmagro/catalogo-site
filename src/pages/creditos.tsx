@@ -1,6 +1,7 @@
 import type {ReactNode} from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {UserRound, GraduationCap, Building2, ExternalLink} from 'lucide-react';
 
 import styles from './creditos.module.css';
@@ -41,6 +42,8 @@ function Hero() {
 }
 
 export default function Creditos(): ReactNode {
+  const {siteConfig} = useDocusaurusContext();
+  const version = siteConfig.customFields?.version as string;
   return (
     <Layout
       title="Créditos"
@@ -50,7 +53,7 @@ export default function Creditos(): ReactNode {
         {/* Tarjeta de créditos versionada: todo cuelga del badge de versión
             para que el bloque escale con futuras versiones (v2, v3…). */}
         <section className={styles.identityCard}>
-          <div className={styles.identityBadge}>Versión 1.0</div>
+          <div className={styles.identityBadge}>Versión {version}</div>
           <h2 className={styles.identityTitle}>Catálogo de Componentes</h2>
           <p className={styles.identityDesc}>
             Componentes de software recurrentes para sistemas de información,
