@@ -29,6 +29,7 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - Los estilos de las fichas y páginas viven en `src/css`; `docs/` contiene solo contenido.
 - Ramas normalizadas: `main` es producción (protegida, solo por *pull request*) y `dev` es integración. La rama `master` deja de existir.
 - URL canónica del sitio: `https://catalogo-componentes-software.pages.dev`.
+- Ícono propio en lugar del de la plantilla de Docusaurus: una baldosa con las seis secciones del Tablero Digital en sus colores. El navbar usa la baldosa clara en modo claro y la oscura en modo oscuro; el favicon SVG sigue el tema del navegador y `favicon.ico` (16, 32 y 48 px) es el respaldo para navegadores sin soporte de SVG.
 
 ### Eliminado
 

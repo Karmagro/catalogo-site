@@ -6,6 +6,10 @@ const config: Config = {
   title: 'Catálogo de Componentes',
   tagline: 'Componentes de software recurrentes para sistemas de información',
   favicon: 'img/favicon.ico',
+  // favicon.ico es el respaldo universal (Safari); el SVG sigue el tema del navegador.
+  headTags: [
+    {tagName: 'link', attributes: {rel: 'icon', type: 'image/svg+xml', href: '/img/favicon.svg'}},
+  ],
 
   future: {
     v4: true,
@@ -79,6 +83,7 @@ const config: Config = {
       logo: {
         alt: 'Catálogo de Componentes',
         src: 'img/logo.svg',
+        srcDark: 'img/logo-dark.svg',
         href: '/docs/componentes/formulario-login',
       },
       items: [
