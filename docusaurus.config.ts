@@ -11,10 +11,10 @@ const config: Config = {
     v4: true,
   },
 
-  url: 'https://catalogocomponentes.cl',
+  url: 'https://catalogo-componentes-software.pages.dev',
   baseUrl: '/',
 
-  organizationName: 'cgalvezr',
+  organizationName: 'Karmagro',
   projectName: 'catalogo-componentes',
 
   onBrokenLinks: 'warn',
