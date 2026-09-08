@@ -1,0 +1,96 @@
+name: Proponer un componente
+description: Propón un componente nuevo para el catálogo. Las preguntas siguen el criterio de incorporación de CONTRIBUTING.md; respóndelas antes de escribir la ficha.
+title: "Propuesta: <nombre del componente>"
+labels: ["propuesta de componente"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por proponer un componente. El catálogo documenta **tipos de funcionalidad recurrente definidos por su propósito**, con fronteras nítidas entre ellos. Las preguntas de este formulario son las que se responden **antes** de escribir una ficha: si el candidato es recurrente y si no es ya una modalidad o una capacidad adicional de un componente existente. Lee primero la sección «Criterio» de [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md).
+
+  - type: input
+    id: nombre
+    attributes:
+      label: Nombre propuesto
+      description: Un sustantivo en singular, con mayúscula inicial, como los del catálogo («Mantenedor», «Formulario de carga»).
+      placeholder: Firma electrónica
+    validations:
+      required: true
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: Qué hace
+      description: En un párrafo, qué hace el componente y para qué. Por su propósito, no por su tecnología.
+    validations:
+      required: true
+
+  - type: textarea
+    id: recurrencia
+    attributes:
+      label: En qué sistemas lo observaste
+      description: Al menos dos sistemas, preferentemente de dominios distintos. Nombra el sistema, el dominio y qué hace ahí el componente. Un candidato visto en un solo sistema es una necesidad de ese sistema, no un componente.
+      placeholder: |
+        - Portal de trámites municipales (gobierno): firma del formulario antes de enviarlo.
+        - Plataforma de contratos de una inmobiliaria (inmobiliario): firma del contrato por ambas partes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: contraste
+    attributes:
+      label: Con qué componentes existentes lo contrastaste, y por qué no es una modalidad ni una capacidad adicional de ellos
+      description: Revisa las capacidades mandatorias y las delimitaciones de los componentes que operan sobre el mismo dominio de funcionalidad. Para cada uno, di en qué difiere la función esencial. Si el candidato satisface las capacidades mandatorias de uno existente, lo que corresponde es proponerlo como modalidad o capacidad adicional de ese componente, no como componente nuevo.
+      placeholder: |
+        - Formulario de Login: comparte la verificación de identidad, pero el Login autentica una sesión y la firma produce un artefacto verificable ligado a un documento.
+        - Workflow de aprobación: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: delimitaciones
+    attributes:
+      label: Qué delimitaciones de componentes existentes habría que actualizar
+      description: Si el candidato comparte propósito con un componente existente pero difiere en su función esencial, las delimitaciones de ese componente deben explicitar la distinción. Indica cuáles.
+      placeholder: |
+        - Formulario de Login: agregar «No firma documentos — eso corresponde a Firma electrónica».
+    validations:
+      required: true
+
+  - type: textarea
+    id: mapeo
+    attributes:
+      label: Mapeo propuesto a las seis secciones del Tablero Digital
+      description: Para cada sección, Siempre, Opcional o No, con una frase que diga qué toca el componente ahí.
+      value: |
+        - Actualización Manual:
+        - Actualización Automática:
+        - Conceptos de Datos:
+        - Salidas por Demanda:
+        - Salidas Automáticas:
+        - Procesos Autónomos:
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: etiquetas
+    attributes:
+      label: Etiquetas existentes que aplican
+      description: Se reutilizan las existentes siempre que sea posible. Si crees que hace falta una nueva, dilo en el campo siguiente.
+      options:
+        - label: autenticación
+        - label: automatización
+        - label: datos
+        - label: formularios
+        - label: geo
+        - label: integración
+        - label: notificaciones
+        - label: procesamiento
+        - label: seguridad
+        - label: visualización
+
+  - type: textarea
+    id: notas
+    attributes:
+      label: Notas adicionales
+      description: Alias con los que se conoce, modalidades que anticipas, capturas que podrías aportar, si necesitas una etiqueta nueva y por qué.

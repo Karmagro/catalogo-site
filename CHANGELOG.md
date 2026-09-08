@@ -20,6 +20,9 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - Script de verificación del catálogo (`npm run verificar`): comprueba la estructura de cada ficha, el vocabulario de etiquetas, la correspondencia entre fichas y datos, la coherencia entre el mapeo declarado, los post-its del tablero y la tabla de observaciones de cada componente, las imágenes de las galerías, los enlaces internos y las cifras publicadas. `npm run verificar:todo` suma el chequeo de tipos y el build.
 - Integración continua en GitHub Actions: cada *pull request* y cada cambio en `main` o `dev` corren `verificar:todo`.
 - Las etiquetas se declaran en `docs/tags.yml`; una etiqueta que no esté ahí rompe el build en vez de crear una nueva en silencio.
+- Documentación del repositorio: `README.md` (qué es el catálogo, cómo correr el sitio, estructura del repositorio), `CONTRIBUTING.md` (criterio para incorporar o modificar componentes, archivos que se tocan, estilo de la ficha, versiones y flujo de trabajo), `GUIA-TECNICA.md` (cómo está hecho el sitio) y `DECISIONES.md` (registro de decisiones con su justificación).
+- Plantillas de GitHub: dos formularios de *issue* («Proponer un componente», que pide responder el criterio de incorporación antes de escribir la ficha, y «Reportar un error») y la lista de comprobación de cada *pull request*.
+- `docs/componentes/_plantilla.mdx`: plantilla de ficha con los diez encabezados, los bloques y los *imports*. Docusaurus no la publica y `npm run verificar` la omite.
 
 ### Cambiado
 

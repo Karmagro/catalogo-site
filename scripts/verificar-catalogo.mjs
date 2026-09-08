@@ -92,9 +92,10 @@ function existe(ruta) {
   return existsSync(join(RAIZ, ruta));
 }
 
+/** Lista los archivos de un directorio; omite los que empiezan con «_» (plantillas). */
 function listar(dir, extension) {
   return readdirSync(join(RAIZ, dir))
-    .filter((f) => f.endsWith(extension))
+    .filter((f) => f.endsWith(extension) && !f.startsWith('_'))
     .sort();
 }
 
