@@ -20,15 +20,15 @@ import {autenticacionApi as ejemplosAutenticacionApi} from '@site/src/data/ejemp
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosAutenticacionApi} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que permite a sistemas, servicios o aplicaciones externas identificarse ante el sistema para consumir recursos o funcionalidades. A diferencia de la autenticación de usuarios humanos, este proceso ocurre automáticamente entre sistemas sin intervención manual, utilizando credenciales específicas como claves API, tokens de acceso o certificados digitales. Su propósito es garantizar que solo sistemas autorizados puedan acceder a los endpoints y recursos del sistema.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -43,7 +43,7 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -58,7 +58,7 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -68,7 +68,7 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -90,7 +90,7 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **API Key:** clave estática asociada al sistema consumidor, enviada en cada request
 - **OAuth 2.0:** protocolo que emite tokens de acceso temporal tras autenticación inicial
@@ -98,7 +98,7 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 - **mTLS (Mutual TLS):** autenticación mediante certificados digitales bilaterales
 - **HMAC / Signature:** firma criptográfica de requests utilizando secretos compartidos
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -109,7 +109,7 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="autenticacion-api" />
 
@@ -126,6 +126,6 @@ Componente que permite a sistemas, servicios o aplicaciones externas identificar
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={autenticacionApi} />

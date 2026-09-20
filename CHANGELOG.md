@@ -33,10 +33,14 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - Ramas normalizadas: `main` es producción (protegida, solo por *pull request*) y `dev` es integración. La rama `master` deja de existir.
 - URL canónica del sitio: `https://catalogo-componentes-software.pages.dev`.
 - Ícono propio en lugar del de la plantilla de Docusaurus: una baldosa con las seis secciones del Tablero Digital en sus colores. El navbar usa la baldosa clara en modo claro y la oscura en modo oscuro; el favicon SVG sigue el tema del navegador y `favicon.ico` (16, 32 y 48 px) es el respaldo para navegadores sin soporte de SVG.
+- Los encabezados de las fichas y de las páginas generales llevan un identificador explícito, sin tildes ni eñes (`#descripcion`, `#flujo-de-informacion`), para que un enlace a una sección siga valiendo cuando el título se traduzca. Las anclas que antes llevaban tilde (`#descripción`) cambian a su forma sin tilde. `npm run verificar` exige el identificador en cada ficha.
+- La portada toma los rótulos y colores de las seis secciones de la misma fuente que el resto del sitio, en vez de llevarlos escritos aparte.
+- `npm run verificar` también revisa las cifras de `README.md` y `GUIA-TECNICA.md`.
 
 ### Eliminado
 
 - La página de ejemplo de la plantilla de Docusaurus (`/markdown-page`) y el blog vacío (`/blog`).
+- Las ilustraciones de la plantilla de Docusaurus que el sitio no usaba (`static/img/undraw_docusaurus_*.svg`, `docusaurus.png`).
 
 ### Corregido
 

@@ -264,8 +264,8 @@ Trampas que ya se pisaron. Leer antes de tocar el CSS o escribir MDX con JSX.
 | Mapeo coherente | Para cada componente y sección, el vínculo declarado coincide con las variantes de los post-its del tablero y con la columna Vínculo de la tabla de observaciones de la ficha |
 | Imágenes | Cada imagen de galería existe en `static/`, tiene `alt` y `caption`; aviso por imágenes en `static/img/ejemplos/` que ninguna galería usa; si existe `ATRIBUCIONES.md`, aviso por imágenes que no aparecen ahí |
 | Enlaces internos | Todo enlace `/docs/…` en `docs/`, `src/` y la configuración apunta a una ficha, una página o una etiqueta existentes |
-| Cifras | Los conteos de componentes escritos en la portada, en Sobre el Catálogo y en la sección vigente del `CHANGELOG.md` (en cifra o en palabra) coinciden con el número de fichas |
-| Encabezados | Los H2 llevan `{#id}` explícito. Hoy es una advertencia; el interruptor `ENCABEZADOS_CON_ID_ES_ERROR` al inicio del script lo convierte en error cuando se hayan fijado los identificadores (`npm run write-heading-ids`), para que las anclas sobrevivan a una traducción de los títulos |
+| Cifras | Los conteos de componentes escritos en la portada, en Sobre el Catálogo, en `README.md`, en esta guía y en la sección vigente del `CHANGELOG.md` (en cifra o en palabra) coinciden con el número de fichas |
+| Encabezados | Los H2 de cada ficha llevan un id explícito, en minúsculas y sin tildes ni eñes (`## Descripción {/* #descripcion */}`), para que las anclas sobrevivan a una traducción de los títulos. Va en la sintaxis de comentario de MDX: la clásica `{#id}` rompe el build, porque con `future.v4` MDX la lee como una expresión. `npx docusaurus write-heading-ids --syntax mdx-comment` los genera a partir del texto; como conserva las tildes, hay que quitárselas a mano |
 
 Los archivos que empiezan con `_` en `docs/componentes/` (la plantilla) se omiten. El bloque de atribuciones se activa solo cuando el archivo `ATRIBUCIONES.md` existe.
 

@@ -19,15 +19,15 @@ import {mantenedor as ejemplosMantenedor} from '@site/src/data/ejemplos/mantened
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosMantenedor} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Un mantenedor es una interfaz de usuario que permite gestionar entidades de datos mediante las operaciones básicas sobre información persistente: crear, leer, actualizar y eliminar registros. Su propósito es facilitar que usuarios autorizados interactúen con el repositorio de datos de manera controlada y estructurada.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -47,7 +47,7 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -63,7 +63,7 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -74,7 +74,7 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -96,12 +96,12 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Mantenedor simple.** Gestiona una sola entidad de datos de forma independiente. Es el caso más común: una tabla o listado con su formulario asociado.
 - **Mantenedor maestro-detalle.** Gestiona una entidad principal junto con entidades dependientes vinculadas a ella. La interfaz permite navegar de un registro maestro a sus registros de detalle asociados.
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -110,7 +110,7 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="mantenedor" />
 
@@ -127,6 +127,6 @@ Un mantenedor es una interfaz de usuario que permite gestionar entidades de dato
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={mantenedor} />

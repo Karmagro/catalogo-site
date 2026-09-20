@@ -19,15 +19,15 @@ import {logAuditoria as ejemplosLogAuditoria} from '@site/src/data/ejemplos/log-
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosLogAuditoria} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Registra de forma automática y cronológica las acciones relevantes realizadas dentro del sistema de información, asociando cada evento a un usuario, una fecha y una entidad afectada. Su propósito es mantener un historial trazable e inalterable de la actividad del sistema, que permita responder con evidencia concreta las preguntas "quién hizo qué, cuándo y sobre qué". Opera de forma autónoma y transversal: el registro ocurre sin intervención del usuario, ante cada acción que el sistema considera relevante.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -43,7 +43,7 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -59,7 +59,7 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -69,7 +69,7 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -91,13 +91,13 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Log de acceso:** registra cada intento de inicio de sesión exitoso o fallido
 - **Log de cambios:** registra modificaciones sobre los datos del sistema (creación, edición, eliminación de registros)
 - **Log de operaciones:** registra acciones administrativas y de configuración del sistema
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -106,7 +106,7 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="log-auditoria" />
 
@@ -123,6 +123,6 @@ Registra de forma automática y cronológica las acciones relevantes realizadas 
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={logAuditoria} />

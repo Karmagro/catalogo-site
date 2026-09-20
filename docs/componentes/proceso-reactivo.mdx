@@ -20,11 +20,11 @@ import {procesoReactivo as ejemplosProcesoReactivo} from '@site/src/data/ejemplo
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosProcesoReactivo} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que ejecuta una rutina de procesamiento de forma autónoma **en cuanto cambian datos que ya residen en el sistema**: cuando se da de alta, se edita o se da de baja un registro, el componente lo detecta y reacciona, sin que un usuario lo opere paso a paso ni medie una agenda. Toma el cambio como disparador, aplica una lógica —derivar un dato nuevo, propagar una consecuencia, validar una invariante— y produce un resultado: datos nuevos, datos corregidos o la activación de otro proceso.
 
@@ -32,7 +32,7 @@ El caso canónico: *en cuanto aparece un cliente nuevo en la tabla de clientes, 
 
 Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre datos internos, disparado por un cambio en esos datos), no el **qué**: no fija qué reacción ejecuta, igual que un Mantenedor no fija qué entidad administra. Su pariente cercano, el [Proceso Programado](/docs/componentes/proceso-programado), comparte el territorio del procesamiento autónomo interno pero se distingue por el disparador: aquel corre cuando lo manda el reloj; este corre cuando cambian los datos.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -48,7 +48,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -65,7 +65,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -76,7 +76,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -98,13 +98,13 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Disparador de base de datos (database trigger):** la propia base de datos ejecuta la lógica ante un INSERT/UPDATE/DELETE sobre una tabla.
 - **Captura de cambios (change data capture):** un observador lee el log de transacciones de la base y emite un evento por cada cambio, que la aplicación consume y procesa.
 - **Evento de dominio (domain event):** la aplicación publica un evento de negocio al cambiar su estado ("cliente dado de alta"), y un manejador suscrito reacciona.
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -115,7 +115,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="proceso-reactivo" />
 
@@ -132,6 +132,6 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={procesoReactivo} />

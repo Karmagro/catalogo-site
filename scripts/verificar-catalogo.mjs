@@ -51,8 +51,11 @@ const H2_CANONICOS = [
 /** Valores de la columna «Vínculo» de la tabla de observaciones de cada ficha. */
 const VINCULO_TABLA = {Siempre: 'mandatorio', Opcional: 'opcional', No: null};
 
-/** Interruptores de comprobaciones que dependen de trabajo pendiente. */
-const ENCABEZADOS_CON_ID_ES_ERROR = false; // pasa a true cuando se corra `write-heading-ids`
+// Id explícito al final de un encabezado, en la sintaxis de comentario MDX: `## Título {/* #id */}`.
+// La clásica `{#id}` no sirve aquí: con `future.v4` MDX la lee como una expresión y el build falla.
+const ID_ENCABEZADO = /\{\/\*\s*#([^\s*]+)\s*\*\/\}\s*$/;
+
+/** Comprobación que depende de trabajo pendiente: se activa sola cuando el archivo exista. */
 const ARCHIVO_ATRIBUCIONES = 'ATRIBUCIONES.md'; // cuando exista, se cruza con las imágenes
 
 // ─── Reporte ────────────────────────────────────────────────────────────────
@@ -233,7 +236,8 @@ async function cargarInventario() {
     const ruta = `docs/componentes/${archivo}`;
     const texto = leer(ruta);
     const h1 = (texto.match(/^# (.+?)\s*$/m) || [])[1] ?? null;
-    const h2s = [...texto.matchAll(/^## (.+?)\s*$/gm)].map((m) => m[1]);
+    // El texto del H2 sin su id explícito (`{/* #id */}`).
+    const h2s = [...texto.matchAll(/^## (.+?)\s*$/gm)].map((m) => m[1].replace(ID_ENCABEZADO, '').trimEnd());
     fichas.push({
       slug,
       ruta,
@@ -513,6 +517,9 @@ function verificarCifras(inv) {
     ['src/pages/index.tsx', inv.home],
     ['docs/sobre-el-catalogo.mdx', inv.sobreElCatalogo],
   ];
+  for (const ruta of ['README.md', 'GUIA-TECNICA.md']) {
+    if (existe(ruta)) fuentes.push([ruta, leer(ruta)]);
+  }
   // Del CHANGELOG solo cuenta la primera sección de versión (la vigente).
   const m = inv.changelog.match(/^## \[[^\]]+\][\s\S]*?(?=^## \[|(?![\s\S]))/m);
   if (m) fuentes.push(['CHANGELOG.md (sección vigente)', m[0]]);
@@ -527,16 +534,19 @@ function verificarCifras(inv) {
 }
 
 function verificarEncabezados(inv) {
-  const sinId = inv.fichas.filter((f) => {
-    const h2ConId = [...f.texto.matchAll(/^## .*\{#[^}]+\}\s*$/gm)].length;
-    return h2ConId < f.h2s.length;
-  });
-  if (sinId.length === 0) return;
-  const msg =
-    sinId.length === inv.fichas.length
-      ? `ninguna ficha lleva \`{#id}\` explícito en sus H2 (${sinId.length} fichas)`
-      : `${sinId.length} fichas sin \`{#id}\` explícito en todos sus H2: ${sinId.map((f) => f.slug).join(', ')}`;
-  (ENCABEZADOS_CON_ID_ES_ERROR ? error : advertencia)(msg);
+  for (const f of inv.fichas) {
+    const ids = [...f.texto.matchAll(/^## .+$/gm)]
+      .map((m) => m[0].trimEnd().match(ID_ENCABEZADO)?.[1])
+      .filter(Boolean);
+    if (ids.length < f.h2s.length) {
+      error(`${f.ruta}: ${f.h2s.length - ids.length} H2 sin id explícito (\`{/* #id */}\`)`);
+    }
+    for (const id of ids) {
+      if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id)) {
+        error(`${f.ruta}: el id de encabezado «${id}» debe ir en minúsculas, sin tildes ni eñes`);
+      }
+    }
+  }
 }
 
 // ─── Ejecución ──────────────────────────────────────────────────────────────

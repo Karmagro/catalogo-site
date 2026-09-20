@@ -20,11 +20,11 @@ import {procesoProgramado as ejemplosProcesoProgramado} from '@site/src/data/eje
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosProcesoProgramado} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que ejecuta una rutina de procesamiento sobre datos que **ya residen en el sistema**, de forma autónoma y **según una agenda**: cada noche, cada hora, el primer día del mes. Un planificador (scheduler) lo invoca en los momentos definidos; no lo opera un usuario paso a paso ni lo dispara un cambio en los datos. Toma información interna, le aplica una lógica de transformación, verificación o derivación, y produce un resultado: datos nuevos, datos corregidos o un veredicto.
 
@@ -32,7 +32,7 @@ Es el componente al que recurre el sistema cuando necesita "hacer un cálculo o 
 
 Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre datos internos, disparado por una agenda), no el **qué**: igual que un Mantenedor no fija qué entidad administra ni una Consulta qué se consulta, un Proceso Programado no fija qué calcula. Ese dominio abierto lo hace genérico, no informe. Su pariente cercano, el [Proceso Reactivo](/docs/componentes/proceso-reactivo), comparte el territorio del procesamiento autónomo interno pero se distingue por el disparador: aquel reacciona a un cambio en los datos; este corre cuando lo manda el reloj.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -48,7 +48,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -64,7 +64,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -75,7 +75,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -97,13 +97,13 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Recurrente (cron):** un planificador lo invoca de forma periódica (cierre nocturno, conciliación diaria, depuración semanal).
 - **A fecha/hora fija (scheduled):** se programa para un momento puntual (corte de fin de mes, cálculo de cierre de ejercicio).
 - **Por lotes (batch):** procesa grandes volúmenes de registros internos de una vez, frecuentemente en una ventana de baja carga.
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -114,7 +114,7 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="proceso-programado" />
 
@@ -131,6 +131,6 @@ Lo que da forma a este componente es el **cómo** (procesamiento autónomo sobre
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={procesoProgramado} />

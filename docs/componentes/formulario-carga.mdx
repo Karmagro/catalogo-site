@@ -20,15 +20,15 @@ import {formularioCarga as ejemplosFormularioCarga} from '@site/src/data/ejemplo
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosFormularioCarga} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente de entrada que presenta a un usuario un conjunto de campos para ingresar datos y enviarlos al sistema en un único acto. Es el simétrico de [Consultas](/docs/componentes/consultas) (entrada en vez de salida): mientras Consultas recupera información existente, el Formulario de carga incorpora información nueva. Su propósito es capturar datos de forma estructurada y validada en un punto del proceso donde quien ingresa los datos no es necesariamente quien luego los procesa, aprueba o administra. Una vez enviados, los datos salen del control de quien los cargó y siguen su curso dentro del sistema. Es muy frecuente en sistemas de información: postulaciones, solicitudes, reclamos, inscripciones.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -45,7 +45,7 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -62,7 +62,7 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -73,7 +73,7 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -95,13 +95,13 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Formulario simple:** una sola pantalla con los campos a completar y un botón de envío; el caso más común (un reclamo, una inscripción breve)
 - **Formulario por pasos (wizard):** divide una carga extensa en etapas secuenciales; típico de postulaciones con muchos datos y documentos
 - **Formulario con respaldo documental:** el ingreso de datos se acompaña obligatoriamente de la carga de uno o más archivos (postulación a beca con certificados)
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -112,7 +112,7 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="formulario-carga" />
 
@@ -129,6 +129,6 @@ Componente de entrada que presenta a un usuario un conjunto de campos para ingre
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={formularioCarga} />

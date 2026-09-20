@@ -2,17 +2,11 @@ import type {ReactNode} from 'react';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
+import {SECCIONES} from '@site/src/components/TableroDigital/secciones';
+import type {Seccion} from '@site/src/components/TableroDigital/types';
+import {SECCIONES_FLUJO} from '@site/src/data/mapeo';
 
 import styles from './index.module.css';
-
-const SECTION_COLORS: Record<string, string> = {
-  'Actualización Manual':    'var(--seccion-actualizacion-manual)',
-  'Actualización Automática': 'var(--seccion-actualizacion-automatica)',
-  'Conceptos de Datos':   'var(--seccion-conceptos)',
-  'Salidas por Demanda':  'var(--seccion-salidas-demanda)',
-  'Salidas Automáticas':  'var(--seccion-salidas-automaticas)',
-  'Procesos Autónomos':   'var(--seccion-procesos-autonomos)',
-};
 
 function HomepageHeader() {
   return (
@@ -89,14 +83,15 @@ function EntryCards() {
 }
 
 function BoardTeaser() {
-  const sections = [
-    {label: 'Actualización Manual',    desc: 'Datos que el usuario crea o modifica'},
-    {label: 'Actualización Automática', desc: 'Ingesta sin intervención humana'},
-    {label: 'Conceptos de Datos',   desc: 'Entidades persistentes del sistema'},
-    {label: 'Salidas por Demanda',  desc: 'Información solicitada por el usuario'},
-    {label: 'Salidas Automáticas',  desc: 'Notificaciones y comunicación proactiva'},
-    {label: 'Procesos Autónomos',   desc: 'Tareas en segundo plano'},
-  ];
+  // El rótulo y el color de cada sección salen de SECCIONES; aquí solo va la bajada.
+  const descripciones: Record<Seccion, string> = {
+    'actualizacion-manual':     'Datos que el usuario crea o modifica',
+    'actualizacion-automatica': 'Ingesta sin intervención humana',
+    'conceptos-datos':          'Entidades persistentes del sistema',
+    'salidas-demanda':          'Información solicitada por el usuario',
+    'salidas-automaticas':      'Notificaciones y comunicación proactiva',
+    'procesos-autonomos':       'Tareas en segundo plano',
+  };
 
   return (
     <section className={styles.boardSection}>
@@ -118,11 +113,11 @@ function BoardTeaser() {
 
           <Link to="/docs/tablero-digital" className={styles.boardGridLink}>
             <div className={styles.boardGrid}>
-              {sections.map((s) => {
-                const color = SECTION_COLORS[s.label];
+              {SECCIONES_FLUJO.map((id) => {
+                const color = `var(${SECCIONES[id].cssVar})`;
                 return (
                   <div
-                    key={s.label}
+                    key={id}
                     className={styles.boardCell}
                     style={{
                       borderColor: `color-mix(in srgb, ${color} 50%, transparent)`,
@@ -132,8 +127,8 @@ function BoardTeaser() {
                       className={styles.boardCellDot}
                       style={{background: color}}
                     />
-                    <span className={styles.boardCellLabel}>{s.label}</span>
-                    <span className={styles.boardCellDesc}>{s.desc}</span>
+                    <span className={styles.boardCellLabel}>{SECCIONES[id].label}</span>
+                    <span className={styles.boardCellDesc}>{descripciones[id]}</span>
                   </div>
                 );
               })}

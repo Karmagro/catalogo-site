@@ -43,9 +43,7 @@ function TopPaginatorSpacer() {
 export default function DocItemLayout({children}: {children: ReactNode}) {
   const docTOC = useDocTOC();
   const {metadata} = useDoc();
-  const showTopPaginator =
-    metadata.sourceDirName === 'componentes' ||
-    metadata.permalink.startsWith('/docs/componentes/');
+  const showTopPaginator = metadata.sourceDirName === 'componentes';
 
   return (
     <div className="row">

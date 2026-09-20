@@ -20,15 +20,15 @@ import {mapaInteractivo as ejemplosMapaInteractivo} from '@site/src/data/ejemplo
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosMapaInteractivo} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Presenta información del sistema sobre una representación geográfica dinámica, permitiendo al usuario explorar la distribución o ubicación espacial de entidades con datos de localización asociados. A diferencia de un mapa estático, el mapa interactivo permite al usuario explorar activamente la información mediante operaciones como hacer zoom, desplazarse o seleccionar elementos para ver más detalle.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -43,7 +43,7 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -60,7 +60,7 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -69,7 +69,7 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -91,13 +91,13 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Mapa de marcadores:** representa entidades individuales como puntos o íconos posicionados según su ubicación. Permite explorar la distribución geográfica de elementos concretos.
 - **Mapa de calor (heatmap):** visualiza la densidad o concentración de entidades en zonas geográficas mediante gradientes de color, sin distinguir elementos individuales.
 - **Mapa coroplético:** colorea regiones geográficas delimitadas (países, estados, comunas) según el valor de un atributo agregado de las entidades asociadas a cada región.
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -106,7 +106,7 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="mapa-interactivo" />
 
@@ -123,6 +123,6 @@ Presenta información del sistema sobre una representación geográfica dinámic
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={mapaInteractivo} />
