@@ -1,0 +1,44 @@
+# English labels for the catalog tags. Mirror of docs/tags.yml: the keys and the
+# permalinks MUST stay identical to the Spanish file (the component sheets use the
+# Spanish keys in their front matter, and the tag colors are matched by permalink).
+# Only `label` and `description` are translated. `npm run verificar` checks the parity.
+autenticación:
+  label: authentication
+  permalink: autenticacion
+  description: Components that identify whoever uses the system, a person or another system.
+automatización:
+  label: automation
+  permalink: automatizacion
+  description: Components that act without human intervention, on a schedule or in reaction to a change.
+datos:
+  label: data
+  permalink: datos
+  description: Components that create, modify, query, or store the system's data.
+formularios:
+  label: forms
+  permalink: formularios
+  description: Components whose main interface is a data entry form.
+geo:
+  label: geo
+  permalink: geo
+  description: Components that work with geographic information.
+integración:
+  label: integration
+  permalink: integracion
+  description: Components that connect the system with external systems or sources.
+notificaciones:
+  label: notifications
+  permalink: notificaciones
+  description: Components that alert people or other systems when something happens.
+procesamiento:
+  label: processing
+  permalink: procesamiento
+  description: Components that transform or compute data inside the system.
+seguridad:
+  label: security
+  permalink: seguridad
+  description: Components that protect access to the data or keep a trace of what was done with it.
+visualización:
+  label: visualization
+  permalink: visualizacion
+  description: Components that present data to people so they can query or interpret it.
