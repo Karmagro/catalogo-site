@@ -2,9 +2,17 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// Este archivo se carga en Node, fuera del sistema de traducción de React:
+// el título y el tagline se eligen por la variable que Docusaurus fija en cada
+// build de idioma. Los rótulos del navbar y del footer sí se traducen por el
+// camino normal (i18n/en/docusaurus-theme-classic/*.json).
+const enIngles = process.env.DOCUSAURUS_CURRENT_LOCALE === 'en';
+
 const config: Config = {
-  title: 'Catálogo de Componentes',
-  tagline: 'Componentes de software recurrentes para sistemas de información',
+  title: enIngles ? 'Component Catalog' : 'Catálogo de Componentes',
+  tagline: enIngles
+    ? 'Recurring software components for information systems'
+    : 'Componentes de software recurrentes para sistemas de información',
   favicon: 'img/favicon.ico?v=2',
   // favicon.ico es el respaldo universal (Safari); el SVG sigue el tema del navegador.
   // El sufijo ?v=N fuerza a los navegadores a refrescar el favicon: subirlo cada vez que cambie el dibujo.
@@ -34,7 +42,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'es',
-    locales: ['es'],
+    locales: ['es', 'en'],
+    localeConfigs: {
+      es: {label: 'Español'},
+      en: {label: 'English'},
+    },
   },
 
   presets: [
@@ -95,6 +107,7 @@ const config: Config = {
         {to: '/docs/tablero-digital', label: 'Tablero Digital', position: 'right'},
         {to: '/docs/sobre-el-catalogo', label: 'Sobre el Catálogo', position: 'right'},
         {to: '/creditos', label: 'Créditos', position: 'right'},
+        {type: 'localeDropdown', position: 'right'},
         {type: 'custom-tutorialButton', position: 'right'},
       ],
     },

@@ -1,0 +1,62 @@
+{
+  "link.title.Catálogo": {
+    "message": "Catalog",
+    "description": "The title of the footer links column with title=Catálogo in the footer"
+  },
+  "link.title.Tablero Digital": {
+    "message": "Digital Board",
+    "description": "The title of the footer links column with title=Tablero Digital in the footer"
+  },
+  "link.title.Sobre el Catálogo": {
+    "message": "About the Catalog",
+    "description": "The title of the footer links column with title=Sobre el Catálogo in the footer"
+  },
+  "link.title.Memoria": {
+    "message": "Thesis",
+    "description": "The title of the footer links column with title=Memoria in the footer"
+  },
+  "link.item.label.Componentes": {
+    "message": "Components",
+    "description": "The label of footer link with label=Componentes linking to /docs/componentes/mantenedor"
+  },
+  "link.item.label.Por Sección": {
+    "message": "By Section",
+    "description": "The label of footer link with label=Por Sección linking to /docs/secciones"
+  },
+  "link.item.label.Por Etiquetas": {
+    "message": "By Tag",
+    "description": "The label of footer link with label=Por Etiquetas linking to /docs/etiquetas"
+  },
+  "link.item.label.Explicación": {
+    "message": "Overview",
+    "description": "The label of footer link with label=Explicación linking to /docs/tablero-digital"
+  },
+  "link.item.label.Mapeo de componentes": {
+    "message": "Component mapping",
+    "description": "The label of footer link with label=Mapeo de componentes linking to /docs/secciones"
+  },
+  "link.item.label.Estructura": {
+    "message": "Structure",
+    "description": "The label of footer link with label=Estructura linking to /docs/sobre-el-catalogo"
+  },
+  "link.item.label.Cómo usar": {
+    "message": "How to use it",
+    "description": "The label of footer link with label=Cómo usar linking to /docs/sobre-el-catalogo"
+  },
+  "link.item.label.Créditos": {
+    "message": "Credits",
+    "description": "The label of footer link with label=Créditos linking to /creditos"
+  },
+  "link.item.label.Carlos Gálvez Romo": {
+    "message": "Carlos Gálvez Romo",
+    "description": "The label of footer link with label=Carlos Gálvez Romo linking to https://github.com/Karmagro"
+  },
+  "link.item.label.Universidad de Chile": {
+    "message": "University of Chile",
+    "description": "The label of footer link with label=Universidad de Chile linking to https://www.dcc.uchile.cl/"
+  },
+  "copyright": {
+    "message": "Component Catalog · Carlos Gálvez Romo · University of Chile",
+    "description": "The footer copyright"
+  }
+}
