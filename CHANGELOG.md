@@ -23,6 +23,8 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - Documentación del repositorio: `README.md` (qué es el catálogo, cómo correr el sitio, estructura del repositorio), `CONTRIBUTING.md` (criterio para incorporar o modificar componentes, archivos que se tocan, estilo de la ficha, versiones y flujo de trabajo), `GUIA-TECNICA.md` (cómo está hecho el sitio) y `DECISIONES.md` (registro de decisiones con su justificación).
 - Plantillas de GitHub: dos formularios de *issue* («Proponer un componente», que pide responder el criterio de incorporación antes de escribir la ficha, y «Reportar un error») y la lista de comprobación de cada *pull request*.
 - `docs/componentes/_plantilla.mdx`: plantilla de ficha con los diez encabezados, los bloques y los *imports*. Docusaurus no la publica y `npm run verificar` la omite.
+- Versión en inglés del sitio, en `/en/`, con selector de idioma en el navbar. La navegación, la portada, la página de créditos y los rótulos de todos los componentes del sitio (galería, tablero, rejilla de mapeo, matriz, ayuda de navegación) están traducidos; las fichas que aún no tienen traducción se muestran en español. Las direcciones son las mismas en los dos idiomas, con el prefijo `/en/`.
+- `i18n/GLOSARIO.md`: correspondencia ES → EN del vocabulario del catálogo (secciones del Tablero, campos de la ficha, nombres de componente, etiquetas) y convenciones de traducción.
 
 ### Cambiado
 
@@ -36,6 +38,9 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - Los encabezados de las fichas y de las páginas generales llevan un identificador explícito, sin tildes ni eñes (`#descripcion`, `#flujo-de-informacion`), para que un enlace a una sección siga valiendo cuando el título se traduzca. Las anclas que antes llevaban tilde (`#descripción`) cambian a su forma sin tilde. `npm run verificar` exige el identificador en cada ficha.
 - La portada toma los rótulos y colores de las seis secciones de la misma fuente que el resto del sitio, en vez de llevarlos escritos aparte.
 - `npm run verificar` también revisa las cifras de `README.md` y `GUIA-TECNICA.md`.
+- El navbar se compacta por etapas entre 997 y 1400 px de ancho (buscador más corto, luego solo el ícono del sitio, luego solo el ícono del idioma) en vez de dejar que los enlaces se monten unos sobre otros.
+- La portada toma el número de componentes de los datos del catálogo; ya no lleva la cifra escrita.
+- Las imágenes de las galerías y de la página de créditos se sirven con el prefijo del idioma de la página.
 
 ### Eliminado
 

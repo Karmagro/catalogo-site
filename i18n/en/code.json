@@ -360,5 +360,311 @@
   "theme.tags.tagsPageTitle": {
     "message": "Tags",
     "description": "The title of the tag list page"
+  },
+  "galeria.vacia": {
+    "message": "Visual examples pending for this component.",
+    "description": "Galería de una ficha que aún no tiene imágenes"
+  },
+  "galeria.ampliar.ariaLabel": {
+    "message": "Enlarge image: {alt}",
+    "description": "aria-label del botón que abre la imagen de la galería a pantalla completa"
+  },
+  "galeria.ampliar": {
+    "message": "⤢ Enlarge",
+    "description": "Indicación visible sobre la imagen de la galería"
+  },
+  "galeria.puntos.ariaLabel": {
+    "message": "Example images",
+    "description": "aria-label del selector de imágenes de la galería"
+  },
+  "galeria.punto.ariaLabel": {
+    "message": "Go to image {n}",
+    "description": "aria-label de cada punto del selector de imágenes de la galería"
+  },
+  "galeria.lightbox.cerrar": {
+    "message": "Close",
+    "description": "aria-label del botón que cierra la imagen a pantalla completa"
+  },
+  "galeria.lightbox.anterior": {
+    "message": "Previous image",
+    "description": "aria-label del botón de navegación de la imagen a pantalla completa"
+  },
+  "galeria.lightbox.siguiente": {
+    "message": "Next image",
+    "description": "aria-label del botón de navegación de la imagen a pantalla completa"
+  },
+  "ficha.etiquetas": {
+    "message": "Tags:",
+    "description": "Rótulo de los chips de etiquetas al inicio de una ficha"
+  },
+  "mapeo.estado.siempre": {
+    "message": "Always",
+    "description": "Rejilla de mapeo de una ficha: el componente siempre toca la sección"
+  },
+  "mapeo.estado.opcional": {
+    "message": "Optional",
+    "description": "Rejilla de mapeo de una ficha: el componente toca la sección solo con capacidades adicionales"
+  },
+  "mapeo.estado.no": {
+    "message": "No",
+    "description": "Rejilla de mapeo de una ficha: el componente no toca la sección"
+  },
+  "mapeo.matriz.componente": {
+    "message": "Component",
+    "description": "Encabezado de la primera columna de la matriz"
+  },
+  "mapeo.resumen.ninguno": {
+    "message": "None",
+    "description": "Lectura por sección: ningún componente tiene ese vínculo con la sección"
+  },
+  "mapeo.resumen.todos": {
+    "message": "all the components in the catalog",
+    "description": "Lectura por sección: todos los componentes tienen ese vínculo con la sección"
+  },
+  "mapeo.resumen.mandatorios": {
+    "message": "Mandatory ({n}):",
+    "description": "Lectura por sección: encabezado de la lista de componentes con vínculo mandatorio"
+  },
+  "mapeo.resumen.opcionales": {
+    "message": "Optional ({n}):",
+    "description": "Lectura por sección: encabezado de la lista de componentes con vínculo opcional"
+  },
+  "tutorial.via.buscar.titulo": {
+    "message": "Search by content"
+  },
+  "tutorial.via.buscar.desc": {
+    "message": "If you already know what you need. Search the entire catalog."
+  },
+  "tutorial.via.seccion.titulo": {
+    "message": "By Board Section"
+  },
+  "tutorial.via.seccion.desc": {
+    "message": "Which components serve to enter data, display it, send notifications…"
+  },
+  "tutorial.via.etiquetas.titulo": {
+    "message": "By Tag"
+  },
+  "tutorial.via.etiquetas.desc": {
+    "message": "Explore components grouped by functional affinity."
+  },
+  "tutorial.via.recorrer.titulo": {
+    "message": "Walk through the catalog"
+  },
+  "tutorial.via.recorrer.desc": {
+    "message": "The full list in the sidebar, in reading order."
+  },
+  "tutorial.banner.ariaLabel": {
+    "message": "Catalog navigation guide",
+    "description": "aria-label de la región del banner de ayuda"
+  },
+  "tutorial.banner.titulo": {
+    "message": "How to find what you are looking for",
+    "description": "Título del banner de ayuda de navegación"
+  },
+  "tutorial.banner.cerrar": {
+    "message": "Close the navigation help",
+    "description": "aria-label del botón que cierra el banner de ayuda"
+  },
+  "tutorial.boton": {
+    "message": "How to navigate the catalog",
+    "description": "aria-label y title del botón «?» del navbar, que reabre la ayuda de navegación"
+  },
+  "tablero.seccion.actualizacion-manual": {
+    "message": "Manual Update",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.actualizacion-automatica": {
+    "message": "Automatic Update",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.conceptos-datos": {
+    "message": "Data Concepts",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.salidas-demanda": {
+    "message": "On-Demand Outputs",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.salidas-automaticas": {
+    "message": "Automatic Outputs",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.procesos-autonomos": {
+    "message": "Autonomous Processes",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.actualizacion-manual.abreviatura": {
+    "message": "Manual Upd.",
+    "description": "Encabezado de columna de la matriz: Actualización Manual"
+  },
+  "tablero.seccion.actualizacion-automatica.abreviatura": {
+    "message": "Automatic Upd.",
+    "description": "Encabezado de columna de la matriz: Actualización Automática"
+  },
+  "tablero.seccion.conceptos-datos.abreviatura": {
+    "message": "Concepts",
+    "description": "Encabezado de columna de la matriz: Conceptos de Datos"
+  },
+  "tablero.seccion.salidas-demanda.abreviatura": {
+    "message": "On-Demand Out.",
+    "description": "Encabezado de columna de la matriz: Salidas por Demanda"
+  },
+  "tablero.seccion.salidas-automaticas.abreviatura": {
+    "message": "Automatic Out.",
+    "description": "Encabezado de columna de la matriz: Salidas Automáticas"
+  },
+  "tablero.seccion.procesos-autonomos.abreviatura": {
+    "message": "Auton. Proc.",
+    "description": "Encabezado de columna de la matriz: Procesos Autónomos"
+  },
+  "creditos.profesor.guia": {
+    "message": "Thesis advisor"
+  },
+  "creditos.profesor.asociado": {
+    "message": "Associate Professor · DCC"
+  },
+  "creditos.profesor.coguia": {
+    "message": "Thesis co-advisor"
+  },
+  "creditos.profesor.adjunto": {
+    "message": "Adjunct Professor · DCC"
+  },
+  "creditos.antetitulo": {
+    "message": "Credits"
+  },
+  "creditos.titulo": {
+    "message": "Who made this catalog"
+  },
+  "creditos.descripcion": {
+    "message": "This site is the navigable artifact of an undergraduate thesis at the Department of Computer Science of the University of Chile."
+  },
+  "creditos.meta.titulo": {
+    "message": "Credits",
+    "description": "Título de la pestaña de la página de créditos"
+  },
+  "creditos.meta.descripcion": {
+    "message": "Credits of the Component Catalog: author, thesis advisors, and academic context.",
+    "description": "Meta descripción de la página de créditos"
+  },
+  "creditos.version": {
+    "message": "Version {version}"
+  },
+  "creditos.identidad.titulo": {
+    "message": "Component Catalog"
+  },
+  "creditos.identidad.desc": {
+    "message": "Recurring software components for information systems, documented with a uniform structure and mapped to the {tablero}. Developed during 2026 as part of the thesis {memoria}.",
+    "description": "{tablero} es el enlace «Tablero Digital» (creditos.identidad.tablero) y {memoria} el título de la memoria en cursiva (creditos.identidad.memoria)"
+  },
+  "creditos.identidad.tablero": {
+    "message": "Digital Board"
+  },
+  "creditos.identidad.memoria": {
+    "message": "«Catalogación de componentes recurrentes de software que forman parte de sistemas de información» (Cataloging recurring software components that are part of information systems)",
+    "description": "Título formal de la memoria. En otros idiomas: el original en español seguido de su traducción entre paréntesis"
+  },
+  "creditos.autor": {
+    "message": "Author"
+  },
+  "creditos.autor.rol": {
+    "message": "Thesis student"
+  },
+  "creditos.autor.carrera": {
+    "message": "Ingeniería Civil en Computación (Computer Science Engineering) · University of Chile"
+  },
+  "creditos.profesores": {
+    "message": "Advisors"
+  },
+  "creditos.contexto": {
+    "message": "Context"
+  },
+  "creditos.contexto.desc": {
+    "message": "Work submitted for the professional degree of Ingeniero Civil en Computación (Computer Science Engineer), at the Department of Computer Science (DCC) of the Faculty of Physical and Mathematical Sciences (FCFM), University of Chile · 2026."
+  },
+  "home.hero.titulo": {
+    "message": "{acento}{br}Component Catalog",
+    "description": "Título de la portada. {br} es el salto de línea y {acento} la parte destacada (home.hero.titulo.acento)"
+  },
+  "home.hero.titulo.acento": {
+    "message": "Software",
+    "description": "Parte destacada del título de la portada"
+  },
+  "home.hero.descripcion": {
+    "message": "A navigable catalog of recurring components for information systems. Each component is documented with a consistent structure and linked to the {tablero} — to move from \"what we need\" to \"how we build it\".",
+    "description": "Bajada de la portada. {tablero} es «Tablero Digital» en negrita (home.tablero)"
+  },
+  "home.tablero": {
+    "message": "Digital Board",
+    "description": "Nombre del Tablero Digital dentro de una frase"
+  },
+  "home.hero.cta.explorar": {
+    "message": "Explore the {n} components →"
+  },
+  "home.hero.cta.que-es": {
+    "message": "What is this catalog?"
+  },
+  "home.componente.insignia": {
+    "message": "Full catalog"
+  },
+  "home.componente.titulo": {
+    "message": "By Component"
+  },
+  "home.componente.desc": {
+    "message": "{n} components documented with an 11-field structure: description, capabilities, boundaries, information flow, variants, dependencies, examples, and mapping to the Digital Board."
+  },
+  "home.componente.cta": {
+    "message": "See all components →"
+  },
+  "home.seccion.titulo": {
+    "message": "By Board Section"
+  },
+  "home.seccion.desc": {
+    "message": "Consolidated matrix: which components touch each section of the board, as a mandatory or an optional relationship."
+  },
+  "home.seccion.cta": {
+    "message": "See the matrix →"
+  },
+  "home.etiquetas.titulo": {
+    "message": "By Tag"
+  },
+  "home.etiquetas.desc": {
+    "message": "Grouping by functional affinity: authentication, visualization, security, integration, and more."
+  },
+  "home.etiquetas.cta": {
+    "message": "See the tags →"
+  },
+  "home.tablero.seccion.actualizacion-manual": {
+    "message": "Data that the user creates or modifies"
+  },
+  "home.tablero.seccion.actualizacion-automatica": {
+    "message": "Ingestion without human intervention"
+  },
+  "home.tablero.seccion.conceptos-datos": {
+    "message": "Persistent entities of the system"
+  },
+  "home.tablero.seccion.salidas-demanda": {
+    "message": "Information requested by the user"
+  },
+  "home.tablero.seccion.salidas-automaticas": {
+    "message": "Notifications and proactive communication"
+  },
+  "home.tablero.seccion.procesos-autonomos": {
+    "message": "Background tasks"
+  },
+  "home.tablero.antetitulo": {
+    "message": "Conceptual framework"
+  },
+  "home.tablero.titulo": {
+    "message": "The Digital Board"
+  },
+  "home.tablero.desc": {
+    "message": "A visual instrument for defining the scope of an information system. It organizes requirements into six sections that reflect the natural flow of information: how it enters, how it is stored, how it is processed, and how it is communicated to the outside."
+  },
+  "home.tablero.cta": {
+    "message": "Learn about the Digital Board →"
+  },
+  "home.meta.descripcion": {
+    "message": "Navigable catalog of recurring software components for information systems.",
+    "description": "Meta descripción de la portada"
   }
 }

@@ -31,10 +31,10 @@ Este archivo vive fuera de `i18n/en/` porque describe la correspondencia entre i
 | Español | Inglés | Abreviatura en la matriz | En el paper del Tablero |
 |---|---|---|---|
 | Actualización Manual | Manual Update | Manual Upd. | *manual inputs* |
-| Actualización Automática | Automatic Update | Auto. Upd. | *autonomous inputs* |
-| Conceptos de Datos | Data Concepts | Data | *data concepts* |
-| Salidas por Demanda | On-Demand Outputs | On-Dem. Out. | *on-demand outputs* |
-| Salidas Automáticas | Automatic Outputs | Auto. Out. | *autonomous outputs* |
+| Actualización Automática | Automatic Update | Automatic Upd. | *autonomous inputs* |
+| Conceptos de Datos | Data Concepts | Concepts | *data concepts* |
+| Salidas por Demanda | On-Demand Outputs | On-Demand Out. | *on-demand outputs* |
+| Salidas Automáticas | Automatic Outputs | Automatic Out. | *autonomous outputs* |
 | Procesos Autónomos | Autonomous Processes | Auton. Proc. | *autonomous processes* |
 
 Se sigue el vocabulario del sitio y no el del paper: «Actualización» reemplazó a «Entrada» a propósito (nombra el efecto sobre el repositorio, no el acto de teclear), y esa decisión vale también en inglés. Se conserva además la distinción del español entre *Automatic* (actualizaciones y salidas) y *Autonomous* (procesos).

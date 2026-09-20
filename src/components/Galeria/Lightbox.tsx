@@ -1,4 +1,5 @@
 import React, {useEffect, useCallback} from 'react';
+import {translate} from '@docusaurus/Translate';
 import type {ImagenEjemplo} from './types';
 import styles from './styles.module.css';
 
@@ -61,7 +62,11 @@ export default function Lightbox({
         type="button"
         className={styles.lightboxClose}
         onClick={onClose}
-        aria-label="Cerrar"
+        aria-label={translate({
+          id: 'galeria.lightbox.cerrar',
+          message: 'Cerrar',
+          description: 'aria-label del botón que cierra la imagen a pantalla completa',
+        })}
       >
         ×
       </button>
@@ -74,7 +79,11 @@ export default function Lightbox({
             e.stopPropagation();
             prev();
           }}
-          aria-label="Imagen anterior"
+          aria-label={translate({
+            id: 'galeria.lightbox.anterior',
+            message: 'Imagen anterior',
+            description: 'aria-label del botón de navegación de la imagen a pantalla completa',
+          })}
         >
           ‹
         </button>
@@ -101,7 +110,11 @@ export default function Lightbox({
             e.stopPropagation();
             next();
           }}
-          aria-label="Imagen siguiente"
+          aria-label={translate({
+            id: 'galeria.lightbox.siguiente',
+            message: 'Imagen siguiente',
+            description: 'aria-label del botón de navegación de la imagen a pantalla completa',
+          })}
         >
           ›
         </button>

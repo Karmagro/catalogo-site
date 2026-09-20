@@ -549,6 +549,21 @@ function verificarEncabezados(inv) {
   }
 }
 
+function verificarIdiomas(inv) {
+  // El rótulo de cada sección está escrito dos veces: en secciones.ts (lo lee este
+  // script) y en rotulos.ts (lo lee `write-translations`). Tienen que decir lo mismo.
+  const ruta = 'src/components/TableroDigital/rotulos.ts';
+  const rotulos = leer(ruta);
+  for (const seccion of inv.secciones) {
+    const m = rotulos.match(new RegExp(`id: 'tablero\\.seccion\\.${seccion}',\\s*message: '([^']+)'`));
+    if (!m) {
+      error(`${ruta}: falta el rótulo traducible de la sección «${seccion}»`);
+    } else if (m[1] !== inv.SECCIONES[seccion].label) {
+      error(`${ruta}: «${m[1]}» no coincide con el label de secciones.ts («${inv.SECCIONES[seccion].label}»)`);
+    }
+  }
+}
+
 // ─── Ejecución ──────────────────────────────────────────────────────────────
 
 const BLOQUES = [
@@ -560,6 +575,7 @@ const BLOQUES = [
   ['Enlaces internos', verificarEnlaces],
   ['Cifras', verificarCifras],
   ['Encabezados', verificarEncabezados],
+  ['Idiomas', verificarIdiomas],
 ];
 
 async function main() {
