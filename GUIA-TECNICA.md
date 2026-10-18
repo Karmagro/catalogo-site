@@ -50,8 +50,9 @@ catalogo-site/
 ├── src/
 │   ├── data/
 │   │   ├── mapeo/index.ts             MAPEO: vínculo de cada componente con las seis secciones (sección 7)
-│   │   ├── tableros/<slug>.ts         TableroData: post-its del Tablero de ejemplo (sección 5)
-│   │   └── ejemplos/<slug>.ts         GaleriaData: capturas de la galería (sección 6)
+│   │   ├── mapeo/en/index.ts          NOMBRES: nombre inglés de cada componente (sección 16)
+│   │   ├── tableros/<slug>.ts         TableroData: post-its del Tablero de ejemplo (sección 5); en/ para el inglés
+│   │   └── ejemplos/<slug>.ts         GaleriaData: capturas de la galería (sección 6); en/ para el inglés
 │   ├── components/
 │   │   ├── TableroDigital/            Dibuja un TableroData. types.ts define Seccion, Vinculo, TableroData, MapeoComponente
 │   │   ├── Galeria/                   Carrusel + lightbox de una GaleriaData
@@ -68,7 +69,14 @@ catalogo-site/
 │   ├── ejemplos/                      Imágenes de las galerías (<slug>-<descriptor>.png)
 │   ├── creditos/                      Fotos de la página de Créditos
 │   └── logo.svg, logo-dark.svg, favicon.svg, favicon.ico
+├── i18n/
+│   ├── GLOSARIO.md                    Terminología ES → EN (sección 16)
+│   ├── en/code.json                   Cadenas de la interfaz en inglés
+│   ├── en/docusaurus-plugin-content-docs/current/   Espejos ingleses de docs/ (fichas, páginas, tags.yml)
+│   ├── en/docusaurus-theme-classic/   Navbar y footer en inglés
+│   └── es/code.json                   Cadenas del buscador en español
 ├── scripts/verificar-catalogo.mjs     Verificación del catálogo (sección 13)
+├── scripts/scaffold-i18n.mjs          Crea el espejo inglés de una ficha o página (sección 16)
 ├── sidebars.ts                        Orden de lectura de las fichas (sección 9)
 ├── docusaurus.config.ts               Configuración del sitio
 ├── .github/workflows/verificar.yml    Integración continua (sección 14)
@@ -254,7 +262,7 @@ Trampas que ya se pisaron. Leer antes de tocar el CSS o escribir MDX con JSX.
 
 ## Qué verifica y qué no verifica el script
 
-`scripts/verificar-catalogo.mjs` importa los datos TypeScript tal cual (Node 22.18 o superior) y recorre ocho bloques. Sale con código 1 si hay errores; las advertencias no detienen nada.
+`scripts/verificar-catalogo.mjs` importa los datos TypeScript tal cual (Node 22.18 o superior) y recorre nueve bloques. Sale con código 1 si hay errores; las advertencias no detienen nada.
 
 | Bloque | Qué comprueba |
 |---|---|
@@ -264,8 +272,9 @@ Trampas que ya se pisaron. Leer antes de tocar el CSS o escribir MDX con JSX.
 | Mapeo coherente | Para cada componente y sección, el vínculo declarado coincide con las variantes de los post-its del tablero y con la columna Vínculo de la tabla de observaciones de la ficha |
 | Imágenes | Cada imagen de galería existe en `static/`, tiene `alt` y `caption`; aviso por imágenes en `static/img/ejemplos/` que ninguna galería usa; si existe `ATRIBUCIONES.md`, aviso por imágenes que no aparecen ahí |
 | Enlaces internos | Todo enlace `/docs/…` en `docs/`, `src/` y la configuración apunta a una ficha, una página o una etiqueta existentes |
-| Cifras | Los conteos de componentes escritos en la portada, en Sobre el Catálogo, en `README.md`, en esta guía y en la sección vigente del `CHANGELOG.md` (en cifra o en palabra) coinciden con el número de fichas |
+| Cifras | Los conteos de componentes escritos en la portada, en Sobre el Catálogo (en los dos idiomas), en `README.md`, en esta guía y en la sección vigente del `CHANGELOG.md` (en cifra o en palabra) coinciden con el número de fichas |
 | Encabezados | Los H2 de cada ficha llevan un id explícito, en minúsculas y sin tildes ni eñes (`## Descripción {/* #descripcion */}`), para que las anclas sobrevivan a una traducción de los títulos. Va en la sintaxis de comentario de MDX: la clásica `{#id}` rompe el build, porque con `future.v4` MDX la lee como una expresión. `npx docusaurus write-heading-ids --syntax mdx-comment` los genera a partir del texto; como conserva las tildes, hay que quitárselas a mano |
+| Idiomas | Cada ficha, página, tablero y galería tiene su espejo inglés, y no hay espejos huérfanos; ningún MDX inglés importa datos sin `/en/`; ningún MDX usa `<a href="/docs/…">`; los ids de encabezado son los mismos en los dos idiomas; el H1 inglés, el `componente` del tablero y de la galería ingleses coinciden con `NOMBRES`; las etiquetas, la forma del tablero (post-its por sección y su variante) y las imágenes de la galería son las del original; la tabla *Section · Relationship · Notes* coincide con el mapeo; los dos `tags.yml` tienen las mismas claves y *permalinks*; los rótulos de `rotulos.ts` coinciden con `secciones.ts`. Aviso de deriva cuando un original cambió en un *commit* posterior al de su traducción (sección 16) |
 
 Los archivos que empiezan con `_` en `docs/componentes/` (la plantilla) se omiten. El bloque de atribuciones se activa solo cuando el archivo `ATRIBUCIONES.md` existe.
 
@@ -285,14 +294,37 @@ Una sola, en `package.json`. `docusaurus.config.ts` la expone en `customFields.v
 
 ## Internacionalización
 
-El sitio está en español y preparado para un segundo idioma con el sistema de i18n de Docusaurus. La regla para cuando se active: **si es prosa, se copia; si es código, se instrumenta.**
+El sitio se publica en español (idioma por defecto, en `/`) y en inglés (en `/en/`), con el sistema de i18n de Docusaurus. Un solo repositorio, un solo despliegue: `npm run build` construye los dos idiomas. La regla que decide dónde va cada traducción: **si es prosa, se espeja; si es código, se instrumenta.**
 
-| Qué | Cómo se traduce |
+| Qué | Dónde está la versión inglesa |
 |---|---|
-| `docs/**/*.mdx` | Espejo en `i18n/<locale>/docusaurus-plugin-content-docs/current/`, mismo nombre de archivo |
-| `src/data/**/*.ts` (tableros, galerías, mapeo) | Espejo en una subcarpeta del idioma; el MDX traducido importa el dato traducido |
-| `src/pages/*.tsx` y `src/components/**/*.tsx` | `<Translate>` / `translate()` en el mismo archivo; las cadenas se extraen con `npm run write-translations` |
-| `sidebars.ts` y `docusaurus.config.ts` | Se cargan en Node, fuera del sistema de React: los rótulos de tramo se eligen por `process.env.DOCUSAURUS_CURRENT_LOCALE` |
-| `docs/tags.yml` | Espejo localizado con la **misma clave y el mismo `permalink`**, distinto `label` |
+| `docs/componentes/<slug>.mdx` y las páginas de `docs/` | `i18n/en/docusaurus-plugin-content-docs/current/`, mismo nombre de archivo. El espejo es un MDX completo: *frontmatter*, *imports* y JSX iguales al original; cambian la prosa y los *imports* de datos |
+| `src/data/tableros/<slug>.ts`, `src/data/ejemplos/<slug>.ts` | `src/data/tableros/en/<slug>.ts`, `src/data/ejemplos/en/<slug>.ts`. Mismo símbolo exportado; se traducen `componente`, los títulos de los post-its, `alt` y `caption` |
+| `src/data/mapeo/index.ts` | No se espeja: los vínculos valen para los dos idiomas. Solo cambia el nombre de cada componente, que está en `src/data/mapeo/en/index.ts` (`NOMBRES`, slug → nombre). La página «By Section» se lo pasa por *prop* a `<MatrizMapeo nombres={NOMBRES} />` y a cada `<ResumenSeccion nombres={NOMBRES} />` |
+| `src/pages/*.tsx`, `src/components/**/*.tsx` | `<Translate>` / `translate()` en el mismo archivo; las cadenas viven en `i18n/en/code.json`. Se regeneran con `npm run write-translations -- --locale en`, que agrega las claves nuevas sin pisar las ya traducidas |
+| Rótulos de las seis secciones | `src/components/TableroDigital/rotulos.ts`, traducibles con id `tablero.seccion.<id>`. El español queda escrito también en `secciones.ts`, que el script importa en Node, donde `@docusaurus/Translate` no existe; el script comprueba que los dos digan lo mismo |
+| Navbar y footer | `i18n/en/docusaurus-theme-classic/navbar.json` y `footer.json` |
+| `sidebars.ts` y `docusaurus.config.ts` | Se cargan en Node, fuera del sistema de React. El título, el *tagline* y los rótulos de tramo del sidebar se eligen por `process.env.DOCUSAURUS_CURRENT_LOCALE`. Los tramos son ítems `type: 'html'`, que el sistema de traducción de sidebars de Docusaurus no cubre |
+| `docs/tags.yml` | `i18n/en/docusaurus-plugin-content-docs/current/tags.yml`, con la **misma clave y el mismo `permalink`**; cambia el `label` |
+| Buscador | El *plugin* local no trae traducción al español: sus cadenas («Buscar», «Sin resultados»…) están en `i18n/es/code.json`. En inglés usa las suyas |
 
-Los *slugs*, los identificadores de documento y los *permalinks* de etiqueta se mantienen en español en todos los idiomas (`/en/docs/componentes/mantenedor`): así los enlaces cruzados entre fichas y los selectores de color de etiqueta siguen valiendo sin duplicarlos. No se escriben condicionales de idioma a mano en los componentes (`locale === 'en' ? … : …`): quedan fuera de `write-translations` y no escalan. Un solo repositorio y un solo despliegue: `npm run build` construye todos los idiomas.
+Los *slugs*, los identificadores de documento, los *permalinks* de etiqueta y los ids de encabezado se mantienen en español en todos los idiomas (`/en/docs/componentes/mantenedor`, `## Description {/* #descripcion */}`): los enlaces cruzados, las anclas y los colores de etiqueta valen para ambos sin duplicarse. La terminología está fijada en [`i18n/GLOSARIO.md`](i18n/GLOSARIO.md); un término que no está ahí se agrega antes de usarlo.
+
+**Comandos.**
+
+| Comando | Qué hace |
+|---|---|
+| `npm start -- --locale en` | Servidor de desarrollo en inglés. `npm start` sirve un solo idioma: en desarrollo, el selector de idioma no cambia de idioma |
+| `npm run build` y `npm run serve` | Los dos idiomas tal como se publican, con el selector funcionando |
+| `node scripts/scaffold-i18n.mjs <slug>…` | Crea el espejo inglés de una ficha (MDX, tablero y galería) o de una página, con los *imports* de datos apuntando a `en/`. No traduce y no sobrescribe nunca |
+
+**Trampas que ya se pisaron.**
+
+1. **Los ids de encabezado van en sintaxis de comentario MDX** (`{/* #id */}`). La clásica `{#id}` rompe el build con `future.v4`.
+2. **Un MDX inglés que importa el dato español compila igual** y muestra post-its o pies de foto en español. El script lo marca como error; `scaffold-i18n.mjs` ya deja el *import* bien.
+3. **`<a href="/docs/…">` no recibe el prefijo `/en/`**: en la versión inglesa lleva de vuelta al español. En MDX se usa un enlace Markdown o `<Link to="/docs/…">` (de `@docusaurus/Link`), que sí lo reciben. El script lo marca como error en los dos idiomas.
+4. **Los módulos CSS no pueden vivir junto al MDX**: una ruta relativa como `./componente.module.css` no resuelve desde `i18n/en/…`. Por eso los estilos están en `src/css/` y se importan con `@site/src/css/…`.
+5. **No se escriben condicionales de idioma a mano** en los componentes (`locale === 'en' ? … : …`): quedan fuera de `write-translations`, se dispersan por el código y no escalan a un tercer idioma. Si una cadena no aparece traducida, el diagnóstico es, en orden: ¿está la clave en `code.json`?, ¿coincide el `id` carácter por carácter?, ¿es un literal (no una variable ni una concatenación) en el sitio de la llamada?
+6. **Una ficha sin espejo no rompe nada**: Docusaurus la muestra en español dentro de `/en/`. Por eso la falta de espejo la detecta el script, no el build.
+
+**Deriva.** Docusaurus no avisa cuando la ficha española cambió y la inglesa no. El bloque «Idiomas» del script compara la fecha del último *commit* de cada original con la de su traducción y avisa cuando el original es más reciente. Es una heurística: un cambio de formato también avisa, y en un clon superficial, como el de la integración continua, no hay historia que comparar.

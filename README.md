@@ -2,7 +2,7 @@
 
 **Componentes de software recurrentes para sistemas de información, mapeados al Tablero Digital.**
 
-Sitio: **https://catalogo-componentes-software.pages.dev**
+Sitio: **https://catalogo-componentes-software.pages.dev** · en inglés: **https://catalogo-componentes-software.pages.dev/en/**
 
 [![verificar](https://github.com/Karmagro/catalogo-site/actions/workflows/verificar.yml/badge.svg)](https://github.com/Karmagro/catalogo-site/actions/workflows/verificar.yml)
 
@@ -61,6 +61,7 @@ catalogo-site/
 │   ├── css/                      # Estilos globales y de las fichas
 │   ├── pages/                    # Inicio y Créditos
 │   └── theme/                    # Piezas de Docusaurus sobreescritas (swizzle)
+├── i18n/                         # Versión en inglés: espejos de docs/, cadenas de la interfaz y GLOSARIO.md
 ├── static/img/ejemplos/          # Imágenes de las galerías
 ├── sidebars.ts                   # Orden de lectura de las fichas
 ├── docusaurus.config.ts          # Configuración del sitio

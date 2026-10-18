@@ -101,3 +101,11 @@ Formato: **fecha · decisión** · por qué · qué NO se hace.
 **Por qué.** El script de verificación importa los datos TypeScript sin compilarlos, con el *type stripping* nativo de Node, disponible desde 22.18. Fijar una versión en el repositorio evita que el sitio construya distinto en cada máquina.
 
 **Qué NO se hace.** No se agrega un paso de compilación para el script ni se convierte el paquete a módulos ES.
+
+## 2026-09-20 · La versión inglesa sigue el vocabulario del sitio, no el del paper del Tablero
+
+**Decisión.** Las secciones del Tablero se traducen a partir de los nombres del sitio: *Manual Update* y *Automatic Update* (no *manual inputs* ni *autonomous inputs*, que usa Ochoa et al.), *Data Concepts*, *On-Demand Outputs*, *Automatic Outputs* y *Autonomous Processes*. El Tablero Digital es *Digital Board*. Los nombres de componente, los campos de la ficha y las etiquetas quedan fijados en `i18n/GLOSARIO.md`: entre otros, *Data Manager* (Mantenedor), *Submission Form* (Formulario de carga), *Variants* (Modalidades) y *Relationship* (Vínculo). La página del Tablero en inglés anota la equivalencia con los términos del paper.
+
+**Por qué.** «Actualización» reemplazó a «Entrada» en junio de 2026 porque nombra el efecto sobre el repositorio y no el acto de teclear (ver la entrada del 2026-06-06); volver a *inputs* en inglés deshacía esa decisión en un idioma. La distinción del español entre *Automatic* (actualizaciones y salidas) y *Autonomous* (procesos) también se conserva. En los nombres de componente se evitó el calco cuando en inglés nombra a una persona (*Maintainer*, *Account Creator*) o choca con otro término del sitio (*link*, *entry*, *modality*); las razones de cada uno están en el glosario.
+
+**Qué NO se hace.** No se traducen *slugs*, *permalinks* ni ids de encabezado (ver la entrada del 2026-08-29). No se usa un término inglés que no esté en el glosario: si hace falta, se agrega ahí primero.

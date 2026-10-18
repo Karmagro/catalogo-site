@@ -160,7 +160,36 @@ Tramos del menú lateral: Acceso y cuentas → **Access and accounts** · Gesti�
 | etiqueta | tag |
 | memoria (de título) | thesis |
 | profesor guía · co-guía | thesis advisor · co-advisor |
+| tarjeta (del Tablero) | card (*post-it* entre paréntesis cuando el original los alterna) |
+| Requisito de Usuario | User Requirement |
+| disparador · disparar | trigger · to trigger |
+| programado · agenda · planificador | scheduled · schedule · scheduler |
+| programación periódica | periodic scheduling |
+| respaldo | backup |
+
+### Vocabulario por dominio
+
+Términos que aparecen en un grupo de fichas. Se usa el término estándar del campo en inglés.
+
+| Español | Inglés | Dónde |
+|---|---|---|
+| plantilla biométrica | biometric template | Biometric Login |
+| registrar el rasgo · registro biométrico | to enroll · enrollment | Biometric Login |
+| detección de vida | liveness detection (*anti-spoofing*) | Biometric Login |
+| control de acceso basado en roles · discrecional · basado en atributos | role-based · discretionary · attribute-based access control | Authorization |
+| recuperación de contraseña | password recovery | cuentas |
+| cierre remoto de sesiones | remote session sign-out | Profile Management |
+| aprobar · rechazar · devolver · derivar | approve · reject · return · forward | Approval Workflow |
+| caso · estado terminal | case · terminal state | Approval Workflow |
+| bandeja de pendientes | pending inbox | Approval Workflow |
+| visto bueno | sign-off | Approval Workflow |
+| acuse de recibo · comprobante | acknowledgment of receipt | Submission Form |
+| formulario por pasos | multi-step form (wizard) | Submission Form |
+| cartola (de movimientos) | account statement | Report |
+| (dato) tachado | redacted | Report |
+| inyección de datos | data injection | Exposed Service |
+| registro (fila del log de auditoría) | entry (*audit entry*); *record* queda para los datos del negocio | Audit Log |
 
 ## Cómo se producen las traducciones
 
-Las traducciones al inglés se redactan con asistencia de un modelo de lenguaje, a partir de este glosario, y las revisa el autor del catálogo: primero el glosario, luego dos fichas piloto, después el resto por lotes. Ningún proceso automático reescribe una traducción ya revisada.
+Las traducciones al inglés se redactan con asistencia de un modelo de lenguaje, a partir de este glosario. El autor del catálogo revisó y aprobó primero el glosario y luego dos fichas piloto (Data Manager y Login Form); el resto se tradujo por lotes con el glosario y el piloto como referencia, y `npm run verificar` comprueba la paridad estructural con el original (encabezados, nombres, mapeo, post-its, imágenes). Ningún proceso automático reescribe una traducción ya revisada.
