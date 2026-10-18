@@ -1,0 +1,131 @@
+---
+sidebar_position: 3
+tags:
+  - seguridad
+  - integración
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {autenticacionApi} from '@site/src/data/tableros/en/autenticacion-api';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {autenticacionApi as ejemplosAutenticacionApi} from '@site/src/data/ejemplos/en/autenticacion-api';
+
+# API Authentication
+
+<span className={styles.aliases}>Machine-to-machine (M2M) authentication · Service-to-service authentication</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosAutenticacionApi} />
+
+## Description {/* #descripcion */}
+
+A component that lets external systems, services, or applications identify themselves to the system in order to consume resources or functionality. Unlike the authentication of human users, this process takes place automatically between systems, without manual intervention, using system-specific credentials such as API keys, access tokens, or digital certificates. Its purpose is to ensure that only authorized systems can access the system's endpoints and resources.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Presents no graphical interface; the whole process takes place through programmatic calls (HTTP headers, parameters)
+- Uses system-specific credentials (API keys, OAuth tokens, TLS/mTLS certificates)
+- Validates the identity of the client system or service before allowing access to the server's resources
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Rate limiting / Per-client quotas:** restricts the number of requests an authenticated client can make within a time interval, protecting the system from abuse or overload
+- **Request auditing:** records each authenticated request with the client's identification, the resource accessed, and the result, enabling traceability and later analysis
+- **Automatic credential rotation:** renews tokens or keys periodically, reducing the impact of compromised credentials
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** handle the creation or management of API credentials — that belongs to a specialized [Data Manager](/docs/componentes/mantenedor)
+- Authentication **does not** imply authorization over specific resources — that belongs to [Authorization](/docs/componentes/autorizacion)
+- **Does not** define or implement the endpoints or services to be consumed; it only verifies the identity of the consumer
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    Credentials of the client system (API key, OAuth token, certificate) sent in HTTP headers or parameters
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    A session token valid for subsequent requests, or access denial
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **API Key:** a static key associated with the consuming system, sent with each request
+- **OAuth 2.0:** a protocol that issues temporary access tokens after an initial authentication
+- **JWT (JSON Web Tokens):** self-signed tokens that contain information about the system and their validity
+- **mTLS (Mutual TLS):** authentication through two-way digital certificates
+- **HMAC / Signature:** cryptographic signing of requests using shared secrets
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- Credentials [Data Manager](/docs/componentes/mantenedor) (creation and administration of the keys and certificates of authorized systems)
+- Repository where the registered credentials are stored ([Database](/docs/componentes/base-datos))
+- Token manager (a system that issues and validates session tokens such as JWT)
+- [Exposed Service](/docs/componentes/servicio-expuesto) (the component that publishes the services or functionality to be consumed once the system is authenticated)
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="autenticacion-api" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | — |
+| Automatic Update | Always | Reception of authentication requests with credentials from external systems. |
+| Data Concepts | Always | Registered client system, credentials (API key, certificate), issued tokens. |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | No | — |
+| Autonomous Processes | Always | Validating the client's identity is the mandatory autonomous process. Enforcement of rate-limiting policies and request audit logging, when those capabilities are present. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={autenticacionApi} />

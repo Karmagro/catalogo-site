@@ -1,0 +1,128 @@
+---
+sidebar_position: 5
+tags:
+  - autenticación
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {gestionPerfil} from '@site/src/data/tableros/en/gestion-perfil';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {gestionPerfil as ejemplosGestionPerfil} from '@site/src/data/ejemplos/en/gestion-perfil';
+
+# Profile Management
+
+<span className={styles.aliases}>My account · Account settings · Self-service account management</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosGestionPerfil} />
+
+## Description {/* #descripcion */}
+
+A component that lets an authenticated user manage the essential data and security settings of their own account. The user can change access credentials, update contact information, and manage security aspects such as two-factor authentication or active sessions. Unlike the initial creation of an account, this component operates on an existing account and requires the user to be authenticated or able to verify their identity.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Allows the authenticated user to change their access credentials (password, email, phone) and contact details
+- Requires prior authentication to access the modification options
+- Persists the changes in the user repository
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Password recovery:** a flow accessible without authentication that lets users who lost access reset their password through a link or code sent by email/SMS
+- **2FA setup:** lets the user enable or disable two-factor authentication and register their methods (authenticator app, phone number)
+- **Active session management:** shows the user's open sessions on different devices and lets the user close them remotely
+- **Additional verification for sensitive changes:** asks for identity confirmation (current password, code by email/SMS) before applying critical modifications such as a change of email or password
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** create new accounts — that belongs to [Account Creation](/docs/componentes/creador-cuenta)
+- **Does not** cover the administration of other people's accounts; it is specifically about the personal account
+- **Does not** include system personalization preferences such as theme, language, or notifications
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    The user's modifications (new password, updated email, 2FA settings), together with identity verification when applicable
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Data updated in the repository and confirmation to the user, together with a sensitive-change notification when applicable
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Self-service:** the user manages their own account without administrator intervention
+- **Assisted:** an administrator or support staff makes changes to the user's account (less common, typically for access recovery)
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- Authentication system ([Login Form](/docs/componentes/formulario-login) to verify identity before sensitive changes)
+- User repository where the modified data is updated ([Database](/docs/componentes/base-datos))
+- Notification service ([Notification System](/docs/componentes/sistema-notificacion) for verification codes and change alerts)
+- Session manager (to view and close active sessions)
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="gestion-perfil" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | Always | Form for editing personal data and credentials. 2FA setup and remote session sign-out, when those capabilities are present. |
+| Automatic Update | No | — |
+| Data Concepts | Always | User (editable attributes). Active Sessions, when that capability is present. |
+| On-Demand Outputs | Always | Display of the current profile data, needed for the user to be able to edit it. List of active sessions, when that capability is present. |
+| Automatic Outputs | Optional | Sensitive-change confirmation email, verification codes, password recovery link, when those capabilities are present. |
+| Autonomous Processes | No | — |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={gestionPerfil} />

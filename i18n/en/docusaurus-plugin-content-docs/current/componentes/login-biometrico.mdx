@@ -1,0 +1,132 @@
+---
+sidebar_position: 2
+tags:
+  - autenticación
+  - seguridad
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {loginBiometrico} from '@site/src/data/tableros/en/login-biometrico';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {loginBiometrico as ejemplosLoginBiometrico} from '@site/src/data/ejemplos/en/login-biometrico';
+
+# Biometric Login
+
+<span className={styles.aliases}>Biometric authentication · Biometric identification</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosLoginBiometrico} />
+
+## Description {/* #descripcion */}
+
+A component that lets users identify themselves to the system through unique physical or behavioral characteristics (fingerprint, facial recognition, iris, voice). Unlike traditional credentials, which the user "knows" (a password) or "has" (a device), biometric authentication relies on what the user "is". The system captures the biometric trait, processes it, and compares it against previously enrolled templates to validate the identity.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Captures physical or behavioral characteristics of the user through specialized hardware (fingerprint sensor, camera, microphone)
+- Converts the captured characteristics into digital representations (biometric templates) for comparison
+- Compares the capture against previously enrolled templates to determine whether the identity matches
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Operation as an additional factor (multi-factor):** the component works together with another form of authentication (password, token), adding a biometric layer to an existing flow instead of replacing it
+- **Fallback authentication:** lets the user authenticate through a non-biometric mechanism (PIN, password) when biometric verification fails or is unavailable
+- **Liveness detection (anti-spoofing):** processes the biometric capture to verify that it comes from a real person and not from an image, a video, or a replica of the trait
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** include the initial registration of the biometric trait (enrollment), which is part of user management
+- **Does not** handle authorization or permissions after authentication
+- **Is not** applicable to programmatic authentication between systems
+- Requires specific technical infrastructure (sensors, matching algorithms) not present in traditional systems
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    The user's biometric data (fingerprint image, facial scan, voice sample)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Authenticated session or access denial, depending on the match with the enrolled template
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Fingerprint:** scanning and comparison of the unique patterns of the fingerprint
+- **Facial recognition:** analysis of facial features through a camera
+- **Iris recognition:** identification through the unique patterns of the iris
+- **Voice recognition:** authentication through characteristic vocal patterns
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- Suitable hardware (fingerprint sensor, camera for facial recognition, iris scanner)
+- Biometric comparison engine (matching algorithms)
+- Repository of enrolled biometric templates ([Database](/docs/componentes/base-datos))
+- Session or token manager to maintain authentication after verification
+- Fallback authentication mechanism for cases of biometric failure ([Login Form](/docs/componentes/formulario-login))
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="login-biometrico" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | The capture of the biometric trait is transient input used to verify identity; it does not store or modify persistent system data. |
+| Automatic Update | No | — |
+| Data Concepts | Always | The enrolled biometric template and the User it belongs to. |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | Optional | Notification to the user about failed access attempts or attempts from unrecognized devices. |
+| Autonomous Processes | Optional | Liveness detection (anti-spoofing), when that capability is present. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={loginBiometrico} />
