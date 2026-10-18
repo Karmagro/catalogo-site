@@ -564,3 +564,14 @@ html[lang='en'] .docs-tags-list-page main > h1::after {
   padding-top: 0;
   border-top: none;
 }
+
+/* Enlaces de licencia dentro del copyright del pie: el color de enlace del sitio
+   no se lee sobre el fondo oscuro del footer. */
+.footer__copyright a {
+  color: var(--ifm-footer-link-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer__copyright a:hover {
+  color: var(--ifm-footer-link-hover-color);
+}

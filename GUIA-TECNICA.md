@@ -68,6 +68,7 @@ catalogo-site/
 ├── static/img/
 │   ├── ejemplos/                      Imágenes de las galerías (<slug>-<descriptor>.png)
 │   ├── creditos/                      Fotos de la página de Créditos
+│   ├── social-card.png, social-card-en.png   Tarjeta al compartir el enlace, una por idioma (llevan el conteo de componentes)
 │   └── logo.svg, logo-dark.svg, favicon.svg, favicon.ico
 ├── i18n/
 │   ├── GLOSARIO.md                    Terminología ES → EN (sección 16)
@@ -81,7 +82,10 @@ catalogo-site/
 ├── docusaurus.config.ts               Configuración del sitio
 ├── .github/workflows/verificar.yml    Integración continua (sección 14)
 ├── .github/ISSUE_TEMPLATE/            Plantillas «Proponer un componente» y «Reportar un error»
-└── .github/PULL_REQUEST_TEMPLATE.md   Lista de comprobación de cada pull request
+├── .github/PULL_REQUEST_TEMPLATE.md   Lista de comprobación de cada pull request
+├── LICENSE, LICENSE-CONTENIDO.md      MIT para el código; CC BY-NC-SA 4.0 para el contenido
+├── ATRIBUCIONES.md                    Imágenes de terceros y el Tablero Digital (el script lo cruza con las galerías)
+└── CITATION.cff                       Datos de cita; GitHub los muestra en «Cite this repository»
 ```
 
 ## Las tres fuentes de datos de una ficha

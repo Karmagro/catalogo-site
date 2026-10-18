@@ -69,7 +69,10 @@ catalogo-site/
 ├── CHANGELOG.md                  # Qué cambió en cada versión
 ├── CONTRIBUTING.md               # Cómo proponer, escribir y publicar un componente
 ├── GUIA-TECNICA.md               # Cómo está hecho el sitio
-└── DECISIONES.md                 # Por qué el catálogo es como es
+├── DECISIONES.md                 # Por qué el catálogo es como es
+├── LICENSE, LICENSE-CONTENIDO.md # Licencias: MIT (código) y CC BY-NC-SA 4.0 (contenido)
+├── ATRIBUCIONES.md               # Imágenes de terceros y cita del Tablero Digital
+└── CITATION.cff                  # Cómo citar el catálogo
 ```
 
 ## Versiones
@@ -82,12 +85,21 @@ El catálogo está pensado para crecer más allá de su autor. [`CONTRIBUTING.md
 
 ## Origen y contexto académico
 
-El catálogo es el artefacto principal de la memoria de título *Catalogación de componentes recurrentes de software, que forman parte de sistemas de información* (Carlos Gálvez Romo, Departamento de Ciencias de la Computación, Universidad de Chile, 2026), dirigida por los profesores Sergio Ochoa y Daniel Perovich. La memoria contiene el marco teórico, la construcción del catálogo, su validación sobre sistemas reales y la evaluación de usabilidad del sitio. Será publicada en el repositorio académico de la Universidad de Chile una vez concluido el proceso de titulación; este README se actualizará con el enlace.
+El catálogo es el artefacto principal de la memoria de título *Catalogación de componentes recurrentes de software, que forman parte de sistemas de información* (Carlos Gálvez Romo, Departamento de Ciencias de la Computación, Universidad de Chile, 2026), dirigida por los profesores Sergio Ochoa y Daniel Perovich. La memoria contiene el marco teórico, la construcción del catálogo, su validación sobre sistemas reales y la evaluación de usabilidad del sitio. Se publica en el Repositorio Académico de la Universidad de Chile, bajo CC BY-NC-ND 3.0 Chile.
 
 Para citar el catálogo:
 
-> Gálvez Romo, C. (2026). *Catálogo de Componentes: componentes de software recurrentes para sistemas de información*. Universidad de Chile, Departamento de Ciencias de la Computación. https://catalogo-componentes-software.pages.dev
+> Gálvez Romo, C. (2026). *Catálogo de Componentes: componentes de software recurrentes para sistemas de información* (versión 1.1.0). Departamento de Ciencias de la Computación, Universidad de Chile. https://catalogo-componentes-software.pages.dev
+
+GitHub ofrece la misma cita en APA y BibTeX en «Cite this repository», a partir de [`CITATION.cff`](CITATION.cff).
 
 ## Licencia
 
-En definición. Las capturas de pantalla de las galerías pertenecen a los sistemas que muestran y se usan con fines ilustrativos.
+| Qué | Licencia |
+|---|---|
+| Código del sitio (`src/components/`, `src/theme/`, `src/css/`, `scripts/`, configuración) | [MIT](LICENSE) |
+| Contenido del catálogo (fichas, tableros, mapeo, pies de imagen, versión en inglés, textos de las páginas) | [CC BY-NC-SA 4.0](LICENSE-CONTENIDO.md) |
+| Capturas de sistemas de terceros y fotografías | Excluidas de ambas licencias; pertenecen a sus titulares. Detalle en [`ATRIBUCIONES.md`](ATRIBUCIONES.md) |
+| El Tablero Digital como instrumento | Del Departamento de Ciencias de la Computación de la Universidad de Chile; se cita en [`ATRIBUCIONES.md`](ATRIBUCIONES.md) |
+
+El contenido puede copiarse, adaptarse y traducirse con atribución, sin fines comerciales y compartiendo bajo la misma licencia. El detalle de qué cubre cada una está en [`LICENSE-CONTENIDO.md`](LICENSE-CONTENIDO.md).

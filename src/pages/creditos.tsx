@@ -4,9 +4,13 @@ import Link from '@docusaurus/Link';
 import Translate, {translate} from '@docusaurus/Translate';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {UserRound, GraduationCap, Building2, ExternalLink} from 'lucide-react';
+import {UserRound, GraduationCap, Building2, ExternalLink, Scale} from 'lucide-react';
 
 import styles from './creditos.module.css';
+
+const URL_SITIO = 'https://catalogo-componentes-software.pages.dev';
+const URL_REPO = 'https://github.com/Karmagro/catalogo-site';
+const URL_CC = 'https://creativecommons.org/licenses/by-nc-sa/4.0/';
 
 // Se arma dentro de una función, y con literales, para que `write-translations`
 // extraiga el rol y el cargo y para que se resuelvan en el idioma de la página.
@@ -160,6 +164,41 @@ export default function Creditos(): ReactNode {
             <p className={styles.contextText}>
               <Translate id="creditos.contexto.desc">
                 Trabajo desarrollado para optar al título de Ingeniero Civil en Computación, en el Departamento de Ciencias de la Computación (DCC) de la Facultad de Ciencias Físicas y Matemáticas (FCFM), Universidad de Chile · 2026.
+              </Translate>
+            </p>
+          </div>
+
+          {/* Licencia y cómo citar */}
+          <div className={styles.block}>
+            <h3 className={styles.blockHeading}>
+              <Scale size={18} strokeWidth={2} /> <Translate id="creditos.licencia">Licencia y cómo citar</Translate>
+            </h3>
+            <p className={styles.contextText}>
+              <Translate
+                id="creditos.licencia.desc"
+                description="{cc} es el enlace a CC BY-NC-SA 4.0, {mit} el enlace a la licencia MIT y {atribuciones} el enlace al archivo de atribuciones (creditos.licencia.atribuciones)"
+                values={{
+                  cc: <Link to={URL_CC}>CC BY-NC-SA 4.0</Link>,
+                  mit: <Link to={`${URL_REPO}/blob/main/LICENSE`}>MIT</Link>,
+                  atribuciones: (
+                    <Link to={`${URL_REPO}/blob/main/ATRIBUCIONES.md`}>
+                      <Translate id="creditos.licencia.atribuciones">atribuciones</Translate>
+                    </Link>
+                  ),
+                }}>
+                {
+                  'El contenido del catálogo (fichas, tableros, mapeo y traducciones) se publica bajo {cc}: puede copiarse, adaptarse y traducirse citando al autor, sin fines comerciales y compartiendo bajo la misma licencia. El código del sitio está bajo {mit}. Las capturas de sistemas de terceros y las fotografías pertenecen a sus titulares y se detallan en las {atribuciones}.'
+                }
+              </Translate>
+            </p>
+            <p className={styles.citaText}>
+              <Translate
+                id="creditos.cita"
+                description="Cita sugerida. {version} es el número de versión y {sitio} la URL del sitio"
+                values={{version, sitio: <Link to={URL_SITIO}>{URL_SITIO.replace('https://', '')}</Link>}}>
+                {
+                  'Gálvez Romo, C. (2026). Catálogo de Componentes: componentes de software recurrentes para sistemas de información (versión {version}). Departamento de Ciencias de la Computación, Universidad de Chile. {sitio}'
+                }
               </Translate>
             </p>
           </div>

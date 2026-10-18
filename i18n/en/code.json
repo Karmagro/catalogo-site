@@ -666,5 +666,21 @@
   "home.meta.descripcion": {
     "message": "Navigable catalog of recurring software components for information systems.",
     "description": "Meta descripción de la portada"
+  },
+  "creditos.licencia": {
+    "message": "License and how to cite",
+    "description": "Encabezado del bloque de licencia en Créditos"
+  },
+  "creditos.licencia.desc": {
+    "message": "The catalog content (component sheets, boards, mapping, and translations) is published under {cc}: it may be copied, adapted, and translated with attribution to the author, for non-commercial purposes, and shared under the same license. The site’s source code is under {mit}. Screenshots of third-party systems and photographs belong to their owners and are listed in the {atribuciones}.",
+    "description": "{cc} es el enlace a CC BY-NC-SA 4.0, {mit} el enlace a la licencia MIT y {atribuciones} el enlace al archivo de atribuciones (creditos.licencia.atribuciones)"
+  },
+  "creditos.licencia.atribuciones": {
+    "message": "attributions file",
+    "description": "Texto del enlace a ATRIBUCIONES.md"
+  },
+  "creditos.cita": {
+    "message": "Gálvez Romo, C. (2026). Component Catalog: recurring software components for information systems (version {version}). Department of Computer Science, University of Chile. {sitio}",
+    "description": "Cita sugerida. {version} es el número de versión y {sitio} la URL del sitio"
   }
 }

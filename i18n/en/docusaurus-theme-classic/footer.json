@@ -60,7 +60,7 @@
     "description": "The label of footer link with label=Universidad de Chile linking to https://www.dcc.uchile.cl/"
   },
   "copyright": {
-    "message": "Component Catalog · Carlos Gálvez Romo · University of Chile",
+    "message": "Component Catalog · Carlos Gálvez Romo · University of Chile<br/>Content under <a href=\"https://creativecommons.org/licenses/by-nc-sa/4.0/\" target=\"_blank\" rel=\"noopener noreferrer\">CC BY-NC-SA 4.0</a> · Code under <a href=\"https://github.com/Karmagro/catalogo-site/blob/main/LICENSE\" target=\"_blank\" rel=\"noopener noreferrer\">MIT</a>",
     "description": "The footer copyright"
   }
 }

@@ -55,7 +55,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: undefined,
+          // «Editar esta página» abre el archivo en GitHub sobre `dev`, para que la
+          // propuesta entre por integración. En inglés, el espejo de i18n/en/.
+          editUrl: 'https://github.com/Karmagro/catalogo-site/edit/dev/',
+          editLocalizedFiles: true,
           tagsBasePath: 'etiquetas',
           // Las etiquetas se declaran en docs/tags.yml; una etiqueta que no esté
           // ahí rompe el build en vez de crear una nueva en silencio.
@@ -86,7 +89,9 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    // Tarjeta para redes sociales (1200×630), una por idioma. Lleva escrito el número de
+    // componentes: si cambia, hay que regenerarla.
+    image: enIngles ? 'img/social-card-en.png' : 'img/social-card.png',
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
@@ -146,7 +151,8 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Catálogo de Componentes · Carlos Gálvez Romo · Universidad de Chile`,
+      // El copyright admite HTML. La versión inglesa está en i18n/en/docusaurus-theme-classic/footer.json.
+      copyright: `Catálogo de Componentes · Carlos Gálvez Romo · Universidad de Chile<br/>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · Código bajo <a href="https://github.com/Karmagro/catalogo-site/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a>`,
     },
     prism: {
       theme: prismThemes.github,

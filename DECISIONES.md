@@ -109,3 +109,11 @@ Formato: **fecha · decisión** · por qué · qué NO se hace.
 **Por qué.** «Actualización» reemplazó a «Entrada» en junio de 2026 porque nombra el efecto sobre el repositorio y no el acto de teclear (ver la entrada del 2026-06-06); volver a *inputs* en inglés deshacía esa decisión en un idioma. La distinción del español entre *Automatic* (actualizaciones y salidas) y *Autonomous* (procesos) también se conserva. En los nombres de componente se evitó el calco cuando en inglés nombra a una persona (*Maintainer*, *Account Creator*) o choca con otro término del sitio (*link*, *entry*, *modality*); las razones de cada uno están en el glosario.
 
 **Qué NO se hace.** No se traducen *slugs*, *permalinks* ni ids de encabezado (ver la entrada del 2026-08-29). No se usa un término inglés que no esté en el glosario: si hace falta, se agrega ahí primero.
+
+## 2026-10-18 · Licencia doble: MIT para el código, CC BY-NC-SA 4.0 para el contenido
+
+**Decisión.** El código del sitio va bajo MIT. El contenido del catálogo (fichas, tableros, mapeo, pies de imagen, versión en inglés y textos de las páginas) va bajo CC BY-NC-SA 4.0 Internacional. Las capturas de sistemas de terceros, las fotografías y el Tablero Digital como instrumento quedan fuera de ambas licencias y se detallan en `ATRIBUCIONES.md`.
+
+**Por qué.** Las licencias Creative Commons no están pensadas para software, y MIT es la que cualquier herramienta reconoce sin fricción. Para el contenido, CC BY-NC-SA es la más cercana a la de la memoria (CC BY-NC-ND 3.0 Chile, la del Repositorio Académico), con una diferencia deliberada: no prohíbe las obras derivadas, porque el catálogo está hecho para que otros lo extiendan y lo traduzcan, y «compartir igual» mantiene abiertas esas extensiones. La cláusula no comercial sigue a la memoria. Una licencia Creative Commons se puede relajar después, pero no endurecer: si más adelante conviene permitir el uso comercial, el contenido puede pasar a CC BY 4.0. Las imágenes de terceros no son obra del autor y no se pueden licenciar como propias; listarlas una por una permite retirar cualquiera si su titular lo pide.
+
+**Qué NO se hace.** No se usa CC BY-NC-ND (impediría extender y traducir el catálogo). No se usa una licencia Creative Commons para el código. No se licencian las capturas de terceros como si fueran propias.
