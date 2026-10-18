@@ -1,0 +1,130 @@
+---
+sidebar_position: 7.7
+tags:
+  - visualización
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {dashboard} from '@site/src/data/tableros/en/dashboard';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {dashboard as ejemplosDashboard} from '@site/src/data/ejemplos/en/dashboard';
+
+# Dashboard
+
+<span className={styles.aliases}>Control panel · Panel · Scorecard</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosDashboard} />
+
+## Description {/* #descripcion */}
+
+A dashboard is a user interface that presents consolidated and relevant information through graphical visualizations and summaries, designed to support a quick understanding of the state of processes, metrics, or key indicators. Its main function is to let authorized users monitor and make informed decisions, minimizing the time needed to understand what is happening. The effectiveness of a dashboard depends critically on selecting the right data to display and choosing the appropriate visualization techniques to communicate each type of information.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Presents summarized and consolidated information from multiple sources in a single view
+- Uses varied visual representations (line charts, bar charts, indicators, tables) to communicate the information quickly
+- Is updated regularly, keeping the information current for present-day decisions
+- Is designed for a specific audience and goal, showing only the information relevant to that context and role
+- Requires calculation or aggregation processes that transform the raw data into the metrics and indicators presented
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Interactivity:** lets the user filter, group, drill down, and explore the data presented according to their immediate needs, without generating a new document
+- **View export:** lets the user download the current view or sections of the dashboard as files (PDF, image, or CSV of the underlying data)
+- **Threshold-based visual alerts:** visually highlight metrics that exceed defined limits (colors, warning icons), drawing the user's attention to situations that require action
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Is not** a static, exportable report, but a continuously updated dynamic view
+- Unlike a [Report](/docs/componentes/reporte), the Dashboard allows the view to be reconfigured without generating a new document
+- **Is not** [Queries](/docs/componentes/consultas): a query answers a specific question by returning specific data; the dashboard presents a holistic view of multiple indicators at once
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    The user's request to view the dashboard; optionally, filters or groupings to customize the view
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Interactive, up-to-date on-screen visualization of metrics and indicators
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Strategic dashboard:** aimed at senior management, it shows strategic KPIs and the overall health of the business, updated daily or weekly
+- **Operational dashboard:** presents operational metrics and ongoing processes, updated in real time or frequently
+- **Analytical dashboard:** for analysts and specialists, it includes complex visualizations, trends, and detailed comparisons
+- **Tactical dashboard:** focused on medium-term and departmental goals, it combines operational and strategic elements, updated regularly
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- [Database](/docs/componentes/base-datos) that provides the data to be visualized
+- Autonomous processes that calculate metrics, KPIs, or aggregations
+- [Authentication](/docs/componentes/formulario-login) and [Authorization](/docs/componentes/autorizacion) that control which users can see which dashboards
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="dashboard" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | — |
+| Automatic Update | No | — |
+| Data Concepts | Always | The concepts whose metrics and indicators are presented. |
+| On-Demand Outputs | Always | The dashboard visualization itself. View export, when that capability is present. |
+| Automatic Outputs | No | — |
+| Autonomous Processes | Always | Calculation and aggregation of metrics and indicators. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={dashboard} />

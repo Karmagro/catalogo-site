@@ -1,0 +1,136 @@
+---
+sidebar_position: 10.5
+tags:
+  - procesamiento
+  - automatización
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {procesoProgramado} from '@site/src/data/tableros/en/proceso-programado';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {procesoProgramado as ejemplosProcesoProgramado} from '@site/src/data/ejemplos/en/proceso-programado';
+
+# Scheduled Process
+
+<span className={styles.aliases}>Scheduled task · Background job (scheduled / batch job) · Cron job</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosProcesoProgramado} />
+
+## Description {/* #descripcion */}
+
+A component that runs a processing routine on data that **already resides in the system**, autonomously and **according to a schedule**: every night, every hour, on the first day of the month. A scheduler invokes it at the defined times; it is not operated step by step by a user, nor triggered by a change in the data. It takes internal information, applies transformation, verification, or derivation logic to it, and produces a result: new data, corrected data, or a verdict.
+
+It is the component the system turns to when it needs to "perform a calculation or a check internally, at regular intervals": cross-referencing entities to detect inconsistencies in the nightly close, recalculating totals or balances at the end of the day, deriving periodic indicators, purging expired records every week. In the software industry it corresponds to the family of *scheduled jobs* or *batch jobs* governed by a *cron*: tasks that run independently of the interface, launched by the clock and monitored, not operated, by people.
+
+What shapes this component is the **how** (autonomous processing of internal data, triggered by a schedule), not the **what**: just as a Data Manager does not fix which entity it administers and Queries do not fix what is queried, a Scheduled Process does not fix what it calculates. That open domain makes it generic, not shapeless. Its close relative, the [Reactive Process](/docs/componentes/proceso-reactivo), shares the territory of internal autonomous processing but differs in its trigger: that one reacts to a change in the data; this one runs when the clock says so.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Runs processing logic on data that is already in the system, without human intervention in its steps
+- Is activated by a schedule trigger: a scheduler invokes it recurrently or at a fixed time
+- Produces a result from the processing: derived data, corrected data, or a verdict (valid/invalid, reconciled/unreconciled)
+- Operates in the background, without occupying or blocking the user's interaction with the system
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **On-demand execution:** in addition to its schedule, lets an operator or component request an immediate run (e.g., "recalculate now", "run the reconciliation right away")
+- **Result delivery:** delivers the result to the requester (when run on demand) or communicates it proactively (inconsistency alert, completion notice)
+- **Activity logging:** logs each run (timing, volume processed, errors) for auditing and monitoring
+- **Retries and checkpoints:** resumes or retries the processing after an interruption, picking up from the last saved point
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not react to a change in the data.** It is triggered by the clock (a schedule), not by the creation, editing, or deletion of a record. If the routine must run *as soon as* the data changes, that is a [Reactive Process](/docs/componentes/proceso-reactivo), not a Scheduled Process.
+- **Does not bring in data from outside the system.** It operates on the data already inside. If the routine fetches data from an external source, that is an [ETL](/docs/componentes/etl) or a [Scraper](/docs/componentes/scraper).
+- **Does not involve human decisions in its steps.** If the processing stops so that a person can approve, reject, or reroute at some stage, it is an [Approval Workflow](/docs/componentes/workflow-aprobacion).
+- **Is not an information output to the user.** [Queries](/docs/componentes/consultas) and a [Report](/docs/componentes/reporte) respond to a request by delivering existing data; the Scheduled Process *generates* data or verdicts through computation, although it may rely on those components to deliver its result.
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    A schedule trigger (the scheduler reaches the programmed time) and the internal data it operates on, already present in the system's repository
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    The result of the processing: derived or corrected data written to the system, or a verdict delivered to the requester or issued as a notice
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Recurring (cron):** a scheduler invokes it periodically (nightly close, daily reconciliation, weekly purge).
+- **At a fixed date/time (scheduled):** it is programmed for a specific moment (month-end cutoff, fiscal year-end calculation).
+- **Batch:** it processes large volumes of internal records at once, often in a low-load window.
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- The system's data repository ([Database](/docs/componentes/base-datos)), which it reads from and writes to
+- A scheduling mechanism or scheduler (cron, task scheduler) that governs when it is triggered
+- Business rules that define the transformation, verification, or derivation logic
+- [Notification System](/docs/componentes/sistema-notificacion), when the result is communicated proactively
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="proceso-programado" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | No operator writes data step by step; the processing is autonomous. |
+| Automatic Update | No | It does not bring in data from outside the system; it operates on the data already inside (this separates it from ETL and Scraper). |
+| Data Concepts | Always | It always reads and/or writes system entities: those it processes and those it derives or corrects. |
+| On-Demand Outputs | Optional | When it is run on demand and returns the result to whoever requested it (e.g., "run the reconciliation now"). |
+| Automatic Outputs | Optional | When the result is issued proactively, without anyone asking for it (inconsistency alert, closing notice). |
+| Autonomous Processes | Always | It is its essence: the processing routine that runs without human intervention, governed by a schedule. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={procesoProgramado} />

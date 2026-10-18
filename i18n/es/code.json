@@ -1,0 +1,42 @@
+{
+  "theme.SearchBar.label": {
+    "message": "Buscar",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "Ver todos los resultados",
+    "description": "The label for the link to the search page with all results"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "Sin resultados",
+    "description": "The text shown when there are no results in the search bar"
+  },
+  "theme.SearchBar.searchInContext": {
+    "message": "Ver todos los resultados en «{context}»",
+    "description": "The label for the link to the search page with results within a context"
+  },
+  "theme.SearchBar.seeAllOutsideContext": {
+    "message": "Ver todos los resultados fuera de «{context}»",
+    "description": "The label for the link to the search page with results outside a context"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Resultados de búsqueda para «{query}»",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Buscar en el catálogo",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "1 documento encontrado|{count} documentos encontrados",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-json/supplemental/plurals.json)"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "No se encontraron documentos",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.SearchPage.searchContext.everywhere": {
+    "message": "En todo el sitio",
+    "description": "The label for the search context selector option for searching everywhere"
+  }
+}

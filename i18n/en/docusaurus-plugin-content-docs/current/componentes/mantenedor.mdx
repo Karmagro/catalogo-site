@@ -1,0 +1,132 @@
+---
+sidebar_position: 6
+tags:
+  - datos
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {mantenedor} from '@site/src/data/tableros/en/mantenedor';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {mantenedor as ejemplosMantenedor} from '@site/src/data/ejemplos/en/mantenedor';
+
+# Data Manager
+
+<span className={styles.aliases}>CRUD · Management form · Mantenedor, ABM (in Spanish)</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosMantenedor} />
+
+## Description {/* #descripcion */}
+
+A data manager is a user interface for managing data entities through the basic operations on persistent information: creating, reading, updating, and deleting records. Its purpose is to let authorized users interact with the data repository in a controlled and structured way.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Provides direct access to the system's data entities for their full administration
+- Allows **creating** new records through input forms
+- Allows **viewing** existing records in a browsable format (lists, tables)
+- Allows **editing** previously created records
+- Allows **deleting** records from the system
+- Validates inputs before modifying the repository, preserving the consistency and integrity of the data
+- Restricts operations according to the profile and permissions of the authenticated user
+- Indicates which attributes of the entity are required, optional, or selectable from a predefined set
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Search and filtering:** locates specific records through free text, per-field filters, or combinations of criteria
+- **Data export:** generates downloadable files (CSV, Excel, PDF) from the visible or filtered records
+- **Bulk import:** loads multiple records at once from a file
+- **Change history:** shows a visible log of the modifications made to the records: who changed what, when, and from which previous value
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** generate aggregate calculations or statistics — that belongs to [Report](/docs/componentes/reporte) or [Dashboard](/docs/componentes/dashboard)
+- **Is not** just a creation form: it must include reading, editing, and deletion to constitute a complete data manager
+- **Does not** include complex business logic or bulk data processing
+- **Does not** define who has permission for which operations — that belongs to [Authorization](/docs/componentes/autorizacion)
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    Form data plus operation commands: create, edit, delete
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Operation confirmation, list of records, error or validation messages
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Simple data manager.** Manages a single data entity independently. It is the most common case: a table or list with its associated form.
+- **Master-detail data manager.** Manages a main entity together with dependent entities linked to it. The interface allows navigating from a master record to its associated detail records.
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- **[Authentication](/docs/componentes/formulario-login) and [Authorization](/docs/componentes/autorizacion)** — to control who has access and which operations they can perform
+- **[Database](/docs/componentes/base-datos)** — where the managed entities are stored
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="mantenedor" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | Always | Forms for creating, editing, and deleting records. Also bulk import, when that capability is present. |
+| Automatic Update | No | — |
+| Data Concepts | Always | The main entity managed by the data manager and any sub-entities in the master-detail case. |
+| On-Demand Outputs | Always | Display of records in lists or tables. Enriched by search, filtering, and export when those capabilities are present. |
+| Automatic Outputs | No | — |
+| Autonomous Processes | Optional | Autonomous recording of the change history of the managed records, when that capability is present (analogous to the Audit Log). |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={mantenedor} />

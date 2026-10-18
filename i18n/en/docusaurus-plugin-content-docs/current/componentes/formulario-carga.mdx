@@ -1,0 +1,134 @@
+---
+sidebar_position: 7
+tags:
+  - datos
+  - formularios
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {formularioCarga} from '@site/src/data/tableros/en/formulario-carga';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {formularioCarga as ejemplosFormularioCarga} from '@site/src/data/ejemplos/en/formulario-carga';
+
+# Submission Form
+
+<span className={styles.aliases}>Data entry form · Intake form · Record creation form · Application form</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosFormularioCarga} />
+
+## Description {/* #descripcion */}
+
+An input component that presents a user with a set of fields for entering data and sending it to the system in a single act. It is the counterpart of [Queries](/docs/componentes/consultas) (input instead of output): while Queries retrieves existing information, the Submission Form adds new information. Its purpose is to capture data in a structured and validated way at a point in the process where the person entering the data is not necessarily the one who later processes, approves, or manages it. Once submitted, the data leaves the control of whoever entered it and follows its course within the system. It is very common in information systems: applications, requests, complaints, enrollments.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Presents a defined set of fields for the user to enter data
+- Indicates which fields are required, optional, or selectable from a predefined set
+- Validates the inputs before submission (format, required fields, consistency), preventing invalid data from entering the system
+- Adds the data to the system in a single act of submission, handing it over for later processing
+- Does not offer whoever entered the data any reading, editing, or deletion of it once submitted: the interaction ends with the submission
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **File or document attachments:** adds files (PDFs, images, certificates) together with the form data; common in applications and requests that require supporting documents
+- **Save as draft:** lets the user save an incomplete form and resume it later before submitting it for good
+- **Multi-step form (wizard):** splits a long form into sequential stages, showing progress
+- **Conditional fields:** shows or hides fields according to previous answers, adapting the form to the user's case
+- **Acknowledgment of receipt:** after submission, gives the user a confirmation or tracking number for their submission
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Is not a [Data Manager](/docs/componentes/mantenedor).** The Data Manager administers an entity over time (creating, reading, editing, and deleting the same entity, coming back to it). The Submission Form is a one-time act of entry whose data, once submitted, is no longer under the control of whoever entered it. The difference is not in the number of operations but in the **relationship with the data**: continuous administration of one's own entity versus handing a piece of data over to a flow
+- **Is not a survey.** Although the capture mechanics look alike, a survey has a different intent (collecting opinions or answers for aggregate analysis, not adding a record to the operational flow of the system); it is considered different in nature
+- **Does not** process, approve, or route what was submitted — triggering the flow, successive approvals, and later processing belong to other components ([Approval Workflow](/docs/componentes/workflow-aprobacion), [Scheduled Process](/docs/componentes/proceso-programado), [Reactive Process](/docs/componentes/proceso-reactivo), [Notification System](/docs/componentes/sistema-notificacion))
+- **Does not** retrieve or display existing information — that belongs to [Queries](/docs/componentes/consultas), [Report](/docs/componentes/reporte), or [Dashboard](/docs/componentes/dashboard); its direction is input only
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    Data entered by the user in the form fields, plus any attached files
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    The submitted record, added to the system; optionally, an acknowledgment of receipt for the user
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Simple form:** a single screen with the fields to fill in and a submit button; the most common case (a complaint, a short enrollment)
+- **Multi-step form (wizard):** splits a long submission into sequential stages; typical of applications with many data fields and documents
+- **Form with supporting documents:** data entry must be accompanied by the upload of one or more files (a scholarship application with certificates)
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- [Database](/docs/componentes/base-datos) where the submitted record is persisted
+- [Authentication](/docs/componentes/formulario-login) and [Authorization](/docs/componentes/autorizacion) when submission is restricted to identified users or to users with a certain permission
+- [Approval Workflow](/docs/componentes/workflow-aprobacion), [Scheduled Process](/docs/componentes/proceso-programado), or [Reactive Process](/docs/componentes/proceso-reactivo) when the submission triggers a later processing or approval flow
+- [Notification System](/docs/componentes/sistema-notificacion) when the user or the responsible office is notified after submission
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="formulario-carga" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | Always | The core act of the component: the user enters and submits data that is added to the system. |
+| Automatic Update | No | — |
+| Data Concepts | Always | The entity or record being submitted (the application, the complaint, the request). |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | Optional | Acknowledgment of receipt, confirmation, or notice to the responsible office, when that capability is present. |
+| Autonomous Processes | No | Later processing belongs to a component that contains the form ([Approval Workflow](/docs/componentes/workflow-aprobacion), [Scheduled Process](/docs/componentes/proceso-programado), [Reactive Process](/docs/componentes/proceso-reactivo)), not to the form itself. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={formularioCarga} />

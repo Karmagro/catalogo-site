@@ -1,6 +1,7 @@
 import type {Seccion} from './types';
 
 export interface SeccionInfo {
+  /** Rótulo en español. En pantalla se usa `rotuloSeccion()` (rotulos.ts), que lo traduce. */
   label: string;
   cssVar: string;
 }

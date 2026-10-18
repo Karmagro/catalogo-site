@@ -1,0 +1,132 @@
+---
+sidebar_position: 16
+tags:
+  - datos
+  - integración
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {consumoServicioExterno} from '@site/src/data/tableros/en/consumo-servicio-externo';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {consumoServicioExterno as ejemplosConsumoServicioExterno} from '@site/src/data/ejemplos/en/consumo-servicio-externo';
+
+# External Service Consumption
+
+<span className={styles.aliases}>API client · Outbound integration · External connector · Third-party API consumption</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosConsumoServicioExterno} />
+
+## Description {/* #descripcion */}
+
+A component through which the system invokes a service provided by an external system in order to obtain information or delegate an operation that it does not handle by itself. The system acts as a client: it builds the request according to the third party's contract, sends it, and processes the response received to incorporate it into its own flow. It is the "client" side of an integration between systems, and it makes it possible to incorporate third-party capabilities (maps, payments, validations) without developing them internally.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Builds requests to an external service in compliance with the contract (specification) defined by the third party
+- Sends the request and receives the response from the external system
+- Interprets and processes the response received to incorporate it into the system's flow
+- Manages the credentials with which the system identifies itself to the external service
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Failure handling and retries:** retries the invocation or applies a fallback when the external service does not respond or returns an error, preventing the external failure from disrupting the system
+- **Caching of external responses:** temporarily stores the third party's responses to reduce repeated calls and dependence on its availability
+- **Data transformation:** adapts the format of the external response to the system's internal data model
+- **Integration monitoring:** records the latency, errors, and availability of the external service being consumed
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** expose the system's own functionality to third parties — that belongs to [Exposed Service](/docs/componentes/servicio-expuesto): here the system is the one using someone else's service, not the one offering it
+- **Does not** control or implement the external service: it depends on the contract and availability defined by the third party
+- **Is not** a [Scraper](/docs/componentes/scraper): service consumption uses a formal, authorized contract provided by the third party; the Scraper extracts data from an interface not designed to be consumed programmatically
+- **Is not** an [ETL](/docs/componentes/etl): although both bring in external data, the ETL runs planned bulk loads; service consumption invokes specific operations as the system needs them
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    Structured response returned by the external service (the requested data or a confirmation of the operation)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Structured request that the system sends to the external service (operation, parameters, credentials)
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Query consumption:** the system invokes the third party to obtain information (e.g., looking up an exchange rate, a location, a credit score)
+- **Operation consumption:** the system invokes the third party to carry out an action (e.g., initiating a payment, sending an email through a provider)
+- **REST / SOAP / GraphQL:** depending on the protocol defined by the external service being consumed
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- An external service provided by a third party, with its contract and documentation
+- Access credentials for the external service (API key, token, certificate) and their secure storage
+- [API Authentication](/docs/componentes/autenticacion-api) to identify the system to the external service being consumed
+- Network connectivity to the external system
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="consumo-servicio-externo" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | — |
+| Automatic Update | Always | The response that arrives from the external service and is incorporated into the system. |
+| Data Concepts | Always | The system entities that are enriched or validated with the information from the external service. |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | Always | The structured request that the system sends to the external service. |
+| Autonomous Processes | Always | The logic that builds the request, interprets the response, and handles failures, retries, and caching, when those capabilities are present. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={consumoServicioExterno} />

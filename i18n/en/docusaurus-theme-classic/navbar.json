@@ -1,0 +1,34 @@
+{
+  "title": {
+    "message": "Component Catalog",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Component Catalog",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Inicio": {
+    "message": "Home",
+    "description": "Navbar item with label Inicio"
+  },
+  "item.label.Por Sección": {
+    "message": "By Section",
+    "description": "Navbar item with label Por Sección"
+  },
+  "item.label.Por Etiquetas": {
+    "message": "By Tag",
+    "description": "Navbar item with label Por Etiquetas"
+  },
+  "item.label.Tablero Digital": {
+    "message": "Digital Board",
+    "description": "Navbar item with label Tablero Digital"
+  },
+  "item.label.Sobre el Catálogo": {
+    "message": "About the Catalog",
+    "description": "Navbar item with label Sobre el Catálogo"
+  },
+  "item.label.Créditos": {
+    "message": "Credits",
+    "description": "Navbar item with label Créditos"
+  }
+}

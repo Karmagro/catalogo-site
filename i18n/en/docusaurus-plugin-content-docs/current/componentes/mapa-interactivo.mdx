@@ -1,0 +1,128 @@
+---
+sidebar_position: 13
+tags:
+  - visualización
+  - geo
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {mapaInteractivo} from '@site/src/data/tableros/en/mapa-interactivo';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {mapaInteractivo as ejemplosMapaInteractivo} from '@site/src/data/ejemplos/en/mapa-interactivo';
+
+# Interactive Map
+
+<span className={styles.aliases}>Interactive geographic map · Geospatial visualization · Web map</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosMapaInteractivo} />
+
+## Description {/* #descripcion */}
+
+Presents information from the system on a dynamic geographic representation, allowing the user to explore the spatial distribution or location of entities that have associated location data. Unlike a static map, the interactive map lets the user actively explore the information through operations such as zooming, panning, or selecting elements to see more detail.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Presents system entities positioned on a geographic representation
+- Allows the user to interact actively with the representation (zoom, pan, element selection)
+- The entities displayed have associated location information (coordinates, region, country)
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Entity filtering:** lets the user restrict the entities displayed through defined criteria (category, value range, date)
+- **Highlighting and selection:** visually highlights specific entities according to conditions, a search, or user interaction
+- **Integrated search:** lets the user search for an entity and center the map on its location
+- **Detail on click:** displays additional information about an entity when it is selected on the map
+- **Configurable layers:** lets the user turn different representations on or off (traffic, satellite, political boundaries)
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Is not** [Queries](/docs/componentes/consultas): the purpose of Queries is to retrieve specific records according to search criteria; the purpose of the Interactive Map is to visualize the geographic distribution or location of entities
+- **Is not** a [Dashboard](/docs/componentes/dashboard): its goal is not to present metrics or aggregate indicators about the state of a process or business
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    The user's request to view entities on the map; optionally, filtering criteria or interaction (zoom, click)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Interactive geographic representation with the system's entities positioned according to their location information
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Marker map:** represents individual entities as points or icons positioned according to their location. It allows exploring the geographic distribution of concrete elements.
+- **Heatmap:** visualizes the density or concentration of entities in geographic areas through color gradients, without distinguishing individual elements.
+- **Choropleth map:** colors delimited geographic regions (countries, states, municipalities) according to the value of an aggregate attribute of the entities associated with each region.
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- [Database](/docs/componentes/base-datos) with location information for the entities (coordinates, region, or country)
+- Base map provider (Leaflet, Google Maps, OpenStreetMap) through APIs
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="mapa-interactivo" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | Navigating the map (zoom, pan, selection, filters) retrieves and displays information, but does not modify persistent data in the system. |
+| Automatic Update | No | — |
+| Data Concepts | Always | The entities positioned on the map, which have location information, are always concepts of the system. |
+| On-Demand Outputs | Always | The interactive geographic representation. Entity detail on click, when that capability is present. |
+| Automatic Outputs | No | — |
+| Autonomous Processes | No | — |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={mapaInteractivo} />

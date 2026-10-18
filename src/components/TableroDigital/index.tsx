@@ -1,6 +1,7 @@
 import React from 'react';
 import type {TableroData} from './types';
 import {SECCIONES, SECCION_ORDER} from './secciones';
+import {rotuloSeccion} from './rotulos';
 import PostIt from './PostIt';
 import styles from './styles.module.css';
 
@@ -27,7 +28,7 @@ export default function TableroDigital({data}: TableroDigitalProps): React.React
               className={`${styles.cell} ${isEmpty ? styles.cellEmpty : ''}`}
               style={cellStyle}
             >
-              <div className={styles.cellHeader}>{info.label}</div>
+              <div className={styles.cellHeader}>{rotuloSeccion(seccion)}</div>
               <div className={styles.cellBody}>
                 {isEmpty ? (
                   <span className={styles.cellEmptyMark}>—</span>

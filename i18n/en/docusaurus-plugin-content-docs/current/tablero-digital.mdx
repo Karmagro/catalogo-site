@@ -1,0 +1,188 @@
+---
+sidebar_position: 1
+---
+
+import styles from '@site/src/css/paginas.module.css';
+
+# Digital Board
+
+The Digital Board is a collaborative visual instrument developed at the Department of Computer Science (DCC) of the University of Chile. It is used to support the definition of the scope of projects that develop or evolve information systems, easing communication between providers and customers during the early stages of a project.
+
+The tool is available online at [tablero-digital.dcc.uchile.cl](https://tablero-digital.dcc.uchile.cl/) (Spanish-language interface); using it requires creating an account. The instrument and its validation are described in A. Pereira-Vale, T. Vera, S. F. Ochoa, D. Perovich, and F. Benitti, “Addressing the project scoping during the development and evolution of bespoke information systems,” *CISTI'24*, 2024.
+
+<div className={styles.statStrip}>
+  <div className={styles.statItem}>
+    <span className={styles.statLabel}>Origin</span>
+    <span className={styles.statValue}>DCC — University of Chile</span>
+  </div>
+  <div className={styles.statItem}>
+    <span className={styles.statLabel}>Validation</span>
+    <span className={styles.statValue}>Companies in Chile and Brazil</span>
+  </div>
+  <div className={styles.statItem}>
+    <span className={styles.statLabel}>Adoption</span>
+    <span className={styles.statValue}>Replaced previous practices at several providers</span>
+  </div>
+</div>
+
+:::note[A note on terminology]
+*Digital Board* translates *Tablero Digital*, the name used in the Spanish-language sources and throughout this catalog. The research article by Ochoa et al. calls the instrument a *digital canvas* (and, once, a *digital board*). The article also names two of the sections *manual inputs* and *autonomous inputs*; this catalog calls them **Manual Update** and **Automatic Update** on purpose, because the name should describe the effect on the data repository rather than the act of entering data.
+:::
+
+## What is it for? {/* #para-que-sirve */}
+
+In a custom software project, one of the most critical activities is determining which functionality the system will have. The Digital Board allows both parties —customer and provider— to represent visually the current state of the system (*as-is*) and the desired state (*to-be*) through cards (post-its) organized into sections.
+
+<div className={styles.keyConcept}>
+  <div className={styles.keyConceptLabel}>Core idea</div>
+  <div className={styles.keyConceptText}>Each card represents a <strong>User Requirement</strong>: an intention or need from the perspective of whoever will use the system. The sections of the board provide the vocabulary to declare those intentions in a structured way, helping to identify which parts of the system are covered and which remain to be defined.</div>
+</div>
+
+The board has been used in multiple industry projects in Chile and Brazil, and it was validated empirically through a qualitative study. Participants perceived it as usable and useful, and several companies have adopted it, replacing their previous practices.
+
+## The six sections of the board {/* #las-seis-secciones-del-tablero */}
+
+The Digital Board organizes requirements into six sections that reflect the natural flow of information in an information system: data comes in, is stored, is processed, and is communicated to the outside.
+
+<div className={styles.seccionGrid}>
+
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>
+    <div className={styles.seccionCardHeader}>
+      <span className={styles.seccionCardDot}></span>
+      <h3 className={styles.seccionCardTitle}>Manual Update</h3>
+    </div>
+    <div className={styles.seccionCardBody}>Functionality in which a human operator, through direct interaction with user interfaces, creates, modifies, or deletes data that the system keeps persistently. The operator may be an end user, an administrator, or any actor who updates information through forms, editing screens, or other analogous mechanisms. It does not cover the transient entry of data that only serves to retrieve or navigate information —such as search criteria or login credentials—, which does not modify the state of the system.</div>
+    <div className={styles.seccionCardExamples}>
+      <span className={styles.seccionCardExamplesLabel}>Example cards</span>
+      <div className={styles.seccionCardChips}>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Project registration form</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Profile editing screen</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Document upload</span>
+      </div>
+    </div>
+  </div>
+
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>
+    <div className={styles.seccionCardHeader}>
+      <span className={styles.seccionCardDot}></span>
+      <h3 className={styles.seccionCardTitle}>Automatic Update</h3>
+    </div>
+    <div className={styles.seccionCardBody}>Functionality through which the system incorporates or updates information without direct human intervention, either periodically or in response to external events. Its purpose is to ensure that the system has timely and consistent information, reducing the dependence on manual updates.</div>
+    <div className={styles.seccionCardExamples}>
+      <span className={styles.seccionCardExamplesLabel}>Example cards</span>
+      <div className={styles.seccionCardChips}>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>Nightly sync with the accounting system</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>Data ingestion from an external API</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-automatica)'}}>Price scraping</span>
+      </div>
+    </div>
+  </div>
+
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>
+    <div className={styles.seccionCardHeader}>
+      <span className={styles.seccionCardDot}></span>
+      <h3 className={styles.seccionCardTitle}>Data Concepts</h3>
+    </div>
+    <div className={styles.seccionCardBody}>Identifies the entities or types of information that the system keeps persistently. Unlike the other sections, it does not describe actions but the data structures on which the components act. Any functionality that creates, modifies, or queries system information implicitly involves one or more data concepts.</div>
+    <div className={styles.seccionCardExamples}>
+      <span className={styles.seccionCardExamplesLabel}>Example cards</span>
+      <div className={styles.seccionCardChips}>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>Projects</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>Users</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>Transactions</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>Products</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>Documents</span>
+      </div>
+    </div>
+  </div>
+
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-salidas-demanda)'}}>
+    <div className={styles.seccionCardHeader}>
+      <span className={styles.seccionCardDot}></span>
+      <h3 className={styles.seccionCardTitle}>On-Demand Outputs</h3>
+    </div>
+    <div className={styles.seccionCardBody}>Groups functionality that delivers information to the user when the user explicitly requests it. The user indicates which information they want, and the system retrieves, processes, and presents it without modifying the underlying data.</div>
+    <div className={styles.seccionCardExamples}>
+      <span className={styles.seccionCardExamplesLabel}>Example cards</span>
+      <div className={styles.seccionCardChips}>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-demanda)'}}>Project search</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-demanda)'}}>Monthly expense report</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-demanda)'}}>Indicator dashboard</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-demanda)'}}>Branch map</span>
+      </div>
+    </div>
+  </div>
+
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-salidas-automaticas)'}}>
+    <div className={styles.seccionCardHeader}>
+      <span className={styles.seccionCardDot}></span>
+      <h3 className={styles.seccionCardTitle}>Automatic Outputs</h3>
+    </div>
+    <div className={styles.seccionCardBody}>Gathers functionality through which the system communicates information proactively, without requiring a request from the user. It is triggered in response to events, state changes, or predefined conditions.</div>
+    <div className={styles.seccionCardExamples}>
+      <span className={styles.seccionCardExamplesLabel}>Example cards</span>
+      <div className={styles.seccionCardChips}>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-automaticas)'}}>Deadline expiration notification</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-automaticas)'}}>Error alert in a data load process</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-automaticas)'}}>Confirmation email</span>
+      </div>
+    </div>
+  </div>
+
+  <div className={styles.seccionCard} style={{'--seccion-color': 'var(--seccion-procesos-autonomos)'}}>
+    <div className={styles.seccionCardHeader}>
+      <span className={styles.seccionCardDot}></span>
+      <h3 className={styles.seccionCardTitle}>Autonomous Processes</h3>
+    </div>
+    <div className={styles.seccionCardBody}>Comprises functionality that operates independently of the user, running scheduled or reactive tasks that transform, validate, or generate information. It typically runs in the background and is essential for maintaining the consistency and integrity of the data, as well as for exposing services to other systems.</div>
+    <div className={styles.seccionCardExamples}>
+      <span className={styles.seccionCardExamplesLabel}>Example cards</span>
+      <div className={styles.seccionCardChips}>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-procesos-autonomos)'}}>Monthly indicator calculation</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-procesos-autonomos)'}}>Data integrity validation</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-procesos-autonomos)'}}>Cleanup of obsolete records</span>
+        <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-procesos-autonomos)'}}>REST API for consuming data</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+## How it relates to the catalog {/* #como-se-relaciona-con-el-catalogo */}
+
+The board declares the **purpose** of the system —*what* is needed— while the component catalog describes **how that purpose materializes** into concrete functionality.
+
+Each component in the catalog can relate to several sections of the board at the same time. Some of these relationships are mandatory (the component always touches that section) and others are optional (they depend on additional capabilities that the component may incorporate).
+
+<div className={styles.relacionCaso}>
+  <div className={styles.relacionCasoLabel}>Example: the Data Manager component</div>
+  <div className={styles.relacionCasoFlow}>
+    <span className={styles.relacionCasoComponent}>Data Manager</span>
+    <span className={styles.relacionCasoArrow}>→</span>
+    <div className={styles.relacionCasoChips}>
+      <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-actualizacion-manual)'}}>Manual Update</span>
+      <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-conceptos)'}}>Data Concepts</span>
+      <span className={styles.chip} style={{'--seccion-color': 'var(--seccion-salidas-demanda)'}}>On-Demand Outputs</span>
+    </div>
+  </div>
+  <div className={styles.relacionCasoNote}>A Data Manager touches Manual Update (creation and editing forms), Data Concepts (the entity it manages), and On-Demand Outputs (listing, search, and filtering of records).</div>
+</div>
+
+This cross-cutting nature is captured in the [consolidated matrix](/docs/secciones), which shows, for each component, which sections of the board it covers and in what way (mandatory or optional).
+
+## Origin and validation {/* #origen-y-validacion */}
+
+The Digital Board was originally proposed in the context of requirements engineering research at the DCC, as a response to the difficulties that software companies —particularly small and medium-sized ones— face when defining the scope of custom projects in multi-provider scenarios.
+
+The tool was formally evaluated with companies in Chile and Brazil. The results of the study showed that the board:
+
+- Eases discussion, negotiation, and agreement on scope between provider and customer.
+- Reduces ambiguity and the time needed to communicate requirements.
+- Minimizes the risk of omitting key elements of the system.
+- Is accessible to both technical profiles and business stakeholders.
+
+Several providers adopted the instrument as their regular practice for scoping custom projects, replacing the traditional requirements engineering techniques they had been using.
+
+:::note
+A complete academic description of the Digital Board, its conceptual foundation, and the results of its empirical validation can be found in the [thesis document](https://docs.google.com/document/u/0/d/1j8YwprLVO9aV-anU-IyD8RQudaQLD4K96PZpm4YuWoU/edit) (in Spanish) and in the associated research article.
+:::

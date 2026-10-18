@@ -19,15 +19,15 @@ import {creadorCuenta as ejemplosCreadorCuenta} from '@site/src/data/ejemplos/cr
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosCreadorCuenta} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que permite a personas sin cuenta en el sistema crear su primera cuenta de usuario. Presenta una interfaz accesible sin autenticación previa, donde el usuario proporciona sus datos básicos o vincula su identidad mediante otros medios. El sistema valida la información, crea la nueva cuenta y almacena las credenciales de forma segura para que posteriormente puedan ser utilizadas para autenticarse.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -42,7 +42,7 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -58,7 +58,7 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -68,7 +68,7 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -90,13 +90,13 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Registro tradicional:** formulario con email o usuario y contraseña
 - **Registro con SSO:** "Crear cuenta con Google/Microsoft/Facebook", delegando datos al proveedor
 - **Registro en dispositivo:** vinculación de la cuenta al dispositivo mediante huella dactilar, PIN o patrón (común en apps móviles)
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -107,7 +107,7 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="creador-cuenta" />
 
@@ -124,6 +124,6 @@ Componente que permite a personas sin cuenta en el sistema crear su primera cuen
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={creadorCuenta} />

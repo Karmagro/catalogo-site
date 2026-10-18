@@ -1,0 +1,134 @@
+---
+sidebar_position: 15
+tags:
+  - datos
+  - integración
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {servicioExpuesto} from '@site/src/data/tableros/en/servicio-expuesto';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {servicioExpuesto as ejemplosServicioExpuesto} from '@site/src/data/ejemplos/en/servicio-expuesto';
+
+# Exposed Service
+
+<span className={styles.aliases}>Public API · Published service · Inbound integration · Third-party service · Exposed endpoint</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosServicioExpuesto} />
+
+## Description {/* #descripcion */}
+
+A component through which the system publishes functionality or information so that other systems can invoke it programmatically. The system acts as the provider: it defines a contract, opens access points, and handles the requests that arrive from external systems, returning responses or accepting data pushed into it. It hides the internal complexity and exposes only the operations allowed by the defined contract. It is the "server" side of an integration between systems.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Publishes access points that external or internal systems can invoke programmatically
+- Receives incoming requests, handles them against the system's logic, and returns a structured response
+- Defines a contract (specification) that states how to make requests and what responses to expect
+- Requires the client systems that invoke the service to be authenticated
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Versioning:** maintains multiple versions of the API in parallel (v1, v2) so that existing clients do not break as the contract evolves
+- **Interactive documentation:** provides a browsable interface to the specification (Swagger/OpenAPI, GraphQL Playground) where the service can be tried out directly
+- **Rate limiting:** restricts the number of requests a client can make within a time interval
+- **Response caching:** temporarily stores frequent responses to reduce response time and system load
+- **Usage monitoring:** records metrics on invocations, latencies, errors, and consumption patterns per client
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Is not** the user interface: the exposed service is programmatic, meant to be consumed by another system, not for a person to interact with through a screen
+- **Does not** consume third-party services — that belongs to [External Service Consumption](/docs/componentes/consumo-servicio-externo): here the system is the one offering, not the one using
+- **Does not** verify the client's identity — that belongs to [API Authentication](/docs/componentes/autenticacion-api)
+- **Does not** determine what the authenticated client can do — that belongs to [Authorization](/docs/componentes/autorizacion)
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    Structured request from an external system (invocation method, operation, parameters, credentials). In the data injection variant, the data itself that the third party sends for the system to incorporate.
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Structured response with the requested data or confirmation of the executed operation, in the format defined by the specification (JSON, XML, etc.)
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **REST:** an architecture based on resources and standard HTTP operations, typically with JSON responses
+- **SOAP:** a formal protocol based on XML messages, common in banking and government systems
+- **GraphQL:** lets the client specify exactly what information it needs in each request
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- Server that receives and processes the incoming requests
+- [API Authentication](/docs/componentes/autenticacion-api) to verify the client's identity
+- [Authorization](/docs/componentes/autorizacion) to determine what the authenticated client can do
+- [Database](/docs/componentes/base-datos) or information repository the service operates on
+- Documentation that specifies the access points and protocols
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="servicio-expuesto" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | — |
+| Automatic Update | Optional | When the service is exposed so that third parties can push data into the system (data injection variant). |
+| Data Concepts | Always | The system entities exposed or manipulated through the service. |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | Always | Structured responses the system sends to the requesting external systems. |
+| Autonomous Processes | Always | The logic that handles each incoming request. Rate limiting, caching, and monitoring when those capabilities are present. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={servicioExpuesto} />

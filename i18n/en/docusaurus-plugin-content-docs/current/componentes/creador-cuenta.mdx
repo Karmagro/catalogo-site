@@ -1,0 +1,129 @@
+---
+sidebar_position: 4
+tags:
+  - autenticación
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {creadorCuenta} from '@site/src/data/tableros/en/creador-cuenta';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {creadorCuenta as ejemplosCreadorCuenta} from '@site/src/data/ejemplos/en/creador-cuenta';
+
+# Account Creation
+
+<span className={styles.aliases}>Sign-up · User registration · Registration form</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosCreadorCuenta} />
+
+## Description {/* #descripcion */}
+
+A component that lets people without an account in the system create their first user account. It presents an interface accessible without prior authentication, where the user provides their basic data or links their identity through other means. The system validates the information, creates the new account, and stores the credentials securely so that they can later be used to authenticate.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Is accessible without prior authentication
+- Validates the input data according to the system's rules (email format, password strength, username uniqueness)
+- Stores the new user's credentials or identifiers securely in the repository
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Prior verification by email or SMS:** requires the user to confirm possession of the declared contact channel before the account is activated, through a code or link sent to their email or phone
+- **Anti-spam captcha:** includes challenges to prevent automated sign-ups by bots
+- **Manual administrator approval:** keeps the account in a pending state until an administrator explicitly approves it
+- **Invitation code restriction:** limits registration to those who hold a previously issued code, controlling who can join the system
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** authenticate the user after the account is created — that belongs to [Login Form](/docs/componentes/formulario-login)
+- **Does not** modify existing accounts — that belongs to [Profile Management](/docs/componentes/gestion-perfil)
+- **Is not** the administration of accounts by authorized staff
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    The new user's data (email, password, name, basic profile data) or a device or biometric identifier
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    A new account created in the repository, together with a confirmation or welcome notification when applicable
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Traditional registration:** a form with email or username and password
+- **SSO registration:** "Sign up with Google/Microsoft/Facebook", delegating the data to the provider
+- **On-device registration:** linking the account to the device through fingerprint, PIN, or pattern (common in mobile apps)
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- User repository where the new account is stored ([Database](/docs/componentes/base-datos))
+- Data validator (business rules on passwords, emails, etc.)
+- Notification service ([Notification System](/docs/componentes/sistema-notificacion) to send confirmations)
+- Captcha or anti-spam system (when that capability is present)
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="creador-cuenta" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | Always | Registration form that the user fills in with their data. Captcha and invitation code, when those capabilities are present. |
+| Automatic Update | No | — |
+| Data Concepts | Always | User (the newly created account). |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | Optional | Welcome email or SMS; prior verification code, when that capability is present. |
+| Autonomous Processes | No | — |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={creadorCuenta} />

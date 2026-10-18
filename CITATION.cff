@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: "Si usas este catálogo, cítalo con estos datos. / If you use this catalog, please cite it as below."
+type: software
+title: "Catálogo de Componentes: componentes de software recurrentes para sistemas de información"
+abstract: >-
+  Catálogo de 22 componentes de software recurrentes en sistemas de información,
+  definidos por su propósito funcional y no por su implementación, documentados con
+  una ficha uniforme de once campos y mapeados a las seis secciones del Tablero
+  Digital. Sitio web en español e inglés. Artefacto principal de una memoria de
+  título del Departamento de Ciencias de la Computación de la Universidad de Chile.
+authors:
+  - family-names: "Gálvez Romo"
+    given-names: "Carlos"
+    affiliation: "Departamento de Ciencias de la Computación, Universidad de Chile"
+version: "1.1.0"
+date-released: "2026-10-18"
+url: "https://catalogo-componentes-software.pages.dev"
+repository-code: "https://github.com/Karmagro/catalogo-site"
+license-url: "https://github.com/Karmagro/catalogo-site/blob/main/LICENSE-CONTENIDO.md"
+keywords:
+  - componentes de software
+  - catálogo de componentes
+  - sistemas de información
+  - definición de alcance
+  - Tablero Digital
+  - software components
+  - information systems
+references:
+  - type: thesis
+    title: "Catalogación de componentes recurrentes de software, que forman parte de sistemas de información"
+    authors:
+      - family-names: "Gálvez Romo"
+        given-names: "Carlos"
+    thesis-type: "Memoria para optar al título de Ingeniero Civil en Computación"
+    institution:
+      name: "Universidad de Chile, Facultad de Ciencias Físicas y Matemáticas, Departamento de Ciencias de la Computación"
+    year: 2026
+  - type: conference-paper
+    title: "Addressing the project scoping during the development and evolution of bespoke information systems"
+    authors:
+      - family-names: "Pereira-Vale"
+        given-names: "Anelis"
+      - family-names: "Vera"
+        given-names: "Tomás"
+      - family-names: "Ochoa"
+        given-names: "Sergio F."
+      - family-names: "Perovich"
+        given-names: "Daniel"
+      - family-names: "Benitti"
+        given-names: "Fabiane"
+    collection-title: "Proceedings of the 19th Iberian Conference on Information Systems and Technologies (CISTI'24)"
+    conference:
+      name: "CISTI 2024"
+      city: "Salamanca"
+      country: "ES"
+    year: 2024

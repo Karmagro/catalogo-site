@@ -1,5 +1,6 @@
 import React from 'react';
 import type {ReactNode} from 'react';
+import Translate from '@docusaurus/Translate';
 import {useDoc} from '@docusaurus/plugin-content-docs/client';
 
 /**
@@ -19,7 +20,11 @@ export default function FichaTags(): ReactNode {
 
   return (
     <div className="ficha-top-tags">
-      <b className="ficha-top-tags__label">Etiquetas:</b>
+      <b className="ficha-top-tags__label">
+        <Translate id="ficha.etiquetas" description="Rótulo de los chips de etiquetas al inicio de una ficha">
+          Etiquetas:
+        </Translate>
+      </b>
       {tags.map((tag) => (
         <a key={tag.permalink} href={tag.permalink} rel="tag">
           {tag.label}

@@ -202,3 +202,15 @@ a.personCard:hover {
     grid-template-columns: 1fr;
   }
 }
+
+/* Cita sugerida: separada del párrafo de licencia y marcada como bloque citable. */
+.citaText {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ifm-color-emphasis-800);
+  margin: 0.9rem 0 0;
+  padding: 0.6rem 0.9rem;
+  border-left: 3px solid var(--ifm-color-primary);
+  background: color-mix(in srgb, var(--ifm-color-primary) 6%, transparent);
+  border-radius: 0 6px 6px 0;
+}

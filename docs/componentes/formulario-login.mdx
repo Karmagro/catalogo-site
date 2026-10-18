@@ -19,15 +19,15 @@ import {formularioLogin as ejemplosFormularioLogin} from '@site/src/data/ejemplo
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosFormularioLogin} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que permite a usuarios humanos identificarse ante el sistema a través de una interfaz web para acceder a funcionalidades personalizadas. El sistema presenta un formulario de identificación, valida las credenciales proporcionadas contra una base de usuarios, y establece una sesión autenticada que permite al usuario interactuar con el sistema.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -43,7 +43,7 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -59,7 +59,7 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -68,7 +68,7 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -90,14 +90,14 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Usuario + Contraseña tradicional:** formulario que solicita nombre de usuario o email y contraseña
 - **Single Sign-On (SSO):** delegación de autenticación a proveedores externos como Google, Microsoft o Facebook
 - **Autenticación de dos factores (2FA):** requiere un segundo factor además de la contraseña (código OTP, SMS)
 - **Enlace mágico / Passwordless:** envío de enlace único por email que autentica sin contraseña
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -108,7 +108,7 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="formulario-login" />
 
@@ -125,6 +125,6 @@ Componente que permite a usuarios humanos identificarse ante el sistema a travé
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={formularioLogin} />

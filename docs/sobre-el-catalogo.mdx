@@ -2,6 +2,7 @@
 sidebar_position: 2
 ---
 
+import Link from '@docusaurus/Link';
 import {Code2, ClipboardList, CheckCircle2, LayoutList, LayoutGrid, Tags as TagsIcon, ArrowRight} from 'lucide-react';
 import styles from '@site/src/css/paginas.module.css';
 
@@ -9,7 +10,7 @@ import styles from '@site/src/css/paginas.module.css';
 
 El Catálogo de Componentes es una colección navegable de veintidós componentes de software recurrentes que aparecen en sistemas de información. Cada componente está documentado con una estructura consistente de once campos, que permite entender qué hace, cómo se relaciona con otros componentes y qué partes del Tablero Digital materializa.
 
-## ¿Qué es un componente?
+## ¿Qué es un componente? {/* #que-es-un-componente */}
 
 <div className={styles.keyConcept}>
   <div className={styles.keyConceptLabel}>Definición operativa</div>
@@ -18,7 +19,7 @@ El Catálogo de Componentes es una colección navegable de veintidós componente
 
 Esto distingue a los componentes del catálogo de otras acepciones del término en ingeniería de software (como los componentes del modelo C4, que describen agrupaciones de código dentro de un contenedor). Los componentes del catálogo operan en el nivel funcional, cercano a los requisitos de software, y son comprensibles tanto para desarrolladores como para stakeholders de negocio.
 
-## ¿Para quién es?
+## ¿Para quién es? {/* #para-quien-es */}
 
 El catálogo está diseñado para ser utilizado por distintos perfiles durante las etapas tempranas de un proyecto.
 
@@ -53,7 +54,7 @@ El catálogo está diseñado para ser utilizado por distintos perfiles durante l
 
 </div>
 
-## Estructura de cada componente
+## Estructura de cada componente {/* #estructura-de-cada-componente */}
 
 Cada componente se documenta con once campos, agrupados en cinco dimensiones que permiten entender qué es, cómo se comporta, y cómo se vincula con el Tablero Digital.
 
@@ -153,7 +154,7 @@ Cada componente se documenta con once campos, agrupados en cinco dimensiones que
 
 La distinción entre capacidades mandatorias y adicionales (campos 3 y 4) es particularmente importante: permite reconocer un mismo componente en sistemas con distintos grados de sofisticación. Un Mantenedor básico ofrece listar, crear, editar y eliminar registros; uno más avanzado puede incluir además exportación, filtros avanzados u ordenamiento por columnas. Ambos son instancias del mismo componente, pero con capacidades adicionales distintas.
 
-## Relación con el Tablero Digital
+## Relación con el Tablero Digital {/* #relacion-con-el-tablero-digital */}
 
 El catálogo y el Tablero Digital son herramientas complementarias que operan en planos distintos.
 
@@ -175,7 +176,7 @@ Un mismo componente puede tocar varias secciones del tablero a la vez. Por ejemp
 
 El mapeo entre componentes y secciones se presenta en la [matriz consolidada](/docs/secciones) y en la ficha individual de cada componente.
 
-## Lo que el catálogo no es
+## Lo que el catálogo no es {/* #lo-que-el-catalogo-no-es */}
 
 :::caution[Calibrar expectativas]
 
@@ -187,13 +188,13 @@ Es tan importante entender qué ofrece el catálogo como qué **no** ofrece:
 
 :::
 
-## Cómo usar el catálogo
+## Cómo usar el catálogo {/* #como-usar-el-catalogo */}
 
 El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra de navegación.
 
 <div className={styles.ctaGrid}>
 
-  <a className={styles.ctaCard} href="/docs/componentes/formulario-login">
+  <Link className={styles.ctaCard} to="/docs/componentes/formulario-login">
     <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--ifm-color-primary)'}}>
       <LayoutList size={22} strokeWidth={2} />
     </div>
@@ -201,9 +202,9 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
     <h3 className={styles.ctaCardTitle}>Explorar los 22 componentes</h3>
     <div className={styles.ctaCardDesc}>La barra lateral lista los veintidós componentes. Cada uno tiene su propia página con la ficha completa.</div>
     <span className={styles.ctaCardArrow}>Ver catálogo <ArrowRight size={14} strokeWidth={2.5} /></span>
-  </a>
+  </Link>
 
-  <a className={styles.ctaCard} href="/docs/secciones">
+  <Link className={styles.ctaCard} to="/docs/secciones">
     <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-conceptos)'}}>
       <LayoutGrid size={22} strokeWidth={2} />
     </div>
@@ -211,9 +212,9 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
     <h3 className={styles.ctaCardTitle}>Matriz componente × tablero</h3>
     <div className={styles.ctaCardDesc}>Responde "¿qué componentes necesito si mi sistema actualiza muchos datos manualmente?" mostrando qué componentes tocan cada sección.</div>
     <span className={styles.ctaCardArrow}>Ver matriz <ArrowRight size={14} strokeWidth={2.5} /></span>
-  </a>
+  </Link>
 
-  <a className={styles.ctaCard} href="/docs/etiquetas">
+  <Link className={styles.ctaCard} to="/docs/etiquetas">
     <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-salidas-automaticas)'}}>
       <TagsIcon size={22} strokeWidth={2} />
     </div>
@@ -221,11 +222,11 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
     <h3 className={styles.ctaCardTitle}>Agrupación por afinidad</h3>
     <div className={styles.ctaCardDesc}>Los componentes se agrupan por afinidad funcional: autenticación, visualización, ingesta de datos, seguridad, entre otras.</div>
     <span className={styles.ctaCardArrow}>Ver etiquetas <ArrowRight size={14} strokeWidth={2.5} /></span>
-  </a>
+  </Link>
 
 </div>
 
-## Construcción y validación
+## Construcción y validación {/* #construccion-y-validacion */}
 
 El catálogo fue construido siguiendo un proceso iterativo que combinó conocimiento previo sobre desarrollo de sistemas de información, observación de sistemas existentes en contextos académicos e industriales, consulta de referencias técnicas y literatura especializada, y validación empírica mediante el análisis detallado de sistemas de información reales.
 

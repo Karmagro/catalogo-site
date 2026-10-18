@@ -2,9 +2,17 @@ import {themes as prismThemes} from 'prism-react-renderer';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// Este archivo se carga en Node, fuera del sistema de traducción de React:
+// el título y el tagline se eligen por la variable que Docusaurus fija en cada
+// build de idioma. Los rótulos del navbar y del footer sí se traducen por el
+// camino normal (i18n/en/docusaurus-theme-classic/*.json).
+const enIngles = process.env.DOCUSAURUS_CURRENT_LOCALE === 'en';
+
 const config: Config = {
-  title: 'Catálogo de Componentes',
-  tagline: 'Componentes de software recurrentes para sistemas de información',
+  title: enIngles ? 'Component Catalog' : 'Catálogo de Componentes',
+  tagline: enIngles
+    ? 'Recurring software components for information systems'
+    : 'Componentes de software recurrentes para sistemas de información',
   favicon: 'img/favicon.ico?v=2',
   // favicon.ico es el respaldo universal (Safari); el SVG sigue el tema del navegador.
   // El sufijo ?v=N fuerza a los navegadores a refrescar el favicon: subirlo cada vez que cambie el dibujo.
@@ -34,7 +42,11 @@ const config: Config = {
 
   i18n: {
     defaultLocale: 'es',
-    locales: ['es'],
+    locales: ['es', 'en'],
+    localeConfigs: {
+      es: {label: 'Español'},
+      en: {label: 'English'},
+    },
   },
 
   presets: [
@@ -43,7 +55,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: undefined,
+          // «Editar esta página» abre el archivo en GitHub sobre `dev`, para que la
+          // propuesta entre por integración. En inglés, el espejo de i18n/en/.
+          editUrl: 'https://github.com/Karmagro/catalogo-site/edit/dev/',
+          editLocalizedFiles: true,
           tagsBasePath: 'etiquetas',
           // Las etiquetas se declaran en docs/tags.yml; una etiqueta que no esté
           // ahí rompe el build en vez de crear una nueva en silencio.
@@ -74,7 +89,9 @@ const config: Config = {
   ],
 
   themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
+    // Tarjeta para redes sociales (1200×630), una por idioma. Lleva escrito el número de
+    // componentes: si cambia, hay que regenerarla.
+    image: enIngles ? 'img/social-card-en.png' : 'img/social-card.png',
     colorMode: {
       defaultMode: 'light',
       respectPrefersColorScheme: true,
@@ -95,6 +112,7 @@ const config: Config = {
         {to: '/docs/tablero-digital', label: 'Tablero Digital', position: 'right'},
         {to: '/docs/sobre-el-catalogo', label: 'Sobre el Catálogo', position: 'right'},
         {to: '/creditos', label: 'Créditos', position: 'right'},
+        {type: 'localeDropdown', position: 'right'},
         {type: 'custom-tutorialButton', position: 'right'},
       ],
     },
@@ -114,6 +132,7 @@ const config: Config = {
           items: [
             {label: 'Explicación', to: '/docs/tablero-digital'},
             {label: 'Mapeo de componentes', to: '/docs/secciones'},
+            {label: 'Herramienta en línea', href: 'https://tablero-digital.dcc.uchile.cl/'},
           ],
         },
         {
@@ -132,7 +151,8 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `Catálogo de Componentes · Carlos Gálvez Romo · Universidad de Chile`,
+      // El copyright admite HTML. La versión inglesa está en i18n/en/docusaurus-theme-classic/footer.json.
+      copyright: `Catálogo de Componentes · Carlos Gálvez Romo · Universidad de Chile<br/>Contenido bajo <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a> · Código bajo <a href="https://github.com/Karmagro/catalogo-site/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT</a>`,
     },
     prism: {
       theme: prismThemes.github,

@@ -1,18 +1,10 @@
 import type {CSSProperties, ReactNode} from 'react';
 import Link from '@docusaurus/Link';
+import Translate from '@docusaurus/Translate';
 import {SECCIONES} from '@site/src/components/TableroDigital/secciones';
-import type {Seccion, Vinculo} from '@site/src/components/TableroDigital/types';
+import {abreviaturaSeccion} from '@site/src/components/TableroDigital/rotulos';
+import type {Vinculo} from '@site/src/components/TableroDigital/types';
 import {MAPEO, SECCIONES_FLUJO} from '@site/src/data/mapeo';
-
-/** Encabezados abreviados de la matriz, en el orden de SECCIONES_FLUJO. */
-const ABREVIATURA: Record<Seccion, string> = {
-  'actualizacion-manual': 'Act. Manual',
-  'actualizacion-automatica': 'Act. Automática',
-  'conceptos-datos': 'Conceptos',
-  'salidas-demanda': 'Salidas D.',
-  'salidas-automaticas': 'Salidas A.',
-  'procesos-autonomos': 'Proc. Aut.',
-};
 
 const SIMBOLO: Record<'mandatorio' | 'opcional', string> = {
   mandatorio: '●',
@@ -44,11 +36,19 @@ function estiloCelda(vinculo: Vinculo, cssVar: string, rowBg: string): CSSProper
   };
 }
 
+interface MatrizMapeoProps {
+  /**
+   * Nombre de cada componente (por slug) en el idioma de la página. Lo pasa el
+   * MDX traducido desde src/data/mapeo/<idioma>; sin él se usa el nombre en español.
+   */
+  nombres?: Record<string, string>;
+}
+
 /**
  * Matriz consolidada componentes × secciones del Tablero Digital,
  * generada desde src/data/mapeo (una fila por componente, en su orden).
  */
-export default function MatrizMapeo(): ReactNode {
+export default function MatrizMapeo({nombres}: MatrizMapeoProps): ReactNode {
   return (
     <div style={{overflowX: 'auto', marginBottom: '1.5rem'}}>
       <table style={{width: '100%', borderCollapse: 'collapse', fontSize: '0.875rem'}}>
@@ -62,11 +62,13 @@ export default function MatrizMapeo(): ReactNode {
                 borderBottom: '2px solid var(--ifm-color-emphasis-300)',
                 minWidth: '160px',
               }}>
-              Componente
+              <Translate id="mapeo.matriz.componente" description="Encabezado de la primera columna de la matriz">
+                Componente
+              </Translate>
             </th>
             {SECCIONES_FLUJO.map((seccion) => (
               <th key={seccion} style={estiloEncabezado(SECCIONES[seccion].cssVar)}>
-                {ABREVIATURA[seccion]}
+                {abreviaturaSeccion(seccion)}
               </th>
             ))}
           </tr>
@@ -81,7 +83,7 @@ export default function MatrizMapeo(): ReactNode {
               <tr key={componente.slug}>
                 <td style={{padding: '0.6rem 1rem', background: rowBg}}>
                   <Link to={`/docs/componentes/${componente.slug}`} style={{fontWeight: 500}}>
-                    {componente.nombre}
+                    {nombres?.[componente.slug] ?? componente.nombre}
                   </Link>
                 </td>
                 {SECCIONES_FLUJO.map((seccion) => {

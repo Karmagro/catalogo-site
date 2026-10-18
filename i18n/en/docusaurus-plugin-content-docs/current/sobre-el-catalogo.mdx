@@ -1,0 +1,238 @@
+---
+sidebar_position: 2
+---
+
+import Link from '@docusaurus/Link';
+import {Code2, ClipboardList, CheckCircle2, LayoutList, LayoutGrid, Tags as TagsIcon, ArrowRight} from 'lucide-react';
+import styles from '@site/src/css/paginas.module.css';
+
+# About the Catalog
+
+The Component Catalog is a browsable collection of twenty-two recurring software components that appear in information systems. Each component is documented with a consistent structure of eleven fields, which makes it possible to understand what it does, how it relates to other components, and which parts of the Digital Board it materializes.
+
+## What is a component? {/* #que-es-un-componente */}
+
+<div className={styles.keyConcept}>
+  <div className={styles.keyConceptLabel}>Working definition</div>
+  <div className={styles.keyConceptText}>A component is a <strong>type of recurring functionality defined by its purpose</strong>, not by its technical implementation. A "Data Manager" serves the same purpose whether it is implemented in Java, Python, or any other technology: managing the life cycle of a data entity through create, read, update, and delete operations.</div>
+</div>
+
+This distinguishes the components of the catalog from other meanings of the term in software engineering (such as the components of the C4 model, which describe groupings of code within a container). The components of the catalog operate at the functional level, close to software requirements, and are understandable to both developers and business stakeholders.
+
+## Who is it for? {/* #para-quien-es */}
+
+The catalog is designed to be used by different profiles during the early stages of a project.
+
+<div className={styles.perfilesGrid}>
+
+  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-actualizacion-manual)'}}>
+    <div className={styles.perfilCardIcon}>
+      <Code2 size={22} strokeWidth={2} />
+    </div>
+    <h3 className={styles.perfilCardTitle}>Developers and technical teams</h3>
+    <div className={styles.perfilCardDesc}>They recognize components by their functional name (CRUD, Dashboard, ETL) and need to understand what they imply in terms of effort, dependencies, and system coverage.</div>
+    <div className={styles.perfilCardLooksFor}>Looks for: capabilities, typical dependencies, implementation variants.</div>
+  </div>
+
+  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-salidas-demanda)'}}>
+    <div className={styles.perfilCardIcon}>
+      <ClipboardList size={22} strokeWidth={2} />
+    </div>
+    <h3 className={styles.perfilCardTitle}>Project managers and stakeholders</h3>
+    <div className={styles.perfilCardDesc}>They know components by the need they address (<em>"I need to show data in real time"</em>, <em>"I need to load data in bulk"</em>) and need to evaluate options and communicate requirements.</div>
+    <div className={styles.perfilCardLooksFor}>Looks for: description, concrete examples, mapping to the Digital Board.</div>
+  </div>
+
+  <div className={styles.perfilCard} style={{'--perfil-color': 'var(--seccion-conceptos)'}}>
+    <div className={styles.perfilCardIcon}>
+      <CheckCircle2 size={22} strokeWidth={2} />
+    </div>
+    <h3 className={styles.perfilCardTitle}>Evaluators and validators</h3>
+    <div className={styles.perfilCardDesc}>They review the coherence and completeness of the catalog as an artifact, checking each component sheet against the conceptual proposal of the thesis.</div>
+    <div className={styles.perfilCardLooksFor}>Looks for: structural consistency, clear boundaries, traceability.</div>
+  </div>
+
+</div>
+
+## Structure of each component {/* #estructura-de-cada-componente */}
+
+Each component is documented with eleven fields, grouped into five dimensions that make it possible to understand what it is, how it behaves, and how it relates to the Digital Board.
+
+<div className={styles.camposTable}>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--ifm-color-primary)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Identity</span>
+      <span className={styles.camposGroupRange}>Fields 1–2</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>1</span>
+      <span className={styles.camposName}>Alias</span>
+      <span className={styles.camposDesc}>Alternative names by which the component is known in industry.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>2</span>
+      <span className={styles.camposName}>Description</span>
+      <span className={styles.camposDesc}>What the component is and what its main purpose is.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-conceptos)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Capabilities and limits</span>
+      <span className={styles.camposGroupRange}>Fields 3–5</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>3</span>
+      <span className={styles.camposName}>Mandatory capabilities</span>
+      <span className={styles.camposDesc}>The minimum functionality it must have to be recognized as such.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>4</span>
+      <span className={styles.camposName}>Additional capabilities</span>
+      <span className={styles.camposDesc}>Functionality that can enrich it without being part of its essential definition.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>5</span>
+      <span className={styles.camposName}>Boundaries</span>
+      <span className={styles.camposDesc}>What it is not and what it does not include, to tell it apart from other components.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-actualizacion-automatica)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Behavior</span>
+      <span className={styles.camposGroupRange}>Fields 6–8</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>6</span>
+      <span className={styles.camposName}>Information flow</span>
+      <span className={styles.camposDesc}>What information it receives as input and what it produces as output.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>7</span>
+      <span className={styles.camposName}>Variants</span>
+      <span className={styles.camposDesc}>Recognizable forms in which it can appear.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>8</span>
+      <span className={styles.camposName}>Typical dependencies</span>
+      <span className={styles.camposDesc}>Other components with which it is frequently related.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-salidas-demanda)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Examples</span>
+      <span className={styles.camposGroupRange}>Field 9</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>9</span>
+      <span className={styles.camposName}>Examples</span>
+      <span className={styles.camposDesc}>Concrete cases in real systems, with screenshots.</span>
+    </div>
+  </div>
+
+  <div className={styles.camposGroup} style={{'--grupo-color': 'var(--seccion-actualizacion-manual)'}}>
+    <div className={styles.camposGroupHeader}>
+      <span className={styles.camposGroupLabel}>Relationship with the Board</span>
+      <span className={styles.camposGroupRange}>Fields 10–11</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>10</span>
+      <span className={styles.camposName}>Mapping to the Digital Board</span>
+      <span className={styles.camposDesc}>For each section of the board, whether the relationship is mandatory, optional, or nonexistent.</span>
+    </div>
+    <div className={styles.camposRow}>
+      <span className={styles.camposNumber}>11</span>
+      <span className={styles.camposName}>Digital Board example</span>
+      <span className={styles.camposDesc}>A concrete representation of how it is distributed on the board, with example cards.</span>
+    </div>
+  </div>
+
+</div>
+
+The distinction between mandatory and additional capabilities (fields 3 and 4) is particularly important: it makes it possible to recognize the same component in systems with different degrees of sophistication. A basic Data Manager offers listing, creating, editing, and deleting records; a more advanced one may also include export, advanced filters, or sorting by column. Both are instances of the same component, but with different additional capabilities.
+
+## Relationship with the Digital Board {/* #relacion-con-el-tablero-digital */}
+
+The catalog and the Digital Board are complementary tools that operate on different planes.
+
+<div className={styles.relacionDiagrama}>
+  <div className={styles.relacionLado} style={{'--lado-color': 'var(--seccion-actualizacion-manual)'}}>
+    <span className={styles.relacionLadoLabel}>Digital Board</span>
+    <h3 className={styles.relacionLadoTitle}>The purpose</h3>
+    <div className={styles.relacionLadoDesc}>Its sections make up the vocabulary for declaring <strong>what the system needs</strong>. Each card is an intention.</div>
+  </div>
+  <div className={styles.relacionConector}>⟷</div>
+  <div className={styles.relacionLado} style={{'--lado-color': 'var(--seccion-conceptos)'}}>
+    <span className={styles.relacionLadoLabel}>Catalog</span>
+    <h3 className={styles.relacionLadoTitle}>The materialization</h3>
+    <div className={styles.relacionLadoDesc}>It provides the vocabulary for describing <strong>how what the board declares is realized</strong>. Each component is a recognizable functional unit.</div>
+  </div>
+</div>
+
+A single component can touch several sections of the board at once. For example, a Data Manager always involves Manual Update (creation and editing forms), Data Concepts (the entity it manages), and On-Demand Outputs (listing and searching records). This cross-cutting nature is a fundamental property of the catalog: components do not belong to a single section of the board.
+
+The mapping between components and sections is presented in the [consolidated matrix](/docs/secciones) and in the individual sheet of each component.
+
+## What the catalog is not {/* #lo-que-el-catalogo-no-es */}
+
+:::caution[Setting expectations]
+
+It is as important to understand what the catalog offers as what it does **not** offer:
+
+- **It is not an implementation manual.** It does not indicate how to build a component in a specific language or framework.
+- **It is not a catalog of design patterns.** It does not prescribe code structures or architectural solutions.
+- **It is not exhaustive.** It represents a bounded set of components identified as recurring. Projects may require functionality that does not correspond to any component in the catalog.
+
+:::
+
+## How to use the catalog {/* #como-usar-el-catalogo */}
+
+The catalog can be explored in three ways, all accessible from the navigation bar.
+
+<div className={styles.ctaGrid}>
+
+  <Link className={styles.ctaCard} to="/docs/componentes/formulario-login">
+    <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--ifm-color-primary)'}}>
+      <LayoutList size={22} strokeWidth={2} />
+    </div>
+    <span className={styles.ctaCardLabel}>By component</span>
+    <h3 className={styles.ctaCardTitle}>Explore the 22 components</h3>
+    <div className={styles.ctaCardDesc}>The sidebar lists the twenty-two components. Each one has its own page with the complete component sheet.</div>
+    <span className={styles.ctaCardArrow}>View catalog <ArrowRight size={14} strokeWidth={2.5} /></span>
+  </Link>
+
+  <Link className={styles.ctaCard} to="/docs/secciones">
+    <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-conceptos)'}}>
+      <LayoutGrid size={22} strokeWidth={2} />
+    </div>
+    <span className={styles.ctaCardLabel}>By section</span>
+    <h3 className={styles.ctaCardTitle}>Component × board matrix</h3>
+    <div className={styles.ctaCardDesc}>Answers "which components do I need if my system updates a lot of data manually?" by showing which components touch each section.</div>
+    <span className={styles.ctaCardArrow}>View matrix <ArrowRight size={14} strokeWidth={2.5} /></span>
+  </Link>
+
+  <Link className={styles.ctaCard} to="/docs/etiquetas">
+    <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-salidas-automaticas)'}}>
+      <TagsIcon size={22} strokeWidth={2} />
+    </div>
+    <span className={styles.ctaCardLabel}>By tag</span>
+    <h3 className={styles.ctaCardTitle}>Grouping by affinity</h3>
+    <div className={styles.ctaCardDesc}>Components are grouped by functional affinity: authentication, visualization, data ingestion, security, among others.</div>
+    <span className={styles.ctaCardArrow}>View tags <ArrowRight size={14} strokeWidth={2.5} /></span>
+  </Link>
+
+</div>
+
+## Construction and validation {/* #construccion-y-validacion */}
+
+The catalog was built through an iterative process that combined prior knowledge of information system development, observation of existing systems in academic and industrial contexts, consultation of technical references and specialized literature, and empirical validation through the detailed analysis of real information systems.
+
+Each component was successively refined to delimit its essential characteristics, distinguish it from similar components, and document its typical dependencies.
+
+<div className={styles.footerStats}>
+  <div className={styles.footerStatsTitle}>Current status</div>
+  <div className={styles.footerStatsBody}>22 documented components · uniform structure of 11 fields · explicit mapping to the 6 sections of the Digital Board · navigation along three axes (component, section, tag).</div>
+</div>

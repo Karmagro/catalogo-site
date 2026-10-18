@@ -20,15 +20,15 @@ import {workflowAprobacion as ejemplosWorkflowAprobacion} from '@site/src/data/e
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosWorkflowAprobacion} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que coordina el avance de un caso a través de una secuencia de etapas en las que intervienen distintos actores, hasta alcanzar un estado terminal (típicamente aprobado o rechazado). Lo propio del componente no son las pantallas con que cada actor interactúa —esas son otros componentes (un formulario para cargar, una consulta para revisar, una notificación para avisar)— sino la **orquestación**: qué etapas existen, qué rol actúa en cada una, qué transiciones son válidas (aprobar, rechazar, devolver, derivar) y en qué estado se encuentra cada caso en todo momento. Es muy frecuente en sistemas de información de gestión: aprobación de órdenes de compra, solicitudes de gasto, permisos y vacaciones, contratos y documentos, o cualquier trámite donde "uno carga, otro revisa, otro decide".
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -46,7 +46,7 @@ Componente que coordina el avance de un caso a través de una secuencia de etapa
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -64,7 +64,7 @@ Componente que coordina el avance de un caso a través de una secuencia de etapa
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -76,7 +76,7 @@ Componente que coordina el avance de un caso a través de una secuencia de etapa
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -98,14 +98,14 @@ Componente que coordina el avance de un caso a través de una secuencia de etapa
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Aprobación lineal:** etapas en secuencia simple (carga → revisión → decisión); el caso más común (una solicitud de vacaciones)
 - **Aprobación jerárquica / por niveles:** la decisión sube por niveles según reglas (monto, tipo), requiriendo aprobaciones sucesivas (una orden de compra que sobre cierto monto necesita visto bueno de gerencia)
 - **Workflow con devolución:** incluye retrocesos para corrección antes de poder avanzar (una postulación que se devuelve para completar antecedentes)
 - **Workflow con ramas paralelas:** varias revisiones simultáneas que deben converger (visto bueno técnico y financiero a la vez)
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -117,7 +117,7 @@ Componente que coordina el avance de un caso a través de una secuencia de etapa
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="workflow-aprobacion" />
 
@@ -134,6 +134,6 @@ Componente que coordina el avance de un caso a través de una secuencia de etapa
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={workflowAprobacion} />

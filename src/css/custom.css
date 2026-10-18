@@ -118,6 +118,42 @@ article .theme-doc-markdown h2 {
   font-weight: 600;
 }
 
+/* Anchos intermedios. Con el título, siete enlaces, el buscador y el selector de
+   idioma, la barra necesita unos 1340 px, y Docusaurus no pasa al menú móvil hasta
+   los 996 px. Entre medio se compacta por etapas, en vez de dejar que los ítems se
+   monten unos sobre otros: primero el buscador y los márgenes, después el título
+   (queda el ícono), al final el nombre del idioma (queda su ícono). */
+@media (min-width: 997px) and (max-width: 1400px) {
+  .navbar {
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+  }
+
+  .navbar__search-input {
+    width: 8.5rem;
+  }
+
+  .navbar__search [class*='searchHintContainer'] {
+    display: none;
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1260px) {
+  .navbar__title {
+    display: none;
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1060px) {
+  .navbar__items--right > .dropdown > .navbar__link {
+    font-size: 0;
+  }
+
+  .navbar__items--right > .dropdown > .navbar__link::after {
+    font-size: 0.9rem;
+    margin-left: 0;
+  }
+}
+
 /* ─── Sidebar ─── */
 .menu__link {
   font-size: 0.875rem;
@@ -279,6 +315,12 @@ a[href$="/etiquetas/integracion"]     { --tag-color: var(--seccion-actualizacion
   margin-top: 0.6rem;
   letter-spacing: 0;
   line-height: 1.6;
+}
+
+/* La bajada vive en CSS porque la página la genera Docusaurus; su traducción va
+   aquí mismo, por el atributo lang que Docusaurus pone en <html> en cada idioma. */
+html[lang='en'] .docs-tags-list-page main > h1::after {
+  content: "Components grouped by functional affinity. Each tag leads to the list of components that share it.";
 }
 
 /* Aplanar la agrupación alfabética: con 8 tags es ruido visual.
@@ -521,4 +563,15 @@ a[href$="/etiquetas/integracion"]     { --tag-color: var(--seccion-actualizacion
   margin-top: 0.25rem;
   padding-top: 0;
   border-top: none;
+}
+
+/* Enlaces de licencia dentro del copyright del pie: el color de enlace del sitio
+   no se lee sobre el fondo oscuro del footer. */
+.footer__copyright a {
+  color: var(--ifm-footer-link-color);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.footer__copyright a:hover {
+  color: var(--ifm-footer-link-hover-color);
 }

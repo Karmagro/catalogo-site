@@ -1,0 +1,686 @@
+{
+  "theme.ErrorPageContent.title": {
+    "message": "This page crashed.",
+    "description": "The title of the fallback page when the page crashed"
+  },
+  "theme.BackToTopButton.buttonAriaLabel": {
+    "message": "Scroll back to top",
+    "description": "The ARIA label for the back to top button"
+  },
+  "theme.blog.archive.title": {
+    "message": "Archive",
+    "description": "The page & hero title of the blog archive page"
+  },
+  "theme.blog.archive.description": {
+    "message": "Archive",
+    "description": "The page & hero description of the blog archive page"
+  },
+  "theme.blog.paginator.navAriaLabel": {
+    "message": "Blog list page navigation",
+    "description": "The ARIA label for the blog pagination"
+  },
+  "theme.blog.paginator.newerEntries": {
+    "message": "Newer entries",
+    "description": "The label used to navigate to the newer blog posts page (previous page)"
+  },
+  "theme.blog.paginator.olderEntries": {
+    "message": "Older entries",
+    "description": "The label used to navigate to the older blog posts page (next page)"
+  },
+  "theme.blog.post.paginator.navAriaLabel": {
+    "message": "Blog post page navigation",
+    "description": "The ARIA label for the blog posts pagination"
+  },
+  "theme.blog.post.paginator.newerPost": {
+    "message": "Newer post",
+    "description": "The blog post button label to navigate to the newer/previous post"
+  },
+  "theme.blog.post.paginator.olderPost": {
+    "message": "Older post",
+    "description": "The blog post button label to navigate to the older/next post"
+  },
+  "theme.tags.tagsPageLink": {
+    "message": "View all tags",
+    "description": "The label of the link targeting the tag list page"
+  },
+  "theme.colorToggle.ariaLabel.mode.system": {
+    "message": "system mode",
+    "description": "The name for the system color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.light": {
+    "message": "light mode",
+    "description": "The name for the light color mode"
+  },
+  "theme.colorToggle.ariaLabel.mode.dark": {
+    "message": "dark mode",
+    "description": "The name for the dark color mode"
+  },
+  "theme.colorToggle.ariaLabel": {
+    "message": "Switch between dark and light mode (currently {mode})",
+    "description": "The ARIA label for the color mode toggle"
+  },
+  "theme.docs.breadcrumbs.navAriaLabel": {
+    "message": "Breadcrumbs",
+    "description": "The ARIA label for the breadcrumbs"
+  },
+  "theme.docs.paginator.navAriaLabel": {
+    "message": "Docs pages",
+    "description": "The ARIA label for the docs pagination"
+  },
+  "theme.docs.paginator.previous": {
+    "message": "Previous",
+    "description": "The label used to navigate to the previous doc"
+  },
+  "theme.docs.paginator.next": {
+    "message": "Next",
+    "description": "The label used to navigate to the next doc"
+  },
+  "theme.docs.tagDocListPageTitle.nDocsTagged": {
+    "message": "One doc tagged|{count} docs tagged",
+    "description": "Pluralized label for \"{count} docs tagged\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.docs.tagDocListPageTitle": {
+    "message": "{nDocsTagged} with \"{tagName}\"",
+    "description": "The title of the page for a docs tag"
+  },
+  "theme.docs.versionBadge.label": {
+    "message": "Version: {versionLabel}"
+  },
+  "theme.docs.versions.unreleasedVersionLabel": {
+    "message": "This is unreleased documentation for {siteTitle} {versionLabel} version.",
+    "description": "The label used to tell the user that he's browsing an unreleased doc version"
+  },
+  "theme.docs.versions.unmaintainedVersionLabel": {
+    "message": "This is documentation for {siteTitle} {versionLabel}, which is no longer actively maintained.",
+    "description": "The label used to tell the user that he's browsing an unmaintained doc version"
+  },
+  "theme.docs.versions.latestVersionSuggestionLabel": {
+    "message": "For up-to-date documentation, see the {latestVersionLink} ({versionLabel}).",
+    "description": "The label used to tell the user to check the latest version"
+  },
+  "theme.docs.versions.latestVersionLinkLabel": {
+    "message": "latest version",
+    "description": "The label used for the latest version suggestion link label"
+  },
+  "theme.common.editThisPage": {
+    "message": "Edit this page",
+    "description": "The link label to edit the current page"
+  },
+  "theme.common.headingLinkTitle": {
+    "message": "Direct link to {heading}",
+    "description": "Title for link to heading"
+  },
+  "theme.lastUpdated.atDate": {
+    "message": " on {date}",
+    "description": "The words used to describe on which date a page has been last updated"
+  },
+  "theme.lastUpdated.byUser": {
+    "message": " by {user}",
+    "description": "The words used to describe by who the page has been last updated"
+  },
+  "theme.lastUpdated.lastUpdatedAtBy": {
+    "message": "Last updated{atDate}{byUser}",
+    "description": "The sentence used to display when a page has been last updated, and by who"
+  },
+  "theme.NotFound.title": {
+    "message": "Page Not Found",
+    "description": "The title of the 404 page"
+  },
+  "theme.navbar.mobileVersionsDropdown.label": {
+    "message": "Versions",
+    "description": "The label for the navbar versions dropdown on mobile view"
+  },
+  "theme.tags.tagsListLabel": {
+    "message": "Tags:",
+    "description": "The label alongside a tag list"
+  },
+  "theme.admonition.caution": {
+    "message": "caution",
+    "description": "The default label used for the Caution admonition (:::caution)"
+  },
+  "theme.admonition.danger": {
+    "message": "danger",
+    "description": "The default label used for the Danger admonition (:::danger)"
+  },
+  "theme.admonition.info": {
+    "message": "info",
+    "description": "The default label used for the Info admonition (:::info)"
+  },
+  "theme.admonition.note": {
+    "message": "note",
+    "description": "The default label used for the Note admonition (:::note)"
+  },
+  "theme.admonition.tip": {
+    "message": "tip",
+    "description": "The default label used for the Tip admonition (:::tip)"
+  },
+  "theme.admonition.warning": {
+    "message": "warning",
+    "description": "The default label used for the Warning admonition (:::warning)"
+  },
+  "theme.AnnouncementBar.closeButtonAriaLabel": {
+    "message": "Close",
+    "description": "The ARIA label for close button of announcement bar"
+  },
+  "theme.blog.sidebar.navAriaLabel": {
+    "message": "Blog recent posts navigation",
+    "description": "The ARIA label for recent posts in the blog sidebar"
+  },
+  "theme.DocSidebarItem.expandCategoryAriaLabel": {
+    "message": "Expand sidebar category '{label}'",
+    "description": "The ARIA label to expand the sidebar category"
+  },
+  "theme.DocSidebarItem.collapseCategoryAriaLabel": {
+    "message": "Collapse sidebar category '{label}'",
+    "description": "The ARIA label to collapse the sidebar category"
+  },
+  "theme.IconExternalLink.ariaLabel": {
+    "message": "(opens in new tab)",
+    "description": "The ARIA label for the external link icon"
+  },
+  "theme.NavBar.navAriaLabel": {
+    "message": "Main",
+    "description": "The ARIA label for the main navigation"
+  },
+  "theme.NotFound.p1": {
+    "message": "We could not find what you were looking for.",
+    "description": "The first paragraph of the 404 page"
+  },
+  "theme.NotFound.p2": {
+    "message": "Please contact the owner of the site that linked you to the original URL and let them know their link is broken.",
+    "description": "The 2nd paragraph of the 404 page"
+  },
+  "theme.TOCCollapsible.toggleButtonLabel": {
+    "message": "On this page",
+    "description": "The label used by the button on the collapsible TOC component"
+  },
+  "theme.navbar.mobileLanguageDropdown.label": {
+    "message": "Languages",
+    "description": "The label for the mobile language switcher dropdown"
+  },
+  "theme.blog.post.readMore": {
+    "message": "Read more",
+    "description": "The label used in blog post item excerpts to link to full blog posts"
+  },
+  "theme.blog.post.readMoreLabel": {
+    "message": "Read more about {title}",
+    "description": "The ARIA label for the link to full blog posts from excerpts"
+  },
+  "theme.blog.post.readingTime.plurals": {
+    "message": "One min read|{readingTime} min read",
+    "description": "Pluralized label for \"{readingTime} min read\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.CodeBlock.copy": {
+    "message": "Copy",
+    "description": "The copy button label on code blocks"
+  },
+  "theme.CodeBlock.copied": {
+    "message": "Copied",
+    "description": "The copied button label on code blocks"
+  },
+  "theme.CodeBlock.copyButtonAriaLabel": {
+    "message": "Copy code to clipboard",
+    "description": "The ARIA label for copy code blocks button"
+  },
+  "theme.CodeBlock.wordWrapToggle": {
+    "message": "Toggle word wrap",
+    "description": "The title attribute for toggle word wrapping button of code block lines"
+  },
+  "theme.docs.breadcrumbs.home": {
+    "message": "Home page",
+    "description": "The ARIA label for the home page in the breadcrumbs"
+  },
+  "theme.docs.sidebar.collapseButtonTitle": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.collapseButtonAriaLabel": {
+    "message": "Collapse sidebar",
+    "description": "The title attribute for collapse button of doc sidebar"
+  },
+  "theme.docs.sidebar.navAriaLabel": {
+    "message": "Docs sidebar",
+    "description": "The ARIA label for the sidebar navigation"
+  },
+  "theme.docs.sidebar.closeSidebarButtonAriaLabel": {
+    "message": "Close navigation bar",
+    "description": "The ARIA label for close button of mobile sidebar"
+  },
+  "theme.navbar.mobileSidebarSecondaryMenu.backButtonLabel": {
+    "message": "← Back to main menu",
+    "description": "The label of the back button to return to main menu, inside the mobile navbar sidebar secondary menu (notably used to display the docs sidebar)"
+  },
+  "theme.docs.sidebar.toggleSidebarButtonAriaLabel": {
+    "message": "Toggle navigation bar",
+    "description": "The ARIA label for hamburger menu button of mobile navigation"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.expandAriaLabel": {
+    "message": "Expand the dropdown",
+    "description": "The ARIA label of the button to expand the mobile dropdown navbar item"
+  },
+  "theme.navbar.mobileDropdown.collapseButton.collapseAriaLabel": {
+    "message": "Collapse the dropdown",
+    "description": "The ARIA label of the button to collapse the mobile dropdown navbar item"
+  },
+  "theme.docs.sidebar.expandButtonTitle": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.docs.sidebar.expandButtonAriaLabel": {
+    "message": "Expand sidebar",
+    "description": "The ARIA label and title attribute for expand button of doc sidebar"
+  },
+  "theme.SearchBar.noResultsText": {
+    "message": "No results"
+  },
+  "theme.SearchBar.seeAllOutsideContext": {
+    "message": "See all results outside \"{context}\""
+  },
+  "theme.SearchBar.searchInContext": {
+    "message": "See all results within \"{context}\""
+  },
+  "theme.SearchBar.seeAll": {
+    "message": "See all results"
+  },
+  "theme.SearchBar.label": {
+    "message": "Search",
+    "description": "The ARIA label and placeholder for search button"
+  },
+  "theme.SearchPage.existingResultsTitle": {
+    "message": "Search results for \"{query}\"",
+    "description": "The search page title for non-empty query"
+  },
+  "theme.SearchPage.emptyResultsTitle": {
+    "message": "Search the documentation",
+    "description": "The search page title for empty query"
+  },
+  "theme.SearchPage.searchContext.everywhere": {
+    "message": "Everywhere"
+  },
+  "theme.SearchPage.documentsFound.plurals": {
+    "message": "1 document found|{count} documents found",
+    "description": "Pluralized label for \"{count} documents found\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.SearchPage.noResultsText": {
+    "message": "No documents were found",
+    "description": "The paragraph for empty search result"
+  },
+  "theme.blog.post.plurals": {
+    "message": "One post|{count} posts",
+    "description": "Pluralized label for \"{count} posts\". Use as much plural forms (separated by \"|\") as your language support (see https://www.unicode.org/cldr/cldr-aux/charts/34/supplemental/language_plural_rules.html)"
+  },
+  "theme.blog.tagTitle": {
+    "message": "{nPosts} tagged with \"{tagName}\"",
+    "description": "The title of the page for a blog tag"
+  },
+  "theme.blog.author.pageTitle": {
+    "message": "{authorName} - {nPosts}",
+    "description": "The title of the page for a blog author"
+  },
+  "theme.blog.authorsList.pageTitle": {
+    "message": "Authors",
+    "description": "The title of the authors page"
+  },
+  "theme.blog.authorsList.viewAll": {
+    "message": "View all authors",
+    "description": "The label of the link targeting the blog authors page"
+  },
+  "theme.blog.author.noPosts": {
+    "message": "This author has not written any posts yet.",
+    "description": "The text for authors with 0 blog post"
+  },
+  "theme.contentVisibility.unlistedBanner.title": {
+    "message": "Unlisted page",
+    "description": "The unlisted content banner title"
+  },
+  "theme.contentVisibility.unlistedBanner.message": {
+    "message": "This page is unlisted. Search engines will not index it, and only users having a direct link can access it.",
+    "description": "The unlisted content banner message"
+  },
+  "theme.contentVisibility.draftBanner.title": {
+    "message": "Draft page",
+    "description": "The draft content banner title"
+  },
+  "theme.contentVisibility.draftBanner.message": {
+    "message": "This page is a draft. It will only be visible in dev and be excluded from the production build.",
+    "description": "The draft content banner message"
+  },
+  "theme.docs.DocCard.categoryDescription.plurals": {
+    "message": "1 item|{count} items",
+    "description": "The default description for a category card in the generated index about how many items this category includes"
+  },
+  "theme.ErrorPageContent.tryAgain": {
+    "message": "Try again",
+    "description": "The label of the button to try again rendering when the React error boundary captures an error"
+  },
+  "theme.common.skipToMainContent": {
+    "message": "Skip to main content",
+    "description": "The skip to content label used for accessibility, allowing to rapidly navigate to main content with keyboard tab/enter navigation"
+  },
+  "theme.tags.tagsPageTitle": {
+    "message": "Tags",
+    "description": "The title of the tag list page"
+  },
+  "galeria.vacia": {
+    "message": "Visual examples pending for this component.",
+    "description": "Galería de una ficha que aún no tiene imágenes"
+  },
+  "galeria.ampliar.ariaLabel": {
+    "message": "Enlarge image: {alt}",
+    "description": "aria-label del botón que abre la imagen de la galería a pantalla completa"
+  },
+  "galeria.ampliar": {
+    "message": "⤢ Enlarge",
+    "description": "Indicación visible sobre la imagen de la galería"
+  },
+  "galeria.puntos.ariaLabel": {
+    "message": "Example images",
+    "description": "aria-label del selector de imágenes de la galería"
+  },
+  "galeria.punto.ariaLabel": {
+    "message": "Go to image {n}",
+    "description": "aria-label de cada punto del selector de imágenes de la galería"
+  },
+  "galeria.lightbox.cerrar": {
+    "message": "Close",
+    "description": "aria-label del botón que cierra la imagen a pantalla completa"
+  },
+  "galeria.lightbox.anterior": {
+    "message": "Previous image",
+    "description": "aria-label del botón de navegación de la imagen a pantalla completa"
+  },
+  "galeria.lightbox.siguiente": {
+    "message": "Next image",
+    "description": "aria-label del botón de navegación de la imagen a pantalla completa"
+  },
+  "ficha.etiquetas": {
+    "message": "Tags:",
+    "description": "Rótulo de los chips de etiquetas al inicio de una ficha"
+  },
+  "mapeo.estado.siempre": {
+    "message": "Always",
+    "description": "Rejilla de mapeo de una ficha: el componente siempre toca la sección"
+  },
+  "mapeo.estado.opcional": {
+    "message": "Optional",
+    "description": "Rejilla de mapeo de una ficha: el componente toca la sección solo con capacidades adicionales"
+  },
+  "mapeo.estado.no": {
+    "message": "No",
+    "description": "Rejilla de mapeo de una ficha: el componente no toca la sección"
+  },
+  "mapeo.matriz.componente": {
+    "message": "Component",
+    "description": "Encabezado de la primera columna de la matriz"
+  },
+  "mapeo.resumen.ninguno": {
+    "message": "None",
+    "description": "Lectura por sección: ningún componente tiene ese vínculo con la sección"
+  },
+  "mapeo.resumen.todos": {
+    "message": "all the components in the catalog",
+    "description": "Lectura por sección: todos los componentes tienen ese vínculo con la sección"
+  },
+  "mapeo.resumen.mandatorios": {
+    "message": "Mandatory ({n}):",
+    "description": "Lectura por sección: encabezado de la lista de componentes con vínculo mandatorio"
+  },
+  "mapeo.resumen.opcionales": {
+    "message": "Optional ({n}):",
+    "description": "Lectura por sección: encabezado de la lista de componentes con vínculo opcional"
+  },
+  "tutorial.via.buscar.titulo": {
+    "message": "Search by content"
+  },
+  "tutorial.via.buscar.desc": {
+    "message": "If you already know what you need. Search the entire catalog."
+  },
+  "tutorial.via.seccion.titulo": {
+    "message": "By Board Section"
+  },
+  "tutorial.via.seccion.desc": {
+    "message": "Which components serve to enter data, display it, send notifications…"
+  },
+  "tutorial.via.etiquetas.titulo": {
+    "message": "By Tag"
+  },
+  "tutorial.via.etiquetas.desc": {
+    "message": "Explore components grouped by functional affinity."
+  },
+  "tutorial.via.recorrer.titulo": {
+    "message": "Walk through the catalog"
+  },
+  "tutorial.via.recorrer.desc": {
+    "message": "The full list in the sidebar, in reading order."
+  },
+  "tutorial.banner.ariaLabel": {
+    "message": "Catalog navigation guide",
+    "description": "aria-label de la región del banner de ayuda"
+  },
+  "tutorial.banner.titulo": {
+    "message": "How to find what you are looking for",
+    "description": "Título del banner de ayuda de navegación"
+  },
+  "tutorial.banner.cerrar": {
+    "message": "Close the navigation help",
+    "description": "aria-label del botón que cierra el banner de ayuda"
+  },
+  "tutorial.boton": {
+    "message": "How to navigate the catalog",
+    "description": "aria-label y title del botón «?» del navbar, que reabre la ayuda de navegación"
+  },
+  "tablero.seccion.actualizacion-manual": {
+    "message": "Manual Update",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.actualizacion-automatica": {
+    "message": "Automatic Update",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.conceptos-datos": {
+    "message": "Data Concepts",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.salidas-demanda": {
+    "message": "On-Demand Outputs",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.salidas-automaticas": {
+    "message": "Automatic Outputs",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.procesos-autonomos": {
+    "message": "Autonomous Processes",
+    "description": "Sección del Tablero Digital"
+  },
+  "tablero.seccion.actualizacion-manual.abreviatura": {
+    "message": "Manual Upd.",
+    "description": "Encabezado de columna de la matriz: Actualización Manual"
+  },
+  "tablero.seccion.actualizacion-automatica.abreviatura": {
+    "message": "Automatic Upd.",
+    "description": "Encabezado de columna de la matriz: Actualización Automática"
+  },
+  "tablero.seccion.conceptos-datos.abreviatura": {
+    "message": "Concepts",
+    "description": "Encabezado de columna de la matriz: Conceptos de Datos"
+  },
+  "tablero.seccion.salidas-demanda.abreviatura": {
+    "message": "On-Demand Out.",
+    "description": "Encabezado de columna de la matriz: Salidas por Demanda"
+  },
+  "tablero.seccion.salidas-automaticas.abreviatura": {
+    "message": "Automatic Out.",
+    "description": "Encabezado de columna de la matriz: Salidas Automáticas"
+  },
+  "tablero.seccion.procesos-autonomos.abreviatura": {
+    "message": "Auton. Proc.",
+    "description": "Encabezado de columna de la matriz: Procesos Autónomos"
+  },
+  "creditos.profesor.guia": {
+    "message": "Thesis advisor"
+  },
+  "creditos.profesor.asociado": {
+    "message": "Associate Professor · DCC"
+  },
+  "creditos.profesor.coguia": {
+    "message": "Thesis co-advisor"
+  },
+  "creditos.profesor.adjunto": {
+    "message": "Adjunct Professor · DCC"
+  },
+  "creditos.antetitulo": {
+    "message": "Credits"
+  },
+  "creditos.titulo": {
+    "message": "Who made this catalog"
+  },
+  "creditos.descripcion": {
+    "message": "This site is the navigable artifact of an undergraduate thesis at the Department of Computer Science of the University of Chile."
+  },
+  "creditos.meta.titulo": {
+    "message": "Credits",
+    "description": "Título de la pestaña de la página de créditos"
+  },
+  "creditos.meta.descripcion": {
+    "message": "Credits of the Component Catalog: author, thesis advisors, and academic context.",
+    "description": "Meta descripción de la página de créditos"
+  },
+  "creditos.version": {
+    "message": "Version {version}"
+  },
+  "creditos.identidad.titulo": {
+    "message": "Component Catalog"
+  },
+  "creditos.identidad.desc": {
+    "message": "Recurring software components for information systems, documented with a uniform structure and mapped to the {tablero}. Developed during 2026 as part of the thesis {memoria}.",
+    "description": "{tablero} es el enlace «Tablero Digital» (creditos.identidad.tablero) y {memoria} el título de la memoria en cursiva (creditos.identidad.memoria)"
+  },
+  "creditos.identidad.tablero": {
+    "message": "Digital Board"
+  },
+  "creditos.identidad.memoria": {
+    "message": "«Catalogación de componentes recurrentes de software que forman parte de sistemas de información» (Cataloging recurring software components that are part of information systems)",
+    "description": "Título formal de la memoria. En otros idiomas: el original en español seguido de su traducción entre paréntesis"
+  },
+  "creditos.autor": {
+    "message": "Author"
+  },
+  "creditos.autor.rol": {
+    "message": "Thesis student"
+  },
+  "creditos.autor.carrera": {
+    "message": "Ingeniería Civil en Computación (Computer Science Engineering) · University of Chile"
+  },
+  "creditos.profesores": {
+    "message": "Advisors"
+  },
+  "creditos.contexto": {
+    "message": "Context"
+  },
+  "creditos.contexto.desc": {
+    "message": "Work submitted for the professional degree of Ingeniero Civil en Computación (Computer Science Engineer), at the Department of Computer Science (DCC) of the Faculty of Physical and Mathematical Sciences (FCFM), University of Chile · 2026."
+  },
+  "home.hero.titulo": {
+    "message": "{acento}{br}Component Catalog",
+    "description": "Título de la portada. {br} es el salto de línea y {acento} la parte destacada (home.hero.titulo.acento)"
+  },
+  "home.hero.titulo.acento": {
+    "message": "Software",
+    "description": "Parte destacada del título de la portada"
+  },
+  "home.hero.descripcion": {
+    "message": "A navigable catalog of recurring components for information systems. Each component is documented with a consistent structure and linked to the {tablero} — to move from \"what we need\" to \"how we build it\".",
+    "description": "Bajada de la portada. {tablero} es «Tablero Digital» en negrita (home.tablero)"
+  },
+  "home.tablero": {
+    "message": "Digital Board",
+    "description": "Nombre del Tablero Digital dentro de una frase"
+  },
+  "home.hero.cta.explorar": {
+    "message": "Explore the {n} components →"
+  },
+  "home.hero.cta.que-es": {
+    "message": "What is this catalog?"
+  },
+  "home.componente.insignia": {
+    "message": "Full catalog"
+  },
+  "home.componente.titulo": {
+    "message": "By Component"
+  },
+  "home.componente.desc": {
+    "message": "{n} components documented with an 11-field structure: description, capabilities, boundaries, information flow, variants, dependencies, examples, and mapping to the Digital Board."
+  },
+  "home.componente.cta": {
+    "message": "See all components →"
+  },
+  "home.seccion.titulo": {
+    "message": "By Board Section"
+  },
+  "home.seccion.desc": {
+    "message": "Consolidated matrix: which components touch each section of the board, as a mandatory or an optional relationship."
+  },
+  "home.seccion.cta": {
+    "message": "See the matrix →"
+  },
+  "home.etiquetas.titulo": {
+    "message": "By Tag"
+  },
+  "home.etiquetas.desc": {
+    "message": "Grouping by functional affinity: authentication, visualization, security, integration, and more."
+  },
+  "home.etiquetas.cta": {
+    "message": "See the tags →"
+  },
+  "home.tablero.seccion.actualizacion-manual": {
+    "message": "Data that the user creates or modifies"
+  },
+  "home.tablero.seccion.actualizacion-automatica": {
+    "message": "Ingestion without human intervention"
+  },
+  "home.tablero.seccion.conceptos-datos": {
+    "message": "Persistent entities of the system"
+  },
+  "home.tablero.seccion.salidas-demanda": {
+    "message": "Information requested by the user"
+  },
+  "home.tablero.seccion.salidas-automaticas": {
+    "message": "Notifications and proactive communication"
+  },
+  "home.tablero.seccion.procesos-autonomos": {
+    "message": "Background tasks"
+  },
+  "home.tablero.antetitulo": {
+    "message": "Conceptual framework"
+  },
+  "home.tablero.titulo": {
+    "message": "The Digital Board"
+  },
+  "home.tablero.desc": {
+    "message": "A visual instrument for defining the scope of an information system. It organizes requirements into six sections that reflect the natural flow of information: how it enters, how it is stored, how it is processed, and how it is communicated to the outside."
+  },
+  "home.tablero.cta": {
+    "message": "Learn about the Digital Board →"
+  },
+  "home.meta.descripcion": {
+    "message": "Navigable catalog of recurring software components for information systems.",
+    "description": "Meta descripción de la portada"
+  },
+  "creditos.licencia": {
+    "message": "License and how to cite",
+    "description": "Encabezado del bloque de licencia en Créditos"
+  },
+  "creditos.licencia.desc": {
+    "message": "The catalog content (component sheets, boards, mapping, and translations) is published under {cc}: it may be copied, adapted, and translated with attribution to the author, for non-commercial purposes, and shared under the same license. The site’s source code is under {mit}. Screenshots of third-party systems and photographs belong to their owners and are listed in the {atribuciones}.",
+    "description": "{cc} es el enlace a CC BY-NC-SA 4.0, {mit} el enlace a la licencia MIT y {atribuciones} el enlace al archivo de atribuciones (creditos.licencia.atribuciones)"
+  },
+  "creditos.licencia.atribuciones": {
+    "message": "attributions file",
+    "description": "Texto del enlace a ATRIBUCIONES.md"
+  },
+  "creditos.cita": {
+    "message": "Gálvez Romo, C. (2026). Component Catalog: recurring software components for information systems (version {version}). Department of Computer Science, University of Chile. {sitio}",
+    "description": "Cita sugerida. {version} es el número de versión y {sitio} la URL del sitio"
+  }
+}

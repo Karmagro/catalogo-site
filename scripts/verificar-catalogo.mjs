@@ -27,6 +27,7 @@ process.on('warning', (w) => {
 });
 
 import {readdirSync, readFileSync, existsSync, statSync} from 'node:fs';
+import {execFileSync} from 'node:child_process';
 import {join, basename, dirname, sep} from 'node:path';
 import {fileURLToPath, pathToFileURL} from 'node:url';
 
@@ -50,9 +51,17 @@ const H2_CANONICOS = [
 
 /** Valores de la columna «Vínculo» de la tabla de observaciones de cada ficha. */
 const VINCULO_TABLA = {Siempre: 'mandatorio', Opcional: 'opcional', No: null};
+/** Ídem en la ficha inglesa (columna «Relationship»). */
+const VINCULO_TABLA_EN = {Always: 'mandatorio', Optional: 'opcional', No: null};
 
-/** Interruptores de comprobaciones que dependen de trabajo pendiente. */
-const ENCABEZADOS_CON_ID_ES_ERROR = false; // pasa a true cuando se corra `write-heading-ids`
+/** Donde viven los espejos ingleses de `docs/`. */
+const DOCS_EN = 'i18n/en/docusaurus-plugin-content-docs/current';
+
+// Id explícito al final de un encabezado, en la sintaxis de comentario MDX: `## Título {/* #id */}`.
+// La clásica `{#id}` no sirve aquí: con `future.v4` MDX la lee como una expresión y el build falla.
+const ID_ENCABEZADO = /\{\/\*\s*#([^\s*]+)\s*\*\/\}\s*$/;
+
+/** Comprobación que depende de trabajo pendiente: se activa sola cuando el archivo exista. */
 const ARCHIVO_ATRIBUCIONES = 'ATRIBUCIONES.md'; // cuando exista, se cruza con las imágenes
 
 // ─── Reporte ────────────────────────────────────────────────────────────────
@@ -204,14 +213,19 @@ const NUMEROS_EN_PALABRAS = {
   veintiocho: 28, veintinueve: 29, treinta: 30,
 };
 
-/** Menciones «N componentes» (en cifra o en palabra) dentro de un texto. */
+const NUMEROS_EN_INGLES = {
+  fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19, twenty: 20,
+  'twenty-one': 21, 'twenty-two': 22, 'twenty-three': 23, 'twenty-four': 24, 'twenty-five': 25,
+};
+
+/** Menciones «N componentes» / «N (documented) components» (en cifra o en palabra) dentro de un texto. */
 function mencionesDeCantidad(texto) {
-  const re = /\b([0-9]{1,3}|[a-záéíóúñ]+) componentes\b/giu;
+  const re = /\b([0-9]{1,3}|[a-záéíóúñ-]+) (?:componentes|(?:documented )?components)\b/giu;
   const menciones = [];
   let m;
   while ((m = re.exec(texto))) {
     const token = m[1].toLowerCase();
-    const n = /^[0-9]+$/.test(token) ? Number(token) : NUMEROS_EN_PALABRAS[token];
+    const n = /^[0-9]+$/.test(token) ? Number(token) : (NUMEROS_EN_PALABRAS[token] ?? NUMEROS_EN_INGLES[token]);
     if (n !== undefined) menciones.push({texto: m[0], n});
   }
   return menciones;
@@ -233,7 +247,8 @@ async function cargarInventario() {
     const ruta = `docs/componentes/${archivo}`;
     const texto = leer(ruta);
     const h1 = (texto.match(/^# (.+?)\s*$/m) || [])[1] ?? null;
-    const h2s = [...texto.matchAll(/^## (.+?)\s*$/gm)].map((m) => m[1]);
+    // El texto del H2 sin su id explícito (`{/* #id */}`).
+    const h2s = [...texto.matchAll(/^## (.+?)\s*$/gm)].map((m) => m[1].replace(ID_ENCABEZADO, '').trimEnd());
     fichas.push({
       slug,
       ruta,
@@ -270,6 +285,7 @@ async function cargarInventario() {
   const docsGenerales = listar('docs', '.mdx').map((f) => basename(f, '.mdx'));
 
   return {
+    en: await cargarInventarioIngles(),
     secciones,
     SECCIONES,
     fichas,
@@ -287,6 +303,77 @@ async function cargarInventario() {
     changelog: existe('CHANGELOG.md') ? leer('CHANGELOG.md') : '',
     atribuciones: existe(ARCHIVO_ATRIBUCIONES) ? leer(ARCHIVO_ATRIBUCIONES) : null,
   };
+}
+
+/**
+ * El lado inglés: espejos de `docs/` bajo `i18n/en/`, datos en las subcarpetas
+ * `en/`, nombres de componente y rótulos de sección. Si el locale no existe,
+ * devuelve null y el bloque «Idiomas» se limita a lo que no depende de él.
+ */
+async function cargarInventarioIngles() {
+  if (!existe(DOCS_EN)) return null;
+
+  const listarSiExiste = (dir, ext) => (existe(dir) ? listar(dir, ext) : []);
+  const leerMdx = (ruta) => {
+    const texto = leer(ruta);
+    return {ruta, texto, h1: (texto.match(/^# (.+?)\s*$/m) || [])[1] ?? null};
+  };
+
+  const fichas = {};
+  for (const archivo of listarSiExiste(`${DOCS_EN}/componentes`, '.mdx')) {
+    fichas[basename(archivo, '.mdx')] = leerMdx(`${DOCS_EN}/componentes/${archivo}`);
+  }
+  const paginas = {};
+  for (const archivo of listarSiExiste(DOCS_EN, '.mdx')) {
+    paginas[basename(archivo, '.mdx')] = leerMdx(`${DOCS_EN}/${archivo}`);
+  }
+
+  const datos = {};
+  for (const dir of ['tableros', 'ejemplos']) {
+    datos[dir] = {};
+    for (const archivo of listarSiExiste(`src/data/${dir}/en`, '.ts')) {
+      const ruta = `src/data/${dir}/en/${archivo}`;
+      datos[dir][basename(archivo, '.ts')] = unicoExport(await importar(ruta), ruta);
+    }
+  }
+
+  const code = existe('i18n/en/code.json') ? JSON.parse(leer('i18n/en/code.json')) : {};
+  const tagsRuta = `${DOCS_EN}/tags.yml`;
+
+  return {
+    fichas,
+    paginas,
+    tableros: datos.tableros,
+    ejemplos: datos.ejemplos,
+    nombres: existe('src/data/mapeo/en/index.ts') ? (await importar('src/data/mapeo/en/index.ts')).NOMBRES : null,
+    rotuloSeccion: (seccion) => code[`tablero.seccion.${seccion}`]?.message,
+    tagsYml: existe(tagsRuta) ? parsearTagsYml(leer(tagsRuta)) : null,
+    fechas: fechasDeCommit(),
+  };
+}
+
+/**
+ * Fecha del último commit que tocó cada archivo de contenido, en una sola
+ * llamada a git. Si git no está o el clon es superficial (CI), devuelve un mapa
+ * vacío y la comprobación de deriva simplemente no avisa.
+ */
+function fechasDeCommit() {
+  const fechas = new Map();
+  try {
+    const salida = execFileSync(
+      'git',
+      ['log', '--format=@%ct', '--name-only', '--', 'docs', 'i18n/en', 'src/data/tableros', 'src/data/ejemplos'],
+      {cwd: RAIZ, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], maxBuffer: 32 * 1024 * 1024},
+    );
+    let actual = 0;
+    for (const linea of salida.split(/\r?\n/)) {
+      if (linea.startsWith('@')) actual = Number(linea.slice(1));
+      else if (linea && !fechas.has(linea)) fechas.set(linea, actual);
+    }
+  } catch {
+    // sin git: no hay señal de deriva
+  }
+  return fechas;
 }
 
 // ─── Bloques de verificación ────────────────────────────────────────────────
@@ -513,6 +600,9 @@ function verificarCifras(inv) {
     ['src/pages/index.tsx', inv.home],
     ['docs/sobre-el-catalogo.mdx', inv.sobreElCatalogo],
   ];
+  for (const ruta of ['README.md', 'GUIA-TECNICA.md', `${DOCS_EN}/sobre-el-catalogo.mdx`]) {
+    if (existe(ruta)) fuentes.push([ruta, leer(ruta)]);
+  }
   // Del CHANGELOG solo cuenta la primera sección de versión (la vigente).
   const m = inv.changelog.match(/^## \[[^\]]+\][\s\S]*?(?=^## \[|(?![\s\S]))/m);
   if (m) fuentes.push(['CHANGELOG.md (sección vigente)', m[0]]);
@@ -527,16 +617,191 @@ function verificarCifras(inv) {
 }
 
 function verificarEncabezados(inv) {
-  const sinId = inv.fichas.filter((f) => {
-    const h2ConId = [...f.texto.matchAll(/^## .*\{#[^}]+\}\s*$/gm)].length;
-    return h2ConId < f.h2s.length;
-  });
-  if (sinId.length === 0) return;
-  const msg =
-    sinId.length === inv.fichas.length
-      ? `ninguna ficha lleva \`{#id}\` explícito en sus H2 (${sinId.length} fichas)`
-      : `${sinId.length} fichas sin \`{#id}\` explícito en todos sus H2: ${sinId.map((f) => f.slug).join(', ')}`;
-  (ENCABEZADOS_CON_ID_ES_ERROR ? error : advertencia)(msg);
+  for (const f of inv.fichas) {
+    const ids = [...f.texto.matchAll(/^## .+$/gm)]
+      .map((m) => m[0].trimEnd().match(ID_ENCABEZADO)?.[1])
+      .filter(Boolean);
+    if (ids.length < f.h2s.length) {
+      error(`${f.ruta}: ${f.h2s.length - ids.length} H2 sin id explícito (\`{/* #id */}\`)`);
+    }
+    for (const id of ids) {
+      if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(id)) {
+        error(`${f.ruta}: el id de encabezado «${id}» debe ir en minúsculas, sin tildes ni eñes`);
+      }
+    }
+  }
+}
+
+function verificarIdiomas(inv) {
+  // El rótulo de cada sección está escrito dos veces: en secciones.ts (lo lee este
+  // script) y en rotulos.ts (lo lee `write-translations`). Tienen que decir lo mismo.
+  const ruta = 'src/components/TableroDigital/rotulos.ts';
+  const rotulos = leer(ruta);
+  for (const seccion of inv.secciones) {
+    const m = rotulos.match(new RegExp(`id: 'tablero\\.seccion\\.${seccion}',\\s*message: '([^']+)'`));
+    if (!m) {
+      error(`${ruta}: falta el rótulo traducible de la sección «${seccion}»`);
+    } else if (m[1] !== inv.SECCIONES[seccion].label) {
+      error(`${ruta}: «${m[1]}» no coincide con el label de secciones.ts («${inv.SECCIONES[seccion].label}»)`);
+    }
+  }
+
+  const en = inv.en;
+  if (!en) return;
+
+  // 1. Espejos: cada página española tiene la suya en inglés, y al revés (huérfanos).
+  const pares = []; // [ruta española, ruta inglesa] de todo lo que se traduce
+  const espejar = (origen, destino, existeDestino) => {
+    if (!existeDestino) error(`${origen}: falta su espejo inglés (${destino})`);
+    else pares.push([origen, destino]);
+  };
+  const slugsFicha = new Set(inv.fichas.map((f) => f.slug));
+  for (const f of inv.fichas) {
+    espejar(f.ruta, `${DOCS_EN}/componentes/${f.slug}.mdx`, f.slug in en.fichas);
+    for (const dir of ['tableros', 'ejemplos']) {
+      if (inv[dir][f.slug]) {
+        espejar(`src/data/${dir}/${f.slug}.ts`, `src/data/${dir}/en/${f.slug}.ts`, f.slug in en[dir]);
+      }
+    }
+  }
+  for (const id of inv.docsGenerales) {
+    espejar(`docs/${id}.mdx`, `${DOCS_EN}/${id}.mdx`, id in en.paginas);
+  }
+  for (const slug of Object.keys(en.fichas)) {
+    if (!slugsFicha.has(slug)) error(`${en.fichas[slug].ruta}: no hay ficha española con ese nombre (¿huérfano tras un renombre?)`);
+  }
+  for (const id of Object.keys(en.paginas)) {
+    if (!inv.docsGenerales.includes(id)) error(`${en.paginas[id].ruta}: no hay página española con ese nombre`);
+  }
+  for (const dir of ['tableros', 'ejemplos']) {
+    for (const slug of Object.keys(en[dir])) {
+      if (!inv[dir][slug]) error(`src/data/${dir}/en/${slug}.ts: no existe src/data/${dir}/${slug}.ts`);
+    }
+  }
+
+  const traducidas = [...Object.values(en.fichas), ...Object.values(en.paginas)];
+
+  // 2. Un MDX inglés que importa datos sin `/en/` muestra post-its o pies de foto en español.
+  for (const p of traducidas) {
+    for (const [, ruta] of p.texto.matchAll(/from\s+['"](@site\/src\/data\/[^'"]+)['"]/g)) {
+      if (!/\/en(\/|$)/.test(ruta)) error(`${p.ruta}: importa ${ruta}, que es el dato en español (falta /en/)`);
+    }
+  }
+
+  // 2b. `<a href="/docs/…">` no pasa por el router: en /en/ lleva de vuelta al español.
+  //     Los enlaces Markdown y <Link to> sí reciben el prefijo del idioma.
+  for (const p of [...traducidas, ...inv.fichas, ...inv.docsGenerales.map((id) => ({ruta: `docs/${id}.mdx`, texto: leer(`docs/${id}.mdx`)}))]) {
+    if (/href=["']\/docs\//.test(p.texto)) error(`${p.ruta}: usa href="/docs/…"; en inglés perdería el prefijo /en/ (usar <Link to> o un enlace Markdown)`);
+  }
+
+  // 3. Mismos ids de encabezado en los dos idiomas: las anclas deben valer para ambos.
+  const idsDe = (texto) =>
+    [...texto.matchAll(/^#{2,6} .+$/gm)].map((m) => m[0].trimEnd().match(ID_ENCABEZADO)?.[1] ?? '(sin id)');
+  for (const [origen, destino] of pares.filter(([o]) => o.endsWith('.mdx'))) {
+    const a = idsDe(leer(origen)).join(' · ');
+    const b = idsDe(leer(destino)).join(' · ');
+    if (a !== b) error(`${destino}: los ids de encabezado no coinciden con ${origen}\n      es: ${a}\n      en: ${b}`);
+  }
+
+  // 4. Nombres: NOMBRES (src/data/mapeo/en) = H1 de la ficha = tablero = galería.
+  if (!en.nombres) {
+    error('falta src/data/mapeo/en/index.ts (NOMBRES)');
+  } else {
+    for (const slug of Object.keys(en.nombres)) {
+      if (!slugsFicha.has(slug)) error(`src/data/mapeo/en/index.ts: «${slug}» no tiene ficha`);
+    }
+    for (const f of inv.fichas) {
+      const nombre = en.nombres[f.slug];
+      if (!nombre) {
+        error(`src/data/mapeo/en/index.ts: falta el nombre inglés de «${f.slug}»`);
+        continue;
+      }
+      const ficha = en.fichas[f.slug];
+      if (ficha && ficha.h1 !== nombre) error(`${ficha.ruta}: el H1 dice «${ficha.h1}» y NOMBRES «${nombre}»`);
+      for (const dir of ['tableros', 'ejemplos']) {
+        const dato = en[dir][f.slug];
+        if (dato && dato.componente !== nombre) {
+          error(`src/data/${dir}/en/${f.slug}.ts: dice «${dato.componente}» y NOMBRES «${nombre}»`);
+        }
+      }
+    }
+  }
+
+  // 5. Lo que no se traduce tiene que ser idéntico: etiquetas de la ficha, forma del
+  //    tablero (post-its por sección y su variante), imágenes de la galería.
+  for (const f of inv.fichas) {
+    const ficha = en.fichas[f.slug];
+    if (ficha) {
+      const tagsEs = (f.frontmatter?.tags ?? []).join(', ');
+      const tagsEn = (parsearFrontmatter(ficha.texto)?.tags ?? []).join(', ');
+      if (tagsEs !== tagsEn) error(`${ficha.ruta}: etiquetas «${tagsEn}», la ficha española tiene «${tagsEs}»`);
+    }
+    const [tEs, tEn] = [inv.tableros[f.slug], en.tableros[f.slug]];
+    if (tEs && tEn) {
+      for (const seccion of inv.secciones) {
+        const forma = (t) => (t.tarjetas[seccion] ?? []).map((p) => p.variante).join(',');
+        if (forma(tEs) !== forma(tEn)) {
+          error(`src/data/tableros/en/${f.slug}.ts › ${seccion}: post-its [${forma(tEn)}], el original tiene [${forma(tEs)}]`);
+        }
+      }
+    }
+    const [gEs, gEn] = [inv.ejemplos[f.slug], en.ejemplos[f.slug]];
+    if (gEs && gEn) {
+      const srcs = (g) => (g.imagenes ?? []).map((i) => i.src).join(', ');
+      if (srcs(gEs) !== srcs(gEn)) error(`src/data/ejemplos/en/${f.slug}.ts: las imágenes no son las del original`);
+      for (const img of gEn.imagenes ?? []) {
+        if (!img.alt?.trim() || !img.caption?.trim()) error(`src/data/ejemplos/en/${f.slug}.ts › ${img.src}: falta alt o caption`);
+      }
+    }
+  }
+
+  // 6. La tabla «Section · Relationship · Notes» de cada ficha inglesa dice lo mismo que el mapeo.
+  const etiquetaEn = {};
+  for (const seccion of inv.secciones) {
+    const rotulo = en.rotuloSeccion(seccion);
+    if (!rotulo) error(`i18n/en/code.json: falta tablero.seccion.${seccion}`);
+    else etiquetaEn[rotulo] = seccion;
+  }
+  for (const f of inv.fichas) {
+    const ficha = en.fichas[f.slug];
+    const mapeo = inv.mapeo[f.slug];
+    if (!ficha || !mapeo) continue;
+    const tabla = parsearTablaMapeo(ficha.texto, etiquetaEn);
+    for (const seccion of inv.secciones) {
+      const celda = tabla[seccion];
+      const donde = `${ficha.ruta} › ${en.rotuloSeccion(seccion)}`;
+      if (celda === undefined) error(`${donde}: la tabla de mapeo no tiene fila para esta sección`);
+      else if (!(celda in VINCULO_TABLA_EN)) error(`${donde}: la tabla dice «${celda}» (se espera Always, Optional o No)`);
+      else if (VINCULO_TABLA_EN[celda] !== mapeo.vinculos[seccion]) {
+        error(`${donde}: la tabla dice «${celda}» y el mapeo dice «${mapeo.vinculos[seccion] ?? 'sin vínculo'}»`);
+      }
+    }
+  }
+
+  // 7. Etiquetas: mismas claves y mismos permalinks en los dos tags.yml (solo cambia el label).
+  if (!en.tagsYml) {
+    error(`falta ${DOCS_EN}/tags.yml`);
+  } else if (inv.tagsYml) {
+    const permalink = (tags, t) => tags[t].permalink ?? slugEtiqueta(t);
+    for (const t of Object.keys(inv.tagsYml)) {
+      if (!(t in en.tagsYml)) error(`${DOCS_EN}/tags.yml: falta la etiqueta «${t}»`);
+      else if (permalink(inv.tagsYml, t) !== permalink(en.tagsYml, t)) {
+        error(`${DOCS_EN}/tags.yml: «${t}» tiene otro permalink que en docs/tags.yml`);
+      }
+    }
+    for (const t of Object.keys(en.tagsYml)) {
+      if (!(t in inv.tagsYml)) error(`${DOCS_EN}/tags.yml: «${t}» no está en docs/tags.yml`);
+    }
+  }
+
+  // 8. Deriva: el original cambió en un commit posterior al de su traducción. Es una
+  //    heurística (un cambio de formato también avisa), por eso no pasa de advertencia.
+  for (const [origen, destino] of pares) {
+    const [fEs, fEn] = [en.fechas.get(origen), en.fechas.get(destino)];
+    if (fEs && fEn && fEs > fEn) {
+      advertencia(`${destino}: ${origen} cambió después de la última traducción (revisar si quedó desactualizada)`);
+    }
+  }
 }
 
 // ─── Ejecución ──────────────────────────────────────────────────────────────
@@ -550,6 +815,7 @@ const BLOQUES = [
   ['Enlaces internos', verificarEnlaces],
   ['Cifras', verificarCifras],
   ['Encabezados', verificarEncabezados],
+  ['Idiomas', verificarIdiomas],
 ];
 
 async function main() {

@@ -19,15 +19,15 @@ import {gestionPerfil as ejemplosGestionPerfil} from '@site/src/data/ejemplos/ge
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosGestionPerfil} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que permite a un usuario autenticado administrar los datos esenciales y configuraciones de seguridad de su propia cuenta. El usuario puede modificar credenciales de acceso, actualizar información de contacto, y gestionar aspectos de seguridad como autenticación de dos factores o sesiones activas. A diferencia de la creación inicial de cuenta, este componente opera sobre una cuenta ya existente y requiere que el usuario esté autenticado o pueda verificar su identidad.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -42,7 +42,7 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -58,7 +58,7 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -68,7 +68,7 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -90,12 +90,12 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Autoservicio:** el propio usuario gestiona su cuenta sin intervención de administradores
 - **Asistido:** un administrador o soporte realiza cambios en la cuenta del usuario (menos común, típicamente para recuperación de acceso)
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -106,7 +106,7 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="gestion-perfil" />
 
@@ -123,6 +123,6 @@ Componente que permite a un usuario autenticado administrar los datos esenciales
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={gestionPerfil} />

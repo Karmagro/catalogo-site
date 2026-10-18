@@ -20,15 +20,15 @@ import {autorizacion as ejemplosAutorizacion} from '@site/src/data/ejemplos/auto
 
 <FichaTags />
 
-## Ejemplos
+## Ejemplos {/* #ejemplos */}
 
 <Galeria data={ejemplosAutorizacion} />
 
-## Descripción
+## Descripción {/* #descripcion */}
 
 Componente que determina qué recursos y operaciones puede utilizar una entidad autenticada dentro del sistema, en función de su identidad, rol o atributos. Su propósito es responder la pregunta "¿qué puede hacer este usuario?", una vez que su identidad ya fue verificada. Opera de forma autónoma y transversal: cada vez que una entidad intenta acceder a un recurso o ejecutar una operación, el sistema evalúa silenciosamente si dispone de los permisos necesarios y permite o deniega el acceso según las políticas definidas.
 
-## Capacidades mandatorias
+## Capacidades mandatorias {/* #capacidades-mandatorias */}
 
 <div className={styles.capBlockMandatory}>
 
@@ -44,7 +44,7 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 </div>
 
-## Capacidades adicionales
+## Capacidades adicionales {/* #capacidades-adicionales */}
 
 <div className={styles.capBlockOptional}>
 
@@ -60,7 +60,7 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 </div>
 
-## Delimitaciones
+## Delimitaciones {/* #delimitaciones */}
 
 <Admonition type="danger" title="Qué no es">
 
@@ -70,7 +70,7 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 </Admonition>
 
-## Flujo de información
+## Flujo de información {/* #flujo-de-informacion */}
 
 <div className={styles.flowContainer}>
 
@@ -92,13 +92,13 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 </div>
 
-## Modalidades
+## Modalidades {/* #modalidades */}
 
 - **Control basado en roles (RBAC):** los permisos se asignan a roles predefinidos (administrador, editor, lector), y los usuarios heredan los permisos del rol que se les asigna. Es el modelo más común en sistemas de información.
 - **Control discrecional (DAC):** el propietario de un recurso determina quién puede acceder a él y con qué nivel de permisos. Común en sistemas de gestión documental y almacenamiento en la nube.
 - **Control basado en atributos (ABAC):** los permisos se evalúan dinámicamente en función de atributos del usuario, del recurso y del contexto (hora del día, ubicación). Permite políticas más granulares y flexibles.
 
-## Dependencias típicas
+## Dependencias típicas {/* #dependencias-tipicas */}
 
 <div className={styles.dependencies}>
 
@@ -107,7 +107,7 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 </div>
 
-## Mapeo al Tablero Digital
+## Mapeo al Tablero Digital {/* #mapeo-al-tablero-digital */}
 
 <MapeoTablero slug="autorizacion" />
 
@@ -124,6 +124,6 @@ Componente que determina qué recursos y operaciones puede utilizar una entidad 
 
 </div>
 
-## Ejemplo de Tablero Digital
+## Ejemplo de Tablero Digital {/* #ejemplo-de-tablero-digital */}
 
 <TableroDigital data={autorizacion} />

@@ -8,6 +8,10 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 
 ## [Sin publicar]
 
+## [1.1.0] — 2026-10-18
+
+Catálogo abierto, mantenible y bilingüe.
+
 ### Catálogo
 
 - 22 componentes, sin cambios de contenido.
@@ -23,9 +27,21 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - Documentación del repositorio: `README.md` (qué es el catálogo, cómo correr el sitio, estructura del repositorio), `CONTRIBUTING.md` (criterio para incorporar o modificar componentes, archivos que se tocan, estilo de la ficha, versiones y flujo de trabajo), `GUIA-TECNICA.md` (cómo está hecho el sitio) y `DECISIONES.md` (registro de decisiones con su justificación).
 - Plantillas de GitHub: dos formularios de *issue* («Proponer un componente», que pide responder el criterio de incorporación antes de escribir la ficha, y «Reportar un error») y la lista de comprobación de cada *pull request*.
 - `docs/componentes/_plantilla.mdx`: plantilla de ficha con los diez encabezados, los bloques y los *imports*. Docusaurus no la publica y `npm run verificar` la omite.
+- Versión en inglés del sitio, en `/en/`, con selector de idioma en el navbar: las 22 fichas con sus tableros y galerías, las páginas Por Sección, Tablero Digital y Sobre el Catálogo, la navegación, la portada, la página de créditos y los rótulos de todos los componentes del sitio (galería, tablero, rejilla de mapeo, matriz, ayuda de navegación). Las direcciones son las mismas en los dos idiomas, con el prefijo `/en/`. Las capturas de sistemas en español se conservan y su pie lo indica.
+- `npm run verificar` comprueba la paridad entre idiomas: que cada ficha, página, tablero y galería tenga su versión inglesa, que coincidan los encabezados, los nombres, el mapeo, los post-its y las imágenes, y avisa cuando una ficha española cambió después de su traducción.
+- `scripts/scaffold-i18n.mjs`: crea la versión inglesa de una ficha o página para traducirla, sin sobrescribir nada.
+- El buscador muestra sus textos en español en el sitio en español («Buscar», «Sin resultados»).
+- Enlace a la herramienta en línea del Tablero Digital (https://tablero-digital.dcc.uchile.cl/) en la página del Tablero, en el pie de página y en el README, y la referencia al paper que lo describe.
+- Licencias: el código, bajo MIT (`LICENSE`); el contenido del catálogo, bajo CC BY-NC-SA 4.0 (`LICENSE-CONTENIDO.md`). El pie de página y la página de Créditos lo indican, con la forma sugerida de citar.
+- `ATRIBUCIONES.md`: cada imagen de terceros con su sistema, su titular y su origen cuando se conoce, las fotografías de Créditos y la cita del Tablero Digital. `npm run verificar` avisa si una imagen de galería no aparece ahí.
+- `CITATION.cff`: GitHub muestra «Cite this repository» con la cita en APA y BibTeX.
+- Enlace «Editar esta página» en cada ficha, hacia el archivo en GitHub.
+- Tarjeta propia para redes sociales, en español y en inglés, en lugar de la de la plantilla de Docusaurus.
+- `i18n/GLOSARIO.md`: correspondencia ES → EN del vocabulario del catálogo (secciones del Tablero, campos de la ficha, nombres de componente, etiquetas) y convenciones de traducción.
 
 ### Cambiado
 
+- La imagen de ejemplo del Sistema de Notificación es ahora un correo real de Etsy que avisa el despacho de un pedido. La anterior, presentada como una confirmación de pedido de Amazon, era un correo de *phishing* que imitaba a Amazon.
 - Un enlace o ancla internos rotos rompen el build en vez de emitir una advertencia.
 - Versión mínima de Node: 22.18 (`.nvmrc` fija la 24).
 - El mapeo de cada componente a las seis secciones del Tablero Digital se declara una sola vez, en `src/data/mapeo`. De ahí salen la rejilla de cada ficha, la matriz consolidada y la lectura por sección, que antes se escribían a mano por separado. La tabla de observaciones de cada ficha y los post-its de su tablero siguen siendo contenido propio.
@@ -33,10 +49,17 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - Ramas normalizadas: `main` es producción (protegida, solo por *pull request*) y `dev` es integración. La rama `master` deja de existir.
 - URL canónica del sitio: `https://catalogo-componentes-software.pages.dev`.
 - Ícono propio en lugar del de la plantilla de Docusaurus: una baldosa con las seis secciones del Tablero Digital en sus colores. El navbar usa la baldosa clara en modo claro y la oscura en modo oscuro; el favicon SVG sigue el tema del navegador y `favicon.ico` (16, 32 y 48 px) es el respaldo para navegadores sin soporte de SVG.
+- Los encabezados de las fichas y de las páginas generales llevan un identificador explícito, sin tildes ni eñes (`#descripcion`, `#flujo-de-informacion`), para que un enlace a una sección siga valiendo cuando el título se traduzca. Las anclas que antes llevaban tilde (`#descripción`) cambian a su forma sin tilde. `npm run verificar` exige el identificador en cada ficha.
+- La portada toma los rótulos y colores de las seis secciones de la misma fuente que el resto del sitio, en vez de llevarlos escritos aparte.
+- `npm run verificar` también revisa las cifras de `README.md` y `GUIA-TECNICA.md`.
+- El navbar se compacta por etapas entre 997 y 1400 px de ancho (buscador más corto, luego solo el ícono del sitio, luego solo el ícono del idioma) en vez de dejar que los enlaces se monten unos sobre otros.
+- La portada toma el número de componentes de los datos del catálogo; ya no lleva la cifra escrita.
+- Las imágenes de las galerías y de la página de créditos se sirven con el prefijo del idioma de la página.
 
 ### Eliminado
 
 - La página de ejemplo de la plantilla de Docusaurus (`/markdown-page`) y el blog vacío (`/blog`).
+- Las ilustraciones de la plantilla de Docusaurus que el sitio no usaba (`static/img/undraw_docusaurus_*.svg`, `docusaurus.png`).
 
 ### Corregido
 
@@ -65,5 +88,6 @@ Primera versión publicada: el estado del catálogo entregado junto con la memor
 - Etiquetas navegables y filtrables, buscador local, página de Créditos y página de inicio.
 - Barra lateral en orden narrativo y banner de orientación para quien llega por primera vez.
 
-[Sin publicar]: https://github.com/Karmagro/catalogo-site/compare/v1.0.0...HEAD
+[Sin publicar]: https://github.com/Karmagro/catalogo-site/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/Karmagro/catalogo-site/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/Karmagro/catalogo-site/releases/tag/v1.0.0
