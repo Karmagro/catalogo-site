@@ -1,0 +1,86 @@
+---
+sidebar_position: 3
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import MatrizMapeo from '@site/src/components/MapeoTablero/MatrizMapeo';
+import ResumenSeccion from '@site/src/components/MapeoTablero/ResumenSeccion';
+import {NOMBRES} from '@site/src/data/mapeo/en';
+
+# Components by Digital Board Section
+
+The matrix shows which components of the catalog relate to each of the six sections of the Digital Board, and in what way: mandatory, optional, or no relationship.
+
+A **mandatory** relationship means that the component always touches that section through its essential capabilities. An **optional** relationship indicates that it touches the section only when it incorporates certain additional capabilities. An empty cell means that the component does not relate to that section, either in its mandatory form or in its documented optional variants.
+
+## How to read the matrix {/* #como-leer-la-matriz */}
+
+It answers questions such as:
+
+- *Which components update system data through human operators?* → Check the **Manual Upd.** column
+- *Which components produce automatic outputs?* → Check the **Automatic Out.** column
+- *Which sections of the board does a Dashboard touch?* → Follow the **Dashboard** row.
+
+## Consolidated matrix {/* #matriz-consolidada */}
+
+<MatrizMapeo nombres={NOMBRES} />
+
+<div className="matrix-legend">
+  <span className="matrix-legend__item"><strong style={{color: 'var(--ifm-color-primary)', fontSize: '1rem'}}>●</strong> Mandatory — the component always touches this section</span>
+  <span className="matrix-legend__item"><strong style={{color: 'var(--ifm-color-primary)', fontSize: '1rem'}}>○</strong> Optional — only with additional capabilities</span>
+  <span className="matrix-legend__item"><strong>—</strong> No relationship</span>
+</div>
+
+:::note
+The detailed justification for each cell is found in the individual component sheet, in the **Mapping to the Digital Board** field.
+:::
+
+## Reading by section {/* #lectura-por-seccion */}
+
+The components are grouped below by section of the board, with the mandatory or optional character of each relationship.
+
+<Tabs>
+<TabItem value="actualizacion-manual" label="Manual Update">
+
+<ResumenSeccion seccion="actualizacion-manual" nombres={NOMBRES} />
+
+These components allow a human operator to create, modify, or delete data that the system keeps persistently, through forms, editing screens, or other analogous mechanisms.
+
+</TabItem>
+<TabItem value="actualizacion-automatica" label="Automatic Update">
+
+<ResumenSeccion seccion="actualizacion-automatica" nombres={NOMBRES} />
+
+These components incorporate or update information in the system without direct human intervention, either periodically or in response to external events.
+
+</TabItem>
+<TabItem value="conceptos" label="Data Concepts">
+
+<ResumenSeccion seccion="conceptos-datos" nombres={NOMBRES} />
+
+Every component in the catalog involves data concepts. This is the section with the widest coverage: there are always system entities that the component reads, writes, or references.
+
+</TabItem>
+<TabItem value="salidas-demanda" label="On-Demand Outputs">
+
+<ResumenSeccion seccion="salidas-demanda" nombres={NOMBRES} />
+
+These components deliver information to the user when the user explicitly requests it.
+
+</TabItem>
+<TabItem value="salidas-automaticas" label="Automatic Outputs">
+
+<ResumenSeccion seccion="salidas-automaticas" nombres={NOMBRES} />
+
+These components communicate information proactively, without a request from the user.
+
+</TabItem>
+<TabItem value="procesos-autonomos" label="Autonomous Processes">
+
+<ResumenSeccion seccion="procesos-autonomos" nombres={NOMBRES} />
+
+These components carry out tasks in the background, either on a schedule or in reaction to events.
+
+</TabItem>
+</Tabs>

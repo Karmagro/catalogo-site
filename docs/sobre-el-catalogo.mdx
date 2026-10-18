@@ -2,6 +2,7 @@
 sidebar_position: 2
 ---
 
+import Link from '@docusaurus/Link';
 import {Code2, ClipboardList, CheckCircle2, LayoutList, LayoutGrid, Tags as TagsIcon, ArrowRight} from 'lucide-react';
 import styles from '@site/src/css/paginas.module.css';
 
@@ -193,7 +194,7 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
 
 <div className={styles.ctaGrid}>
 
-  <a className={styles.ctaCard} href="/docs/componentes/formulario-login">
+  <Link className={styles.ctaCard} to="/docs/componentes/formulario-login">
     <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--ifm-color-primary)'}}>
       <LayoutList size={22} strokeWidth={2} />
     </div>
@@ -201,9 +202,9 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
     <h3 className={styles.ctaCardTitle}>Explorar los 22 componentes</h3>
     <div className={styles.ctaCardDesc}>La barra lateral lista los veintidós componentes. Cada uno tiene su propia página con la ficha completa.</div>
     <span className={styles.ctaCardArrow}>Ver catálogo <ArrowRight size={14} strokeWidth={2.5} /></span>
-  </a>
+  </Link>
 
-  <a className={styles.ctaCard} href="/docs/secciones">
+  <Link className={styles.ctaCard} to="/docs/secciones">
     <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-conceptos)'}}>
       <LayoutGrid size={22} strokeWidth={2} />
     </div>
@@ -211,9 +212,9 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
     <h3 className={styles.ctaCardTitle}>Matriz componente × tablero</h3>
     <div className={styles.ctaCardDesc}>Responde "¿qué componentes necesito si mi sistema actualiza muchos datos manualmente?" mostrando qué componentes tocan cada sección.</div>
     <span className={styles.ctaCardArrow}>Ver matriz <ArrowRight size={14} strokeWidth={2.5} /></span>
-  </a>
+  </Link>
 
-  <a className={styles.ctaCard} href="/docs/etiquetas">
+  <Link className={styles.ctaCard} to="/docs/etiquetas">
     <div className={styles.perfilCardIcon} style={{'--perfil-color': 'var(--seccion-salidas-automaticas)'}}>
       <TagsIcon size={22} strokeWidth={2} />
     </div>
@@ -221,7 +222,7 @@ El catálogo se puede recorrer de tres maneras, todas accesibles desde la barra 
     <h3 className={styles.ctaCardTitle}>Agrupación por afinidad</h3>
     <div className={styles.ctaCardDesc}>Los componentes se agrupan por afinidad funcional: autenticación, visualización, ingesta de datos, seguridad, entre otras.</div>
     <span className={styles.ctaCardArrow}>Ver etiquetas <ArrowRight size={14} strokeWidth={2.5} /></span>
-  </a>
+  </Link>
 
 </div>
 
