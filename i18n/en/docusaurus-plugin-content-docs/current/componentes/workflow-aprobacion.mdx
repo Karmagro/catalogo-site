@@ -1,0 +1,139 @@
+---
+sidebar_position: 7.3
+tags:
+  - datos
+  - procesamiento
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {workflowAprobacion} from '@site/src/data/tableros/en/workflow-aprobacion';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {workflowAprobacion as ejemplosWorkflowAprobacion} from '@site/src/data/ejemplos/en/workflow-aprobacion';
+
+# Approval Workflow
+
+<span className={styles.aliases}>Approval flow · Workflow · Approval process · Approval chain</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosWorkflowAprobacion} />
+
+## Description {/* #descripcion */}
+
+A component that coordinates the progress of a case through a sequence of stages involving different actors, until it reaches a terminal state (typically approved or rejected). What is specific to the component is not the screens through which each actor interacts —those are other components (a form to submit, a query to review, a notification to alert)— but the **orchestration**: which stages exist, which role acts in each one, which transitions are valid (approve, reject, return, forward), and which state each case is in at all times. It is very common in management information systems: approval of purchase orders, expense requests, leave and vacation requests, contracts and documents, or any procedure where "one person submits, another reviews, another decides".
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Defines a sequence of stages (states) through which a case must pass, with one or more terminal states (e.g., approved, rejected)
+- Assigns to each stage the role or actor responsible for acting on the case at that point
+- Governs the allowed transitions between stages (approving moves forward, rejecting ends, returning moves back), preventing invalid jumps
+- Maintains and persists the current state of each case, and records who performed each transition and when
+- Requires a human actor to decide in at least one stage, which distinguishes it from autonomous processing
+- Coordinates the components that implement each stage (submission, review, notice) without replacing them
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Branches and conditions:** the path of the case depends on its data (an amount above a certain threshold requires an additional approval)
+- **Return / request for information:** a stage can send the case back to a previous one, asking for corrections or missing data
+- **Delegation and reassignment:** the person responsible for a stage can delegate to someone else or reassign the case
+- **Deadlines and escalation:** if a stage is not resolved within a certain time, the case is escalated or reassigned automatically
+- **Case traceability / history:** a view of the complete path (who, what, when) of a case throughout the flow
+- **Parallel branches:** simultaneous stages that must converge before the case can move forward (technical and financial sign-off at the same time)
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Is not a [Submission Form](/docs/componentes/formulario-carga).** The form is the screen for a single act of entry; the Workflow is what happens after and around that entry: it receives it, routes it to a reviewer, and carries it through stages. The Workflow contains the form as its typical initial stage, but it is not the form
+- **Is not a [Data Manager](/docs/componentes/mantenedor).** The Data Manager administers an entity over time under a single role; the Workflow moves a case between different roles through stages. Its reason for being is the progress of the state, not the administration of the entity
+- **Is not autonomous processing.** A [Scheduled Process](/docs/componentes/proceso-programado) or a [Reactive Process](/docs/componentes/proceso-reactivo) is processing without human intervention in its steps. The Approval Workflow, by contrast, requires by definition that people decide in its stages; if there is no human decision, it is not an approval workflow
+- **Is not a [Notification System](/docs/componentes/sistema-notificacion).** The Workflow triggers notices on its transitions, but delivering the message belongs to the Notification System; the Workflow only decides when and whom to notify
+- **Does not** replace the components it orchestrates — the submission, query, and notice screens are still the Form, Queries/Dashboard, and Notification. The Workflow is the layer that chains them into a stateful sequence
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    The initial case (typically coming from a Submission Form) and, at each stage, the decision of the responsible actor (approve / reject / return / forward), optionally with comments or additional data
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    The updated state of the case after each transition, the triggers sent to the components of each stage (notices, assignments) and, at closing, the case in its terminal state with its complete history
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Linear approval:** stages in a simple sequence (submission → review → decision); the most common case (a vacation request)
+- **Hierarchical / multi-level approval:** the decision moves up through levels according to rules (amount, type), requiring successive approvals (a purchase order that above a certain amount needs management sign-off)
+- **Workflow with returns:** includes steps back for correction before the case can move forward (an application returned so that missing documents can be added)
+- **Workflow with parallel branches:** several simultaneous reviews that must converge (technical and financial sign-off at the same time)
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- [Submission Form](/docs/componentes/formulario-carga) as the entry stage of the case
+- [Queries](/docs/componentes/consultas) / [Dashboard](/docs/componentes/dashboard) / [Data Manager](/docs/componentes/mantenedor) so that each actor can see their pending cases and the details
+- [Notification System](/docs/componentes/sistema-notificacion) to alert each actor when it is their turn to act, and the requester on each change of state
+- [Authorization](/docs/componentes/autorizacion) to determine which role can act at each stage
+- [Database](/docs/componentes/base-datos) where the state and history of each case are persisted
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="workflow-aprobacion" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | Always | The decision at each stage (approve/reject/return) is made by a human actor; an approval workflow without human intervention is not one (it would be autonomous processing). |
+| Automatic Update | No | — |
+| Data Concepts | Always | The case and its state (what is being approved, which stage it is in, who intervened and when) are the central entity. |
+| On-Demand Outputs | Optional | The inbox of pending cases or the query on a case's state, when the workflow exposes views of its own. |
+| Automatic Outputs | Optional | The notices triggered on each transition, via the Notification System. |
+| Autonomous Processes | Always | The core of the component: advancing the state, evaluating the valid transition, assigning the next stage, and closing the case. This is what distinguishes it from the Form and the Data Manager. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={workflowAprobacion} />
