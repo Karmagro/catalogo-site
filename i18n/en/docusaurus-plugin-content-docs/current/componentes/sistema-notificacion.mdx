@@ -1,0 +1,132 @@
+---
+sidebar_position: 8
+tags:
+  - notificaciones
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {sistemaNotificacion} from '@site/src/data/tableros/en/sistema-notificacion';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {sistemaNotificacion as ejemplosSistemaNotificacion} from '@site/src/data/ejemplos/en/sistema-notificacion';
+
+# Notification System
+
+<span className={styles.aliases}>Automated notifications · Automatic alert · System notice · Automated message · Event notification</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosSistemaNotificacion} />
+
+## Description {/* #descripcion */}
+
+A notification system is a component responsible for delivering messages to a user, system, or external service when a relevant event occurs within the information system. Its role is to alert the recipient to situations that require their awareness or action, allowing the system to communicate state changes, results, or exceptional conditions without direct human intervention. It can vary in complexity: from basic mechanisms that send an email when a single event occurs, to infrastructures that coordinate multiple channels and priority levels.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Runs automatically in response to a system event or condition, without user intervention
+- Communicates synthesized information, oriented toward action or toward following up on processes
+- Can deliver messages through multiple and diverse channels (email, SMS, push, webhook)
+- Can be configured for different audiences (end users, administrators, external systems)
+- Generates messages from templates and variable data, personalizing the content according to the recipient or the event
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Recipient preferences:** lets users configure which notifications they want to receive, through which channel, and how often (opt-in/opt-out)
+- **Grouping and periodic digest:** instead of sending each notification individually, groups events and delivers them as a summary at defined intervals
+- **Escalation:** resends or escalates the notification if the recipient does not acknowledge it within a defined time frame
+- **Manual sending:** lets an authorized user trigger a predefined notification on demand, choosing the recipient and the parameters
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** replace reports or dashboards — that belongs to [Report](/docs/componentes/reporte) and [Dashboard](/docs/componentes/dashboard)
+- **Is not** to be confused with the autonomous processes that produce the information behind the notification
+- **Does not** involve any subsequent interaction; the recipient's response is outside the component
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    System event or condition that triggers the notification; recipient data and message content
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Message delivered to the recipient through the corresponding channel
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Transactional:** confirmation of a user action (e.g., payment confirmation, successful registration)
+- **Promotional:** notice about offers or new content (e.g., a new mobile plan)
+- **Alert:** notice about a condition that requires attention (e.g., low battery, threshold exceeded)
+- **Scheduled:** sent at regular intervals, independently of any single event (e.g., weekly summary)
+- **Emergency:** critical, high-priority communication that interrupts the recipient (e.g., earthquake alert)
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- Autonomous processes or system events that trigger the notification
+- Messaging service or communication channel (SMTP, push API, SMS gateway)
+- [Database](/docs/componentes/base-datos) holding the repository of recipients and their preferences
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="sistema-notificacion" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | Optional | Configuration of notification preferences by the user. |
+| Automatic Update | No | — |
+| Data Concepts | Always | The generated notifications and the message templates, together with the repository of recipients and their preferences. |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | Always | The messages sent automatically in response to system events. |
+| Autonomous Processes | Always | The logic that evaluates events and conditions and triggers the notifications. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={sistemaNotificacion} />
