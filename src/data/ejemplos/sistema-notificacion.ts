@@ -4,10 +4,10 @@ export const sistemaNotificacion: GaleriaData = {
   componente: 'Sistema de Notificación',
   imagenes: [
     {
-      src: '/img/ejemplos/sistema-notificacion-amazon.png',
-      alt: 'Correo de confirmación de pedido de Amazon',
+      src: '/img/ejemplos/sistema-notificacion-etsy.png',
+      alt: 'Correo de Etsy que avisa al comprador que su pedido fue despachado',
       caption:
-        'Correo automático de confirmación de pedido de Amazon: notificación proactiva enviada al cliente tras realizar una compra.',
+        'Correo automático de Etsy que avisa al comprador que el vendedor despachó su pedido. La plataforma lo genera a partir de una plantilla en cuanto el vendedor marca el envío; el nombre del comprador, la tienda y el destino son los datos variables. La foto del comprador está pixelada.',
     },
   ],
 };
