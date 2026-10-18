@@ -1,0 +1,132 @@
+---
+sidebar_position: 10
+tags:
+  - procesamiento
+  - integración
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {scraper} from '@site/src/data/tableros/en/scraper';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {scraper as ejemplosScraper} from '@site/src/data/ejemplos/en/scraper';
+
+# Scraper
+
+<span className={styles.aliases}>Web scraper · Web data extractor</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosScraper} />
+
+## Description {/* #descripcion */}
+
+A component that goes through web pages or documents to identify and extract specific information from their content. Its function is to obtain data from unstructured or semi-structured sources through techniques such as pattern matching or parsing, and to hand it over to the system for storage or later processing. Unlike components that consume formal APIs, the scraper accesses the content of the pages or documents directly, searching for, identifying, and extracting the relevant data according to predefined criteria.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Goes through web pages or documents, searching for and extracting specific data through patterns or selectors
+- Parses the content to identify the information of interest and separate it from the rest
+- Hands the extracted data over to the system for storage or later processing
+- Handles unstructured or semi-structured content, without relying on a formal schema exposed by the source
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Working together with a crawler:** receives URLs discovered dynamically by a component that navigates by following links, instead of operating on a predefined list of sources
+- **Manual trigger:** lets an authorized user start the extraction on demand
+- **Periodic scheduling:** runs the scraping at defined intervals
+- **Extraction logging:** records runs, success rates per source, and the data actually extracted
+- **Tolerance to structural changes:** implements multiple selectors or fallback strategies that mitigate the effect of changes to the source pages
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Is not** a crawler: it does not navigate by following links or discover content on its own; it requires specific URLs or locations as input
+- **Is not** an [ETL](/docs/componentes/etl): the ETL consumes structured data from APIs or databases; the scraper extracts data from unstructured content
+- **Does not** transform or process the extracted data in depth; it only identifies it and hands it over
+- It may stop working if the structure of the sources changes and there is no tolerance to those changes
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    URLs or locations of the sources to process; selectors, patterns, or criteria that define which information to extract
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Extracted and structured data, handed over to the system for storage or later processing
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Web scraping:** extraction of data from HTML pages through CSS selectors, XPath, or other DOM parsing mechanisms
+- **Document scraping:** extraction of data from files with unstructured or semi-structured content (PDF, Word, spreadsheets without a standard format)
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- External sources to process (web pages, documents accessible by URL)
+- Selectors or rules that define what to extract from each source
+- [Database](/docs/componentes/base-datos) or another component that receives the extracted data
+- A scheduling mechanism or scheduler for periodic runs, when that capability is present
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="scraper" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | The manual trigger only starts the extraction; the data enters the system automatically, not through direct writing by the operator. |
+| Automatic Update | Always | The incorporation into the system of data extracted from external sources. |
+| Data Concepts | Always | The entities resulting from the extraction (products, offers, profiles, depending on the domain). |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | No | — |
+| Autonomous Processes | Always | Parsing the content to identify and separate the relevant information. Logging and tolerance to changes, when those capabilities are present. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={scraper} />

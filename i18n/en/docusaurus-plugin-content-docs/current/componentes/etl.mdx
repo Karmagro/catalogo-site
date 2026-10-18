@@ -1,0 +1,131 @@
+---
+sidebar_position: 9
+tags:
+  - procesamiento
+  - integración
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {etl} from '@site/src/data/tableros/en/etl';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {etl as ejemplosEtl} from '@site/src/data/ejemplos/en/etl';
+
+# ETL
+
+<span className={styles.aliases}>Extract-Transform-Load · Data integration</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosEtl} />
+
+## Description {/* #descripcion */}
+
+A component that brings information from sources outside the information system into it, adapting it to the internal data model. Its function is to ensure that the incoming data is consistent, up to date, and compatible with the structure of the system. To do so, it performs three tasks: it extracts the data from its original sources, transforms it according to business rules or intended uses, and loads it into the destination store.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Includes the three stages of the ETL process: data extraction, transformation according to the system's rules, and loading into the central repository
+- Ensures the consistency and compatibility of the imported information with the internal data model
+- Operates without user intervention once triggered, integrating data autonomously
+- Allows the automated integration of large volumes of data from heterogeneous sources
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Periodic scheduling:** runs the ETL at defined intervals (hourly, daily, etc.) through a scheduler, without requiring an explicit trigger
+- **Manual trigger:** lets an authorized user start the ETL on demand through an explicit action
+- **Activity logging:** records each run (errors, durations, volume of data processed) for auditing and monitoring
+- **Automatic retries:** retries failed stages (typically extraction) when facing transient network errors or temporarily unavailable sources
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Does not** define access policies or permissions over the data; it only brings the data into the system
+- **Does not** replace the internal processing that derives, calculates, or analyzes information already inside the system ([Scheduled Process](/docs/componentes/proceso-programado) or [Reactive Process](/docs/componentes/proceso-reactivo)): the ETL brings data in from outside; it does not operate on the data already inside
+- **Does not** provide an interface visible to the user, although it can be monitored or configured from a console or external service
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    Data from external sources (APIs, structured files, external databases) together with the transformation rules
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Data transformed and loaded into the central repository of the system, consistent with its internal data model
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Batch ETL:** processes large volumes of data in scheduled batches (daily, weekly)
+- **Real-time (streaming) ETL:** processes data continuously as it arrives, with low latency
+- **ELT (Extract-Load-Transform):** loads the data untransformed and applies the transformations afterward, inside the destination repository
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- External data source (APIs, servers, sensors, files)
+- Destination repository (the system's [Database](/docs/componentes/base-datos))
+- A scheduling mechanism or scheduler for running it, when that capability is present
+- Business rules that define how the data is handled
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="etl" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | The manual trigger only starts the run; the data enters the system automatically, not through direct writing by the operator. |
+| Automatic Update | Always | The incorporation of data from external sources into the system. |
+| Data Concepts | Always | The entities loaded into the system's repository after the transformation. |
+| On-Demand Outputs | No | — |
+| Automatic Outputs | No | — |
+| Autonomous Processes | Always | The transformation of the data according to the system's rules. Logging and automatic retries, when those capabilities are present. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={etl} />
