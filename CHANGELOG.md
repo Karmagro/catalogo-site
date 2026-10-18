@@ -8,6 +8,10 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 
 ## [Sin publicar]
 
+## [1.1.0] — 2026-10-18
+
+Catálogo abierto, mantenible y bilingüe.
+
 ### Catálogo
 
 - 22 componentes, sin cambios de contenido.
@@ -27,7 +31,12 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - `npm run verificar` comprueba la paridad entre idiomas: que cada ficha, página, tablero y galería tenga su versión inglesa, que coincidan los encabezados, los nombres, el mapeo, los post-its y las imágenes, y avisa cuando una ficha española cambió después de su traducción.
 - `scripts/scaffold-i18n.mjs`: crea la versión inglesa de una ficha o página para traducirla, sin sobrescribir nada.
 - El buscador muestra sus textos en español en el sitio en español («Buscar», «Sin resultados»).
-- Enlace a la herramienta en línea del Tablero Digital (https://tablero-digital.dcc.uchile.cl/) en la página del Tablero, en el pie de página y en el README.
+- Enlace a la herramienta en línea del Tablero Digital (https://tablero-digital.dcc.uchile.cl/) en la página del Tablero, en el pie de página y en el README, y la referencia al paper que lo describe.
+- Licencias: el código, bajo MIT (`LICENSE`); el contenido del catálogo, bajo CC BY-NC-SA 4.0 (`LICENSE-CONTENIDO.md`). El pie de página y la página de Créditos lo indican, con la forma sugerida de citar.
+- `ATRIBUCIONES.md`: cada imagen de terceros con su sistema, su titular y su origen cuando se conoce, las fotografías de Créditos y la cita del Tablero Digital. `npm run verificar` avisa si una imagen de galería no aparece ahí.
+- `CITATION.cff`: GitHub muestra «Cite this repository» con la cita en APA y BibTeX.
+- Enlace «Editar esta página» en cada ficha, hacia el archivo en GitHub.
+- Tarjeta propia para redes sociales, en español y en inglés, en lugar de la de la plantilla de Docusaurus.
 - `i18n/GLOSARIO.md`: correspondencia ES → EN del vocabulario del catálogo (secciones del Tablero, campos de la ficha, nombres de componente, etiquetas) y convenciones de traducción.
 
 ### Cambiado
@@ -79,5 +88,6 @@ Primera versión publicada: el estado del catálogo entregado junto con la memor
 - Etiquetas navegables y filtrables, buscador local, página de Créditos y página de inicio.
 - Barra lateral en orden narrativo y banner de orientación para quien llega por primera vez.
 
-[Sin publicar]: https://github.com/Karmagro/catalogo-site/compare/v1.0.0...HEAD
+[Sin publicar]: https://github.com/Karmagro/catalogo-site/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/Karmagro/catalogo-site/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/Karmagro/catalogo-site/releases/tag/v1.0.0
