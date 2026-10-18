@@ -8,6 +8,10 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 
 ## [Sin publicar]
 
+### Corregido
+
+- `LICENSE` queda con el texto MIT estándar, sin la nota de alcance añadida al final, para que GitHub reconozca la licencia. El alcance de cada licencia sigue explicado en `README.md` y `LICENSE-CONTENIDO.md`.
+
 ## [1.1.0] — 2026-10-18
 
 Catálogo abierto, mantenible y bilingüe.
