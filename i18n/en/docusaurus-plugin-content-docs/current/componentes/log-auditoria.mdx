@@ -1,0 +1,128 @@
+---
+sidebar_position: 14
+tags:
+  - seguridad
+---
+
+import Admonition from '@theme/Admonition';
+import styles from '@site/src/css/componente.module.css';
+import TableroDigital from '@site/src/components/TableroDigital';
+import MapeoTablero from '@site/src/components/MapeoTablero';
+import {logAuditoria} from '@site/src/data/tableros/en/log-auditoria';
+import Galeria from '@site/src/components/Galeria';
+import FichaTags from '@site/src/components/FichaTags';
+import {logAuditoria as ejemplosLogAuditoria} from '@site/src/data/ejemplos/en/log-auditoria';
+
+# Audit Log
+
+<span className={styles.aliases}>Audit trail · Operations log · Activity history</span>
+
+<FichaTags />
+
+## Examples {/* #ejemplos */}
+
+<Galeria data={ejemplosLogAuditoria} />
+
+## Description {/* #descripcion */}
+
+Automatically and chronologically records the relevant actions performed within the information system, associating each event with a user, a date, and an affected entity. Its purpose is to keep a traceable and unalterable history of the system's activity, which makes it possible to answer the questions "who did what, when, and to what" with concrete evidence. It operates autonomously and in a cross-cutting way: recording happens without user intervention, for every action the system considers relevant.
+
+## Mandatory capabilities {/* #capacidades-mandatorias */}
+
+<div className={styles.capBlockMandatory}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm3.36 4.65a.5.5 0 0 0-.72-.01L7.3 9.28 5.36 7.34a.5.5 0 1 0-.72.7l2.25 2.25a.5.5 0 0 0 .72 0l3.75-3.75a.5.5 0 0 0 0-.7z"/></svg>
+  <span>Mandatory capabilities</span>
+</div>
+
+- Records events automatically, without requiring explicit action from the user
+- Each entry includes at least: the user who performed the action, date and time, type of operation, and affected entity
+- Entries are persistent and cannot be altered by regular users; they cannot be modified or deleted through the normal operation of the system
+- Access to the log is restricted to profiles with specific permissions (administrators, auditors)
+
+</div>
+
+## Additional capabilities {/* #capacidades-adicionales */}
+
+<div className={styles.capBlockOptional}>
+
+<div className={styles.capHeading}>
+  <svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor"><path d="M8 1a7 7 0 1 1 0 14A7 7 0 0 1 8 1zm.5 3.5a.5.5 0 0 0-1 0V7.5H4.5a.5.5 0 0 0 0 1H7.5v3a.5.5 0 0 0 1 0V8.5h3a.5.5 0 0 0 0-1H8.5V4.5z"/></svg>
+  <span>Additional capabilities</span>
+</div>
+
+- **Before and after state storage:** saves the values before and after each modification, making it possible to reconstruct how the information evolved
+- **Entry export:** allows downloading the log entries for external analysis or regulatory compliance
+- **Built-in viewer:** provides an interface for authorized users to browse the history directly from the system
+- **Configurable retention:** defines how long entries are kept before they are automatically purged
+
+</div>
+
+## Boundaries {/* #delimitaciones */}
+
+<Admonition type="danger" title="What it is not">
+
+- **Is not** a system log: system logs record technical and operational events (errors, restarts, performance); the Audit Log records user actions and changes to business data
+- **Is not** a [Notification System](/docs/componentes/sistema-notificacion): the log records silently; it does not alert or communicate events to external recipients
+- **Is not** a [Report](/docs/componentes/reporte): although the log data can be queried or exported, the component itself does not consolidate or process the information for analytical purposes
+
+</Admonition>
+
+## Information flow {/* #flujo-de-informacion */}
+
+<div className={styles.flowContainer}>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Input</div>
+  <div className={styles.flowCardBody}>
+    System event (user action or process that modifies data), with its associated attributes (user, entity, operation, values)
+  </div>
+</div>
+
+<div className={styles.flowArrow}>→</div>
+
+<div className={styles.flowCard}>
+  <div className={styles.flowCardHeader}>Output</div>
+  <div className={styles.flowCardBody}>
+    Persistent and unalterable record of the event, stored chronologically in the repository
+  </div>
+</div>
+
+</div>
+
+## Variants {/* #modalidades */}
+
+- **Access log:** records every successful or failed login attempt
+- **Change log:** records modifications to the system's data (creation, editing, and deletion of records)
+- **Operations log:** records administrative and configuration actions on the system
+
+## Typical dependencies {/* #dependencias-tipicas */}
+
+<div className={styles.dependencies}>
+
+- [Database](/docs/componentes/base-datos) or repository where the audit entries are stored
+- [Authorization](/docs/componentes/autorizacion) to determine which users can access the log
+
+</div>
+
+## Mapping to the Digital Board {/* #mapeo-al-tablero-digital */}
+
+<MapeoTablero slug="log-auditoria" />
+
+<div className={styles.mapeoDetail}>
+
+| Section | Relationship | Notes |
+|:--------|:-------:|:------------|
+| Manual Update | No | — |
+| Automatic Update | No | — |
+| Data Concepts | Always | Audit Entry as a persistent entity of the system. |
+| On-Demand Outputs | Optional | Built-in history viewer and entry export, when those capabilities are present. |
+| Automatic Outputs | No | — |
+| Autonomous Processes | Always | Automatic capture of the relevant events and construction of the associated entry. |
+
+</div>
+
+## Digital Board example {/* #ejemplo-de-tablero-digital */}
+
+<TableroDigital data={logAuditoria} />
