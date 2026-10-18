@@ -127,6 +127,7 @@ const config: Config = {
           items: [
             {label: 'Explicación', to: '/docs/tablero-digital'},
             {label: 'Mapeo de componentes', to: '/docs/secciones'},
+            {label: 'Herramienta en línea', href: 'https://tablero-digital.dcc.uchile.cl/'},
           ],
         },
         {

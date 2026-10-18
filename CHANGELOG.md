@@ -27,10 +27,12 @@ Cada versión abre con una sección **Catálogo** que resume el estado del conte
 - `npm run verificar` comprueba la paridad entre idiomas: que cada ficha, página, tablero y galería tenga su versión inglesa, que coincidan los encabezados, los nombres, el mapeo, los post-its y las imágenes, y avisa cuando una ficha española cambió después de su traducción.
 - `scripts/scaffold-i18n.mjs`: crea la versión inglesa de una ficha o página para traducirla, sin sobrescribir nada.
 - El buscador muestra sus textos en español en el sitio en español («Buscar», «Sin resultados»).
+- Enlace a la herramienta en línea del Tablero Digital (https://tablero-digital.dcc.uchile.cl/) en la página del Tablero, en el pie de página y en el README.
 - `i18n/GLOSARIO.md`: correspondencia ES → EN del vocabulario del catálogo (secciones del Tablero, campos de la ficha, nombres de componente, etiquetas) y convenciones de traducción.
 
 ### Cambiado
 
+- La imagen de ejemplo del Sistema de Notificación es ahora un correo real de Etsy que avisa el despacho de un pedido. La anterior, presentada como una confirmación de pedido de Amazon, era un correo de *phishing* que imitaba a Amazon.
 - Un enlace o ancla internos rotos rompen el build en vez de emitir una advertencia.
 - Versión mínima de Node: 22.18 (`.nvmrc` fija la 24).
 - El mapeo de cada componente a las seis secciones del Tablero Digital se declara una sola vez, en `src/data/mapeo`. De ahí salen la rejilla de cada ficha, la matriz consolidada y la lectura por sección, que antes se escribían a mano por separado. La tabla de observaciones de cada ficha y los post-its de su tablero siguen siendo contenido propio.
